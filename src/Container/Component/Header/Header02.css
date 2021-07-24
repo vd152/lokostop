@@ -1,0 +1,233 @@
+.Header_two {
+  width: 100vw;
+  height: 5.857vw;
+  border-bottom: 0.073vw solid #707070;
+  border-top: 0.073vw solid #707070;
+  display: flex;
+}
+.logo {
+  width: 8.199vw;
+  height: 4.758vw;
+  margin-left: 2.343vw;
+  margin-top: 0.586vw;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+}
+.navbar {
+  margin-left: 20.449vw;
+  margin-top: 2.269vw;
+  height: auto;
+}
+.navbarul {
+  display: flex;
+  margin: 0;
+  list-style: none;
+  padding-left: 0;
+}
+.navli {
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  color: #3d3d3d;
+  font-weight: bold;
+  display: inline-block;
+  /* position: relative; */
+  padding-bottom: 0.22vw;
+  padding-right: 2.343vw;
+  cursor: pointer;
+}
+
+/* .navbar li::after {
+    content: "";
+    display: block;
+    margin: auto;
+    height: 0.220vw;
+    width: 0;
+    background-color: transparent;
+    transition: width 0.5s ease, background-color 0.5s ease;
+  }
+  .navbar li:hover::after {
+    width: 100%;
+    background-color: #08e5a9;
+  } */
+.navbar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+.Header_two_part3 {
+  width: 15.373vw;
+  height: 2.782vw;
+  display: grid;
+  grid-template-rows: 1.318vw 1.464vw;
+  margin-top: 1.684vw;
+  margin-left: 15.445vw;
+}
+.mobile_part {
+  display: flex;
+  width: 15.373vw;
+  height: 1.318vw;
+}
+.mobile_part p {
+  width: 13.177vw;
+  height: 1.318vw;
+  text-align: right;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  margin: 0;
+  color: #3d3d3d;
+}
+#phone {
+  font-size: 1.3vw;
+  margin-left: 0.4vw;
+  color: #7d7d7d;
+}
+.email_part {
+  display: flex;
+  width: 15.373vw;
+  height: 1.318vw;
+}
+.email_part p {
+  width: 13.177vw;
+  height: 1.318vw;
+  text-align: right;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  margin: 0;
+  color: #3d3d3d;
+}
+#mail {
+  font-size: 1.3vw;
+  margin-left: 0.4vw;
+  color: #7d7d7d;
+}
+
+/* Style The Dropdown Button */
+.dropbtn1 {
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  color: #3d3d3d;
+  font-weight: bold;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.drop {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content1 {
+  display: none;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  position: absolute;
+  border: 0.1px solid grey;
+  min-width: 12vw;
+  text-align: center;
+  left: -4vw;
+  border-radius: 0.568vw;
+  background-color: white;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content1 a {
+  color: black;
+  padding: 0.5vw 0.5vw;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content1 a:hover {
+  color: black;
+}
+
+/* Show the dropdown menu on hover */
+.drop:hover .dropdown-content1 {
+  display: block;
+}
+.checkbtn {
+  font-size: 3vw;
+  line-height: 6vw;
+  cursor: pointer;
+  margin-left: 3vw;
+  display: none;
+}
+#check {
+  display: none;
+}
+@media (max-width: 768px) {
+  .navbar {
+    margin-top: 0;
+  }
+  .Header_two_part3 {
+    margin-left: 13vw;
+  }
+  .navbar li {
+    font: normal normal normal 0.978vw/1.318vw Poppins;
+    font-weight: bold;
+  }
+  .dropbtn1 {
+    font: normal normal normal 0.978vw/1.318vw Poppins;
+    font-weight: bold;
+  }
+  .dropdown-content1 {
+    font: normal normal normal 0.978vw/1.318vw Poppins;
+  }
+}
+@media (max-width: 425px) {
+  
+  .navbar {
+    padding-top: 0;
+    margin-left: 21.269vw;
+  }
+  .Header_two_part3 {
+    margin-left: 12.445vw;
+  }
+  .navbar li {
+    font: normal normal normal 1.1vw/1.318vw Poppins;
+    font-weight: bold;
+    /* color: white;
+    
+    display: block;
+    margin-bottom: 4vw; */
+    margin-left: 0;
+    /* margin-top: 4vw; */
+  }
+  .dropbtn1 {
+    font: normal normal normal 1.1vw/1.318vw Poppins;
+    font-weight: bold;
+  }
+  .dropdown-content1 {
+    font: normal normal normal 1.1vw/1.318vw Poppins;
+    padding: 0.5vw;
+  }
+  .Header_two {
+    height: 6.857vw;
+  }
+  /* .navvvvul {
+    padding: 0;
+    position: fixed;
+    width: 22%;
+    height: 100vh;
+    background: #2c3e50;
+    top: 11vw;
+    display: none;
+    left: 0;
+    text-align: center;
+    transition: all 0.5s;
+  } */
+  /* #check{
+    display: block;
+  } */
+ 
+}
+@media (max-width: 375px) {
+  .logo {
+    margin-top: 0;
+  }
+  .navbar {
+    margin-left: 18.269vw;
+  }
+}

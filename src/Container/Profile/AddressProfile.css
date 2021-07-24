@@ -1,0 +1,28 @@
+.addressradio {
+  height: auto;
+  width: 90%;
+  text-align: left;
+  margin: 3%;
+}
+.fontP {
+  font-size: normal normal 200 1vw/1.318vw Poppins;
+}
+
+.colorradio:checked {
+  background-color: green;
+  border: grey;
+  box-shadow: none;
+}
+.colorradio[type="checkbox"] {
+  border-radius: 0;
+  box-shadow: none;
+}
+@media (max-width:768px){
+.fontP{
+    font: normal normal 200 0.9vw/1.318vw Poppins;
+}}
+@media(max-width:425px){
+  .fontP{
+    font: normal normal 200 1.2vw/1.318vw Poppins;
+  }
+}

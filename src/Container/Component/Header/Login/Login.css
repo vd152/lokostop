@@ -1,0 +1,145 @@
+.modal-backdrop {
+  z-index: 1;
+}
+.modal-content {
+  margin-top: 6vw;
+  /* width: 77%;
+    margin-left: 5vw; */
+}
+.imagevl {
+  padding-left: 0;
+  padding-right: 0;
+  cursor: pointer;
+  font: normal normal normal 0.878vw/1.061vw Poppins;
+  margin-top:0.6vw;
+}
+.modalPadding {
+  padding: 0;
+}
+.logoval {
+  height: auto;
+  width: auto;
+  margin-left: 13vw;
+  font-weight: 900;
+  font-family: poppins;
+  font-size: 1.5vw;
+  color: #08e5a9;
+}
+.modal-header {
+  border-bottom: none;
+}
+.promiseword {
+  margin-left: 6vw;
+  font-family: poppins;
+  font-size: 0.8vw;
+  margin-bottom: 0;
+}
+.signval {
+  margin-left: 12.5vw;
+  color: #5d5d5d;
+}
+.googleface {
+  display: flex;
+  flex-direction: column;
+  border-top: 0;
+  padding-left: 0;
+  width:35vw
+}
+.orWord {
+  font-family: poppins;
+  font-size: 0.8vw;
+}
+.signgoogle {
+  background-color: #f80000;
+  color: white;
+  padding: 0.8vw;
+  width: 20.425vw;
+  margin-left: 1vw;
+  margin-top: 1vw;
+  font-size: 0.9vw;
+  font-family: poppins;
+}
+.signface {
+  background-color: #0063ae;
+  color: white;
+  padding: 0.8vw;
+  width: 20.425vw;
+  margin-left: 1vw;
+  margin-top: 1vw;
+  font-size: 0.9vw;
+  font-family: poppins;
+}
+.signinput {
+  width: 20.425vw;
+  border: 0.073vw solid #08e5a9;
+  height: 2.782vw;
+  padding: 0.732vw;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  cursor: pointer;
+  outline: none;
+  margin-left: 7vw;
+  margin-bottom: 2%;
+}
+.forgotbutton {
+  background-color: white;
+  width: auto;
+  height: auto;
+  font-family: poppins;
+  font-size: 0.8vw;
+  border: none;
+  margin-left: 20vw;
+  cursor: pointer;
+}
+.signButton {
+  padding: 2%;
+  font-size: 0.9vw;
+  font-family: poppins;
+  padding: 0.8vw;
+  width: 10vw;
+  margin-left: 12.5vw;
+  margin-top: 1vw;
+  color: white;
+  background-color: #08e5a9;
+  border: none;
+}
+.signButton:hover {
+  color: black;
+}
+@media (max-width: 768px){
+  .imagevl {
+    font: normal normal normal 1vw/1.061vw Poppins;
+    margin-top: 0.6vw;
+  }
+  .modal-content{
+    width: 58%;
+    margin-left: 13vw;    padding-left: 1vw;
+  }
+}
+@media (max-width: 425px) {
+  .imagevl {
+    font: normal normal normal 1.2vw/1.061vw Poppins;
+    margin-top: 0.6vw;
+  }
+  .modal-content {
+    width: 41%;
+    margin-left: 26vw;
+}
+.signface{
+  font-size: 1vw;
+}
+.signgoogle{
+  font-size: 1vw;
+}
+.btn-close{
+  font-size: 1.5vw;
+}
+.googleface{
+  padding-left: 2vw;
+}
+}
+@media (min-width: 769px) and (max-width:1200px ) {
+  .modal-content{
+    width: 73%;
+    margin-left: 6vw;
+  }
+}

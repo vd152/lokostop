@@ -1,0 +1,428 @@
+#line_product {
+  margin-left: 0.952vw;
+  height: 0;
+  margin-top: 1.098vw;
+  width: 80.454vw;
+  border: 0.073vw solid #08e5a9;
+}
+.individualproduct_detail_outer_box {
+  width: 84.773vw;
+  height: auto;
+  margin-left: 5.490vw;
+  margin-top: 2.928vw;
+  display: flex;
+}
+.productnavnew{
+  color: rgb(157, 157, 157);
+  font: normal normal normal 1vw / 2.1vw Poppins;
+}
+.similar_product_images {
+  height: 30.015vw;
+  width: 5.417vw;
+  display: flex;
+  flex-direction: column;
+}
+#upIconNew {
+  margin-left: 2.050vw;
+  color: #bdbdbd;
+  font-size: 1.464vw;
+  cursor: pointer;
+}
+.similar_image_three_image_box {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 5.417vw;
+  margin-top: 1.171vw;
+  height: 24.085vw;
+  justify-content: space-between;
+}
+.similar_particular_image {
+  width: 5.417vw;
+  height: 6.442vw;
+}
+.product_big_image_cart_compare {
+  height: 33.382vw;
+  width: 27.965vw;
+  margin-left: 2.123vw;
+  display: flex;
+  flex-direction: column;
+}
+.big_image {
+  width: 27.965vw;
+  height: 30.015vw;
+}
+.details_of_individual_product_with_rating {
+  height: auto;
+  width: 46.925vw;
+  margin-left: 2.343vw;
+  display: flex;
+  flex-direction: column;
+}
+.name_of_the_particular_product {
+  margin: 0;
+  width: 46.925vw;
+  font: normal normal normal 1.464vw/1.830vw Poppins;
+  font-weight: 600;
+  height: auto;
+  color: #1d1d1d;
+}
+.category_of_that_particular_product {
+  width: 46.925vw;
+  height: auto;
+  margin-top: 0.6vw;
+  font: normal normal normal 0.952vw/1.464vw Poppins;
+  color: #3d3d3d;
+  margin-bottom: 0;
+}
+.product_individual_detail_line {
+  width: 24.085vw;
+  margin-left: 0;
+  margin-top: 1.025vw;
+  border: 0.073vw solid #bdbdbd;
+}
+.details_box_margin {
+  margin-left: 0.952vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 4%;
+  height: auto;
+  margin-top: -0.366vw;
+}
+.pay_via {
+  width: 43.485vw;
+  margin-top: 0.366vw;
+  height: auto;
+  margin-left: 3.294vw;
+  display: flex;
+}
+.logo2pay {
+  width: 25.769vw;
+  height: 3.514vw;
+  margin-top: 0;
+}
+.logo2pay ul {
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  height: auto;
+  margin-top: 0;
+  width: auto;
+}
+.logo2pay ul li {
+  height: 2.928vw;
+  width: 2.928vw;
+  cursor: pointer;
+}
+.logo2pay ul li img {
+  width: 100%;
+  height: 100%;
+}
+.review_main_with_specification {
+  border: 0.073vw solid #bdbdbd;
+  padding: 1%;
+  width: 90.630vw;
+  margin-left: 4.685vw;
+  margin-top: 1.098vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.Heading_Name_for_reviewbox {
+  width: 100%;
+  height: 3.734vw;
+}
+.Heading_Name_for_reviewbox ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  font: normal normal normal 0.952vw/1.464vw Poppins;
+  color: #9d9d9d;
+  width: 32.943vw;
+}
+.Heading_Name_for_reviewbox ul li {
+  cursor: pointer;
+}
+.Heading_Name_for_reviewbox ul li:hover {
+  color: #3d3d3d;
+}
+.line_for_review_define_box {
+  display: flex;
+  width: auto;
+  height: auto;
+  margin-left: 2.050vw;
+}
+.line01Box {
+  width: 7.247vw;
+  border: 0.073vw solid #5d5d5d;
+  height: 0;
+  margin: 0;
+}
+.line02Box {
+  border: 0.073vw solid #dbdde4;
+  width: 76.867vw;
+  height: 0;
+  margin: 0;
+}
+.paradescription {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5%;
+}
+.paradescription h6 {
+  font: normal normal normal 0.952vw/1.464vw Poppins;
+  color: #3d3d3d;
+  height: auto;
+  width: auto;
+  margin: 0;
+}
+.paradescription p {
+  font: normal normal normal 0.952vw/1.464vw Poppins;
+    color: #7D7D7D;
+    width: auto;
+    height: auto;
+    margin-top: 0.805vw;
+}
+.desciptionbox{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: auto;  margin-left: 1.977vw;
+  margin-top: 1%;
+}
+.specification_outer_box {
+  width: 75.403vw;
+  height: auto;
+  margin-left: 1.977vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2.343vw;
+}
+.particularSpecification {
+  height: auto;
+  display: flex;
+  width: auto;
+  margin: 0.878vw;
+}
+.particularSpecification h6 {
+  font: normal normal normal 0.952vw/1.464vw Poppins;
+  color: #3d3d3d;margin: 0;
+}
+.particularSpecification p{
+    font: normal normal normal 0.952vw/1.464vw Poppins;
+margin: 0;
+color: #7D7D7D;
+margin-left: 2.196vw;
+}
+.review_outer_box {
+  width: 84.114vw;
+  height: 31.918vw;
+  margin-bottom: 2.928vw;
+  margin-left: 1.977vw;
+  margin-top: 2.343vw;
+  border: 0.073vw solid #cdcdcd;
+  display: flex;
+  overflow: auto;
+  flex-direction: column;
+}
+.review_outer_box::-webkit-scrollbar {
+  width: 0.732vw;border-radius: 9px;
+}
+.review_outer_box::-webkit-scrollbar-track {
+  border-radius: 9px;
+  border: 0.366vw solid #e9e9e9;
+  box-shadow: inset 0 0 0.183vw 0.146vw #e9e9e9;
+}
+.review_outer_box::-webkit-scrollbar-thumb {
+  background: #cbcbcb;border-radius: 9px;
+}
+.read_review {
+margin-left: 2.562vw;
+margin-top: 1.391vw;
+width: auto;
+height: auto;
+font: normal normal normal 1.098vw/1.684vw Poppins;
+margin-bottom: 0;
+color: #3d3d3d;
+}
+.review_star {
+width: 11.640vw;
+height: 1.903vw;
+margin-left: 32.284vw;
+margin-right: 0.732vw;
+display: flex;
+justify-content: space-between;
+}
+#star_feature_next {
+width: 1.977vw;
+height: 1.903vw;
+color: #cdcdcd;
+cursor: pointer;
+}
+.write_review {
+width: 65.739vw;
+height: auto;
+display: flex;
+margin-left: 10.322vw;
+margin-top: 1.025vw;
+}
+.customer_review {
+width: 52.709vw;
+display: flex;
+height: 7.394vw;
+border: 0.073vw solid #cdcdcd;
+}
+.write_customer_review {
+margin-top: 0.732vw;
+margin-left: 1.171vw;
+width: 47.218vw;
+height: auto;
+font: normal normal normal 1.098vw/1.684vw Poppins;
+color: #adadad;
+}
+.count_attach {
+width: 3.221vw;
+display: flex;
+height: auto;
+flex-direction: column;
+margin-left: 0.586vw;    margin-top: 0.586vw;
+}
+.attach{
+  font-size: 1.5vw;
+  color: #ADADAD;
+  cursor: pointer;
+  margin-left: 2.050vw;
+}
+.review_button {
+width: 10.249vw;
+height: 2.928vw;
+margin-left: 1.171vw;
+color: white;
+background: #021fb2;
+border-color: none;
+font: normal normal normal 1.098vw/1.684vw Poppins;
+outline: none;
+cursor: pointer;
+}
+.no_count{
+  font: normal normal normal 1.098vw/1.684vw Poppins;
+  color: #ADADAD;
+  margin-top: 3.880vw;
+  margin-bottom: 0;
+}
+.commentBox{
+  outline: none;
+  font: normal normal normal 1.098vw/1.684vw Poppins;
+  resize: none;
+  width: 47.145vw;
+  height: auto;
+  margin-top: 0.146vw;
+  margin-left: 0.732vw;
+  border: none;
+}
+.showReview {
+  width: 52.709vw;
+  height: auto;
+  border: 0.073vw solid #cdcdcd;
+  margin-top: 1.391vw;
+  margin-left: 10.322vw;
+  padding-bottom: 0.732vw;
+  display: flex;
+  flex-direction: column;
+}
+.userNameReview {
+  height: auto;
+  display: flex;
+  width: auto;
+  margin-top: 0.878vw;
+  margin-left: 0.878vw;
+}
+
+.reviewShow {
+  width: auto;
+  height: auto;
+  margin-bottom: 0;
+  margin-top: 0.732vw;
+  margin-left: 3.807vw;
+  font: normal normal normal 0.732vw/1.171vw Poppins;
+  color: #8d8d8d;
+}
+
+.reviewImage {
+  margin-top: 0.659vw;
+  margin-left: 1.245vw;
+  width: 50.220vw;
+  height: 5.637vw;
+}
+.reviewImage img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+.roundCircle {
+  border-radius: 100%;
+  width: 2.782vw;
+  height: 2.782vw;
+  border: 0.073vw solid #707070;
+}
+.roundCircle img {
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+}
+
+.personName {
+  width: 18.887vw;
+  height: auto;
+  margin-left: 0.878vw;
+  font: normal normal normal 1.098vw/1.684vw Poppins;
+  color: #2d2d2d;
+}
+
+.reviewNo {
+  width: auto;
+  height: auto;
+  margin-left: 25.406vw;
+  font: normal normal normal 1.098vw/1.684vw Poppins;
+  color: #8d8d8d;
+}
+@media(max-width:425px){
+  .product_individual_detail_line{
+    margin-bottom: 1vw;
+    margin-top: 0;
+  }
+  .pay_via{margin-bottom: 2vw;}
+  .roundCircle img{
+    margin-top: -3vw;
+  }
+  .individualproduct_detail_outer_box{
+    margin-left: 10.49vw;
+    margin-top: 2.928vw;
+    margin-bottom: 3vw;
+  }
+  .name_of_the_particular_product{
+    font: normal normal normal 1.564vw/1.830vw Poppins;
+  }
+  .category_of_that_particular_product{
+    font: normal normal normal 1.1vw/1.464vw Poppins;
+  }
+  .details_box_margin {
+    margin-left: 0.952vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 4%;
+    height: 22vw;
+    margin-top: -0.366vw;
+}
+.big_image{
+  width: 27.965vw;
+  height: 35.015vw;
+}
+}

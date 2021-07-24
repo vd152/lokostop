@@ -1,0 +1,70 @@
+.headingPersonalEdit{
+  
+    height: auto;
+    width: 50%;
+    margin-top: 1.5%;
+    margin-left: 2%;
+    display: flex;
+}
+.headPersonal{
+    font: normal normal 200 1.3vw/2vw Poppins;
+    color: #3D3D3D;
+    margin-bottom: 0;
+    margin-right: 2%;
+}
+.headedit{
+    text-decoration: underline;
+    font: normal normal 200 1vw/2.3vw Poppins;
+    color: #08E5A9;cursor: pointer;
+}
+.profilepersonalImg{
+    width: 10vw;
+    border-radius: 50%;
+    height: 10vw;
+    margin-left: 20%;
+    margin-top: 3%;
+}
+.profilepersonalImg img{
+    height: 100%;
+    width: 100%;border-radius: 50%;
+}
+.inputboxpersonal{
+    height: 13.127vw;
+    width: 31.040vw;
+    margin-left: 3%;display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    margin-top: 3%;
+}
+.namefulllast{
+    width: 100%;justify-content: space-between;
+    height: auto;
+    display:flex;
+}
+.personalInput{
+    width: 15.227vw;
+    font: normal normal 200 1vw/2.3vw Poppins;
+    padding: 0.4vw;
+    border: 0.1px solid #cdcdcd;
+}
+.lastLinepersonal{
+    font: normal normal 200 1.1vw/2.3vw Poppins;
+color: #7D7D7D;
+margin-left: 2%;
+margin-top: 4%;
+}
+@media(max-width:425px){
+    .lastLinepersonal{
+        font: normal normal 200 1.25vw/2.3vw Poppins;
+    }
+    .headPersonal{
+        font: normal normal 200 1.5vw/2vw Poppins;
+    }
+    .headedit{
+        font: normal normal 200 1.2vw/2.3vw Poppins;
+    }
+    .personalInput{
+        font:normal normal 200 1.1vw/2.3vw Poppins
+    }
+}

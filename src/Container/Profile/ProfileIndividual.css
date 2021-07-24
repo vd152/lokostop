@@ -1,0 +1,414 @@
+.profileOuterMainBOx {
+  width: 95.315vw;
+  height: auto;
+  display: flex;
+  margin-left: 2.5%;
+  margin-top: 1%;
+}
+.firstboxprofile {
+  width: 22.255vw;
+  height: 59%;
+  border: 1px solid #08e5a9;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+}
+.name_individual_Hi {
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding-left: 3vw;
+  margin-top: 2%;
+}
+.name_hi {
+  margin-left: 3%;
+  height: auto;
+  width: 85%;
+  padding-top: 1.5%;
+  display: flex;
+}
+.himessage {
+  margin: 0;
+  height: auto;
+  width: auto;
+  font: normal normal 200 1.3vw/1.977vw Poppins;
+  color: #3d3d3d;
+  margin-left: 2%;
+}
+.nameperson {
+  margin: 0;
+  height: auto;
+  width: auto;
+  font: normal normal 200 1.3vw/1.977vw Poppins;
+  color: #3d3d3d;
+  font-weight: bolder;
+  margin-left: 4%;
+}
+.orderboxsummary {
+  display: flex;
+  width: 100%;
+  padding-left: 20%;
+  height: auto;
+  margin-top: 7%;
+  cursor: pointer;
+}
+.orderboxsummary p {
+  width: auto;
+  height: auto;
+  font: normal normal normal 1vw/1.537vw Poppins;
+  margin-top: 1%;
+  color: #3d3d3d;
+}
+.boxIcon {
+  margin-right: 3%;
+  font-size: 0.9vw;
+  margin-top: 2%;
+}
+.Accountpart {
+  height: auto;
+  margin-top: 7%;
+  width: 100%;
+}
+.accountIcon {
+  font-size: 1.4vw;
+  margin-right: 2%;
+}
+.orderboxsummary1 {
+  display: flex;
+  width: 100%;
+  padding-left: 19%;
+  height: auto;
+  margin-top: 10%;
+  cursor: pointer;
+}
+.orderboxsummary1 p {
+  width: auto;
+  height: auto;
+  font: normal normal normal 1vw/1.537vw Poppins;
+  color: #3d3d3d;
+}
+.settingcategory{
+    height: auto;
+    width: 12vw;
+    margin-top: 5%;
+    margin-left: 27%;
+}
+.navcolor{
+    background-color: white;
+    margin-bottom: 5%;
+    width: 98%;
+}
+.pillval{
+    text-align: left;
+    padding: 0;
+    margin-left: 5%;
+    margin-top:6%;
+}
+.secondBoxprofile{
+    width: 80%;
+    margin-left: 2%;
+  height: auto;
+  border: 1px solid #08e5a9;
+}
+.tble_box1 {
+    width: 97%;
+    height: auto;
+    flex-direction: column;
+    margin-top: 0.586vw;
+    margin-left: 2.5%;
+    display: flex;
+}
+.col_names1 {
+    width: 91%;
+    height: auto;
+    margin-right: 1.830vw;
+}
+.product_availnew {
+    width: 16.837vw;
+    height: auto;
+    text-align: center;
+    margin-left: -7%;
+}
+.product_avail1new {
+    width: 6vw;
+    height: auto;
+    text-align: left;
+    margin-left: 1%;
+    font: normal normal normal 0.878vw/1.318vw Poppins;
+    color: #00680a;
+    padding-top: 4%;
+}
+.product_codenew {
+    width: 10.249vw;
+    height: auto;
+    text-align: center;
+    margin-left: -6.5%;
+}
+.product_price1new {
+    width: 10.249vw;
+    height: auto;
+    text-align: left;
+    margin-left: 2%;
+    padding-top: 4%;
+    font: normal normal normal 0.878vw/1.318vw Poppins;
+    font-weight: 500;
+    color: #3d3d3d;
+}
+.product_pricenew {
+    width: 10.249vw;
+    height: auto;
+    margin-left: 3%;
+    text-align: left;
+}
+.product_quantitynew {
+    width: 10.249vw;
+    height: auto;
+    text-align: left;
+    margin-left: -2%;
+}
+.product_quantity1new {
+    width: 10.249vw;
+    display: flex;
+    height: auto;
+    justify-content: space-evenly;
+    text-align: left;
+    padding-top: 4%;
+    margin-left: -5%;
+}
+.product_subtotalnew {
+    width: 10.249vw;
+    height: auto;
+    text-align: center;
+    margin-left: -3.5%;
+}
+.table_headingnew {
+    display: flex;
+    margin: 0;
+    font: normal normal normal 0.878vw/1.318vw Poppins;
+    color: #3d3d3d;
+    width: 90%;
+    padding: 0;
+    padding-bottom: 0.5%;
+    border-bottom: 0.146vw solid #e5d7d7;
+}
+.button_box_1new {
+    display: flex;
+    width: 95%;
+    height: 2.782vw;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.tble_box1complaint {
+    width: 82%;
+    height: auto;
+    flex-direction: row;
+    margin-top: 0.586vw;
+    margin-left: 6.5%;
+    display: flex;
+}
+.product_imagecomplaint {
+    width: 7.540vw;
+    height: auto;
+    text-align: left;
+}
+.product_Namecomplaint {
+    width: 15.227vw;
+    height: auto;
+    margin-left: -3%;
+}
+.product_availnewcomplaint {
+    width: 16.837vw;
+    height: auto;
+    text-align: center;
+    margin-left: -4%;
+}
+.product_codenewcomplaint {
+    width: 10.249vw;
+    height: auto;
+    text-align: center;
+    margin-left: -6.5%;
+}
+.product_pricenewcomplaint {
+    width: 10.249vw;
+    height: auto;
+    margin-left: 0%;
+    text-align: left;
+}
+.product_image1complaint {
+    width: auto;
+    height: auto;
+    font: normal normal normal 0.9vw/1.318vw Poppins;
+    color: #3D3D3D;
+}
+.product_Name1complaint {
+    width: 16.227vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 8%;
+    font: normal normal normal 0.9vw/1.318vw Poppins;
+}
+.product_avail1newcomplaint {
+    width: auto;
+    height: auto;
+    text-align: left;
+    margin-left: 4%;
+    font: normal normal normal 0.878vw/1.318vw Poppins;
+}
+.product_code1complaint {
+    width: auto;
+    height: auto;
+    text-align: left;
+    margin-left: 11.5%;
+    font: normal normal bold 0.878vw/1.318vw Poppins;
+    color: #3d3d3d;
+}
+.product_price1newcomplaint {
+    width: 15.249vw;
+    height: auto;
+    text-align: left;
+    margin-left: 6%;
+    font: normal normal normal 0.878vw/1.318vw Poppins;
+    color: #3d3d3d;
+}
+.product_quantity1newcomplaint {
+    width: auto;
+    display: flex;
+    cursor: pointer;
+    height: auto;
+    justify-content: space-evenly;
+    text-align: left;
+    margin-left: -15%;
+    font: normal normal bold 0.878vw/1.318vw Poppins;
+}
+.dropdown_colors1 {
+    width: 4.564vw;
+    height: 1.391vw;
+    font: normal normal normal 0.878vw/1.318vw Poppins;
+    padding-left: 0.659vw;
+    color: #3d3d3d;background: white;
+    box-shadow: 0px 3px 6px #00000029;
+    outline: none;
+}
+.complaintshead{
+    margin: 2%;
+    font: normal normal normal 0.878vw/1.318vw Poppins;
+    width: auto;
+    height: auto;
+}
+.complaintbutton{
+    background: #08E5A9 0% 0% no-repeat padding-box;
+    width: 11vw;
+    text-align: left;
+    font: normal normal normal 0.98vw/1.318vw Poppins;
+    color: #FFFFFF;
+    height: 3vw;
+    border: white;
+    margin-left: 29vw;
+    margin-top: 3vw;
+}
+.table_heading2 {
+    display: flex;
+    margin-top: 1.2%;
+    margin-left: 1%;
+    color: #3d3d3d;
+    width: 99.4%;
+    height: auto;
+    padding: 0;
+}
+.mailId{
+    width:98%;
+    margin-top: 4%; font: normal normal normal 0.98vw/1.318vw Poppins;
+    text-align: right;
+}
+.image_user1{
+    height: 3vw;
+    width: 3vw;
+}
+.image_user1 img{
+    border-radius: 50%;
+    object-fit:cover;
+    width: 100%;
+    height: 100%;
+}
+@media(max-width: 768px){
+    .secondBoxprofile{
+        margin-left: 1%;
+    }
+    .complaintbutton{
+        width: 12vw;
+    }
+    .dropdown_colors1{
+        width: 5.3vw;
+    height: 1.9vw;
+    }
+    .firstboxprofile{
+        width: 17.255vw;
+    }
+  }
+  @media(max-width:425px){
+      .complaintshead{
+          font: normal normal normal 1.3vw/1.318vw Poppins;
+      }
+      .name_individual_Hi{
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        padding-left: 2vw;
+        margin-top: 2%;
+        margin-bottom: 12%;
+      }
+      .boxIcon{    margin-right: 3%;
+        font-size: 1.2vw;
+        margin-top: 2%;
+    }
+    .orderboxsummary1 p{
+        width: auto;
+        height: auto;
+        font: normal normal normal 1.2vw/1.537vw Poppins;
+        margin-left: 0.2vw;
+        color: #3d3d3d;
+    }
+    .accountIcon{
+        font-size: 1.7vw;
+        margin-right: 2%;
+    }
+    .orderboxsummary1{
+        display: flex;
+        width: 100%;
+        padding-left: 18%;
+        height: auto;
+        margin-top: 10%;
+        cursor: pointer;
+    }
+    .orderboxsummary p {
+        width: auto;
+    height: auto;
+    font: normal normal normal 1.2vw/1.537vw Poppins;
+    margin-top: 2.6%;
+    color: #3d3d3d;
+    }
+      .image_user1{
+        margin-top: -1.2vw;
+      }
+      .product_quantity1newcomplaint{
+          margin-left: -9%;
+      }
+      .dropdown_colors1 {
+        width: 8.3vw;
+        height: 1.9vw;
+        border: white;
+    }
+    .complaintbutton {
+        width: 14vw;
+    }
+  }
+  @media (max-width:375px){
+    .complaintbutton {
+        width: 15vw;
+    }
+    .image_user1 {
+        margin-top: -2.2vw;
+    }
+  }

@@ -1,0 +1,198 @@
+.outerpaymentbox {
+  height: 35.578vw;
+  width: auto;
+  display: flex;
+  margin-left: 7%;
+  margin-right: 10.176vw;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  justify-content: space-between;
+}
+.firstpaybox {
+  width: 52.635vw;
+  height: 100%;
+  border: 0.146vw solid #08e5a9;
+  display: flex;
+  flex-direction: column;
+}
+.insidepay {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+.nav-link {
+  margin-top: 10%;
+  padding: 1vw;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  color: #3d3d3d;
+  border-radius: none;
+}
+.nav1new {
+  height: 100%;
+  width: 15vw;
+  background: #dddddd;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #3d3d3d;
+  background-color: white;
+  border-radius: none;
+}
+.paymethod {
+  width: 29%;
+  height: 100%;
+  background-color: #dddddd;
+}
+.paymethod ul {
+  list-style: none;
+  width: 100%;
+  height: 60%;
+  padding-left: 0%;
+  margin-top: 15%;
+}
+.paymethod ul li {
+  width: 100%;
+  text-align: center;
+  margin-top: 10%;
+  height: 3.294vw;
+  cursor: pointer;
+  padding-top: 7%;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  color: #3d3d3d;
+}
+.boxdetail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.creditDetail {
+  margin-top: 7%;
+  margin-left: 15%;
+  margin-right: 10%;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 28.184vw;
+}
+.creditpara {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  color: #3d3d3d;
+  margin-bottom: 0;
+}
+.inputBoxCard {
+  width: 100%;
+  border: 0.073vw solid #08e5a9;
+  height: 2.782vw;
+  padding: 0.732vw;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  cursor: pointer;
+  margin-top: 4%;
+  outline: none;
+}
+.inputBoxCard::placeholder {
+  color: #9d9d9d;
+}
+.monthyearbox {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+}
+.monthimput {
+  border: 0.073vw solid #08e5a9;
+  height: 2.782vw;
+  padding: 0.732vw;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  cursor: pointer;
+  outline: none;
+  width: 12.37vw;
+}
+.monthimput::placeholder {
+  color: #9d9d9d;
+}
+.cvv {
+  width: 13.151vw;
+  height: auto;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+}
+.check_box1 {
+  width: 100%;
+  height: auto;
+  margin-top: 5%;
+  border: black;
+  margin-left: 20%;
+}
+.paynow {
+  border: white;
+  margin-left: 35%;
+  margin-top: 2%;
+  background: #08e5a9 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  color: white;
+  width: 12.299vw;
+  font: normal normal normal 0.878vw/1.318vw Poppins;
+  cursor: pointer;
+  outline: none;
+  height: 2.782vw;
+}
+.secondpaybox {
+  height: 100%;
+  width: 23.353vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.secondpay_1box {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 7%;
+  justify-content: space-between;
+}
+.para1_pay {
+  width: 100%;
+  margin-bottom: 2%;
+  text-align: center;
+  height: auto;
+  font: normal normal normal 1.098vw/1.684vw Poppins;
+  color: #5d5d5d;
+}
+#payline {
+  width: 21vw;
+  color: #5d5d5d;margin: 0;
+}
+.paymntbox_card {
+  width: 100%;
+  height: auto;
+  margin-top: 3%;
+  color: #5d5d5d;
+  font: normal normal normal 1.098vw/1.684vw Poppins;
+  display: flex;
+  justify-content: space-evenly;
+}
+.Free_boxpay {
+  border: 0.007vw solid #dddddd;
+  margin-top: 1.903vw;
+  align-items: center;
+  height: 25.549vw;
+  display: flex;
+  flex-direction: column;
+  padding: 1vw;
+}
+@media (max-width: 425px) {
+  .secondpay_1box {
+    padding: 3%;
+  }
+  .Free_boxpay {
+    margin-top: -4px;
+  }
+  .creditDetail {
+    margin-left: 7%;
+  }
+}
