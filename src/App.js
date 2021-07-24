@@ -21,18 +21,17 @@ import paymentCart from './Container/Cart/paymentCart';
 import ProfileIndividual from './Container/Profile/ProfileIndividual';
 import sendQuery from './Container/Query/sendQuery';
 import Loader from './Container/Loader/Loader';
-import {getAllProducts} from './Redux/Actions/ProductActions'
 import {getAllCategories} from './Redux/Actions/CategoryActions'
 import {getFooterDetails, getProductTabs, getLogos} from './Redux/Actions/StorefrontActions'
 import {getAllPages} from './Redux/Actions/PageActions'
 import {getMenus} from './Redux/Actions/MenuActions'
 import {getUser} from './Redux/Actions/UserActions'
 import {getWishlist} from './Redux/Actions/WishlistActions'
+import {getCart} from './Redux/Actions/CartActions'
 import {getUser as getUserId } from './Utils/Local'
 import { NotFound } from './Utils/NotFound';
 class App extends React.Component {
   componentDidMount(){
-    // this.props.getAllProducts()
     this.props.getFooterDetails()
     this.props.getLogos()
     this.props.getAllCategories()
@@ -41,6 +40,7 @@ class App extends React.Component {
     if(getUserId()){
       this.props.getUser(getUserId())
       this.props.getWishlist()
+      this.props.getCart()
     }
   }
   render(){
@@ -80,5 +80,5 @@ const mapStateToProps = state =>{
       userLoading: state.getUser.loading
   }
 }
-export default connect(mapStateToProps, {getAllProducts, getFooterDetails, getAllCategories, getAllPages, getMenus, getLogos, getUser, getWishlist})(App)
+export default connect(mapStateToProps, {getFooterDetails, getAllCategories, getAllPages, getMenus, getLogos, getUser, getWishlist,getCart})(App)
 

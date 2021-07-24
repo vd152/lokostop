@@ -8,6 +8,8 @@ import {getAllPagesReducer} from './Reducers/PageReducers'
 import {loginUser, getUserDetailsReducer} from './Reducers/UserReducers'
 import {getMenuReducer} from './Reducers/MenuReducers'
 import {wishlistReducer} from './Reducers/WishlistReducers'
+import {cartReducer} from './Reducers/CartReducers'
+
 
 const reducers = combineReducers({
     getProducts: getAllProductsReducer,
@@ -22,7 +24,8 @@ const reducers = combineReducers({
     getCategoryProducts: getCategoryProductsReducer,
     loginUser: loginUser,
     getUser: getUserDetailsReducer,
-    userWishlist: wishlistReducer
+    userWishlist: wishlistReducer,
+    userCart: cartReducer
 })
 
 const middleware = [thunk]

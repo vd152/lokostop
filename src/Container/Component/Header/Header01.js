@@ -209,10 +209,10 @@ class Header01 extends Component {
             <p>Favorites</p>
           </div>
           </Link>
-          <Link to="/Cart">
+          <Link to="/cart">
             <div style={{ color: "#1D1D1D" }} className="cart">
               <FiShoppingCart id="Cart" />
-              <span id="count"></span>
+              <span id="count">{this.props.cart.length}</span>
               <p>Cart</p>
             </div>
           </Link>
@@ -236,7 +236,8 @@ const mapStateToProps = (state) => {
   return {
     categories: state.getCategories.categories,
     user: state.getUser.user,
-    wishlist: state.userWishlist.wishlist
+    wishlist: state.userWishlist.wishlist,
+    cart: state.userCart.cart,
   };
 };
 export default connect(mapStateToProps)(Header01);

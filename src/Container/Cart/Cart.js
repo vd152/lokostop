@@ -8,8 +8,9 @@ import Billinginfo from './Billinginfo';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react'
 import CartItem from './CartItem';
+import {connect} from 'react-redux'
 
-export class Cart extends Component {
+class Cart extends Component {
     render() {
         return (
             <div>
@@ -19,14 +20,13 @@ export class Cart extends Component {
                     <p>CART</p>
                     <hr />
                 </div>
-                <p className='No_of_product'>2 Items</p>
+                <p className='No_of_product'>{this.props.cart.length} Item(s)</p>
                 <div className="total_items_cart">
                     <div className='total_head_no'>
                         <p>01.</p>
                         <p>TOTAL ITEMS</p>
                     </div>
-                    <CartItem/>
-
+                    <CartItem />
                 </div>
                 <Billinginfo />
                 <div className="buttons_cart_continue">
@@ -52,5 +52,9 @@ export class Cart extends Component {
         )
     }
 }
-
-export default Cart
+const mapStateToProps = (state) => {
+    return {
+      cart: state.userCart.cart,
+    };
+  };
+export default connect(mapStateToProps)(Cart)

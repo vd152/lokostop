@@ -1,53 +1,53 @@
 import * as actionTypes from '../Constants/ShopConstants'
 
-export const wishlistReducer = (state = { wishlist: []}, action) => {
+export const cartReducer = (state = { cart: []}, action) => {
     switch(action.type){
-        case actionTypes.GET_WISHLIST_REQUEST:
+        case actionTypes.GET_CART_REQUEST:
             return{
                 loading: true,
-                wishlist: []
+                cart: []
             }
-        case actionTypes.GET_WISHLIST_SUCCESS:
+        case actionTypes.GET_CART_SUCCESS:
             return {
                 loading: false,
-                wishlist: action.payload
+                cart: action.payload
             }
-        case actionTypes.GET_WISHLIST_FAIL:
+        case actionTypes.GET_CART_FAIL:
             return {
                 loading: false,
-                wishlist: [],
+                cart: [],
                 error: action.payload
             }
-            case actionTypes.ADD_WISHLIST_REQUEST:
+            case actionTypes.ADD_CART_REQUEST:
                 return{
                     loading: true,
-                    wishlist: []
+                    cart: []
                 }
-            case actionTypes.ADD_WISHLIST_SUCCESS:
+            case actionTypes.ADD_CART_SUCCESS:
                 return {
                     loading: false,
-                    wishlist: action.payload
+                    cart: action.payload
                 }
-            case actionTypes.ADD_WISHLIST_FAIL:
+            case actionTypes.ADD_CART_FAIL:
                 return {
                     loading: false,
-                    wishlist: [],
+                    cart: [],
                     error: action.payload
                 }
-                case actionTypes.DELETE_WISHLIST_REQUEST:
+                case actionTypes.DELETE_CART_REQUEST:
                     return{
                         loading: true,
-                        wishlist: []
+                        cart: []
                     }
-                case actionTypes.DELETE_WISHLIST_SUCCESS:
+                case actionTypes.DELETE_CART_SUCCESS:
                     return {
                         loading: false,
-                        wishlist: action.payload
+                        cart: action.payload
                     }
-                case actionTypes.DELETE_WISHLIST_FAIL:
+                case actionTypes.DELETE_CART_FAIL:
                     return {
                         loading: false,
-                        wishlist: [],
+                        cart: [],
                         error: action.payload
                     }
         default:

@@ -1,4 +1,4 @@
-import * as actionTypes from '../Constants/WishlistConstants'
+import * as actionTypes from '../Constants/ShopConstants'
 import api from '../../Apis/api'
 import {getUser} from '../../Utils/Local'
 
