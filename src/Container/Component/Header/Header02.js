@@ -31,10 +31,10 @@ setMenuLink = (item) =>{
   }
   componentDidMount() {
     const { menus } = this.state;
-    const setCategories = (root) => {
+    const setCategories = (root,key) => {
       if (root.childrenMenu.length == 0) {
         return (
-          <li>
+          <li key={key}>
             <Link
               style={{
                 background: "transparent",
@@ -51,7 +51,7 @@ setMenuLink = (item) =>{
         );
       } else
         return (
-          <li>
+          <li key={key}>
             <Link
               style={{
                 background: "transparent",
@@ -68,8 +68,8 @@ setMenuLink = (item) =>{
             </Link>
             {root.childrenMenu.length > 0 ? (
               <ul className="dropdown-menu dropdown-submenu">
-                {root.childrenMenu.map((child, key) => {
-                  return setCategories(child);
+                {root.childrenMenu.map((child, key2) => {
+                  return setCategories(child,key2);
                 })}
               </ul>
             ) : (
@@ -103,8 +103,8 @@ setMenuLink = (item) =>{
             </button>
           </React.Fragment>
         );
-        menu.childrenMenu.forEach((menuItem) => {
-          tempData.content.push(setCategories(menuItem));
+        menu.childrenMenu.forEach((menuItem,key) => {
+          tempData.content.push(setCategories(menuItem,key));
         });
       } else {
         tempData.title = (
