@@ -14,8 +14,8 @@ class Header01 extends Component {
     selectedCategory: {
       url: "",
       id: "",
-      name: ""
-  }
+      name: "",
+    },
   };
   componentDidMount() {
     const { categories, categories2 } = this.state;
@@ -30,7 +30,7 @@ class Header01 extends Component {
               justifyContent: "space-between",
             }}
             className={"dropdown-item"}
-            to={"/category/" + root.url+"/"+root._id}
+            to={"/category/" + root.url + "/" + root._id}
           >
             {root.name}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -52,7 +52,7 @@ class Header01 extends Component {
                 justifyContent: "space-between",
               }}
               className={"dropdown-item"}
-              to={"/category/" + root.url+"/"+root._id}
+              to={"/category/" + root.url + "/" + root._id}
             >
               {root.name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -81,12 +81,12 @@ class Header01 extends Component {
               justifyContent: "space-between",
             }}
             className={"dropdown-item"}
-            onClick={(e)=>{
-                const {selectedCategory} = this.state
-                selectedCategory.id = root._id
-                selectedCategory.name = root.name
-                selectedCategory.url = root.url
-                this.setState({selectedCategory})
+            onClick={(e) => {
+              const { selectedCategory } = this.state;
+              selectedCategory.id = root._id;
+              selectedCategory.name = root.name;
+              selectedCategory.url = root.url;
+              this.setState({ selectedCategory });
             }}
           >
             {root.name}
@@ -109,13 +109,13 @@ class Header01 extends Component {
                 justifyContent: "space-between",
               }}
               className={"dropdown-item"}
-              onClick={(e)=>{
-                const {selectedCategory} = this.state
-                selectedCategory.id = root._id
-                selectedCategory.name = root.name
-                selectedCategory.url = root.url
-                this.setState({selectedCategory})
-            }}
+              onClick={(e) => {
+                const { selectedCategory } = this.state;
+                selectedCategory.id = root._id;
+                selectedCategory.name = root.name;
+                selectedCategory.url = root.url;
+                this.setState({ selectedCategory });
+              }}
             >
               {root.name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -139,7 +139,7 @@ class Header01 extends Component {
       tempData.content = setCategories(category);
       tempData2.content = setCategories2(category);
       categories.push(tempData);
-      categories2.push(tempData2)
+      categories2.push(tempData2);
     });
     this.setState({ categories, categories2 });
   }
@@ -177,7 +177,9 @@ class Header01 extends Component {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                {this.state.selectedCategory.name == ""? "All Categories": this.state.selectedCategory.name}
+                {this.state.selectedCategory.name == ""
+                  ? "All Categories"
+                  : this.state.selectedCategory.name}
               </button>
               <ul
                 className="dropdown-menu"
@@ -191,9 +193,8 @@ class Header01 extends Component {
           </div>
           <div className="centre_second_part">
             <div className="inputstyle">
-            <input type="text" placeholder="Enter your search key..." />
+              <input type="text" placeholder="Enter your search key..." />
             </div>
-            
           </div>
           <div className="centre_third_part">
             <p style={{ marginTop: "0.878vw" }}>Search</p>
@@ -202,12 +203,12 @@ class Header01 extends Component {
         </div>
 
         <div className="Header_one_right">
-          <Link to={{pathname:"/profile", wishlistActive: true}}>
-          <div className="Favorites"  style={{ color: "#1D1D1D" }}>
-            <IoIosHeart id="Heart" />
-            <span id="count">{this.props.wishlist.length}</span>
-            <p>Favorites</p>
-          </div>
+          <Link to={{ pathname: "/profile", wishlistActive: true }}>
+            <div className="Favorites" style={{ color: "#1D1D1D" }}>
+              <IoIosHeart id="Heart" />
+              <span id="count">{this.props.wishlist.length}</span>
+              <p>Favorites</p>
+            </div>
           </Link>
           <Link to="/cart">
             <div style={{ color: "#1D1D1D" }} className="cart">
@@ -218,13 +219,15 @@ class Header01 extends Component {
           </Link>
           {this.props.user._id ? (
             <Link to="/profile">
-            <div className="image_user"><img
-            alt="Reload"
-            className="image_userimage"
-            src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-          ></img></div>
-          </Link>
-          ) : (        
+              <div className="image_user">
+                <img
+                  alt="Reload"
+                  className="image_userimage"
+                  src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                ></img>
+              </div>
+            </Link>
+          ) : (
             <Login />
           )}
         </div>
