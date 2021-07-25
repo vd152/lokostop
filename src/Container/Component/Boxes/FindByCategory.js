@@ -96,18 +96,16 @@ class FindByCategory extends React.Component {
             Open category and sort according to your preferences. Unveil offers.
           </p>
           <div className="category_names">
-            <p style={{ marginTop: "1.098vw" }} className="particular_cat">
-              Mobile & Tablet
-            </p>
-            <p className="particular_cat">Washing Machine</p>
-            <p className="particular_cat">Tv</p>
-            <p className="particular_cat">Washing Machine</p>
-            <p className="particular_cat">Tv</p>
-            <p className="particular_cat">Washing Machine</p>
-            <p className="particular_cat">Tv</p>
-            <p className="particular_cat">Washing Machine</p>
-            <p className="particular_cat">Tv</p>
-            <p className="particular_cat">Washing Machine</p>
+          {this.props.categories.map((category,key)=>{
+            return <p className="particular_cat" key={key} onClick={(e)=>{
+              const {selectedCategory} = this.state
+              selectedCategory.id = category._id
+              selectedCategory.name = category.name
+              selectedCategory.url = category.url
+              this.setState({selectedCategory})
+            }}>{category.name}</p>
+          })}
+            
             
           </div>
           <p className="or">OR</p>

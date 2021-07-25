@@ -634,7 +634,7 @@
   border: 0.073vw solid #dddddd;
   border-radius: 1.098vw;
   padding-top: 0.512vw;
-  margin: 1.098vw;
+  margin: 1.098vw !important;
   text-align: center;
   font: normal normal normal 1.098vw/1.684vw Poppins;
   color: #1d1d1d;

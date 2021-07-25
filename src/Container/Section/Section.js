@@ -10,23 +10,38 @@ import { getCategoryProducts } from "../../Redux/Actions/CategoryActions";
 import Loader from "../Loader/Loader";
 
 class Section extends Component {
+  state={
+    categoryProducts: [],
+    filter: "-createdAt",
+    skip: 0,
+    limit: 2
+  }
   componentDidMount() {
+    this.getProducts()
+  }
+  getProducts = () =>{
     this.props.getCategoryProducts(
-      "-createdAt",
-      0,
-      0,
+      this.state.filter,
+      this.state.skip,
+      this.state.limit,
       this.props.match.params.id
     );
-  }
+    const {categoryProducts} = this.state
+    this.props.categoryProducts.forEach((product)=>{
+      categoryProducts.push(product)
 
+    })
+    this.setState({categoryProducts})
+    
+  }
   render() {
     // if (this.props.loading) {
     //   return <Loader />;
     // }
     return (
       <div>
-        <Header01></Header01>
-        <Header></Header>
+        <Header01 />
+        <Header />
         <div className="sectionBox">
           <Filter />
           <div className="ParticularSection">
@@ -39,15 +54,10 @@ class Section extends Component {
               <select
                 className="sortIndividual"
                 onChange={(e) => {
-                  this.props.getCategoryProducts(
-                    e.target.value,
-                    0,
-                    0,
-                    this.props.match.params.id
-                  );
+                  this.setState({filter: e.target.value})
                 }}
               >
-                <option value="createdAt">Newest</option>
+                <option value="createdAt" >Newest</option>
                 <option value="-specialPrice">Price highest to lowest</option>
                 <option value="specialPrice">Price lowest to highest</option>
                 <option value="">Discount</option>
@@ -55,20 +65,25 @@ class Section extends Component {
               </select>
             </div>
             <div className="individualcategorybox">
-              {this.props.categoryProducts.length == 0 ? (
+              {this.state.categoryProducts.length == 0 ? (
                 <div>No products found.</div>
               ) : (
-                this.props.categoryProducts.map((product, key) => {
+                this.state.categoryProducts.map((product, key) => {
                   return (
                     <Product product={product} key={key} category={true} />
                   );
                 })
               )}
             </div>
-            {this.props.categoryProducts.length != 0 ? (
+            {this.state.categoryProducts.length != 0 ? (
               <button
                 className="load_more_blogs"
                 style={{ marginLeft: "30.015vw" }}
+                onClick={(e)=>{
+                  this.setState({skip: this.state.skip+this.state.limit},()=>{
+                    this.getProducts()
+                  })
+                }}
               >
                 Load more
               </button>

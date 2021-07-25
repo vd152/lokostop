@@ -1,6 +1,6 @@
 import * as actionTypes from '../Constants/MenuConstants'
 
-export const getMenuReducer = (state = { menus: []}, action) => {
+export const getMenuReducer = (state = { menus: {PrimaryMenu: {menuItems:[]}}}, action) => {
     switch(action.type){
         case actionTypes.GET_MENUS_REQUEST:
             return{

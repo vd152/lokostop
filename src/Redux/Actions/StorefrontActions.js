@@ -66,3 +66,20 @@ export const getLogos = () => async(dispatch) => {
         })
     }
 }
+
+export const getBanners = () => async(dispatch) => {
+    try{
+        dispatch({ type: actionTypes.GET_BANNERS_REQUEST})
+        const {data: {data}} = await api.post('/storefront/get', {selectArray: ["Banners"]})
+        
+        dispatch({
+            type: actionTypes.GET_BANNERS_SUCCESS,
+            payload: data[0]
+        })
+    }catch(error){
+        dispatch({
+            type: actionTypes.GET_BANNERS_FAIL,
+            payload: "something went wrong"
+        })
+    }
+}

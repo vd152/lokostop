@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { FiMenu } from "react-icons/fi";
 import { IoIosArrowForward, IoIosHeart } from "react-icons/io";
+import Loader from '../../Loader/Loader'
 
 // function opennav() {
 //     var x = document.getElementsByClassName("navvvvul");
@@ -129,6 +130,11 @@ setMenuLink = (item) =>{
     this.setState({ menus });
   }
   render() {
+    if (
+      this.props.menuLoading
+    ) {
+      return <Loader />;
+    }else
     return (
       <div className="Header_two">
         {/* <input type="checkbox" id="check"></input>
@@ -194,6 +200,7 @@ setMenuLink = (item) =>{
 const mapStateToProps = (state) => {
   return {
     menus: state.getMenus.menus,
+    menuLoading: state.getMenus.loading,
     logos: state.getLogos.logos,
   };
 };

@@ -16,10 +16,12 @@ class Product extends Component {
     },
   };
   componentDidMount() {
-    if (this.props.product) this.setState({ product: this.props.product });
+    if (this.props.product) {
+      this.setState({ product: this.props.product });
+    }
   }
   addToWishlist = () => {
-      this.props.addToWishlist(this.state.product._id)
+    this.props.addToWishlist(this.state.product._id);
   };
   render() {
     return (
@@ -75,7 +77,7 @@ class Product extends Component {
               style={{ color: "#9d9d9d" }}
               onClick={(e) => {
                 e.preventDefault();
-                this.addToWishlist()
+                this.addToWishlist();
               }}
             />
           </div>

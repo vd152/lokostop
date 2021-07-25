@@ -87,3 +87,25 @@ export const getLogosReducer = (state = { logos: {}}, action) => {
             return state;
     }
 }
+
+export const getBannersReducer = (state = { banners: {}}, action) => {
+    switch(action.type){
+        case actionTypes.GET_BANNERS_REQUEST:
+            return{
+                loading: true,
+                banners: { }
+            }
+        case actionTypes.GET_BANNERS_SUCCESS:
+            return {
+                loading: false,
+                banners: action.payload
+            }
+        case actionTypes.GET_BANNERS_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}

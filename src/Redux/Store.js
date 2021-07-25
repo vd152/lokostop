@@ -1,8 +1,8 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import { getAllProductsReducer, getProductDetailsReducer} from './Reducers/ProductReducers'
-import {getFooterReducer, getProductTabsReducer, getFeaturesReducer, getLogosReducer} from './Reducers/StorefrontReducer'
+import { getProductDetailsReducer} from './Reducers/ProductReducers'
+import {getFooterReducer, getProductTabsReducer, getFeaturesReducer, getLogosReducer, getBannersReducer} from './Reducers/StorefrontReducer'
 import {getAllCategoriesReducer, getCategoryProductsReducer} from './Reducers/CategoryReducers'
 import {getAllPagesReducer} from './Reducers/PageReducers'
 import {loginUser, getUserDetailsReducer} from './Reducers/UserReducers'
@@ -12,7 +12,6 @@ import {cartReducer} from './Reducers/CartReducers'
 
 
 const reducers = combineReducers({
-    getProducts: getAllProductsReducer,
     getProductDetails: getProductDetailsReducer,
     getFooter: getFooterReducer,
     getLogos: getLogosReducer,  
@@ -25,7 +24,8 @@ const reducers = combineReducers({
     loginUser: loginUser,
     getUser: getUserDetailsReducer,
     userWishlist: wishlistReducer,
-    userCart: cartReducer
+    userCart: cartReducer,
+    getBanners: getBannersReducer,
 })
 
 const middleware = [thunk]

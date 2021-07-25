@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 import {
   getFeatures,
   getProductTabs,
+  getBanners
 } from "../../Redux/Actions/StorefrontActions";
 class Home extends Component {  
   state = {
@@ -28,13 +29,14 @@ class Home extends Component {
   componentDidMount() {
     this.props.getFeatures();
     this.props.getProductTabs();
+    this.props.getBanners()
     this.setState({ products: this.props.products });
   }
   render() {
     if (
-      this.props.loading ||
       this.props.allProductRowsLoading ||
-      this.props.featuresLoading
+      this.props.featuresLoading ||
+      this.props.bannersLoading 
     ) {
       return <Loader />;
     } else
@@ -80,7 +82,6 @@ class Home extends Component {
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[2]} />
           <VideoContainer />
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[3]} />
-          {/* <PopularBox /> */}
           <SixImageSlider />
           <Footer />
         </div>
@@ -90,13 +91,12 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    products: state.getProducts.products,
-    loading: state.getProducts.loading,
     productDetails: state.getProductDetails.product,
     allProductRows: state.getProductTabs.allTabs,
     allProductRowsLoading: state.getProductTabs.loading,
     featuresLoading: state.getFeatures.loading,
     allFeatures: state.getFeatures.features,
+    bannersLoading: state.getBanners.loading,
   };
 };
-export default connect(mapStateToProps, { getFeatures, getProductTabs })(Home);
+export default connect(mapStateToProps, { getFeatures, getProductTabs, getBanners })(Home);
