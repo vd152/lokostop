@@ -23,19 +23,18 @@ import sendQuery from './Container/Query/sendQuery';
 import Loader from './Container/Loader/Loader';
 import {getAllCategories} from './Redux/Actions/CategoryActions'
 import {getFooterDetails, getProductTabs, getLogos} from './Redux/Actions/StorefrontActions'
-import {getAllPages} from './Redux/Actions/PageActions'
 import {getMenus} from './Redux/Actions/MenuActions'
 import {getUser} from './Redux/Actions/UserActions'
 import {getWishlist} from './Redux/Actions/WishlistActions'
 import {getCart} from './Redux/Actions/CartActions'
 import {getUser as getUserId } from './Utils/Local'
 import { NotFound } from './Utils/NotFound';
+import Page from './Container/Page/Page';
 class App extends React.Component {
   componentDidMount(){
     this.props.getFooterDetails()
     this.props.getLogos()
     this.props.getAllCategories()
-    this.props.getAllPages()
     this.props.getMenus()
     if(getUserId()){
       this.props.getUser(getUserId())
@@ -63,6 +62,7 @@ class App extends React.Component {
             <Route path='/payment' component={paymentCart} />
             <PrivateRoute path='/profile' component={ProfileIndividual}></PrivateRoute>
             <Route path='/sendquery' component={sendQuery} />
+            <Route exact path="/page/:url" component={(props)=> <Page key={Date.now()} {...props}/>}/>
             <Route exact path='/category/:name/:id' render={(props)=> <Section key={Date.now()} {...props}/>}/>
             <Route component={NotFound} />
           </Switch>
@@ -80,5 +80,5 @@ const mapStateToProps = state =>{
       userLoading: state.getUser.loading
   }
 }
-export default connect(mapStateToProps, {getFooterDetails, getAllCategories, getAllPages, getMenus, getLogos, getUser, getWishlist,getCart})(App)
+export default connect(mapStateToProps, {getFooterDetails, getAllCategories, getMenus, getLogos, getUser, getWishlist,getCart})(App)
 

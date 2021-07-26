@@ -24,7 +24,7 @@ setMenuLink = (item) =>{
     if(item.type == "URL"){
         return item.url
     }else if(item.type == "Page"){
-        return item.page.url
+        return "/page/" +item.page.url
     }else if(item.type == "Category"){
         let url = "/category/"+item.category.url+"/"+item.category._id
         return url
