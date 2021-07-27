@@ -156,7 +156,8 @@ class Header01 extends Component {
               aria-expanded="false"
             >
               {/* <FiMenu id="MenuIcon" /> */}
-              &nbsp;&nbsp; Browse categories
+              &nbsp;&nbsp; <span className="large_screen_text">Browse categories</span>
+              <span className="small_screen_text">Browse</span>
             </button>
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               {this.state.categories.map((category, key) => {
@@ -178,7 +179,9 @@ class Header01 extends Component {
                 aria-expanded="false"
               >
                 {this.state.selectedCategory.name == ""
-                  ? "All Categories"
+                  ? <span className="center_first_part_text"><span className="large_screen_text">All Categories</span>
+                    <span className="small_screen_text">All</span>
+                  </span>
                   : this.state.selectedCategory.name}
               </button>
               <ul
@@ -197,7 +200,7 @@ class Header01 extends Component {
             </div>
           </div>
           <div className="centre_third_part">
-            <p style={{ marginTop: "0.878vw" }}>Search</p>
+            <p style={{ marginTop: "0.878vw" }}><span className="large_screen_text">Search</span></p>
             <FiSearch id="search" />
           </div>
         </div>
@@ -207,14 +210,14 @@ class Header01 extends Component {
             <div className="Favorites" style={{ color: "#1D1D1D" }}>
               <IoIosHeart id="Heart" />
               <span id="count">{this.props.wishlist.length}</span>
-              <p>Favorites</p>
+              <p><span className="large_screen_text">Favorites</span></p>
             </div>
           </Link>
           <Link to="/cart">
             <div style={{ color: "#1D1D1D" }} className="cart">
               <FiShoppingCart id="Cart" />
               <span id="count">{this.props.cart.length}</span>
-              <p>Cart</p>
+              <p><span className="large_screen_text">Cart</span></p>
             </div>
           </Link>
           {this.props.user._id ? (

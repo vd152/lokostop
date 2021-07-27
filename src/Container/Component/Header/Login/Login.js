@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Login.css";
 import { loginUser, registerUser } from "../../../../Redux/Actions/UserActions";
+import { CgProfile } from "react-icons/cg";
 class Login extends Component {
   state = {
     data: {
@@ -44,7 +45,8 @@ class Login extends Component {
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
         >
-          Login
+          <span className="large_screen_text">Login</span>
+          <span className="small_screen_text"><CgProfile id="profile_icon" /></span>
         </div>
         <div
           className="modal fade"
