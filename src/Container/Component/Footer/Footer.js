@@ -86,7 +86,9 @@ export class Footer extends Component {
                     </div>
                     <div className="followUs">
                         <p>FOLLOW US ON</p>
+                        
                         <div className="social">
+                        
                             <ul>
                                 <a href="https://www.facebook.com/" target="#"><li>
                                     <img src="https://www.logo.wine/a/logo/Facebook/Facebook-f_Logo-Blue-Logo.wine.svg" alt="" />
@@ -96,7 +98,6 @@ export class Footer extends Component {
                                         <img src="https://www.logo.wine/a/logo/Instagram/Instagram-Logo.wine.svg" alt="" />
                                     </li>
                                 </a>
-
                             </ul>
                         </div>
                     </div>

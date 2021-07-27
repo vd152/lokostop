@@ -107,36 +107,65 @@
 }
 @media (max-width: 768px){
   .imagevl {
-    font: normal normal normal 1vw/1.061vw Poppins;
-    margin-top: 0.6vw;
+    font: normal normal normal 1.1vw/1.061vw Poppins;
+    margin-top: -0.2vw;
   }
   .modal-content{
     width: 58%;
     margin-left: 13vw;    padding-left: 1vw;
   }
+  #profile_icon{
+    font-size: 2.75vw;
+    margin-left: 0.975vw;
+  }
+}
+
+@media (max-width: 550px) {
+  .imagevl {
+    font: normal normal normal 1.25vw/1.061vw Poppins;
+  }
+
+  #profile_icon{
+    font-size: 3.5vw;
+  }
 }
 @media (max-width: 425px) {
   .imagevl {
     font: normal normal normal 1.2vw/1.061vw Poppins;
-    margin-top: 0.6vw;
+    margin-top: 0vw;
   }
   .modal-content {
     width: 41%;
     margin-left: 26vw;
+  }
+  .signface{
+    font-size: 1vw;
+  }
+  .signgoogle{
+    font-size: 1vw;
+  }
+  .btn-close{
+    font-size: 1.5vw;
+  }
+  .googleface{
+    padding-left: 2vw;
+  }
+  #profile_icon{
+    font-size: 4.75vw;
+    margin-left: 1.45vw;
+  }
 }
-.signface{
-  font-size: 1vw;
+
+@media (max-width: 375px) {
+  .imagevl {
+    font: normal normal normal 1.25vw/1.061vw Poppins;
+  }
+
+  #profile_icon{
+    font-size: 5.7vw;
+  }
 }
-.signgoogle{
-  font-size: 1vw;
-}
-.btn-close{
-  font-size: 1.5vw;
-}
-.googleface{
-  padding-left: 2vw;
-}
-}
+
 @media (min-width: 769px) and (max-width:1200px ) {
   .modal-content{
     width: 73%;
