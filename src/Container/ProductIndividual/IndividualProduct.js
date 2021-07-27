@@ -11,7 +11,7 @@ import { FaRegStar } from "react-icons/fa";
 import ShowReview from './ShowReview'
 import { IoIosArrowBack, IoIosArrowForward, IoIosAttach } from "react-icons/io";
 import {connect} from 'react-redux'
-import {getAllProducts, getSingleProduct} from '../../Redux/Actions/ProductActions'
+import { getProductDetails} from '../../Redux/Actions/ProductActions'
 import Loader from '../Loader/Loader';
 
 class IndividualProduct extends Component {
@@ -32,9 +32,8 @@ class IndividualProduct extends Component {
         }
     }
     async componentDidMount(){
-        await this.props.getSingleProduct("60dc25e2037caf0022d603b8")
+        await this.props.getProductDetails(this.props.match.params.id)
         this.setState({productDetails: this.props.productDetails?this.props.productDetails:this.state.productDetails})
-        // console.log(this.state.productDetails)
     }
     render() {
         if(this.props.productLoading){
@@ -131,5 +130,5 @@ const mapStateToProps = state =>{
         productLoading: state.getProductDetails.loading
     }
 }
-export default connect(mapStateToProps, {getSingleProduct})(IndividualProduct)
+export default connect(mapStateToProps, {getProductDetails})(IndividualProduct)
 

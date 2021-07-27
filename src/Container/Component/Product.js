@@ -3,6 +3,7 @@ import { BiGitCompare, BiCart } from "react-icons/bi";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { addToWishlist } from "../../Redux/Actions/WishlistActions";
+import {addToCart} from '../../Redux/Actions/CartActions'
 import { connect } from "react-redux";
 
 class Product extends Component {
@@ -20,14 +21,11 @@ class Product extends Component {
       this.setState({ product: this.props.product });
     }
   }
-  addToWishlist = () => {
-    this.props.addToWishlist(this.state.product._id);
-  };
+
   render() {
     return (
       <div className="product_details_list">
-        <Link to="product/123">
-          {" "}
+           <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}>
           <div className="image_box">
             {this.state.product.baseImage ? (
               <img
@@ -68,7 +66,10 @@ class Product extends Component {
         <div className="add_to_cart_box">
           <div id="div_first" className="add_to_cart_inner_box">
             <BiGitCompare className="Compare_Icon" />
-            <div className="add_to_cart_text_icon">
+            <div className="add_to_cart_text_icon" onClick={(e)=>{
+                this.props.addToCart(this.state.product._id);
+
+            }}>
               <p style={{ marginTop: "0.439vw" }}>ADD TO CART</p>
               <BiCart className="Bicartnew" />
             </div>
@@ -76,8 +77,8 @@ class Product extends Component {
               className="Fav_icon"
               style={{ color: "#9d9d9d" }}
               onClick={(e) => {
-                e.preventDefault();
-                this.addToWishlist();
+                this.props.addToWishlist(this.state.product._id);
+
               }}
             />
           </div>
@@ -96,7 +97,7 @@ class Product extends Component {
               })
             : ""}
 
-          <Link to="product/123">
+          <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}>
             <p className="name_details_each_product">
               {this.state.product.name}
               <br />
@@ -126,4 +127,4 @@ const mapStateToProps = (state) => {
     wishlist: state.userWishlist.wishlist,
   };
 };
-export default connect(mapStateToProps, { addToWishlist })(Product);
+export default connect(mapStateToProps, { addToWishlist,addToCart })(Product);

@@ -9,7 +9,7 @@ export const getCart = () => async(dispatch) => {
         const {data} = await api.get(url)
         dispatch({
             type: actionTypes.GET_CART_SUCCESS,
-            payload: data.data.Wishlist
+            payload: data.data.Cart
         })
     }catch(error){
         dispatch({
@@ -41,7 +41,7 @@ export const deleteFromCart = (productId) => async(dispatch) => {
         const {data} = await api.delete('/customer/cart', {productId})
         dispatch({
             type: actionTypes.DELETE_CART_SUCCESS,
-            payload: data.data.Wishlist
+            payload: data.data.Cart
         })
     }catch(error){
         dispatch({

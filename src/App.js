@@ -55,7 +55,7 @@ class App extends React.Component {
             <Route path="/blogs" component={Blog} />
             <Route path="/compare" component={Compare} />
             <Route path="/blogIndividual" component={BlogMain} />
-            <Route path="/product/:id" component={IndividualProduct} />
+            <Route path="/product/:url/:id" component={IndividualProduct} />
             <Route path='/aboutUs' component={AboutUs} />
             <Route path='/ComingSoon' component={ComingSoon} />
             <Route path='/cart' component={Cart} />
