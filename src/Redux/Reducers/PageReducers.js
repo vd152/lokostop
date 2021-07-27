@@ -1,18 +1,18 @@
 import * as actionTypes from '../Constants/PageConstants'
 
-export const getAllPagesReducer = (state = { pages: []}, action) => {
+export const getPageReducer = (state = { page: {}}, action) => {
     switch(action.type){
-        case actionTypes.GET_PAGES_REQUEST:
+        case actionTypes.GET_PAGE_REQUEST:
             return{
                 loading: true,
-                pages: []
+                page: {}
             }
-        case actionTypes.GET_PAGES_SUCCESS:
+        case actionTypes.GET_PAGE_SUCCESS:
             return {
                 loading: false,
-                pages: action.payload
+                page: action.payload
             }
-        case actionTypes.GET_PAGES_FAIL:
+        case actionTypes.GET_PAGE_FAIL:
             return {
                 loading: false,
                 error: action.payload

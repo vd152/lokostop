@@ -4,7 +4,7 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import { getProductDetailsReducer} from './Reducers/ProductReducers'
 import {getFooterReducer, getProductTabsReducer, getFeaturesReducer, getLogosReducer, getBannersReducer} from './Reducers/StorefrontReducer'
 import {getAllCategoriesReducer, getCategoryProductsReducer} from './Reducers/CategoryReducers'
-import {getAllPagesReducer} from './Reducers/PageReducers'
+import {getPageReducer} from './Reducers/PageReducers'
 import {loginUser, getUserDetailsReducer} from './Reducers/UserReducers'
 import {getMenuReducer} from './Reducers/MenuReducers'
 import {wishlistReducer} from './Reducers/WishlistReducers'
@@ -18,7 +18,7 @@ const reducers = combineReducers({
     getProductTabs: getProductTabsReducer,
     getFeatures: getFeaturesReducer,
     getCategories: getAllCategoriesReducer,
-    getPages: getAllPagesReducer,
+    getPage: getPageReducer,
     getMenus: getMenuReducer,
     getCategoryProducts: getCategoryProductsReducer,
     loginUser: loginUser,
