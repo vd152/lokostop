@@ -19,6 +19,11 @@ class ProfileIndividual extends Component {
     state={
         redirect: false
     }
+    componentDidMount(){
+        if(this.props.location.wishlistActive){
+            document.querySelector("#v-pills-messages-tab").click()
+        }
+    }
     render() {
         if(this.state.redirect){
             return <Redirect to="/" />
@@ -66,13 +71,13 @@ class ProfileIndividual extends Component {
                     </div>
                     <div className="secondBoxprofile">
                         <div className="tab-content" id="v-pills-tabContent">
-                            <div  className={this.props.location.wishlistActive? "tab-pane fade": "tab-pane fade show active"} id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                            <div  className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                                 <PersonalInfo/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                                 <AddressProfile/>
                             </div>
-                            <div  className={this.props.location.wishlistActive? "tab-pane fade show active": "tab-pane fade"} id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                            <div  className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                 <Wishlist/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
