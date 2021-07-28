@@ -157,9 +157,35 @@
 #check {
   display: none;
 }
+.Navbar_hamburger{
+  display: none;
+}
 @media (max-width: 768px) {
   .navbar {
     margin-top: 0;
+    display: none;
+  }
+  .Header_two_part3{
+    display: none;
+  }
+  .Navbar_hamburger{
+    display: block;
+    width: 86.45vw;
+    text-align: right;
+  }
+  .Hamburger_icon{
+    font-size: 2.54vw;
+  }
+
+  .Dropdown_toggle_button{
+    background-color: transparent !important;
+    color:#000 !important;
+    border: none !important;
+    box-shadow: none !important;
+
+  }
+  .Dropdown_toggle_button::after{
+    content: none;
   }
   .Header_two_part3 {
     margin-left: 13vw;
@@ -176,6 +202,16 @@
     font: normal normal normal 0.978vw/1.318vw Poppins;
   }
 }
+
+@media (max-width: 550px) {
+  .Navbar_hamburger{
+    width: 87.2vw;
+  }
+  .Hamburger_icon{
+    font-size: 3.65vw;
+  }
+}
+
 @media (max-width: 425px) {
   
   .navbar {
@@ -204,7 +240,13 @@
     padding: 0.5vw;
   }
   .Header_two {
-    height: 6.857vw;
+    height: 6.957vw;
+  }
+  .Navbar_hamburger{
+    width: 88.4vw;
+  }
+  .Hamburger_icon{
+    font-size: 3.9vw;
   }
   /* .navvvvul {
     padding: 0;
@@ -232,5 +274,12 @@
   }
   .Header_two{
     height: 7.4vw;
+  }
+
+  .Navbar_hamburger{
+    width: 88.8vw;
+  }
+  .Hamburger_icon{
+    font-size: 4.5vw;
   }
 }

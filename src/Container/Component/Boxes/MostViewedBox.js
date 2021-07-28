@@ -60,17 +60,22 @@ export class MostViewedBox extends Component {
                             </select>
                         </div>
                         <div className="buttons_compare">
-                            <button className="cart_button" >ADD TO CART <BiCart style={{
+                            <button className="cart_button" >
+                            <span className="large_screen_text">ADD TO CART</span> 
+                            <span className="small_screen_text">ADD</span> 
+                            <BiCart style={{
                                 // color: 'white',
                                 marginLeft: '0.952vw',
                                 marginTop: '-0.5vw',
-                                fontSize: '1.3vw'
-                            }} /></button>
+                                // fontSize: '1.3vw'
+                            }} 
+                                className="cart_icon_compare"
+                            /></button>
                             <button className="compare_button">COMPARE</button>
                         </div>
                         <p className="view_details">View details</p>
                     </div>
-                    <div className="image_box_second">
+                    <div className="image_box_second large_screen_text">
                         <img src="https://images.unsplash.com/photo-1583172747862-afcb755ebd13?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="RELOAD" />
                         {/* <p className='discount_one'>10% off</p> */}
                     </div>
