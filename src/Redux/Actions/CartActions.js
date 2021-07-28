@@ -34,11 +34,25 @@ export const addToCart = (productId) => async(dispatch) => {
         })
     }
 }
-
+export const updateCartQty = (productId) => async(dispatch) => {
+    try{
+        dispatch({ type: actionTypes.ADD_CART_REQUEST})
+        const {data} = await api.put('/customer/cart/increase', {productId})
+        dispatch({
+            type: actionTypes.ADD_CART_SUCCESS,
+            payload: data.data.Cart
+        })
+    }catch(error){
+        dispatch({
+            type: actionTypes.ADD_CART_FAIL,
+            payload: "something went wrong"
+        })
+    }
+}
 export const deleteFromCart = (productId) => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.DELETE_CART_REQUEST})
-        const {data} = await api.delete('/customer/cart', {productId})
+        const {data} = await api.delete('/customer/cart', {data:{productId}})
         dispatch({
             type: actionTypes.DELETE_CART_SUCCESS,
             payload: data.data.Cart
