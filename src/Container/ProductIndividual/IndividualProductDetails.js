@@ -4,7 +4,11 @@ import { MdSettingsBackupRestore, MdPayment } from "react-icons/md";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import React, { Component } from "react";
 
-export class IndividualProductDetails extends Component {
+class IndividualProductDetails extends Component {
+  state={
+    productId: this.props.productDetails._id,
+    qty: 0
+  }
   render() {
     return (
       <div>
@@ -81,26 +85,41 @@ export class IndividualProductDetails extends Component {
             </div>
             <hr className="product_individual_detail_line" />
             <div className="details_box_margin">
-              <div className="rating_product">
+              {this.props.productDetails.specialPrice? <React.Fragment>
+                <div className="rating_product">
                 <p className="mrp_text">MRP:</p>
                 <p className="price_of_the_product">{this.props.productDetails.price}</p>
               </div>
               <div className="price_box_discount">
                 <p className="our_price_text">Our Price:</p>
-                <p className="price_of_the_product_after_discount">Rs 22,000</p>
+                <p className="price_of_the_product_after_discount">Rs. {this.props.productDetails.specialPrice?(this.props.productDetails.specialPriceType == "Fixed"?this.props.productDetails.specialPrice:((this.props.productDetails.price).toString()-((this.props.productDetails.specialPrice).toString()/100)*(this.props.productDetails.price).toString())):this.props.productDetails.price}</p>
               </div>
+              </React.Fragment> : <div className="rating_product">
+                <p className="mrp_text">MRP:</p>
+                <p className="price_of_the_product">{this.props.productDetails.price}</p>
+              </div>}
+              {this.props.productDetails.specialPrice? 
+              <React.Fragment>
               <div className="discount_box_in_compare">
                 <p className="discount_text_product"> Discount:</p>
-                <p className="how_much_discount">10% off</p>
+                <p className="how_much_discount">{this.props.productDetails.specialPriceType == "Fixed"?Math.trunc(
+                  ((this.props.productDetails.price -
+                    this.props.productDetails.specialPrice) /
+                    this.props.productDetails.price) *
+                    100
+                ) : this.props.productDetails.specialPrice}% OFF</p>
               </div>
               <div className="save_box">
-                <p className="save_text">You save:</p>
-                <p className="discount_amount">Rs 3,000</p>
-              </div>
-              <div className="save_box">
+              <p className="save_text">You save:</p>
+              <p className="discount_amount">Rs {this.props.productDetails.price-this.props.productDetails.specialPrice}</p>
+            </div>
+            </React.Fragment>
+              : ""}
+              
+              {/* <div className="save_box">
                 <p className="delivery_text">Delivery in:</p>
                 <p className="time_delivery">10 days after ordering</p>
-              </div>
+              </div> */}
               <div className="save_box">
                 <p className="color_text"> Color:</p>
                 <select className="dropdown_colors">
@@ -110,24 +129,20 @@ export class IndividualProductDetails extends Component {
               </div>
               <div className="save_box">
                 <p className="color_text"> Qty:</p>
-                <select
-                  className="dropdown_colors"
-                >
-                  <option value="WH">01</option>
-                  <option value="BL">02</option>
-                </select>
+                <input className="product-qty" type="number" placeholder="0" value={this.state.qty} onChange={(e)=>{this.setState({qty: e.target.value})}}/>
               </div>
             </div>
+            {this.props.productDetails.SKU != ""? 
             <div className="save_box">
               <p
                 className="delivery_text"
                 style={{ width: "auto", marginLeft: "0" }}
               >
-                {" "}
                 Product Code:
               </p>
-              <p className="time_delivery">ADBDF1232S</p>
+              <p className="time_delivery">{this.props.productDetails.SKU}</p>
             </div>
+            :""}
             <div className="pay_via">
               <p
                 className="save_text"

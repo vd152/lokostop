@@ -6,7 +6,7 @@ export class StateDropdown extends Component {
             <div className="dropdown_box">
                 <div className="countrybox_edit">
             <select name="country" id="country_name">
-                <option id="select_option" value="" disabled selected hidden>State</option>
+                <option id="select_option" value="" disabled  hidden>State</option>
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>

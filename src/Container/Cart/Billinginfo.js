@@ -39,7 +39,7 @@ export class Billinginfo extends Component {
                             <div className="dropdown_box">
                                 <div className="countrybox_edit">
                                 <select  name="country" id="country_name"> 
-                                    <option  id="select_option"  disabled selected hidden>Country</option>
+                                    <option  id="select_option"  disabled  hidden>Country</option>
                                     <option  value="canada">Canada</option>
                                     <option value="india">India</option>
                                     <option value="unitedstates">United States</option>

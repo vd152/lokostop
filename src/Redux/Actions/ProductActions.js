@@ -2,7 +2,7 @@ import * as actionTypes from '../Constants/ProductConstants'
 import api from '../../Apis/api'
 
 
-export const getSingleProduct = (id) => async(dispatch) => {
+export const getProductDetails = (id) => async(dispatch) => {
     try{
         let url = '/product/get/'+id
         dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST})

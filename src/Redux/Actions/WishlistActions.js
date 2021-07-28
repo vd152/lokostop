@@ -38,7 +38,7 @@ export const addToWishlist = (productId) => async(dispatch) => {
 export const deleteFromWishlist = (productId) => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.DELETE_WISHLIST_REQUEST})
-        const {data} = await api.delete('/customer/wishlist', {productId})
+        const {data} = await api.delete('/customer/wishlist', {data:{productId}})
         dispatch({
             type: actionTypes.DELETE_WISHLIST_SUCCESS,
             payload: data.data.Wishlist

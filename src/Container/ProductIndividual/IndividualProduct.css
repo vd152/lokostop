@@ -81,6 +81,17 @@
   margin-top: 1.025vw;
   border: 0.073vw solid #bdbdbd;
 }
+.product-qty{
+  margin-left: 0.952vw;
+  width: 5.564vw;
+  height: 1.391vw;
+  padding-left: 0.659vw;
+  color: #3d3d3d;
+  border: 1px solid rgb(133, 133, 133);
+  box-shadow: 0px 3px 6px #00000029;
+  outline: none;
+  background: white;
+}
 .details_box_margin {
   margin-left: 0.952vw;
   display: flex;
