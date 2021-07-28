@@ -127,7 +127,12 @@ class FindByCategory extends React.Component {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  {this.state.selectedCategory.name == ""? "All Categories": this.state.selectedCategory.name}
+                  {this.state.selectedCategory.name == ""? 
+                  <span>
+                  <span className="large_screen_text">All Categories</span>
+                  <span className="small_screen_text">All</span>
+                  </span>
+                  : this.state.selectedCategory.name}
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               {this.state.categories.map((category, key) => {
@@ -164,7 +169,7 @@ class FindByCategory extends React.Component {
              
             </div>
             <div className="find_icon">
-              <p style={{ marginTop: "0.805vw" }}>Find</p>
+              <p style={{ marginTop: "0.805vw" }} className="large_screen_text">Find</p>
               <FiSearch id="search" />
             </div>
           </div>

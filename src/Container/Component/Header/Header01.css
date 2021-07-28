@@ -354,7 +354,9 @@
   .Header_one_left .dropdown-toggle{
     font: normal normal normal 2.25vw/1.318vw Poppins;
   }
-
+  .dropdown-toggle {
+    padding-bottom: 3px;
+  }
   .dropdown-menu li {
     font: normal normal normal 2.25vw/1.318vw Poppins;
     padding-left: 0.2vw;
@@ -495,6 +497,10 @@
 
   .Header_one{
     height: 9.5vw;
+  }
+
+  .dropdown-toggle {
+    padding-bottom: 3px;
   }
 }
 @media (max-width: 375px) {

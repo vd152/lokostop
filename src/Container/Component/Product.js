@@ -70,7 +70,10 @@ class Product extends Component {
                 this.props.addToCart(this.state.product._id);
 
             }}>
-              <p style={{ marginTop: "0.439vw" }}>ADD TO CART</p>
+              <p style={{ marginTop: "0.439vw" }}>
+              <span className="large_screen_text">ADD TO CART</span>
+              <span className="small_screen_text">ADD</span>
+              </p>
               <BiCart className="Bicartnew" />
             </div>
             <FaRegHeart
