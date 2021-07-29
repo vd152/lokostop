@@ -198,7 +198,7 @@ class Header02 extends Component {
                 </Dropdown.Item>
                 {this.state.menus.map((menu, key) => {
                   return (
-                    <Dropdown.Item className="Dropdown_items_link">
+                    <Dropdown.Item className="Dropdown_items_link" key={key}>
                       <li className="navli" key={key}>
                           <div className="dropdown">
                               {menu.title}

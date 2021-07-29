@@ -133,12 +133,12 @@ export const getBrandsReducer = (state = { brands: []}, action) => {
     }
 }
 
-export const getTopBrandsReducer = (state = { topBrands: []}, action) => {
+export const getTopBrandsReducer = (state = { topBrands: {}}, action) => {
     switch(action.type){
         case actionTypes.GET_TOP_BRANDS_REQUEST:
             return{
                 loading: true,
-                topBrands: []
+                topBrands: {}
             }
         case actionTypes.GET_TOP_BRANDS_SUCCESS:
             return {
@@ -148,7 +148,7 @@ export const getTopBrandsReducer = (state = { topBrands: []}, action) => {
         case actionTypes.GET_TOP_BRANDS_FAIL:
             return {
                 loading: false,
-                topBrands:[],
+                topBrands:{},
                 error: action.payload
             }
         default:
