@@ -161,6 +161,14 @@
   display: none;
 }
 @media (max-width: 768px) {
+  .Header_two{
+    height: 6.2vw;
+  }
+
+  .logo {
+    width: 8.959vw;
+    height: 5.2vw;
+  }
   .navbar {
     margin-top: 0;
     display: none;
@@ -204,6 +212,15 @@
 }
 
 @media (max-width: 550px) {
+  .Header_two{
+    height: 8.2vw;
+  }
+
+  .logo {
+    width: 11.199vw;
+    height: 6.5vw;
+  }
+
   .Navbar_hamburger{
     width: 87.2vw;
   }
@@ -213,7 +230,13 @@
 }
 
 @media (max-width: 425px) {
-  
+  .Header_two{
+    height: 10vw;
+  }
+  .logo {
+    width: 14.645vw;
+    height: 8.5vw;
+  }
   .navbar {
     padding-top: 0;
     margin-left: 21.269vw;
@@ -234,9 +257,6 @@
   .dropbtn1 {
     font: normal normal normal 1.1vw/1.318vw Poppins;
     font-weight: bold;
-  }
-  .Header_two {
-    height: 6.957vw;
   }
   .Navbar_hamburger{
     width: 88.4vw;
@@ -263,13 +283,14 @@
 }
 @media (max-width: 375px) {
   .logo {
-    margin-top: 0;
+    width: 14.991vw;
+    height: 8.7vw;
   }
   .navbar {
     margin-left: 18.269vw;
   }
   .Header_two{
-    height: 7.4vw;
+    height: 11vw;
   }
 
   .Navbar_hamburger{

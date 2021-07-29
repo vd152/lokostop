@@ -248,11 +248,11 @@
     width: auto;
     height: auto;
     margin-left: -1.15vw;
-    margin-top: 0.68vw;
+    margin-top: 0.7vw;
   }
 
   .Header_one{
-    height: 6vw;
+    height: 6.5vw;
   }
 
   .Header_one_centre {
@@ -267,7 +267,7 @@
   }
 
   .Header_one_left .dropdown-toggle{
-    font: normal normal normal 1.8vw/1.318vw Poppins;
+    font: normal normal normal 2vw/1.318vw Poppins;
   }
 
   .dropdown-menu li {
@@ -307,19 +307,19 @@
   }
 
   #Heart {
-    font-size: 3vw;
+    font-size: 3.8vw;
   }
 
   #Cart {
-    font-size: 2.75vw;
+    font-size: 3.4vw;
   }
 
   #count {
     width: 1.025vw;
     height: 1.025vw;
     position: relative;
-    margin-left: 2vw;
-    margin-top: 0.1vw;
+    margin-left: 2.8vw;
+    margin-top: 0.25vw;
     padding-top: 0.15vw;
     font: normal normal normal 1.1vw/1.061vw Poppins;
   }
@@ -341,18 +341,22 @@
 
 @media (max-width: 550px) {
   .Header_one{
-    height: 7.8vw;
+    height: 9vw;
+  }
+    
+  .Header_one_left{
+    width: fit-content;
   }
 
   .browseCat {
     width: auto;
     height: auto;
-    margin-left: -1vw; 
-    margin-top: 1.5vw;
+    margin-left: -1.75vw; 
+    margin-top: 1.9vw;
   }
 
   .Header_one_left .dropdown-toggle{
-    font: normal normal normal 2.25vw/1.318vw Poppins;
+    font: normal normal normal 3vw/1.318vw Poppins;
   }
   .dropdown-toggle {
     padding-bottom: 3px;
@@ -378,24 +382,26 @@
     width: 3.75vw;
   }
   .Header_one_right{
-    margin-top: 1.95vw;
-    margin-right: 3.85vw;
+    margin-top: 1.9vw;
+    margin-left: 5vw;
   }
 
   #Heart {
-    font-size: 4vw;
+    font-size: 5.4vw;
+    margin-right: 1vw;
   }
 
   #Cart {
-    font-size: 3.5vw;
+    font-size: 5.1vw;
+    margin-right: 1vw;
   }
 
   #count {
     width: 1.525vw;
     height: 1.525vw;
     position: relative;
-    margin-left: 2.75vw;
-    margin-top: 0.21vw;
+    margin-left: 4.8vw;
+    margin-top: 0.25vw;
     padding-top: 0.25vw;
     font: normal normal normal 1.2vw/1.061vw Poppins;
   }
@@ -414,13 +420,13 @@
   .browseCat {
     width: auto;
     height: auto;
-    margin-left: -0.85vw;
-    margin-top: 1.1vw;
+    margin-left: -1vw;
+    margin-top: 2.3vw;
   }
 
   .Header_one_left .dropdown-toggle {
     padding: 0;
-    font: normal normal normal 2.95vw/1.061vw Poppins;
+    font: normal normal normal 3.75vw/1.061vw Poppins;
   }
 
   .centre_second_part input {
@@ -432,7 +438,8 @@
     margin-top:3.1vw;
   }
   .Header_one_right {
-    margin-left: 13.879vw;
+    margin-top: 2.45vw;
+    margin-left: 5vw;
   }
   .dropdown-menu {
     min-width: 20vw;
@@ -461,19 +468,21 @@
   }
 
   #Heart {
-    font-size: 5.3vw;
+    font-size: 6.75vw;
+    margin-right: 1vw;
   }
 
   #Cart {
-    font-size: 4.75vw;
+    font-size: 6.1vw;
+    margin-right: 1vw;
   }
 
   #count {
     width: 1.825vw;
     height: 1.825vw;
     position: relative;
-    margin-left: 3.75vw;
-    margin-top: 0.2675vw;
+    margin-left: 5.4vw;
+    margin-top: 0.5vw;
     padding-top: 0.3vw;
     font: normal normal normal 1.4vw/1.061vw Poppins;
   }
@@ -496,7 +505,7 @@
   }
 
   .Header_one{
-    height: 9.5vw;
+    height: 12vw;
   }
 
   .dropdown-toggle {
@@ -505,19 +514,20 @@
 }
 @media (max-width: 375px) {
   .Header_one{
-    height: 11.5vw;
+    height: 13.5vw;
   }
+
 
   .browseCat {
     width: auto;
     height: auto;
     margin-left: -1.8vw;
-    margin-top: 2.2vw;
+    margin-top: 4vw;
   }
 
   .Header_one_left .dropdown-toggle {
     margin-bottom: 1vw;
-    font: normal normal normal 3.55vw/1.061vw Poppins;
+    font: normal normal normal 3.95vw/1.061vw Poppins;
   }
 
   .dropdown-menu li {
@@ -527,7 +537,7 @@
   }
 
   .Header_one_centre{
-    margin-top: 4.15vw;
+    margin-top: 4.25vw;
   } 
 
   .inputstyle {
@@ -540,15 +550,15 @@
   }
 
   .Header_one_right{
-    margin-left: 10.5vw;
-    margin-top: 2.5vw;
+    margin-left: 2.5vw;
+    margin-top: 3.5vw;
   }
   #Heart {
-    font-size: 6.65vw;
+    font-size: 7.2vw;
   }
 
   #Cart {
-    font-size: 5.7vw;
+    font-size: 6.5vw;
   }
 
   #count {

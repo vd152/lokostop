@@ -11,12 +11,30 @@ class Wishlist extends Component {
         <table className="col_names1">
           <tbody>
             <tr className="table_headingnew">
-              <td className="product_image">PRODUCT IMAGE</td>
-              <td className="product_Name">PRODUCT NAME</td>
-              <td className="product_availnew">AVAILABILITY</td>
-              <td className="product_codenew">PRODUCT CODE</td>
-              <td className="product_pricenew">UNIT PRICE</td>
-              <td className="product_pricenew">Remove</td>
+              <td className="product_image">
+              <span className="large_screen_text">PRODUCT IMAGE</span>
+              <span className="small_screen_text">IMAGE</span>
+              </td>
+              <td className="product_Name">
+              <span className="large_screen_text">PRODUCT NAME</span>
+              <span className="small_screen_text">NAME</span>
+              </td>
+              <td className="product_availnew">
+              <span className="large_screen_text">AVAILABILITY</span>
+              <span className="small_screen_text">AVAILABILITY</span>
+              </td>
+              <td className="product_codenew">
+              <span className="large_screen_text">PRODUCT CODE</span>
+              <span className="small_screen_text">CODE</span>
+              </td>
+              <td className="product_pricenew">
+              <span className="large_screen_text">UNIT PRICE</span>
+              <span className="small_screen_text">UNIT PRICE</span>
+              </td>
+              <td className="product_pricenew">
+              <span className="large_screen_text">Remove</span>
+              <span className="small_screen_text">Remove</span>
+              </td>
             </tr>
             {this.props.wishlist.map((product, key) => {
               return <tr className="table_heading1" key={key}>

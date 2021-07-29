@@ -241,7 +241,28 @@
   margin-top: 4%;
   margin-left: 35%;
 }
+@media (max-width:768px){
+.product_Name {
+  width: auto;
+}
+#continue_shopping {
+  width: 20vw;
+  height: 4vw;
+  margin-bottom: 1vw;
+  background: #08e5a9 0% 0% no-repeat padding-box;
+  font: normal normal normal 1.6vw/1.318vw Poppins;
+  color: black;
+}
+}
 @media (max-width:425px){
+  #continue_shopping {
+    width: 25.445vw;
+    height: 6vw;
+    margin-bottom: 1vw;
+    background: #08e5a9 0% 0% no-repeat padding-box;
+    font: normal normal normal 2.1vw/1.318vw Poppins;
+    color: black;
+  }
   .buttons_cart_continue{
     height: 2.782vw;
     width: 32.624vw;
@@ -262,10 +283,14 @@
   .total_head_no p{
     font: normal normal normal 1.3vw/1.684vw Poppins;
   }
-  .product_image{    width: 8.54vw;
+  .product_image{    
+    width: auto;
     height: auto;
     margin-left: 1%;
     text-align: center;
+}
+.product_Name{
+  width: auto;
 }
 .table_heading{
   font: normal normal normal 1vw/1.318vw Poppins;

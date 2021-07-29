@@ -5,17 +5,17 @@ class PersonalInfo extends Component {
   state = {
     disabled: true,
     data: {
-        "First Name": "",
-        "Last Name": "",
-        Email: ""
+      "First Name": "",
+      "Last Name": "",
+      Email: ""
     }
   };
 
   handleGameClik() {
     this.setState({ disabled: !this.state.disabled });
   }
-  componentDidMount(){
-      this.setState({data: this.props.user})
+  componentDidMount() {
+    this.setState({ data: this.props.user })
   }
   render() {
     return (
@@ -26,56 +26,58 @@ class PersonalInfo extends Component {
             Edit
           </p>
         </div>
-        <div className="profilepersonalImg">
-          <img
-            src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-            alt="Reload"
-          />
-        </div>
-        <div className="inputboxpersonal">
-          <div className="namefulllast">
-            <input
-              type="text"
-              name="firstname"
-              id="FirstName"
-              value={this.state.data["First Name"]}
-              className="personalInput"
-              disabled={this.state.disabled ? "disabled" : ""}
-            />
-            <input
-              type="text"
-              name="Lastname"
-              id="LastName"
-              value={this.state.data["Last Name"]}
-              className="personalInput"
-              disabled={this.state.disabled ? "disabled" : ""}
+        <div className="personalbox">
+          <div className="profilepersonalImg">
+            <img
+              src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+              alt="Reload"
             />
           </div>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            className="personalInput"
-            value={this.state.data["Email"]}
-            disabled={this.state.disabled ? "disabled" : ""}
-          />
-          <div className="namefulllast">
+          <div className="inputboxpersonal">
+            <div className="namefulllast">
+              <input
+                type="text"
+                name="firstname"
+                id="FirstName"
+                value={this.state.data["First Name"]}
+                className="personalInput"
+                disabled={this.state.disabled ? "disabled" : ""}
+              />
+              <input
+                type="text"
+                name="Lastname"
+                id="LastName"
+                value={this.state.data["Last Name"]}
+                className="personalInput"
+                disabled={this.state.disabled ? "disabled" : ""}
+              />
+            </div>
             <input
-              type="text"
-              name="countryCode"
-              id="countryCode"
-              placeholder="+91"
-              className="personalInput"
+              type="email"
+              name="email"
+              id="email"
+              className="personalInput email_personalInput"
+              value={this.state.data["Email"]}
               disabled={this.state.disabled ? "disabled" : ""}
             />
-            <input
-              type="text"
-              name="phoneNo"
-              id="phoneNo"
-              placeholder="0123456789"
-              className="personalInput"
-              disabled={this.state.disabled ? "disabled" : ""}
-            />
+            <div className="namefulllast">
+              <input
+                type="text"
+                name="countryCode"
+                id="countryCode"
+                placeholder="+91"
+                className="personalInput"
+                disabled={this.state.disabled ? "disabled" : ""}
+              />
+              <input
+                type="text"
+                name="phoneNo"
+                id="phoneNo"
+                placeholder="0123456789"
+                className="personalInput"
+                disabled={this.state.disabled ? "disabled" : ""}
+              />
+            </div>
           </div>
         </div>
         <p className="lastLinepersonal">

@@ -233,8 +233,17 @@
   .countrybox_edit{
     margin-top: -1vw;
   }
+  .containerCheck {
+    font: normal normal normal 1.5vw/1.318vw Poppins;
+    margin-left: 2vw;
+}
 }
 @media(max-width:425px){
+  .checkMark {
+    height: 2vw;
+    width: 2vw;
+    margin-right: 2vw;
+  }
   .countrybox_edit {
     margin-top: -2.5vw;
 }
@@ -263,8 +272,13 @@
   outline: none;
   margin-bottom: 4%;
 }
-.dropdown_box{height: 3.782vw;}
-.containerCheck{font: normal normal normal 1vw/1.318vw Poppins;}
+  .dropdown_box{
+    height: 3.782vw;
+  }
+  .containerCheck{
+    font: normal normal normal 2.1vw/1.318vw Poppins;
+    margin-left: 2vw;
+  }
 .second_input_box{
   height: 3.782vw;
     padding: 0.732vw;

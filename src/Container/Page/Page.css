@@ -129,6 +129,12 @@
     }
     .Heading_about{
       margin-left: 3.343vw;
+      height: 6vw;
+      padding-top: 2vw;
+    }
+
+    .Heading_about p{
+      font-size: 2.85vw;
     }
     .Heading_about hr{    width: 81.602vw;}
   }

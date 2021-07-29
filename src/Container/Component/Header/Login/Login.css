@@ -115,7 +115,7 @@
     margin-left: 13vw;    padding-left: 1vw;
   }
   #profile_icon{
-    font-size: 2.75vw;
+    font-size: 3.4vw;
     margin-left: 0.975vw;
   }
 }
@@ -126,7 +126,8 @@
   }
 
   #profile_icon{
-    font-size: 3.5vw;
+    font-size: 5.1vw;
+    margin-left: 1vw;
   }
 }
 @media (max-width: 425px) {
@@ -151,7 +152,7 @@
     padding-left: 2vw;
   }
   #profile_icon{
-    font-size: 4.75vw;
+    font-size: 6.1vw;
     margin-left: 1.45vw;
   }
 }
@@ -162,7 +163,7 @@
   }
 
   #profile_icon{
-    font-size: 5.7vw;
+    font-size: 6.5vw;
   }
 }
 
