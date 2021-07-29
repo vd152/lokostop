@@ -332,6 +332,9 @@
     width: 100%;
     height: 100%;
 }
+.firstboxprofile_r{
+    display: none;
+}
 @media(max-width: 768px){
     .profileOuterMainBOx {
         width: 91vw;
@@ -357,6 +360,7 @@
     }
     .firstboxprofile{
         width: 17.255vw;
+        display: none;
     }
 
     .table_headingnew {
@@ -443,6 +447,31 @@
         font-size: 1.3vw;
         padding-bottom: 1.5vw;
     }
+    .firstboxprofile_r{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 3fr;
+    }
+    .Order_Section{
+        display: flex;
+        grid-column: 2/3;
+        float: left;
+    }
+    .Order_Section p{
+        display: inline;
+        width: 100%;
+    }
+    .name_individual_Hi{
+        width: 50%;
+    }
+    .Account_Section{
+    font-size: 13px;
+    padding-top: 9px;
+    padding-left: 10px;
+    }
+    .mdAccountCircle{
+        display: inline;
+        font-size: 12px;
+    }
   }
   @media(max-width:425px){
     .profileOuterMainBOx {
@@ -460,7 +489,7 @@
         height: 59%;
         border: 1px solid #08e5a9;
         padding: 1vw;
-        display: flex;
+        display: none;
       }
 
       .secondBoxprofile{

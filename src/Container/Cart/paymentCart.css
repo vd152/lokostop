@@ -185,6 +185,16 @@
   flex-direction: column;
   padding: 1vw;
 }
+
+@media (max-width: 768px) {
+   .outerpaymentbox{
+     flex-direction: column;
+     height: auto;
+   }
+   .firstpaybox{
+     width: 100%;
+   }
+}
 @media (max-width: 425px) {
   .secondpay_1box {
     padding: 3%;

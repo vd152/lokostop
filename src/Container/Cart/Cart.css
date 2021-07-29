@@ -253,6 +253,14 @@
   font: normal normal normal 1.6vw/1.318vw Poppins;
   color: black;
 }
+.total_head_no{
+  height: 4.5vw;
+}
+.total_head_no p{
+  font-size: 1.7vw;
+  margin-top: 0.9vw;
+  margin-left: 0.5vw;
+}
 }
 @media (max-width:425px){
   #continue_shopping {
