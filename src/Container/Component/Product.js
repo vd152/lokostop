@@ -92,7 +92,7 @@ class Product extends Component {
                 return (
                   <Link
                     key={key}
-                    to={"/category/" + category.url + "/" + category._id}
+                    to={"/categories/" + category.url + "/" + category._id}
                   >
                     <p className="category_name_product">{category.name}</p>{" "}
                   </Link>

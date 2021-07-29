@@ -27,7 +27,7 @@ class Header02 extends Component {
     } else if (item.type == "Page") {
       return "/page/" + item.page.url
     } else if (item.type == "Category") {
-      let url = "/category/" + item.category.url + "/" + item.category._id
+      let url = "/categories/" + item.category.url + "/" + item.category._id
       return url
     }
   }
