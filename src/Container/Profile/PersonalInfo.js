@@ -60,6 +60,7 @@ class PersonalInfo extends Component {
               value={this.state.data["Email"]}
               disabled={this.state.disabled ? "disabled" : ""}
             />
+
             <div className="namefulllast">
               <input
                 type="text"
@@ -78,6 +79,10 @@ class PersonalInfo extends Component {
                 disabled={this.state.disabled ? "disabled" : ""}
               />
             </div>
+            {!this.state.disabled &&
+              <div className="button_box_1new" >
+                <button id="continue_shopping" className="w-100">Submit</button>
+              </div>}
           </div>
         </div>
         <p className="lastLinepersonal">

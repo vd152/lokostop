@@ -3,6 +3,7 @@ import { IoIosArrowDown, IoIosArrowForward, IoIosHeart } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import {getBrands} from '../../../Redux/Actions/StorefrontActions'
 class FindByCategory extends React.Component {
   state = {
     categories: [],
@@ -10,6 +11,11 @@ class FindByCategory extends React.Component {
         url: "",
         id: "",
         name: ""
+    }, 
+    selectedBrand: {
+      url: "",
+      id: "",
+      name: ""
     }
   };
   componentDidMount() {
@@ -83,6 +89,7 @@ class FindByCategory extends React.Component {
       categories.push(tempData);
     });
     this.setState({ categories });
+    this.props.getBrands();
   }
   render() {
     return (
@@ -139,12 +146,18 @@ class FindByCategory extends React.Component {
                 <button
                   className="dropbtn1"
                 >
-                  Brand
+                  {this.state.selectedBrand.name == ""? "Brands": this.state.selectedBrand.name}
                 </button>
                 <div style={{ left: "-1vw" }} className="dropdown-content1">
-                  <Link to="#">Washing Machine</Link>
-                  <Link to="#">Link 2</Link>
-                  <Link to="#">Link 3</Link>
+                  {!this.props.brandLoading && this.props.brands.map((brand, key)=>{
+                    return <p key={key} onClick={(e)=>{
+                      const {selectedBrand} = this.state
+                      selectedBrand.id = brand._id
+                      selectedBrand.name = brand.name
+                      selectedBrand.url = brand.url
+                      this.setState({selectedBrand})
+                    }}>{brand.name}</p>
+                  })}                  
                 </div>
               </div>
               
@@ -168,7 +181,9 @@ class FindByCategory extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    categories: state.getCategories.categories,
+    categories: state.getCategories.categories.filter(category=>category.status&&category.searchable),
+    brands: state.getBrands.brands,
+    brandLoading: state.getBrands.loading
   };
 };
-export default connect(mapStateToProps)(FindByCategory);
+export default connect(mapStateToProps, {getBrands})(FindByCategory);

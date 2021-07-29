@@ -109,3 +109,49 @@ export const getBannersReducer = (state = { banners: {}}, action) => {
             return state;
     }
 }
+
+export const getBrandsReducer = (state = { brands: []}, action) => {
+    switch(action.type){
+        case actionTypes.GET_BRANDS_REQUEST:
+            return{
+                loading: true,
+                brands: []
+            }
+        case actionTypes.GET_BRANDS_SUCCESS:
+            return {
+                loading: false,
+                brands: action.payload
+            }
+        case actionTypes.GET_BRANDS_FAIL:
+            return {
+                loading: false,
+                brands:[],
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}
+
+export const getTopBrandsReducer = (state = { topBrands: []}, action) => {
+    switch(action.type){
+        case actionTypes.GET_TOP_BRANDS_REQUEST:
+            return{
+                loading: true,
+                topBrands: []
+            }
+        case actionTypes.GET_TOP_BRANDS_SUCCESS:
+            return {
+                loading: false,
+                topBrands: action.payload
+            }
+        case actionTypes.GET_TOP_BRANDS_FAIL:
+            return {
+                loading: false,
+                topBrands:[],
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}

@@ -2,7 +2,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { getProductDetailsReducer} from './Reducers/ProductReducers'
-import {getFooterReducer, getProductTabsReducer, getFeaturesReducer, getLogosReducer, getBannersReducer} from './Reducers/StorefrontReducer'
+import {getFooterReducer, getProductTabsReducer, getFeaturesReducer, getLogosReducer, getBannersReducer, getBrandsReducer, getTopBrandsReducer} from './Reducers/StorefrontReducer'
 import {getAllCategoriesReducer, getCategoryProductsReducer} from './Reducers/CategoryReducers'
 import {getPageReducer} from './Reducers/PageReducers'
 import {loginUser, getUserDetailsReducer} from './Reducers/UserReducers'
@@ -26,6 +26,8 @@ const reducers = combineReducers({
     userWishlist: wishlistReducer,
     userCart: cartReducer,
     getBanners: getBannersReducer,
+    getBrands: getBrandsReducer,
+    getTopBrands: getTopBrandsReducer
 })
 
 const middleware = [thunk]

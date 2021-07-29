@@ -152,6 +152,11 @@
   cursor: pointer;
   color: #7e7c7c;
 }
+@media(max-width:768px){
+  .goblog{
+    font-size: 1.6vw;
+  }
+}
 @media(max-width:425px){
   .goblog{
     font: normal normal normal 1.3vw/1.684vw Poppins;

@@ -194,6 +194,17 @@
    .firstpaybox{
      width: 100%;
    }
+
+   .nav1new {
+    height: 34vw;
+    width: 22vw;
+    background: #dddddd;
+    padding-top: 2.5vw;
+  }
+
+  .nav-link{
+    font-size: 1.5vw;
+  }
 }
 @media (max-width: 425px) {
   .secondpay_1box {

@@ -37,11 +37,11 @@ export class paymentCart extends Component {
                         <div className="insidepay">
                             <div className="d-flex align-items-start" style={{ width: '100%' }}>
                                 <div className="nav flex-column nav-pills me-3 nav1new" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                    <button className="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">CREDIT CARD</button>
-                                    <button className="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">DEBIT CARD</button>
-                                    <button className="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">NET BANKING</button>
-                                    <button className="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">WALLET/UPI</button>
-                                    <button className="nav-link" id="v-pills-cash-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cash" type="button" role="tab" aria-controls="v-pills-cash" aria-selected="false">CASH ON DELIVERY</button>
+                                    <button className="nav-link active payment_css" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">CREDIT CARD</button>
+                                    <button className="nav-link payment_css" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">DEBIT CARD</button>
+                                    <button className="nav-link payment_css" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">NET BANKING</button>
+                                    <button className="nav-link payment_css" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">WALLET/UPI</button>
+                                    <button className="nav-link payment_css" id="v-pills-cash-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cash" type="button" role="tab" aria-controls="v-pills-cash" aria-selected="false">CASH ON DELIVERY</button>
                                 </div>
                                 <div className="tab-content" id="v-pills-tabContent">
                                     <div className="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
