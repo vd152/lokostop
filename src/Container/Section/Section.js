@@ -14,9 +14,9 @@ class Section extends Component {
     categoryProducts: [],
     filter: "-createdAt",
     skip: 0,
-    limit: 2
+    limit: 2,
   }
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     this.getProducts()
   }
   getProducts = () =>{
@@ -24,7 +24,9 @@ class Section extends Component {
       this.state.filter,
       this.state.skip,
       this.state.limit,
-      this.props.match.params.id
+      this.props.match.params.fieldname,
+      this.props.match.params.id,
+      this.props.location.searchWord?this.props.location.searchWord: ""
     );
     const {categoryProducts} = this.state
     this.props.categoryProducts.forEach((product)=>{
@@ -35,9 +37,7 @@ class Section extends Component {
     
   }
   render() {
-    // if (this.props.loading) {
-    //   return <Loader />;
-    // }
+ 
     return (
       <div>
         <Header01 />
@@ -54,7 +54,10 @@ class Section extends Component {
               <select
                 className="sortIndividual"
                 onChange={(e) => {
-                  this.setState({filter: e.target.value})
+                  this.setState({filter: e.target.value,skip: 0, categoryProducts: []}, ()=>{
+
+                    this.getProducts()
+                  })
                 }}
               >
                 <option value="createdAt" >Newest</option>
@@ -65,7 +68,7 @@ class Section extends Component {
               </select>
             </div>
             <div className="individualcategorybox">
-              {this.state.categoryProducts.length == 0 ? (
+              {!this.props.loading && this.state.categoryProducts.length == 0 ? (
                 <div>No products found.</div>
               ) : (
                 this.state.categoryProducts.map((product, key) => {
@@ -75,7 +78,7 @@ class Section extends Component {
                 })
               )}
             </div>
-            {this.state.categoryProducts.length != 0 ? (
+            { this.state.categoryProducts.length != 0 ? (
               <button
                 className="load_more_blogs"
                 style={{ marginLeft: "30.015vw" }}

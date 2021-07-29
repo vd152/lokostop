@@ -1,7 +1,7 @@
 import "./Header01.css";
 import { IoIosArrowForward, IoIosHeart } from "react-icons/io";
 import { FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import "./Header03.css";
 import { connect } from "react-redux";
@@ -16,6 +16,8 @@ class Header01 extends Component {
       id: "",
       name: "",
     },
+    searchWord: "",
+    searchRedirect: false
   };
   componentDidMount() {
     const { categories, categories2 } = this.state;
@@ -30,7 +32,7 @@ class Header01 extends Component {
               justifyContent: "space-between",
             }}
             className={"dropdown-item"}
-            to={"/category/" + root.url + "/" + root._id}
+            to={"/categories/" + root.url + "/" + root._id}
           >
             {root.name}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -52,7 +54,7 @@ class Header01 extends Component {
                 justifyContent: "space-between",
               }}
               className={"dropdown-item"}
-              to={"/category/" + root.url + "/" + root._id}
+              to={"/categories/" + root.url + "/" + root._id}
             >
               {root.name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -143,7 +145,14 @@ class Header01 extends Component {
     });
     this.setState({ categories, categories2 });
   }
+
   render() {
+    if(this.state.searchRedirect){
+      return <Redirect to={{ 
+        pathname: "/categories" + "/"+ this.state.selectedCategory.url+"/"+this.state.selectedCategory.id,
+        searchWord: this.state.searchWord
+      }}/>
+    }
     return (
       <div className="Header_one">
         <div className="Header_one_left">
@@ -196,10 +205,12 @@ class Header01 extends Component {
           </div>
           <div className="centre_second_part">
             <div className="inputstyle">
-              <input type="text" placeholder="Enter your search key..." />
+              <input type="text" placeholder="Enter your search key..." value={this.state.searchWord} onChange={(e)=>this.setState({searchWord: e.target.value})} />
             </div>
           </div>
-          <div className="centre_third_part">
+          <div className="centre_third_part" onClick={(e)=>{
+            this.setState({searchRedirect: true})
+          }}>
             <p style={{ marginTop: "0.878vw" }}><span className="large_screen_text">Search</span></p>
             <FiSearch id="search" />
           </div>

@@ -63,7 +63,7 @@ class App extends React.Component {
             <PrivateRoute path='/profile' component={ProfileIndividual}></PrivateRoute>
             <Route path='/sendquery' component={sendQuery} />
             <Route exact path="/page/:url" component={(props)=> <Page key={Date.now()} {...props}/>}/>
-            <Route exact path='/category/:name/:id' render={(props)=> <Section key={Date.now()} {...props}/>}/>
+            <Route exact path='/:fieldname/:fieldurl/:id' render={(props)=> <Section key={Date.now()} {...props}/>}/>
             <Route component={NotFound} />
           </Switch>
         </Router>

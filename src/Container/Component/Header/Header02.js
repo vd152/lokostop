@@ -27,7 +27,7 @@ class Header02 extends Component {
     } else if (item.type == "Page") {
       return "/page/" + item.page.url
     } else if (item.type == "Category") {
-      let url = "/category/" + item.category.url + "/" + item.category._id
+      let url = "/categories/" + item.category.url + "/" + item.category._id
       return url
     }
   }
@@ -198,7 +198,7 @@ class Header02 extends Component {
                 </Dropdown.Item>
                 {this.state.menus.map((menu, key) => {
                   return (
-                    <Dropdown.Item className="Dropdown_items_link">
+                    <Dropdown.Item className="Dropdown_items_link" key={key}>
                       <li className="navli" key={key}>
                           <div className="dropdown">
                               {menu.title}
