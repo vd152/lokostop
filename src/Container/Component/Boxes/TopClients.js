@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-export class TopClients extends Component {
+import {getTopBrands} from '../../../Redux/Actions/StorefrontActions'
+import { connect } from "react-redux";
+
+class TopClients extends Component {
+    componentDidMount() {
+        this.props.getTopBrands()
+    }
     render() {
         return (
             <div>
                 <div className="find_by_category_box">
-                    <p className="most_viewd_text">Our top clients</p>
+                    <p className="most_viewd_text">Our Top Brands</p>
                     <hr id="line_category"></hr>
                 </div>
                 <div className="clients_name">
@@ -24,5 +30,10 @@ export class TopClients extends Component {
         )
     }
 }
-
-export default TopClients
+const mapStateToProps = (state) => {
+    return {
+      brandsLoading: state.getTopBrands.loading,
+      topBrands: state.getTopBrands.topBrands   
+    };
+  };
+export default connect(mapStateToProps, {getTopBrands})(TopClients)

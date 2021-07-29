@@ -59,8 +59,9 @@ class PersonalInfo extends Component {
             value={this.state.data["Email"]}
             disabled={this.state.disabled ? "disabled" : ""}
           />
+            
           <div className="namefulllast">
-            <input
+            {/* <input
               type="text"
               name="countryCode"
               id="countryCode"
@@ -75,8 +76,12 @@ class PersonalInfo extends Component {
               placeholder="0123456789"
               className="personalInput"
               disabled={this.state.disabled ? "disabled" : ""}
-            />
+            /> */}
           </div>
+          {!this.state.disabled &&
+          <div className="button_box_1new" >
+          <button id="continue_shopping" className="w-100">Submit</button>
+        </div>}
         </div>
         <p className="lastLinepersonal">
           ** All this information will not be shared with anyone. We believe in

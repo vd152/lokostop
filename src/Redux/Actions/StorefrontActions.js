@@ -100,3 +100,20 @@ export const getBrands = () => async(dispatch) => {
         })
     }
 }
+
+export const getTopBrands = () => async(dispatch) => {
+    try{
+        dispatch({ type: actionTypes.GET_TOP_BRANDS_REQUEST})
+        const {data: {data}} = await api.post('/storefront/get', {selectArray: ["TopBrands"]})
+        
+        dispatch({
+            type: actionTypes.GET_TOP_BRANDS_SUCCESS,
+            payload: data[0]
+        })
+    }catch(error){
+        dispatch({
+            type: actionTypes.GET_TOP_BRANDS_FAIL,
+            payload: "something went wrong"
+        })
+    }
+}
