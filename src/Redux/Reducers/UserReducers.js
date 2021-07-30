@@ -56,6 +56,31 @@ export const getUserDetailsReducer = (state = { user: {}}, action) => {
                 user: {}
             }
         }
+        case actionTypes.EDIT_USER_DETAILS_SUCCESS:
+            return {
+                updating: false,
+                user: action.payload
+            }
+        default:
+            return state;
+    }
+}
+export const editUserDetailsReducer = (state = { }, action) => {
+    switch(action.type){
+        case actionTypes.EDIT_USER_DETAILS_REQUEST:
+            return{
+                updating: true,
+            }
+        case actionTypes.EDIT_USER_DETAILS_SUCCESS:
+            return {
+                updating: false,
+                user: action.payload
+            }
+        case actionTypes.EDIT_USER_DETAILS_FAIL:
+            return {
+                updating: false,
+                error: action.payload
+            }
         default:
             return state;
     }

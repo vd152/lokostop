@@ -63,12 +63,14 @@ class CartItem extends Component {
                       : product.price}
                   </td>
                   <td className="product_quantity1">
-                    <FiMinusCircle id="minus_icon"></FiMinusCircle>
+                    <FiMinusCircle id="minus_icon" onClick={(e) => {
+                        this.props.updateCartQty(product._id, qty-1);
+                      }}/>
                     <p className="product_quant_para">{qty}</p>
                     <IoAddCircleOutline
                       id="add_icon"
                       onClick={(e) => {
-                        this.props.updateCartQty(product._id);
+                        this.props.updateCartQty(product._id, qty+1);
                       }}
                     />
                   </td>

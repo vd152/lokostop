@@ -32,15 +32,15 @@ import { NotFound } from './Utils/NotFound';
 import Page from './Container/Page/Page';
 class App extends React.Component {
   componentDidMount(){
-    this.props.getFooterDetails()
-    this.props.getLogos()
-    this.props.getAllCategories()
-    this.props.getMenus()
     if(getUserId()){
       this.props.getUser(getUserId())
       this.props.getWishlist()
       this.props.getCart()
     }
+    this.props.getFooterDetails()
+    this.props.getLogos()
+    this.props.getAllCategories()
+    this.props.getMenus()
   }
   render(){
     if(this.props.footerLoading || this.props.categoriesloading || this.props.menuLoading || this.props.logoLoading || this.props.userLoading){
@@ -80,5 +80,5 @@ const mapStateToProps = state =>{
       userLoading: state.getUser.loading
   }
 }
-export default connect(mapStateToProps, {getFooterDetails, getAllCategories, getMenus, getLogos, getUser, getWishlist,getCart})(App)
+export default connect(mapStateToProps, {getUser, getFooterDetails, getAllCategories, getMenus, getLogos, getWishlist,getCart})(App)
 
