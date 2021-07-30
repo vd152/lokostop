@@ -47,3 +47,40 @@
 #banklogo1{
     height: 3.9vw;
 }
+
+@media (max-width: 768px) {
+    .netbanking{
+        font-size: 1.75vw;
+        margin-bottom: 1.5vw;
+        margin-top: 1vw !important;
+    }
+}
+
+@media (max-width: 425px) {
+    .netbanking{
+        font-size: 3.1vw;
+        margin-bottom: 1.5vw;
+        margin-top: 2vw !important;
+    }
+
+    .bankindividual{
+        height: auto;
+    }
+
+    #bankimage1{
+        height: 7.5vw;
+        width: 20vw;
+        margin-top: -3.5vw;
+    }
+    #bankimage{
+        height: 13vw;
+        width: 20vw;
+        margin-top: -3.5vw;
+    }
+
+    #bankimage2{
+        height: 10vw;
+        width: 17vw;
+        margin-top: -3.5vw;
+    }
+}

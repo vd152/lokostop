@@ -257,6 +257,7 @@
   height: 4.5vw;
 }
 .total_head_no p{
+  color: black;
   font-size: 1.7vw;
   margin-top: 0.9vw;
   margin-left: 0.5vw;
@@ -288,8 +289,15 @@
     font: normal normal normal 1.4vw/1.684vw Poppins;
     color: #3d3d3d;
   }
+
+  .total_head_no{
+    height: 8vw;
+  }
+
   .total_head_no p{
-    font: normal normal normal 1.3vw/1.684vw Poppins;
+    font: normal normal normal 3.65vw/1.684vw Poppins;
+    padding-top: 2.2vw;
+    padding-left: 1vw;
   }
   .product_image{    
     width: auto;

@@ -72,7 +72,8 @@ export class paymentCart extends Component {
                     <div className="secondpaybox">
                         <div className="secondpay_1box">
                             <p className='para1_pay'>ABCDEF</p>
-                            <hr id='payline' />
+                            <span className="small_screen_text payline">|</span>
+                            <hr id='payline large_screen_text' />
                             <div className="paymntbox_card">
                                 <p>PAYMENT OF</p>
                                 <p><b>Rs. 45,289.00</b></p>
