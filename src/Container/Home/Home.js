@@ -6,8 +6,7 @@ import Footer from "../Component/Footer/Footer";
 import FindByCategory from "../Component/Boxes/FindByCategory";
 import Header01 from "../Component/Header/Header01";
 import React, { Component } from "react";
-import NewArrival from "../Component/Boxes/NewArrival";
-import PopularBox from "../Component/Boxes/PopularBox";
+import Search from '../Component/Header/Search'
 import ProductRowBox from "../Component/Boxes/ProductRowBox";
 import SixImageSlider from "../Component/Slider/SixImageSlider";
 import ClientImage from "../Component/Slider/ClientImage";
@@ -44,6 +43,7 @@ class Home extends Component {
         <div>
           <Header01 />
           <Header />
+          <Search home={true}/>
           <VideoContainer />
           {this.props.allFeatures.Features &&
           this.props.allFeatures.Features.SectionStatus ? (
