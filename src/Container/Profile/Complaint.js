@@ -11,7 +11,10 @@ export class Complaint extends Component {
                         <tbody>
                         <tr className="table_headingnew">
                             <td className="product_imagecomplaint">S.No</td>
-                            <td className="product_Namecomplaint">Complaint Heading</td>
+                            <td className="product_Namecomplaint">
+                            <span className="large_screen_text_425">Complaint Heading</span>
+                            <span className="small_screen_text_425">Complaint</span>
+                            </td>
                             <td className="product_availnewcomplaint">Complaint ID</td>
                             <td className="product_codenewcomplaint">Status</td>
                             <td className="product_pricenewcomplaint">Replied</td>

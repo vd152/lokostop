@@ -265,11 +265,11 @@
 }
 @media (max-width:425px){
   #continue_shopping {
-    width: 25.445vw;
-    height: 6vw;
+    width: 80vw;
+    height: 10vw;
     margin-bottom: 1vw;
     background: #08e5a9 0% 0% no-repeat padding-box;
-    font: normal normal normal 2.1vw/1.318vw Poppins;
+    font: normal normal normal 4vw/1.318vw Poppins;
     color: black;
   }
   .buttons_cart_continue{
@@ -303,10 +303,12 @@
     width: auto;
     height: auto;
     margin-left: 1%;
+    padding-right: 1vw;
     text-align: center;
 }
 .product_Name{
   width: auto;
+  padding-right: 1vw;
 }
 .table_heading{
   font: normal normal normal 1vw/1.318vw Poppins;

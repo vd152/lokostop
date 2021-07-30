@@ -335,6 +335,10 @@
 .firstboxprofile_r{
     display: none;
 }
+
+.small_screen_text_425{
+    display: none;
+}
 @media(max-width: 768px){
     .profileOuterMainBOx {
         width: 91vw;
@@ -376,7 +380,7 @@
     }
 
     .complaintshead {
-        font: normal normal normal 1.8vw/1.318vw Poppins;
+        font: normal normal normal 2.2vw/1.318vw Poppins;
         margin-left: 2vw;
         padding-left: 1.5vw;
         padding-top: 1vw;
@@ -436,15 +440,16 @@
     } 
 
     .complaintbutton {
-        width: 18.95vw;
-        height: 4.5vw;
-        margin-left: 30vw;
+        width: 45vw;
+        height: 5.5vw;
+        margin-left: 20vw;
         color: black;
-        font-size: 1.6vw;
+        font-size: 2.2vw;
+        text-align: center;
     }
 
     .mailId {
-        font-size: 1.3vw;
+        font-size: 1.8vw;
         padding-bottom: 1.5vw;
     }
     .firstboxprofile_r{
@@ -474,6 +479,13 @@
     }
   }
   @media(max-width:425px){
+    .large_screen_text_425{
+        display: none;
+    }
+
+    .small_screen_text_425{
+        display: inline-block;
+    }
     .profileOuterMainBOx {
         width: 91vw;
         height: auto;
@@ -505,21 +517,25 @@
     }
 
     .table_headingnew {
-        font: normal normal normal 2.2vw/1.318vw Poppins;
+        font: normal normal normal 2.7vw/1.318vw Poppins;
         color: #3d3d3d;
         width: fit-content;
         padding-top: 2vw;
     }
     .product_codenew{
         margin-left: 0vw;
+        padding-right: 1vw;
+        padding-left: 1.5vw;
     }
 
     .product_availnew {
         margin-left: 0vw;
+        padding-right: 1vw;
     }
     .product_pricenew{
-        width: 16vw;
+        width: 18vw;
         margin-left: 0vw;
+        padding-right: 1vw;
     }
       .orderboxsummary {
         display: flex;
@@ -547,7 +563,7 @@
       }
 
       .complaintshead{
-          font: normal normal normal 2.5vw/1.318vw Poppins;
+          font: normal normal normal 3.5vw/1.318vw Poppins;
           margin-left: 2vw;
           padding-left: 1.5vw;
           padding-top: 2vw;
@@ -556,6 +572,7 @@
       .product_Namecomplaint {
         width: auto;
         margin-left: 1vw;
+        padding-right: 2vw;
       }
       .product_availnewcomplaint {
         width: auto;
@@ -655,14 +672,15 @@
         font-size: 2vw;
     }
     .complaintbutton {
-        width: 23.5vw;
-        height: 6vw;
-        margin-left: 35vw;
+        width: 70vw;
+        height: 10vw;
+        margin-left: 9vw;
         color: black;
-        font-size: 2.1vw;
+        font-size: 4vw;
+        text-align: center;
     }
     .mailId{
-        font-size: 1.8vw;
+        font-size: 2.1vw;
         padding-bottom: 1.5vw;
     }
     .product_price1new{
@@ -673,9 +691,6 @@
     }
   }
   @media (max-width:375px){
-    .complaintbutton {
-        width: 15vw;
-    }
     .image_user1 {
         margin-top: -2.2vw;
     }
