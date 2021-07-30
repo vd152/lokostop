@@ -14,6 +14,7 @@ import PersonalInfo from './PersonalInfo';
 import Wishlist from './Wishlist';
 import AddressProfile from './AddressProfile';
 import { logoutUser } from '../../Redux/Actions/UserActions'
+import Loader from '../Loader/Loader';
 
 class ProfileIndividual extends Component {
     state = {
@@ -25,11 +26,14 @@ class ProfileIndividual extends Component {
         }
     }
     render() {
+        if(this.props.userLoading){
+            return <Loader />
+        }
         if (this.state.redirect) {
             return <Redirect to="/" />
         }
         return (
-            <div>
+            <React.Fragment>
                 <Header01></Header01>
                 <Header></Header>
                 <div className="Heading_about">
@@ -116,12 +120,13 @@ class ProfileIndividual extends Component {
                 </div >
                 <PopularBox />
                 <Footer></Footer>
-            </div >
+            </React.Fragment >
         )
     }
 }
 const mapStateToProps = (state) => {
     return {
+        userLoading: state.getUser.loading
     }
 }
 export default connect(mapStateToProps, { logoutUser })(ProfileIndividual)

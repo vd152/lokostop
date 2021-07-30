@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./PersonalInfo.css";
 import { connect } from "react-redux";
+import { editUser} from '../../Redux/Actions/UserActions'
+import Loader from '../Loader/Loader'
 class PersonalInfo extends Component {
   state = {
     disabled: true,
@@ -17,9 +19,18 @@ class PersonalInfo extends Component {
   componentDidMount() {
     this.setState({ data: this.props.user })
   }
+  setData = (key,value) =>{
+    const { data } = this.state
+    data[key] = value;
+    this.setState({ data: data})
+  }
   render() {
+    if(this.props.userLoading){
+      return <Loader />
+  }
     return (
-      <div>
+      <React.Fragment>
+          {/* <Loader /> */}
         <div className="headingPersonalEdit">
           <p className="headPersonal">Personal Information</p>
           <p className="headedit" onClick={this.handleGameClik.bind(this)}>
@@ -37,30 +48,42 @@ class PersonalInfo extends Component {
             <div className="namefulllast">
               <input
                 type="text"
-                name="firstname"
+                name="First Name"
                 id="FirstName"
                 value={this.state.data["First Name"]}
-                className="personalInput"
+                className="personalInput my-1"
                 disabled={this.state.disabled ? "disabled" : ""}
+                onChange={(e) =>{
+                  this.setData(e.target.name, e.target.value)
+                }}
               />
               <input
                 type="text"
-                name="Lastname"
+                name="Last Name"
                 id="LastName"
                 value={this.state.data["Last Name"]}
-                className="personalInput"
+                className="personalInput my-1"
                 disabled={this.state.disabled ? "disabled" : ""}
+                onChange={(e) =>{
+                  this.setData(e.target.name, e.target.value)
+                }}
               />
             </div>
+            <div className="namefulllast">
+
             <input
               type="email"
-              name="email"
+              name="Email"
               id="email"
-              className="personalInput email_personalInput"
+              className="personalInput email_personalInput my-1"
               value={this.state.data["Email"]}
               disabled={this.state.disabled ? "disabled" : ""}
+              onChange={(e) =>{
+                this.setData(e.target.name, e.target.value)
+              }}
             />
-
+            </div>
+{/* 
             <div className="namefulllast">
               <input
                 type="text"
@@ -78,10 +101,13 @@ class PersonalInfo extends Component {
                 className="personalInput"
                 disabled={this.state.disabled ? "disabled" : ""}
               />
-            </div>
+            </div> */}
             {!this.state.disabled &&
               <div className="button_box_1new" >
-                <button id="continue_shopping" className="w-100">Submit</button>
+                <button id="continue_shopping" className="w-100" onClick={(e)=>{
+                  e.preventDefault()
+                  this.props.editUser(this.state.data)
+                }}>Submit</button>
               </div>}
           </div>
         </div>
@@ -89,13 +115,15 @@ class PersonalInfo extends Component {
           ** All this information will not be shared with anyone. We believe in
           privacy and it shall be given to all our customers.**
         </p>
-      </div>
+      </React.Fragment>
     );
   }
 }
 const mapStateToProps = (state) => {
   return {
     user: state.getUser.user,
+    editingUser: state.editUser.updating,
+    userLoading: state.getUser.loading,
   };
 };
-export default connect(mapStateToProps)(PersonalInfo);
+export default connect(mapStateToProps, {editUser})(PersonalInfo);

@@ -1,6 +1,6 @@
 import * as actionTypes from '../Constants/UserConstants'
 import api from '../../Apis/api'
-import {setUserDetails, setAuthToken, removeUserDetails, removeAuthToken, setUser, removeUser} from '../../Utils/Local'
+import {setUserDetails, setAuthToken, removeUserDetails, removeAuthToken, setUser, removeUser, getUser as getUserId} from '../../Utils/Local'
 
 export const loginUser = (email, password) => async(dispatch) => {
     try{
@@ -74,6 +74,26 @@ export const getUser = (id) => async(dispatch) => {
     }catch(error){
         dispatch({
             type: actionTypes.GET_USER_DETAILS_FAIL,
+            payload: "something went wrong"
+        })
+    }
+}
+
+export const editUser = (user) => async(dispatch) => {
+    try{
+        dispatch({ type: actionTypes.EDIT_USER_DETAILS_REQUEST})
+        delete user.createdAt
+        delete user.updatedAt
+        delete user.LastLogin
+        delete user.__v
+        const {data} = await api.put('/users', {_id: user._id, data: user})
+        dispatch({
+            type: actionTypes.EDIT_USER_DETAILS_SUCCESS,
+            payload: data.data
+        })
+    }catch(error){
+        dispatch({
+            type: actionTypes.EDIT_USER_DETAILS_FAIL,
             payload: "something went wrong"
         })
     }
