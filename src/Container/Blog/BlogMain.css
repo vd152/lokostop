@@ -156,6 +156,18 @@
   .goblog{
     font-size: 1.6vw;
   }
+  
+  .button_blog_one{
+    height: 4.5vw;
+    width: 20vw;
+    font-size: 1.6vw;
+  }
+
+  .button_blog_two{
+    height: 4.5vw;
+    width: 20vw;
+    font-size: 1.6vw;
+  }
 }
 @media(max-width:425px){
   .goblog{
@@ -173,12 +185,7 @@
   .first_blog_second_component p{
     font: normal normal normal 1.2vw/1.684vw Poppins;
   }
-  
-  .button_blog_two{
-    margin-top: 2vw;width: 14.445vw;
-    height: 3.782vw;
-    font: normal normal normal 1vw/1.318vw Poppins;
-  }
+
   .inner_box_blogs_two{
     display: none;
   }
@@ -208,9 +215,21 @@
     margin-left: 34.183vw;
     width: 32.624vw;
   }
+
   .button_blog_one{
-    width: 14.445vw;margin-top: 2vw;
-    height: 3.782vw;
-    font: normal normal normal 1vw/1.318vw Poppins;
+    height: 10vw;
+    width: 90vw;
+    font-size: 4vw;
+    margin-left: 2vw;
+    margin-bottom: 5vw;
+    margin-top: 5vw;
+  }
+
+  .button_blog_two{
+    height: 10vw;
+    width: 90vw;
+    font-size: 4vw;
+    margin-left: 2vw;
+    margin-bottom: 5vw;
   }
 }

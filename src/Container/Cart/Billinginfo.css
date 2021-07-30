@@ -235,8 +235,120 @@
   }
   .containerCheck {
     font: normal normal normal 1.5vw/1.318vw Poppins;
-
 }
+
+  .detail_add_billing{
+    flex-direction: column;
+  }
+
+  .head_bill_reciever{
+    font-size: 1.8vw;
+    margin-top: 3vw !important;
+  }
+  
+  .first_bill_box{
+    width: 100%;
+    height: auto;
+  }
+
+  .input_box{
+    width: 80%;
+    height: 6vw;
+    font-size: 1.8vw;
+    margin-left: 8vw;
+    padding-left: 2vw;
+  }
+
+  .check_box{
+    width: 80%;
+    margin-left: 8vw;
+  }
+
+  .second_bill_box{
+    width: 100%;
+    height: auto;
+  }
+
+  .insidebox_secondbill{
+    width: 90%;
+    height: 6vw;
+    font-size: 1.8vw;
+    padding-left: 2vw;
+  }
+
+  .second_input_box{
+    width: 65%;
+    height: 6vw;
+    font-size: 1.8vw;
+    margin-left: 6vw;
+    padding-left: 2vw;
+  }
+
+  .dropdown_box{
+    height: 6vw;
+    width: 25%;
+  }
+
+  .countrybox_edit{
+    margin-top: 0.5vw;
+  }
+
+  #country_name{
+    font-size: 1.6vw;
+  }
+
+  .finaladdress{
+    width: 81%;
+    margin-left: 8vw;
+  }
+  .finaladdress p{
+    font-size: 1.5vw;
+    margin-bottom: 1.75vw;
+  }
+  
+  .save_cont_billing{
+    width: 18vw;
+    height: 4.5vw;
+    margin-top: 1vw;
+    margin-left: 35vw;
+    font-size: 1.8vw;
+  }
+
+  .third_bill_box{
+    width: 80%;
+    margin-left: 8vw;
+    margin-top: 5vw;
+  }
+
+  .cart_thirdbox_end{
+    display: flex;
+    width: 100%;
+  }
+
+  .billing_third{
+    width: 50%;
+  }
+  .para1_insidethird{
+    font-size: 1.8vw;
+  }
+
+  .para2_insidethird{
+    font-size: 1.8vw;
+  }
+
+  .discountcode{
+    width: 80%;
+    font-size: 1.6vw;
+    height: 4vw;
+  }
+
+  .applycode{
+    font-size: 1.8vw;
+  }
+
+  #bill_line{
+    width: 70vw;
+  }
 }
 @media(max-width:425px){
   .checkMark {
@@ -251,38 +363,101 @@
   height: fit-content;
 }
 #country_name{
-  font: normal normal normal 1vw/1.318vw Poppins;
-  margin-top: 2.5vw;
+  font: normal normal normal 2vw/1.318vw Poppins;
+  margin-top: 5vw;
 }
+
+.finaladdress{
+  width: 90%;
+  margin-left: 5vw;
+  margin-bottom: 3vw;
+}
+
 .finaladdress p{
-  font: normal normal normal 1vw/1.7vw Poppins;
+  font: normal normal normal 3.5vw/3.6vw Poppins;
 }
 .save_cont_billing{
-  width: 14.299vw;
-    height: 4.782vw;
-    font: normal normal normal 1vw/1.318vw Poppins;
+  margin-top: 4vw;
+  margin-left: 5vw;
+    width: 80vw;
+    height: 10vw;
+    font: normal normal normal 4vw/1.318vw Poppins;
 }
 .input_box{
-  width: 100%;
+  width: 90%;
   border: 0.073vw solid #08e5a9;
-  height: 3.782vw;
+  height: 10vw;
   padding: 0.732vw;
-  font: normal normal normal 1vw/1.318vw Poppins;
+  padding-left: 4vw;
+  font: normal normal normal 4vw/1.318vw Poppins;
   cursor: pointer;
   outline: none;
   margin-bottom: 4%;
+  margin-left: 4vw;
 }
   .dropdown_box{
-    height: 3.782vw;
+    height: 10vw;
+    width: 28%;
   }
   .containerCheck{
     font: normal normal normal 2.8vw/3vw Poppins;
     margin-left: 2vw;
   }
+
+.head_bill_reciever{
+  font-size: 3vw;
+  height: auto;
+  margin-bottom: 5vw;
+}
+
+.second_bill_box{
+  margin-top: 5vw;
+}
+
+.insidebox_secondbill{
+  width: 95%;
+  height: 10vw;
+  font-size: 1.8vw;
+  padding-left: 2vw;
+  margin-bottom: 4vw;
+}
+
 .second_input_box{
-  height: 3.782vw;
-    padding: 0.732vw;
-    font: normal normal normal 1vw/1.318vw Poppins;
+  width: 65%;
+  height: 10vw;
+  font-size: 3.5vw;
+  margin-left: 3vw;
+  padding-left: 2vw;
+}
+
+.para1_insidethird{
+  font-size: 3.5vw;
+}
+
+.para2_insidethird{
+  font-size: 3.5vw;
+}
+
+.cart_thirdbox_end{
+  flex-direction: column;
+}
+
+.billing_third{
+  width: 100%;
+}
+
+.discountbox{
+  margin-top: 5vw;
+}
+.discountcode{
+  width: 80%;
+  font-size: 3vw;
+  padding-left: 2vw;
+  height: 8vw;
+}
+
+.applycode{
+  font-size: 3vw;
 }
 }
 @media(max-width:375px){
