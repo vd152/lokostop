@@ -121,3 +121,54 @@ color: #7D7D7D;
   margin-left: 0vw;
   margin-top: -0.5vw;
 }
+
+@media (max-width:768px) {
+  .image_user{
+    height: 3.4vw;
+    width: 3.4vw;
+    margin-top: 0.5vw;
+  }
+
+  .image_userimage{
+    height: 3.4vw;
+    width: 3.4vw;
+  }
+}
+
+@media (max-width:550px) {
+  .image_user{
+    height: 5.1vw;
+    width: 5.1vw;
+    margin-left: 1vw;
+  }
+
+  .image_userimage{
+    height: 5.1vw;
+    width: 5.1vw;
+  }
+}
+
+@media (max-width:425px) {
+  .image_user{
+    height: 6.1vw;
+    width: 6.1vw;
+    margin-left: 1.45vw;
+  }
+
+  .image_userimage{
+    height: 6.1vw;
+    width: 6.1vw;
+  }
+}
+
+@media (max-width:375px) {
+  .image_user{
+    height: 6.5vw;
+    width: 6.5vw;
+  }
+
+  .image_userimage{
+    height: 6.5vw;
+    width: 6.5vw;
+  }
+}
