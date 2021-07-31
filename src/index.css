@@ -47,9 +47,22 @@ code {
 	.contant_box_404{ margin-top:-50px;}
   .two-col-banner{
     justify-content: center;
-    height: 32vw !important
+    align-items: center;
+    height: 100%!important;
   }
   .two-col-banner .two-banner{
     width: 45%;
+    height: 30vh;
     margin: 1em;
+  }
+
+  @media (max-width: 768px){
+    .two-col-banner{
+      display: block
+    }
+    .two-col-banner .two-banner{
+      width: 95%;
+      height: 35vw;
+      margin: 1em;
+    }
   }

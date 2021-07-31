@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
 
 
-class TwoColBanner extends Component {
+class ThreeColBanner extends Component {
 
     render() {
         return (
             <div className="image_about d-flex two-col-banner">
                 {!this.props.bannersLoading && this.props.banners.Banners? 
-                this.props.banners.Banners[2].SectionStatus?this.props.banners.Banners[2].Banners.map((banner,key)=>{
+                this.props.banners.Banners[2].SectionStatus?this.props.banners.Banners[3].Banners.map((banner,key)=>{
                     return  <Link className="two-banner" to={banner.CalltoActionURL} key={key} target={banner.OpenInNewWindow?"_blank":"_self"}>
                      <img  src={banner.Image.image?"https://api.lokostop.in/"+banner.Image.image: "https://via.placeholder.com/150"} alt="Reload" />
                      </Link>
@@ -26,4 +26,4 @@ const mapStateToProps = (state) => {
       banners: state.getBanners.banners
     };
   };
-  export default connect(mapStateToProps)(TwoColBanner);
+  export default connect(mapStateToProps)(ThreeColBanner);

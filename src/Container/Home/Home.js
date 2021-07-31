@@ -22,6 +22,7 @@ import {
   getBanners
 } from "../../Redux/Actions/StorefrontActions";
 import TwoColBanner from "../Component/Slider/TwoColBanner";
+import ThreeColBanner from "../Component/Slider/ThreeColBanner";
 class Home extends Component {  
   state = {
     products: [],
@@ -82,7 +83,7 @@ class Home extends Component {
           <TopClients />
           <ClientImage />
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[2]} />
-          <VideoContainer />
+          <ThreeColBanner />
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[3]} />
           <SixImageSlider />
           <Footer />
