@@ -3,6 +3,7 @@ import "./AddressProfile.css";
 import { connect } from "react-redux";
 import { editUser } from "../../Redux/Actions/UserActions";
 import arrayMove from 'array-move'
+import Loader from "../Loader/Loader";
 class AddressProfile extends Component {
   state = {
     disabled: true,
@@ -24,11 +25,11 @@ class AddressProfile extends Component {
     this.setState({ disabled: !this.state.disabled });
   }
   componentDidMount() {
-    // let address = this.props.user.Address
-    // if(address.length == 0){
-    //     address = this.state.data.Address
-    // }
-    // this.setState({ data: {...this.props.user, Address: address}});
+    let address = this.props.user.Address?this.props.user.Address:[]
+    if(address.length == 0){
+        address = this.state.data.Address
+    }
+    this.setState({ data: {...this.props.user, Address: address}});
   }
 
   addNewAddress = () =>{
@@ -41,7 +42,6 @@ class AddressProfile extends Component {
         City: "",
         Pin: "",
       })
-      console.log(data.Address.length-1)
       this.setState({ data},()=>{this.setState({selected: data.Address.length-1})})
   }
   setDefault = () =>{
@@ -55,6 +55,9 @@ class AddressProfile extends Component {
       this.setState({data})
   }
   render() {
+    // if(this.props.userLoading){
+    //   return <Loader />
+    // }
     return (
       <div>
         <div className="headingPersonalEdit">
@@ -168,7 +171,7 @@ class AddressProfile extends Component {
                   name="flexRadioDefault"
                   id={"flexRadioDefault1"+ key}
                   checked={this.state.selected == key? true: false}
-                  onClick={(e) => {
+                  onChange={(e) => {
                       this.setState({selected: key})
                       document.getElementById("default-check").checked = false
                   }}
@@ -212,6 +215,7 @@ class AddressProfile extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.getUser.user,
+    userLoading: state.getUser.loading
   };
 };
 export default connect(mapStateToProps, { editUser })(AddressProfile);

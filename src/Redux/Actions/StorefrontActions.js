@@ -117,3 +117,20 @@ export const getTopBrands = () => async(dispatch) => {
         })
     }
 }
+export const getGeneral = () => async(dispatch) => {
+    try{
+        dispatch({ type: actionTypes.GET_GENERAL_REQUEST})
+        const {data: {data}} = await api.post('/storefront/get', {selectArray: ["General"]})
+        
+        dispatch({
+            type: actionTypes.GET_GENERAL_SUCCESS,
+            payload: data[0].General
+        })
+
+    }catch(error){
+        dispatch({
+            type: actionTypes.GET_GENERAL_FAIL,
+            payload: "something went wrong"
+        })
+    }
+}

@@ -26,9 +26,6 @@ class ProfileIndividual extends Component {
         }
     }
     render() {
-        if(this.props.userLoading){
-            return <Loader />
-        }
         if (this.state.redirect) {
             return <Redirect to="/" />
         }
@@ -86,8 +83,8 @@ class ProfileIndividual extends Component {
                             <FaBox ></FaBox>
                             <p>MY ORDERS</p>
                         </div>
-                        <div class="Account_Section" >
-                            <MdAccountCircle class="mdAccountCircle"></MdAccountCircle>
+                        <div className="Account_Section" >
+                            <MdAccountCircle className="mdAccountCircle"></MdAccountCircle>
                             <p>ACCOUNT SETTINGS</p>
                         </div>
                         <div>

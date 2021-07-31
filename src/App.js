@@ -22,7 +22,7 @@ import ProfileIndividual from './Container/Profile/ProfileIndividual';
 import sendQuery from './Container/Query/sendQuery';
 import Loader from './Container/Loader/Loader';
 import {getAllCategories} from './Redux/Actions/CategoryActions'
-import {getFooterDetails, getProductTabs, getLogos} from './Redux/Actions/StorefrontActions'
+import {getFooterDetails, getLogos, getGeneral} from './Redux/Actions/StorefrontActions'
 import {getMenus} from './Redux/Actions/MenuActions'
 import {getUser} from './Redux/Actions/UserActions'
 import {getWishlist} from './Redux/Actions/WishlistActions'
@@ -37,13 +37,14 @@ class App extends React.Component {
       this.props.getWishlist()
       this.props.getCart()
     }
+    this.props.getGeneral()
     this.props.getFooterDetails()
     this.props.getLogos()
     this.props.getAllCategories()
     this.props.getMenus()
   }
   render(){
-    if(this.props.footerLoading || this.props.categoriesloading || this.props.menuLoading || this.props.logoLoading || this.props.userLoading){
+    if(this.props.footerLoading || this.props.categoriesloading || this.props.menuLoading || this.props.logoLoading || this.props.userLoading || this.props.storeLoading){
       return <Loader />
   }
     return (
@@ -59,7 +60,7 @@ class App extends React.Component {
             <Route path='/aboutUs' component={AboutUs} />
             <Route path='/ComingSoon' component={ComingSoon} />
             <Route path='/cart' component={Cart} />
-            <Route path='/payment' component={paymentCart} />
+            <PrivateRoute path='/payment' component={paymentCart} />
             <PrivateRoute path='/profile' component={ProfileIndividual}></PrivateRoute>
             <Route path='/sendquery' component={sendQuery} />
             <Route exact path="/page/:url" component={(props)=> <Page key={Date.now()} {...props}/>}/>
@@ -77,8 +78,9 @@ const mapStateToProps = state =>{
       categoriesloading: state.getCategories.loading,
       menuLoading: state.getMenus.loading,
       logoLoading: state.getLogos.loading,
-      userLoading: state.getUser.loading
+      userLoading: state.getUser.loading,
+      storeLoading: state.getStore.loading
   }
 }
-export default connect(mapStateToProps, {getUser, getFooterDetails, getAllCategories, getMenus, getLogos, getWishlist,getCart})(App)
+export default connect(mapStateToProps, {getUser,getGeneral, getFooterDetails, getAllCategories, getMenus, getLogos, getWishlist,getCart})(App)
 

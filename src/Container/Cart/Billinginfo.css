@@ -10,6 +10,10 @@
   width: 100%;
   display: flex;
 }
+label{
+  line-height:1.2;
+  font :normal normal normal 0.878vw/1.318vw Poppins
+}
 .detail_add_billing {
   display: flex;
   flex-direction: row;
