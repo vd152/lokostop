@@ -432,9 +432,11 @@
     width: 1.525vw;
     height: 1.525vw;
     position: relative;
-    margin-left: 4.8vw;
+    margin-left: 4.6vw;
     margin-top: 0.25vw;
     padding-top: 0.25vw;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
     font: normal normal normal 1.2vw/1.061vw Poppins;
   }
 
@@ -508,12 +510,14 @@
   }
 
   #count {
-    width: 1.825vw;
+    width: 4vw;
     height: 1.825vw;
     position: relative;
-    margin-left: 5.4vw;
+    margin-left: 5.6vw;
     margin-top: 0.5vw;
     padding-top: 0.3vw;
+    padding-left: 0.2vw;
+    padding-right: 0.2vw;
     font: normal normal normal 1.4vw/1.061vw Poppins;
   }
 
