@@ -102,7 +102,8 @@ class Header01 extends Component {
 
               <Search />
         <div className="Header_one_right">
-          <Link to={{ pathname: "/profile", wishlistActive: true }}>
+          {this.props.user._id && <React.Fragment>
+            <Link to={{ pathname: "/profile", wishlistActive: true }}>
             <div className="Favorites" style={{ color: "#1D1D1D" }}>
               <IoIosHeart id="Heart" />
               <span id="count">{this.props.wishlist.length}</span>
@@ -116,6 +117,8 @@ class Header01 extends Component {
               <p><span className="large_screen_text">Cart</span></p>
             </div>
           </Link>
+          </React.Fragment>}
+         
           {this.props.user._id ? (
             <Link to="/profile">
               <div className="image_user">

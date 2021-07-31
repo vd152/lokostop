@@ -23,6 +23,7 @@ import {
 } from "../../Redux/Actions/StorefrontActions";
 import TwoColBanner from "../Component/Slider/TwoColBanner";
 import ThreeColBanner from "../Component/Slider/ThreeColBanner";
+import OneColBanner from "../Component/Slider/OneColBanner";
 class Home extends Component {  
   state = {
     products: [],
@@ -76,14 +77,16 @@ class Home extends Component {
 
           {/* <NewArrival products={[]}/> */}
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[0]} />
+          <ThreeColBanner />
           <MostViewedBox />
           <FindByCategory />
+          <ProductRowBox tab={this.props.allProductRows[0].Tabs[1]} />
           <TwoColBanner />
-          <CategoryBox />
+          {/* <CategoryBox /> */}
           <TopClients />
-          <ClientImage />
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[2]} />
-          <ThreeColBanner />
+          <OneColBanner />
+          <ClientImage />
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[3]} />
           <SixImageSlider />
           <Footer />

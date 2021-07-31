@@ -41,11 +41,11 @@ class Login extends Component {
     return (
       <div>
         <div
-          className="imagevl"
+          className="imagevl mt-0"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
         >
-          <span className="large_screen_text">Login</span>
+          <span className="large_screen_text"><CgProfile id="profile_icon" style={{fontSize: "2.5em"}}/></span>
           <span className="small_screen_text"><CgProfile id="profile_icon" /></span>
         </div>
         <div
