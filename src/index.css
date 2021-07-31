@@ -56,7 +56,7 @@ code {
     margin: 1em;
   }
   .two-col-banner .one-banner{
-    width: 95%;
+    width: 95% !important;
     height: 35vh;
     margin: 1em;
   }

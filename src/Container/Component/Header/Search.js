@@ -94,7 +94,7 @@ class Search extends Component {
   render() {
     if(this.state.searchRedirect){
       return <Redirect to={{ 
-        pathname: "/categories" + "/"+ this.state.selectedCategory.url+"/"+this.state.selectedCategory.id,
+        pathname: "/categories/"+this.state.selectedCategory.name + "/"+ this.state.selectedCategory.url+"/"+this.state.selectedCategory.id,
         searchWord: this.state.searchWord
       }}/>
     }

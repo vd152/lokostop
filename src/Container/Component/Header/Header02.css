@@ -16,7 +16,7 @@
   height: 100%;
 }
 .navbar {
-  margin-left: 20.449vw;
+  margin: auto;
   margin-top: 2.269vw;
   height: auto;
 }
@@ -61,7 +61,6 @@
   display: grid;
   grid-template-rows: 1.318vw 1.464vw;
   margin-top: 1.684vw;
-  margin-left: 15.445vw;
 }
 .mobile_part {
   display: flex;

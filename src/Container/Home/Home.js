@@ -24,6 +24,8 @@ import {
 import TwoColBanner from "../Component/Slider/TwoColBanner";
 import ThreeColBanner from "../Component/Slider/ThreeColBanner";
 import OneColBanner from "../Component/Slider/OneColBanner";
+import {Helmet} from "react-helmet";
+
 class Home extends Component {  
   state = {
     products: [],
@@ -44,6 +46,9 @@ class Home extends Component {
     } else
       return (
         <div>
+          <Helmet>
+                    <title>{this.props.store.WelcomeText}</title>
+                </Helmet>
           <Header01 />
           <Header />
           <Search home={true}/>
@@ -103,6 +108,7 @@ const mapStateToProps = (state) => {
     featuresLoading: state.getFeatures.loading,
     allFeatures: state.getFeatures.features,
     bannersLoading: state.getBanners.loading,
+    store: state.getStore.store
   };
 };
 export default connect(mapStateToProps, { getFeatures, getProductTabs, getBanners })(Home);

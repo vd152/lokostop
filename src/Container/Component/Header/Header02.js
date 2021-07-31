@@ -27,7 +27,7 @@ class Header02 extends Component {
     } else if (item.type == "Page") {
       return "/page/" + item.page.url
     } else if (item.type == "Category") {
-      let url = "/categories/" + item.category.url + "/" + item.category._id
+      let url = "/categories/"+item.category.name +"/" + item.category.url + "/" + item.category._id
       return url
     }
   }
@@ -154,9 +154,11 @@ class Header02 extends Component {
           </div>
           <div className="navbar large_screen_text">
             <ul className="navvvvul">
+            <li className="navli">
               <Link to="/">
-                <li className="navli">Home</li>
+                Home
               </Link>
+              </li>
               {this.state.menus.map((menu, key) => {
                 return (
                   <li className="navli" key={key}>
@@ -173,15 +175,23 @@ class Header02 extends Component {
                 );
               })}
               {/* <Link to='/aboutUs'><li className="navli">About us</li></Link> */}
+              <li className="navli">
               <Link to="/sendquery">
-                <li className="navli">Send query</li>
+                Send query
               </Link>
+              </li>
+              <li className="navli">
+
               <Link to="/profile">
-                <li className="navli">Complaint</li>
+                Complaint
               </Link>
+              </li>
+              <li className="navli">
+
               <Link to="/blogs">
-                <li className="navli">Blogs</li>
+                Blogs
               </Link>
+              </li>
             </ul>
           </div>
           <div className="Navbar_hamburger">
@@ -231,26 +241,26 @@ class Header02 extends Component {
               </Dropdown.Menu>
             </Dropdown>
           </div>
-          {/* <nav class="navbar navbar-light">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+          {/* <nav className="navbar navbar-light">
+            <div className="container-fluid">
+              <div className="navbar-header">
+                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span>
+                  <span className="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">WebSiteName</a>
+                <a className="navbar-brand" href="#">WebSiteName</a>
               </div>
-              <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Home</a></li>
+              <div className="collapse navbar-collapse" id="myNavbar">
+                <ul className="nav navbar-nav">
+                  <li className="active"><a href="#">Home</a></li>
                   <li><a href="#">Page 1</a></li>
                   <li><a href="#">Page 2</a></li>
                   <li><a href="#">Page 3</a></li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                  <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                <ul className="nav navbar-nav navbar-right">
+                  <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
                 </ul>
               </div>
             </div>

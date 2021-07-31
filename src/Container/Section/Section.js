@@ -16,8 +16,11 @@ class Section extends Component {
     skip: 0,
     limit: 2,
   }
-  UNSAFE_componentWillMount() {
-    this.getProducts()
+  componentDidMount() {
+   if(!this.props.loading){
+     this.getProducts()
+
+   }
   }
   getProducts = () =>{
     this.props.getCategoryProducts(
@@ -33,7 +36,10 @@ class Section extends Component {
       categoryProducts.push(product)
 
     })
-    this.setState({categoryProducts})
+    // let temp = categoryProducts.map(JSON.stringify)
+    // let unique = new Set(temp)
+    // let newArr = Array.from(unique).map(JSON.parse)
+    this.setState({categoryProducts,skip: this.state.skip + this.state.limit})
     
   }
   render() {
@@ -46,7 +52,7 @@ class Section extends Component {
           <Filter />
           <div className="ParticularSection">
             <div className="headParticular">
-              <p>WASHING MACHINE</p>
+              <p>{this.props.match.params.title}</p>
               <hr />
             </div>
             <div className="dropSort">
@@ -82,10 +88,10 @@ class Section extends Component {
               <button
                 className="load_more_blogs"
                 style={{ marginLeft: "30.015vw" }}
+                id="load-more"
                 onClick={(e)=>{
-                  this.setState({skip: this.state.skip+this.state.limit},()=>{
-                    this.getProducts()
-                  })
+                  this.getProducts()
+               
                 }}
               >
                 Load more

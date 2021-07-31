@@ -4,7 +4,7 @@ import api from '../../Apis/api'
 export const getFooterDetails = () => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.GET_FOOTER_REQUEST})
-        const {data: {data}} = await api.post('/storefront/get', {selectArray: ["Footer", "Menus"]})
+        const {data: {data}} = await api.post('/storefront/get', {selectArray: ["Footer", "Menus", "SocialLinks"]})
         dispatch({
             type: actionTypes.GET_FOOTER_SUCCESS,
             payload: data[0],

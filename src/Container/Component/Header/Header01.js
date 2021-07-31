@@ -26,7 +26,7 @@ class Header01 extends Component {
               justifyContent: "space-between",
             }}
             className={"dropdown-item"}
-            to={"/categories/" + root.url + "/" + root._id}
+            to={"/categories/" + root.name+"/"+ root.url + "/" + root._id}
           >
             {root.name}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -48,7 +48,7 @@ class Header01 extends Component {
                 justifyContent: "space-between",
               }}
               className={"dropdown-item"}
-              to={"/categories/" + root.url + "/" + root._id}
+              to={"/categories/" + root.name+"/" + root.url + "/" + root._id}
             >
               {root.name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

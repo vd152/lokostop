@@ -317,6 +317,10 @@
     height: auto;
     padding: 0;
 }
+.orderboxsummary .nav-pills button{
+    font: normal normal normal 1vw/1.537vw Poppins;
+    color: #3d3d3d;
+}
 .mailId{
     width:98%;
     margin-top: 4%; font: normal normal normal 0.98vw/1.318vw Poppins;

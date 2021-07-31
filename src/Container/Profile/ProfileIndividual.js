@@ -15,6 +15,7 @@ import Wishlist from './Wishlist';
 import AddressProfile from './AddressProfile';
 import { logoutUser } from '../../Redux/Actions/UserActions'
 import Loader from '../Loader/Loader';
+import Orders from './Orders';
 
 class ProfileIndividual extends Component {
     state = {
@@ -48,8 +49,11 @@ class ProfileIndividual extends Component {
                         </div>
                         <div className='orderboxsummary'>
                             <FaBox className='boxIcon'></FaBox>
-                            <p>MY ORDERS</p>
+                            <p className="nav nav-pills m-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <button className="nav-link pillval my-0" id="v-pills-orders-tab" data-bs-toggle="pill" data-bs-target="#v-pills-orders" type="button" role="tab" aria-controls="v-pills-orders" aria-selected="false">MY ORDERS</button>
+                            </p>
                         </div>
+                        
                         <div className='orderboxsummary1'>
                             <MdAccountCircle className='accountIcon'></MdAccountCircle>
                             <p>ACCOUNT SETTINGS</p>
@@ -108,6 +112,9 @@ class ProfileIndividual extends Component {
                             </div>
                             <div  className="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                                 <Wishlist/>
+                            </div>
+                            <div  className="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
+                                <Orders/>
                             </div>
                             <div className="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                                 <Complaint />

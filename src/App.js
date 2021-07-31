@@ -57,14 +57,15 @@ class App extends React.Component {
             <Route path="/compare" component={Compare} />
             <Route path="/blogIndividual" component={BlogMain} />
             <Route path="/product/:url/:id" component={IndividualProduct} />
-            <Route path='/aboutUs' component={AboutUs} />
+            <Route path='/about' component={AboutUs} />
             <Route path='/ComingSoon' component={ComingSoon} />
             <Route path='/cart' component={Cart} />
             <PrivateRoute path='/payment' component={paymentCart} />
             <PrivateRoute path='/profile' component={ProfileIndividual}></PrivateRoute>
             <Route path='/sendquery' component={sendQuery} />
             <Route exact path="/page/:url" component={(props)=> <Page key={Date.now()} {...props}/>}/>
-            <Route exact path='/:fieldname/:fieldurl/:id' render={(props)=> <Section key={Date.now()} {...props}/>}/>
+            <Route exact path='/:fieldname/:title/:fieldurl/:id' render={(props)=> <Section key={Date.now()} {...props}/>}/>
+            <Route exact path='/shop' render={(props)=> <Section key={Date.now()} {...props}/>}/>
             <Route component={NotFound} />
           </Switch>
         </Router>

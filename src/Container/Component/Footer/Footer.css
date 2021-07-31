@@ -149,6 +149,9 @@
   width: auto;
   height: auto;
 }
+.paymentmethod .logo2 img{
+  width: -webkit-fill-available;
+}
 .paymentmethod p {
   margin: 0;
   font: normal normal normal 0.952vw/1.464vw Poppins;
