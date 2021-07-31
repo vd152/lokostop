@@ -207,7 +207,10 @@
     font-weight: bold;
   }
   .dropdown-content1 {
-    font: normal normal normal 0.978vw/1.318vw Poppins;
+    font: normal normal normal 1.9vw/1.318vw Poppins;
+    width: 20vw;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
   }
 }
 
@@ -263,6 +266,11 @@
   }
   .Hamburger_icon{
     font-size: 3.9vw;
+  }
+
+  .dropdown-content1 {
+    font: normal normal normal 2.75vw/1.318vw Poppins;
+    width: 30vw;
   }
   /* .navvvvul {
     padding: 0;
