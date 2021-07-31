@@ -268,6 +268,18 @@
 }
 }
 @media (max-width:425px){
+  .table_heading1{
+    width: auto;
+    height: 17vw;
+  }
+
+  .product_image1{
+    width: 17vw;
+  }
+
+  .product_Name1{
+    width: 30vw;
+  }
   #continue_shopping {
     width: 80vw;
     height: 10vw;
@@ -305,14 +317,14 @@
     padding-left: 1vw;
   }
   .product_image{    
-    width: auto;
+    width: 20vw;
     height: auto;
     margin-left: 1%;
     padding-right: 1vw;
-    text-align: center;
+    text-align: left;
 }
 .product_Name{
-  width: auto;
+  width:25vw;
   padding-right: 1vw;
 }
 .table_heading{
@@ -320,32 +332,84 @@
 
 }
 .product_para_1{
-  font:normal normal bold 1vw/1.318vw Poppins
+  font:normal normal bold 2.9vw/3.2vw Poppins;
+  height: 4vw;
 }
 .product_para_2{
-  font:normal normal normal 1vw/1.318vw Poppins
+  font:normal normal normal 2.75vw/3vw Poppins;
+  height: 6.5vw;
 }
 .product_para_3{
   text-decoration: underline;
-    font: normal normal normal 1vw/1.318vw Poppins;
+    font: normal normal normal 2.2vw/2.4vw Poppins;
     color: #3d3d3d;
     width: 100%;
     cursor: pointer;
     margin-top: 1vw;
-    height: auto;
+    height: 4vw;
 }
 .product_price1{
-  font: normal normal normal 1vw/1.318vw Poppins;
+  width: 20vw;
+  font: normal normal normal 2.75vw/1.318vw Poppins;
 }
 
 .product_avail1{
-  font: normal normal normal 1vw/1.318vw Poppins;
+  width: 20vw;
+  font: normal normal normal 2.75vw/1.318vw Poppins;
     color: #00680a;
     padding-top: 4%;
-    padding-left: 3%;
 }
 .product_code1{
+  width: 15vw;
   margin-left: 2.5%;
-  font: normal normal bold 1vw/1.318vw Poppins;
+  font: normal normal bold 2.75vw/1.318vw Poppins;
+}
+
+.product_quantity1 {
+  width: 20vw;
+  padding-top: 5vw;
+  margin-left: 7vw;
+}
+
+#minus_icon{
+  font-size: 2.5vw;
+}
+
+.product_quant_para{
+  font-size: 2.75vw;
+  padding-top: 1vw;
+}
+
+#add_icon{
+  font-size: 2.5vw;
+}
+.product_subtotal1{
+  width: 25vw;
+}
+
+.product__sub_para{
+  font-size: 2.75vw;
+}
+#closeIcon{
+  font-size: 3vw;
+  margin-top: -1vw;
+}
+
+.product_avail{
+  width: 25vw;
+  margin-left: 0vw;
+}
+.product_price{
+  width: 25vw;
+  margin-left: 0vw;
+}
+
+.product_quantity{
+  width: 25vw;
+}
+
+.product_subtotal{
+  width: 25vw;
+  padding-right: 8vw;
 }
 }

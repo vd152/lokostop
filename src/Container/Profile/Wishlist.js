@@ -8,6 +8,7 @@ class Wishlist extends Component {
   render() {
     return (
       <div className="tble_box1">
+        <div className="scroll_x_box">
         <table className="col_names1">
           <tbody>
             <tr className="table_headingnew">
@@ -67,6 +68,7 @@ class Wishlist extends Component {
             })}
           </tbody>
         </table>
+        </div>
         <div className="button_box_1new">
           <button id="continue_shopping"> Continue Shopping</button>
         </div>
