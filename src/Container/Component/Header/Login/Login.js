@@ -15,8 +15,8 @@ class Login extends Component {
       "Email": "",
       "Password": "",
       "Confirm": "",
-      Roles:[],
-      Permissions:[],
+      Roles: [],
+      Permissions: [],
     }
   };
   setData = (key, val) => {
@@ -33,7 +33,7 @@ class Login extends Component {
     this.props.loginUser(this.state.data.Email, this.state.data.Password);
     document.querySelector("#staticBackdrop").click();
   };
-  signUp = () =>{
+  signUp = () => {
     this.props.registerUser(this.state.user);
     document.querySelector("#staticBackdrop").click();
   }
@@ -72,6 +72,7 @@ class Login extends Component {
                 We promise products from best brands with assurance.
               </p>
               <div className="modal-body modalPadding">
+
                 <ul
                   className="nav nav-pills mb-3 signval"
                   id="pills-tab"
@@ -113,7 +114,7 @@ class Login extends Component {
                     role="tabpanel"
                     aria-labelledby="pills-home-tab"
                   >
-                    <div>
+                    <div className="modal_signin_input">
                       <input
                         className="signinput"
                         name="Email"
@@ -154,72 +155,88 @@ class Login extends Component {
                     aria-labelledby="pills-profile-tab"
                   >
                     <div>
-                      <input
-                        className="signinput"
-                        type="text"
-                        name="First Name"
-                        placeholder="First Name"
-                        value={this.state.user["First Name"]}
-                        onChange={(e) =>{
-                          this.setUser(e.target.name, e.target.value)
-                        }}
-                      />
-                      <input
-                        className="signinput"
-                        type="text"
-                        name="Last Name"
-                        placeholder="Last Name"
-                        value={this.state.user["Last Name"]}
-                        onChange={(e) =>{
-                          this.setUser(e.target.name, e.target.value)
-                        }}
-                      />
+                      <div className="signup_signinput_box">
+                        <input
+                          className="signinput signup_signinput"
+                          type="text"
+                          name="First Name"
+                          placeholder="First Name"
+                          value={this.state.user["First Name"]}
+                          onChange={(e) => {
+                            this.setUser(e.target.name, e.target.value)
+                          }}
+                        />
+                        <input
+                          className="signinput signup_signinput"
+                          type="text"
+                          name="Last Name"
+                          placeholder="Last Name"
+                          value={this.state.user["Last Name"]}
+                          onChange={(e) => {
+                            this.setUser(e.target.name, e.target.value)
+                          }}
+                        />
+                      </div>
                       <input
                         className="signinput"
                         type="email"
                         placeholder="Email-address"
                         name="Email"
                         value={this.state.user.Email}
-                        onChange={(e) =>{
+                        onChange={(e) => {
                           this.setUser(e.target.name, e.target.value)
                         }}
                       />
-                      <input
-                        className="signinput"
-                        type="text"
-                        name="Password"
-                        placeholder="Enter Password"
-                        value={this.state.user.Password}
-                        onChange={(e) =>{
-                          this.setUser(e.target.name, e.target.value)
-                        }}
-                      />
-                      <input
-                        className="signinput"
-                        type="text"
-                        name="Confirm"
-                        value={this.state.user.Confirm}
-                        placeholder="Re-enter password"
-                        onChange={(e) =>{
-                          this.setUser(e.target.name, e.target.value)
-                        }}
-                      />
+                      <div className="signup_signinput_box">
+                        <input
+                          className="signinput signup_signinput"
+                          type="text"
+                          name="Password"
+                          placeholder="Enter Password"
+                          value={this.state.user.Password}
+                          onChange={(e) => {
+                            this.setUser(e.target.name, e.target.value)
+                          }}
+                        />
+                        <input
+                          className="signinput signup_signinput"
+                          type="text"
+                          name="Confirm"
+                          value={this.state.user.Confirm}
+                          placeholder="Re-enter password"
+                          onChange={(e) => {
+                            this.setUser(e.target.name, e.target.value)
+                          }}
+                        />
+                      </div>
                       <button className="signButton" onClick={(e) => {
-                          e.preventDefault();
-                          this.signUp();
-                        }}>SIGN - UP</button>
+                        e.preventDefault();
+                        this.signUp();
+                      }}>SIGN - UP</button>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="modal-footer googleface">
                 <p className="orWord">OR</p>
+                <div className="social_signin">
                 <button type="button" className="btn signgoogle">
+                <span className="large_screen_text_425">
                   Sign in with google
+                  </span>
+                  <span className="small_screen_text_425">
+                  Google
+                  </span>
                 </button>
                 <button type="button" className="btn signface">
+                <span className="large_screen_text_425">
                   Sign in with Facebook
+                  </span>
+                  <span className="small_screen_text_425">
+                  Facebook
+                  </span>
                 </button>
+                </div>
               </div>
             </div>
           </div>
