@@ -29,10 +29,7 @@ class Cart extends Component {
                     <CartItem />
                 </div>
                 <Billinginfo />
-                <div className="buttons_cart_continue">
-                    <button className="button_blog_one"> Continue Shopping</button>
-                    <Link to='/payment'><button className="button_blog_two">Proceed to Payment</button></Link>
-                </div>
+            
                 <div className="most_view_box">
                     <p className="most_viewd_text">RECENTLY VIEWED</p>
                     <hr id="line_view"></hr>

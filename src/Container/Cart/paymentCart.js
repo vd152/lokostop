@@ -6,14 +6,27 @@ import './paymentCart.css'
 import './PaymentNet.css'
 import { FaShippingFast, FaRegClock } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
-import { MdSettingsBackupRestore, MdPayment } from "react-icons/md";
 import { Link } from 'react-router-dom'
 import CreditCard from './CreditCard'
 import DebitCard from './DebitCard'
 import NetBank from './NetBank'
 import Wallet from './Wallet'
-export class paymentCart extends Component {
+import Loader from '../Loader/Loader'
+import { connect } from "react-redux";
+import {
+    getFeatures,
+  } from "../../Redux/Actions/StorefrontActions";
+
+ class paymentCart extends Component {
+     componentDidMount() {
+         this.props.getFeatures()
+     }
     render() {
+        if (
+            this.props.featuresLoading 
+          ) {
+            return <Loader />;
+          } else
         return (
             <div>
                 <Header01 />
@@ -79,37 +92,33 @@ export class paymentCart extends Component {
                                 <p><b>Rs. 45,289.00</b></p>
                             </div>
                         </div>
-                        <div className="Free_boxpay">
-                            <div className="Free_Shipping">
-                                <FaShippingFast id="shipping_Icon" />
-                                <div className="shipping_text">
-                                    <p className="shipping_text1">Free shipping</p>
-                                    <p className="shipping_text2">On orders over Rs. 30,000</p>
-                                </div>
-                            </div>
-                            <div className="Free_Shipping">
-                                <MdSettingsBackupRestore id="shipping_Icon" />
-                                <div className="shipping_text">
-                                    <p className="shipping_text1">Free returns</p>
-                                    <p className="shipping_text2">Returns are free within 9 days</p>
-                                </div>
-                            </div>
-                            <div className="Free_Shipping">
-                                <MdPayment id="shipping_Icon" />
-                                <div className="shipping_text">
-                                    <p className="shipping_text1">100% Secure Payments</p>
-                                    <p className="shipping_text2">Your payment are safe with us</p>
-                                </div>
-                            </div>
-                            <div className="Free_Shipping">
-                                <FaRegClock id="shipping_Icon" />
-                                <div className="shipping_text">
-                                    <p className="shipping_text1">Support 24/7</p>
-                                    <p className="shipping_text2">Contact us 24 hours a day</p>
-                                </div>
-                            </div>
-                        </div>
+                        {this.props.allFeatures.Features &&
+          this.props.allFeatures.Features.SectionStatus ? (
+            <div className="Free_box d-block m-0 w-100">
+              {this.props.allFeatures.Features.Features.filter((feature) => {
+                if (
+                  feature.Icon != "" &&
+                  feature.SubTitle != "" &&
+                  feature.Title != ""
+                )
+                  return true;
+                return false;
+              }).map((feature, key) => {
+                return (
+                  <div className="Free_Shipping" key={key}>
+                    <FaShippingFast id="shipping_Icon" />
+                    <div className="shipping_text">
+                      <p className="shipping_text1">{feature.Title}</p>
+                      <p className="shipping_text2">{feature.SubTitle}</p>
                     </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            ""
+          )}
+                   </div>
                 </div>
 
                 <Footer />
@@ -118,4 +127,10 @@ export class paymentCart extends Component {
     }
 }
 
-export default paymentCart
+const mapStateToProps = (state) => {
+    return {
+      featuresLoading: state.getFeatures.loading,
+      allFeatures: state.getFeatures.features,
+    };
+  };
+  export default connect(mapStateToProps, {getFeatures})(paymentCart);

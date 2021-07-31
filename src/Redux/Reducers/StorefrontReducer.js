@@ -1,5 +1,27 @@
 import * as actionTypes from '../Constants/StorefrontConstants'
 
+export const getGeneralReducer = (state = { store: {}}, action) => {
+    switch(action.type){
+        case actionTypes.GET_GENERAL_REQUEST:
+            return{
+                loading: true,
+                store: { }
+            }
+        case actionTypes.GET_GENERAL_SUCCESS:
+            return {
+                loading: false,
+                store: action.payload
+            }
+        case actionTypes.GET_GENERAL_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}
+
 export const getFooterReducer = (state = { footerData: {}}, action) => {
     switch(action.type){
         case actionTypes.GET_FOOTER_REQUEST:
