@@ -1,8 +1,7 @@
-import './Footer.css'; import { FaPhoneAlt, FaFacebookF, FaInstagram } from "react-icons/fa";
-import { RiCopyrightLine } from "react-icons/ri";
+import './Footer.css'; 
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-
+import { Link } from 'react-router-dom'
 
 export class Footer extends Component {
     state = {
@@ -52,9 +51,9 @@ export class Footer extends Component {
                         </div>
                         <div className="box_one_area_2">
                             <p>HELP DESK</p>
-                            <ul>
-                                <li>Terms of Use</li>
-                                <li> Privacy Policy</li>
+                            <ul> 
+                                <li>{this.props.store && this.props.store.TermsConditionsPage? <Link to={"/page/"+this.props.store.TermsConditionsPage.url}>Terms of Use</Link>:""}</li>
+                                <li>{this.props.store && this.props.store.PrivacyPolicyPage? <Link to={"/page/"+this.props.store.PrivacyPolicyPage.url}>Priavcy Policy</Link>:""}</li>
                                 <li>Payments and Returns</li>
                                 <li>Shipping option</li>
                                 <li>Help/FAQ</li>
@@ -111,7 +110,8 @@ export class Footer extends Component {
 const mapStateToProps = state =>{
     return {       
         footerData: state.getFooter.footerData,
-        footerLoading: state.getFooter.loading
+        footerLoading: state.getFooter.loading,
+        store: state.getStore.store
     }
 }
 export default connect(mapStateToProps)(Footer)

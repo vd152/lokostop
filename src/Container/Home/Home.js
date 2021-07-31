@@ -21,6 +21,7 @@ import {
   getProductTabs,
   getBanners
 } from "../../Redux/Actions/StorefrontActions";
+import TwoColBanner from "../Component/Slider/TwoColBanner";
 class Home extends Component {  
   state = {
     products: [],
@@ -59,7 +60,7 @@ class Home extends Component {
               }).map((feature, key) => {
                 return (
                   <div className="Free_Shipping" key={key}>
-                    <FaShippingFast id="shipping_Icon" />
+                    <i className={feature.Icon}></i>
                     <div className="shipping_text">
                       <p className="shipping_text1">{feature.Title}</p>
                       <p className="shipping_text2">{feature.SubTitle}</p>
@@ -76,6 +77,7 @@ class Home extends Component {
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[0]} />
           <MostViewedBox />
           <FindByCategory />
+          <TwoColBanner />
           <CategoryBox />
           <TopClients />
           <ClientImage />

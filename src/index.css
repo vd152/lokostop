@@ -45,3 +45,11 @@ code {
     margin: 20px 0;
     display: inline-block;}
 	.contant_box_404{ margin-top:-50px;}
+  .two-col-banner{
+    justify-content: center;
+    height: 32vw !important
+  }
+  .two-col-banner .two-banner{
+    width: 45%;
+    margin: 1em;
+  }

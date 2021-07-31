@@ -18,6 +18,9 @@
   justify-content: space-around;
   padding: 1vw;
 }
+.Free_box i{
+  font-size: 35px
+}
 .Free_Shipping {
   width: 17.716vw;
   height: 3.294vw;
@@ -1011,6 +1014,9 @@
   font-size: 1.3vw;
 }
 @media (max-width: 768px) {
+  .Free_box i{
+    font-size: 25px
+  }
   .particular_popular_categories {
     width: 20.059vw;
     margin: 0.732vw;
