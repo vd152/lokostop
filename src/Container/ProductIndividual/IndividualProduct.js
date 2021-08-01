@@ -13,6 +13,7 @@ import { IoIosArrowBack, IoIosArrowForward, IoIosAttach } from "react-icons/io";
 import {connect} from 'react-redux'
 import { getProductDetails} from '../../Redux/Actions/ProductActions'
 import Loader from '../Loader/Loader';
+import api from '../../Apis/api'
 
 class IndividualProduct extends Component {
     state ={
@@ -28,12 +29,24 @@ class IndividualProduct extends Component {
                     name: "--",
                     _d: "--"
                 }
-            ]
-        }
+            ],
+            attributes:[]
+        },
+        review: {
+
+        },
+        productReviews: [],
     }
-    async componentDidMount(){
-        await this.props.getProductDetails(this.props.match.params.id)
+     componentDidMount(){
+         this.props.getProductDetails(this.props.match.params.id)
         this.setState({productDetails: this.props.productDetails?this.props.productDetails:this.state.productDetails})
+        let url = '/review/get/product/'+this.props.match.params.id
+        api.get(url).then(res=>{
+            console.log(res.data.data)
+            this.setState({productReviews: res.data.data})
+        }).catch(err=>{
+            console.log(err)
+        })
     }
     render() {
         if(this.props.productLoading){
@@ -64,10 +77,12 @@ class IndividualProduct extends Component {
                         </div>
                         <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div className="specification_outer_box">
-                                <div className='particularSpecification'>
-                                    <h6>Heading 1</h6>
-                                    <p>Lorem ipsum dolor sit amet. </p>
+                                {this.state.productDetails.attributes.map((attribute,key)=>{
+                                    return <div className='particularSpecification' key={key}>
+                                    <h6>{attribute.attribute.name}</h6>
+                                    <p>{attribute.value.join(", ")} </p>
                                 </div>
+                                })}
                             </div>
                         </div>
                         <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
@@ -94,10 +109,10 @@ class IndividualProduct extends Component {
                                     </div>
                                     <button className="review_button">Post Review</button>
                                 </div>
-                                <ShowReview />
-                                <ShowReview />
-                                <ShowReview />
-                                <ShowReview />
+                                {this.state.productReviews.map((review, key)=>{
+                                    return <ShowReview key={key} review={review}/>
+                                })}
+                                
                             </div></div>
                     </div>
 

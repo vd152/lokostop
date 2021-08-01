@@ -142,23 +142,29 @@ class FindByCategory extends React.Component {
              </div>
             </div>
             <div className="centre_first_part1">
-              <div className="drop">
+              
+              <div className="dropdown" style={{width:'auto'}}>
                 <button
-                  className="dropbtn1"
+                 className="btn  dropdown-toggle"
+                 type="button"
+                 id="dropdownButton2"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false"
                 >
                   {this.state.selectedBrand.name == ""? "Brands": this.state.selectedBrand.name}
                 </button>
-                <div style={{ left: "-1vw" }} className="dropdown-content1">
-                  {!this.props.brandLoading && this.props.brands.map((brand, key)=>{
-                    return <p key={key} onClick={(e)=>{
+                <ul className="dropdown-menu" aria-labelledby="dropdownButton2">
+                {!this.props.brandLoading && this.props.brands.map((brand, key)=>{
+                    return <li key={key} onClick={(e)=>{
                       const {selectedBrand} = this.state
                       selectedBrand.id = brand._id
                       selectedBrand.name = brand.name
                       selectedBrand.url = brand.url
                       this.setState({selectedBrand})
-                    }}>{brand.name}</p>
-                  })}                  
-                </div>
+                    }}>{brand.name}</li>
+                  })} 
+                </ul>
+
               </div>
               
             </div>

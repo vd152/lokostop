@@ -209,9 +209,7 @@
   width: 75.403vw;
   height: auto;
   margin-left: 1.977vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+
   margin-top: 2.343vw;
 }
 .particularSpecification {

@@ -172,12 +172,10 @@ class Header02 extends Component {
                 </li>
                 {this.state.menus.map((menu, key) => {
                   return (
-                    <React.Fragment>
-                      <li className="nav-item dropdown d-flex align-items-center">
+                      <li className="nav-item dropdown d-flex align-items-center" key={key}>
                         {menu.title}
                         <ul className="dropdown-menu ">{menu.content}</ul>
                       </li>
-                    </React.Fragment>
                   );
                 })}
                 <li className="nav-item">
