@@ -1600,8 +1600,9 @@
     padding-top: 2vw;
   }
   .category_name_product {
-    font: normal normal normal 1.2vw/1.464vw Poppins;
+    font: normal normal normal 2vw/1.464vw Poppins;
     margin-bottom: 6%;
+    width: auto;
   }
   .image_2_1 {
     margin-top: -2.17vw;
@@ -1787,7 +1788,9 @@
     font-size: 2.8vw !important;
   }
   .cart_button {
-    width: 13.347vw;
+    font-size: 2.1vw;
+    width: 15.867vw;
+    height: 5.5vw;
   }
   .offers {
     height: 4.5vw;

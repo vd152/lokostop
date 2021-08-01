@@ -105,6 +105,10 @@
 .signButton:hover {
   color: black;
 }
+
+.social_signin{
+  text-align: center;
+}
 @media (max-width: 768px){
   .imagevl {
     font: normal normal normal 1.1vw/1.061vw Poppins;
@@ -304,6 +308,10 @@
   #profile_icon{
     font-size: 6.1vw;
     margin-left: 1.45vw;
+  }
+
+  .filterbox{
+    width: 40vw;
   }
 }
 

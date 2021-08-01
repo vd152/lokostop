@@ -403,23 +403,192 @@ cursor: pointer;
 }
 @media(max-width:425px){
   .product_individual_detail_line{
+    width: 60vw;
     margin-bottom: 1vw;
     margin-top: 0;
+    margin-left: 8vw;
   }
-  .pay_via{margin-bottom: 2vw;}
+  .pay_via{
+    margin-bottom: 2vw;
+    width: 75vw;
+  }
+
+  .individual_save_text{
+    font-size: 3.5vw;
+  }
+
+  .logo2pay{
+    width: 60vw;
+    height: 8vw;
+  }
+  .logo2pay ul li{
+    height: 7vw;
+    width: 7vw;
+  }
+
   .roundCircle img{
-    margin-top: -3vw;
+    margin-top: 0vw;
   }
   .individualproduct_detail_outer_box{
+    flex-direction: column;
     margin-left: 10.49vw;
     margin-top: 2.928vw;
     margin-bottom: 3vw;
   }
+
+  .similar_product_images{
+    flex-direction: row;
+    width: 100%;
+    height: 10vw;
+  }
+
+  .product_big_image_cart_compare {
+    height: 60vw;
+    width: 60vw;
+    margin-left: 15vw;
+    display: flex;
+    flex-direction: column;
+}
+
+  .review_outer_box {
+    height: 50vw;
+  }
+
+  .read_review{
+    font-size: 3vw;
+    margin-top: 3vw !important;
+  }
+
+  .review_star{
+    height: 5vw;
+    width: 20vw;
+    margin-left: 55vw;
+    margin-bottom: 0.5vw;
+  }
+
+  #star_feature_next{
+    height: 4vw;
+    width: 4vw;
+  }
+
+  .write_review{
+    width: 75vw;
+    flex-direction: column;
+    margin-left: 4vw;
+  }
+
+  .customer_review{
+    width: 70vw;
+    height: 15vw;
+    margin-bottom: 2vw;
+  }
+
+  .commentBox{
+    width: 60vw;
+    font:normal normal normal 3vw/3.5vw Poppins;
+  }
+
+  .count_attach{
+    width: 10vw;
+    height: 15vw;
+    padding-top: 1vw;
+    text-align: right;
+    padding-right: 2vw;
+  }
+
+  .attach{
+    font-size: 3.5vw;
+    margin-left: 5vw;
+  }
+
+  .no_count{
+    font-size: 2.5vw;
+  }
+
+  .review_button {
+    width: 35vw;
+    height: 8vw;
+    margin-left: 35vw;
+    font: normal normal normal 3.5vw/1.684vw Poppins;
+
+  }
+
+  .showReview {
+    width: 75vw;
+    margin-top: 5vw;
+    margin-left: 4vw;
+    padding-bottom: 2vw;
+  }
+
+  .roundCircle{
+    height: 7vw;
+    width: 7vw;
+  }
+
+  .personName{
+    width: 35vw;
+    font-size: 3vw;
+    padding-top: 1.5vw;
+    padding-left: 2vw;
+  }
+
+  .reviewNo{
+    font-size: 3vw;
+    padding-top: 1.5vw;
+    margin-left: 23vw;
+  }
+
+  .show_review_star{
+    height: 4vw !important;
+    width: 4vw !important;
+    margin-left: 2vw;
+  }
+
+  .reviewShow{
+    margin-top: 2vw;
+    font:normal normal normal 2.75vw/3vw Poppins;
+    margin-bottom: 3vw;
+  }
+
+  .reviewImage{
+    width: 65vw;
+    height: 20vw;
+    margin-left: 5vw;
+    margin-bottom: 3vw;
+  }
+  
   .name_of_the_particular_product{
-    font: normal normal normal 1.564vw/1.830vw Poppins;
+    font: normal normal normal 4vw/1.830vw Poppins;
+    height: 5vw;
+    width: 75vw;
+    text-align: center;
+    padding-top: 1vw;
+  }
+
+  .category_of_that_particular_product_box{
+    display: flex;
+    flex-direction: row;
+    width: 75vw;
+    justify-content: space-evenly;
   }
   .category_of_that_particular_product{
-    font: normal normal normal 1.1vw/1.464vw Poppins;
+    font: normal normal normal 2.5vw/1.464vw Poppins;
+    height: 3vw;
+    width: 25vw;
+    text-align: center;
+  }
+
+  .individual_rating_product{
+    width: 50vw;
+    height: 4vw;
+    text-align: center;
+    margin-left: 25vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+  }
+
+  .individual_text_rating{
+    font-size: 3vw;
   }
   .details_box_margin {
     margin-left: 0.952vw;
@@ -427,11 +596,123 @@ cursor: pointer;
     flex-direction: column;
     justify-content: space-around;
     margin-bottom: 4%;
-    height: 22vw;
-    margin-top: -0.366vw;
+    height: auto;
+    margin-top: 5vw;
 }
-.big_image{
-  width: 27.965vw;
-  height: 35.015vw;
-}
+  .big_image{
+    width: 50vw;
+    height: 50vw;
+  }
+
+  .review_main_with_specification {
+    border: 0.073vw solid #bdbdbd;
+    padding: 1%;
+    margin-left: 4.685vw;
+    margin-bottom: 10vw;
+    margin-top: 6vw;
+    padding-bottom: 4vw;
+  }
+
+  .individual_product_nav_item{
+    font-size: 3.5vw !important;
+    padding-left: 2vw;
+  }
+
+  .particularSpecification h6{
+    font-size: 3.2vw;
+  }
+
+  .particularSpecification p{
+    font-size: 2.9vw;
+  }
+
+  .details_of_individual_product_with_rating {
+    height: auto;
+    width: 75vw;
+    margin-left: 2.343vw;
+    margin-top: 2vw;
+  }
+
+  .Individual_free_box{
+    width: 90vw !important;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -6vw !important;
+  }
+
+  .individual_mrp_text{
+    font-size: 4vw;
+    width: 15vw;
+    height: auto;
+  }
+
+  .individual_price_of_the_product{
+    font-size: 3.5vw;
+  }
+
+  .individual_price_box_discount{
+    width: 50vw;
+    height: 4vw;
+    text-align: center;
+    margin-left: 12vw;
+    margin-top: 0vw;
+  }
+
+  .individual_our_price_text{
+    font-size: 4vw;
+    width: 25vw;
+    height: auto;
+  }
+
+  .individual_price_of_the_product_after_discount{
+    font-size: 3.5vw;
+  }
+
+  .individual_discount_box_in_compare{
+    width: 50vw;
+    height: 4vw;
+    text-align: center;
+    margin-left: 13vw;
+    margin-top: 1vw;
+  }
+
+  .individual_discount_text_product{
+    font-size: 4vw;
+    width: 25vw;
+    height: auto;
+  }
+
+  .individual_how_much_discount{
+    font-size: 3vw;
+    padding: 0.5vw;
+    margin-left: 1vw;
+  }
+
+  .individual_save_box{
+    width: 50vw;
+    height: 4vw !important;
+    text-align: center;
+    margin-left: 20vw;
+    margin-top: 2vw;
+  }
+
+  .individual_discount_amount{
+    font-size: 3vw;
+  }
+
+  .individual_color_text{
+    font-size: 3.5vw;
+  }
+
+  .individual_dropdown_colors{
+    height: 5vw;
+    margin-top: -1.5vw;
+    font-size: 3vw;
+  }
+
+  .individual_product-qty{
+    width: 15vw;
+    height: 4vw;
+    margin-top: -1vw;
+  }
 }

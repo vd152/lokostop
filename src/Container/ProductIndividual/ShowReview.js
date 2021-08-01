@@ -13,6 +13,7 @@ import React, { Component } from 'react'
                 <div className="personName">{this.props.review.reviewerName}</div>
                 <div className="reviewNo">{this.props.review.rating}</div>
                 <AiFillStar
+                    className="show_review_star"
                     style={{
                         height: "1.245vw",
                         width: "1.245vw",
