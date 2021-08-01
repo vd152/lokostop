@@ -1,21 +1,9 @@
-import "./Header02.css";
+import "./Header2.css";
 import { MdLocalPhone, MdEmail } from "react-icons/md";
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { FiMenu } from "react-icons/fi";
-import { IoIosArrowForward, IoIosHeart } from "react-icons/io";
-import Loader from '../../Loader/Loader'
-import { Dropdown } from "react-bootstrap"
-
-// function opennav() {
-//     var x = document.getElementsByClassName("navvvvul");
-//     if (x.style.display === "none") {
-//         x.style.display = "block";
-//     } else {
-//         x.style.display = "none";
-//     }
-// }
+import Loader from "../../Loader/Loader";
 
 class Header02 extends Component {
   state = {
@@ -23,20 +11,26 @@ class Header02 extends Component {
   };
   setMenuLink = (item) => {
     if (item.type == "URL") {
-      return item.url
+      return item.url;
     } else if (item.type == "Page") {
-      return "/page/" + item.page.url
+      return "/page/" + item.page.url;
     } else if (item.type == "Category") {
-      let url = "/categories/"+item.category.name +"/" + item.category.url + "/" + item.category._id
-      return url
+      let url =
+        "/categories/" +
+        item.category.name +
+        "/" +
+        item.category.url +
+        "/" +
+        item.category._id;
+      return url;
     }
-  }
+  };
   componentDidMount() {
     const { menus } = this.state;
     const setCategories = (root, key) => {
       if (root.childrenMenu.length == 0) {
         return (
-          <li key={key}>
+          <li key={key} className="dropstart ">
             <Link
               style={{
                 background: "transparent",
@@ -53,7 +47,7 @@ class Header02 extends Component {
         );
       } else
         return (
-          <li key={key}>
+          <li key={key} className="dropdown ">
             <Link
               style={{
                 background: "transparent",
@@ -66,10 +60,16 @@ class Header02 extends Component {
             >
               {root.name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <IoIosArrowForward className="ForwardArrow" />
             </Link>
+
+            <a
+              className=" dropdown-toggle toggler"
+              href="#"
+              data-bs-toggle="dropdown"
+              data-bs-auto-close="outside"
+            ></a>
             {root.childrenMenu.length > 0 ? (
-              <ul className="dropdown-menu dropdown-submenu">
+              <ul className="dropdown-menu ">
                 {root.childrenMenu.map((child, key2) => {
                   return setCategories(child, key2);
                 })}
@@ -90,19 +90,17 @@ class Header02 extends Component {
                 background: "transparent",
                 color: "#1D1D1D",
               }}
+              className="nav-link active"
               to={this.setMenuLink(menu)}
             >
               {menu.name}
             </Link>
-            <button
-              style={{ fontWeight: "bold" }}
-              className="btn  dropdown-toggle"
-              type="button"
-              id={"dropdownMenuButton" + key}
+            <a
+              className=" dropdown-toggle toggler"
+              href="#"
               data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-            </button>
+              data-bs-auto-close="outside"
+            ></a>
           </React.Fragment>
         );
         menu.childrenMenu.forEach((menuItem, key) => {
@@ -117,7 +115,7 @@ class Header02 extends Component {
               display: "flex",
               justifyContent: "space-between",
             }}
-            className={"dropdown-item"}
+            className="nav-link "
             to={this.setMenuLink(menu)}
           >
             {menu.name}
@@ -131,152 +129,87 @@ class Header02 extends Component {
     this.setState({ menus });
   }
   render() {
-    if (
-      this.props.menuLoading
-    ) {
+    if (this.props.menuLoading) {
       return <Loader />;
     } else
       return (
-        <div className="Header_two">
-          {/* <input type="checkbox" id="check"></input>
-                <button className="checkbtn" ><FiMenu /></button> */}
-
-          <div className="logo">
-            <img
-              src={
-                this.props.logos && this.props.logos.Logo
-                  ? "https://api.lokostop.in/" +
-                  this.props.logos.Logo.HeaderLogo.image
-                  : ""
-              }
-              alt="Reload"
-            />
-          </div>
-          <div className="navbar large_screen_text">
-            <ul className="navvvvul">
-            <li className="navli">
-              <Link to="/">
-                Home
-              </Link>
-              </li>
-              {this.state.menus.map((menu, key) => {
-                return (
-                  <li className="navli" key={key}>
-                    <div className="dropdown">
-                      {menu.title}
-                      <ul
-                        className="dropdown-menu "
-                        aria-labelledby="dropdownMenuButton1"
-                      >
-                        {menu.content}
-                      </ul>
-                    </div>
-                  </li>
-                );
-              })}
-              {/* <Link to='/aboutUs'><li className="navli">About us</li></Link> */}
-              <li className="navli">
-              <Link to="/sendquery">
-                Send query
-              </Link>
-              </li>
-              <li className="navli">
-
-              <Link to="/profile">
-                Complaint
-              </Link>
-              </li>
-              <li className="navli">
-
-              <Link to="/blogs">
-                Blogs
-              </Link>
-              </li>
-            </ul>
-          </div>
-          <div className="Navbar_hamburger">
-            <Dropdown>
-              <Dropdown.Toggle className="Dropdown_toggle_button" id="dropdown-basic">
-                <FiMenu className="Hamburger_icon" />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item className="Dropdown_items_link">
-                  <Link to="/">
-                    <li className="navli">Home</li>
+        <nav className="navbar navbar-expand-lg navbar-light  ">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="#">
+              <div className="logo">
+                <img
+                  src={
+                    this.props.logos && this.props.logos.Logo
+                      ? "https://api.lokostop.in/" +
+                        this.props.logos.Logo.HeaderLogo.image
+                      : ""
+                  }
+                  height="40"
+                  alt="Reload"
+                />
+              </div>
+            </a>
+            <button
+              className="navbar-toggler collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbar-content"
+            >
+              <div className="hamburger-toggle">
+                <div className="hamburger">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+              </div>
+            </button>
+            <div className="collapse navbar-collapse " id="navbar-content">
+              <ul className="navbar-nav mr-auto mb-2 mb-lg-0 m-auto">
+                <li className="nav-item">
+                  <Link to="/" className="nav-link active">
+                    Home
                   </Link>
-                </Dropdown.Item>
+                </li>
                 {this.state.menus.map((menu, key) => {
                   return (
-                    <Dropdown.Item className="Dropdown_items_link" key={key}>
-                      <li className="navli" key={key}>
-                          <div className="dropdown">
-                              {menu.title}
-                              <ul
-                                className="dropdown-menu "
-                                aria-labelledby="dropdownMenuButton1"
-                              >
-                                {menu.content}
-                              </ul>
-                          </div>
-                      </li> 
-                    </Dropdown.Item>
+                    <React.Fragment>
+                      <li className="nav-item dropdown d-flex align-items-center">
+                        {menu.title}
+                        <ul className="dropdown-menu ">{menu.content}</ul>
+                      </li>
+                    </React.Fragment>
                   );
                 })}
-                <Dropdown.Item className="Dropdown_items_link">
-                  <Link to="/sendquery">
-                    <li className="navli">Send query</li>
+                <li className="nav-item">
+                  <Link to="/sendquery" className="nav-link">
+                    Send query
                   </Link>
-                </Dropdown.Item>
-                <Dropdown.Item className="Dropdown_items_link">
-                  <Link to="/profile">
-                    <li className="navli">Complaint</li>
+                </li>
+                <li className="nav-item">
+                  <Link to="/profile" className="nav-link">
+                    Complaint
                   </Link>
-                </Dropdown.Item>
-                <Dropdown.Item className="Dropdown_items_link">
-                  <Link to="/blogs">
-                    <li className="navli">Blogs</li>
+                </li>
+                <li className="nav-item">
+                  <Link to="/blogs" className="nav-link">
+                    Blogs
                   </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-          {/* <nav className="navbar navbar-light">
-            <div className="container-fluid">
-              <div className="navbar-header">
-                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                </button>
-                <a className="navbar-brand" href="#">WebSiteName</a>
-              </div>
-              <div className="collapse navbar-collapse" id="myNavbar">
-                <ul className="nav navbar-nav">
-                  <li className="active"><a href="#">Home</a></li>
-                  <li><a href="#">Page 1</a></li>
-                  <li><a href="#">Page 2</a></li>
-                  <li><a href="#">Page 3</a></li>
-                </ul>
-                <ul className="nav navbar-nav navbar-right">
-                  <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                  <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-              </div>
-            </div>
-          </nav> */}
+                </li>
+              </ul>
 
-          <div className="Header_two_part3">
-            <div className="mobile_part">
-              <p>+91-9898989898</p>
-              <MdLocalPhone id="phone" />
-            </div>
-            <div className="email_part">
-              <p>sidhuelectronics1@gmail.com</p>
-              <MdEmail id="mail" />
+              <div className="">
+                <div className="mobile_part d-flex flex-row-reverse">
+                  <p>+91-9898989898</p>
+                  <MdLocalPhone id="phone" />
+                </div>
+                <div className="email_part d-flex flex-row-reverse">
+                  <p>sidhuelectronics1@gmail.com</p>
+                  <MdEmail id="mail" />
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </nav>
       );
   }
 }
