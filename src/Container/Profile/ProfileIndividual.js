@@ -78,20 +78,20 @@ class ProfileIndividual extends Component {
                     <div className="firstboxprofile_r small_screen_text">
                     <div className="name_individual_Hi">
                             <div className="image_user1" ><img   alt='reload' style={{ cursor: 'pointer' }} src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></img></div>
-                            <div className="name_hi">
+                            <div className="name_hi mt-2">
                                 <p className="himessage">Hi,</p>
-                                <p>ABCDEF</p>
+                                <p className="himessage">ABCDEF</p>
                             </div>
                         </div>
                         <div className="Order_Section" >
                             <FaBox ></FaBox>
                             <p>MY ORDERS</p>
                         </div>
-                        <div className="Account_Section" >
+                        <div className="Account_Section dropdown" >
                             <MdAccountCircle className="mdAccountCircle"></MdAccountCircle>
-                            <p>ACCOUNT SETTINGS</p>
-                        </div>
-                        <div>
+                            <p className="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">ACCOUNT SETTINGS</p>
+
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <div className="nav flex-row nav-pills me-3 navcolor" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                 <button className="nav-link active pillval" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Personal Information</button>
                                 <button className="nav-link pillval" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">My Address</button>
@@ -99,6 +99,8 @@ class ProfileIndividual extends Component {
                                 <button className="nav-link pillval" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">My Complaints</button>
                             </div>
                         </div>
+                        </div>
+                       
                     </div>
                     {/* Responsiveness */}
 
