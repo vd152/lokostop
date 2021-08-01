@@ -109,9 +109,13 @@
   display: flex;
 }
 .logo2pay {
-  width: 25.769vw;
-  height: 3.514vw;
+  width: 60%;
+  height: 100%;
   margin-top: 0;
+}
+.logo2pay img{
+  width: -webkit-fill-available;
+  height: 100%
 }
 .logo2pay ul {
   padding-left: 0;
@@ -273,6 +277,7 @@ height: 1.903vw;
 color: #cdcdcd;
 cursor: pointer;
 }
+
 .write_review {
 width: 65.739vw;
 height: auto;
@@ -419,8 +424,8 @@ cursor: pointer;
 
   .logo2pay{
     width: 60vw;
-    height: 8vw;
   }
+  
   .logo2pay ul li{
     height: 7vw;
     width: 7vw;
@@ -582,13 +587,14 @@ cursor: pointer;
     width: 50vw;
     height: 4vw;
     text-align: center;
-    margin-left: 25vw;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
+    /* margin-left: 25vw; */
+    margin: 1vw auto;
+    
   }
 
   .individual_text_rating{
     font-size: 3vw;
+    width: 100%
   }
   .details_box_margin {
     margin-left: 0.952vw;

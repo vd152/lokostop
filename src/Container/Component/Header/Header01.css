@@ -355,8 +355,9 @@
     position: relative;
     margin-left: 2.8vw;
     margin-top: 0.25vw;
-    padding-top: 0.15vw;
-    font: normal normal normal 1.1vw/1.061vw Poppins;
+    font-size: 0.9em;
+    padding: 0.6em 0.2em;
+    /* font: normal normal normal 1.1vw/1.061vw Poppins; */
   }
 
   .Favorites {
@@ -437,10 +438,9 @@
     position: relative;
     margin-left: 4.6vw;
     margin-top: 0.25vw;
-    padding-top: 0.25vw;
-    padding-left: 0.2vw;
-    padding-right: 0.2vw;
-    font: normal normal normal 1.2vw/1.061vw Poppins;
+    font-size: 0.9em;
+    padding: 0.6em 0.2em; 
+    /* font: normal normal normal 1.2vw/1.061vw Poppins; */
   }
 
   .Favorites p {
@@ -518,10 +518,9 @@
     position: relative;
     margin-left: 5.6vw;
     margin-top: 0.5vw;
-    padding-top: 0.3vw;
-    padding-left: 0.2vw;
-    padding-right: 0.2vw;
-    font: normal normal normal 1.4vw/1.061vw Poppins;
+    font-size: 0.9em;
+    padding: 0.6em 0.2em;
+    /* font: normal normal normal 1.4vw/1.061vw Poppins; */
   }
 
   .Favorites {
@@ -605,10 +604,9 @@
     position: relative;
     margin-left: 5.1vw;
     margin-top: 0.45vw;
-    padding-top: 0.3vw;
-    padding-left: 0.25vw;
-    padding-right: 0.2vw;
-    font: normal normal normal 1.25vw/1.061vw Poppins;
+    font-size: 0.9em;
+    padding: 0.6em 0.2em;
+    /* font: normal normal normal 1.25vw/1.061vw Poppins; */
   }
   .Favorites{
     width: 7.2vw;
