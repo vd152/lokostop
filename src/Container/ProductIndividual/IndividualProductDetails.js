@@ -5,7 +5,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import React, { Component } from "react";
 
 class IndividualProductDetails extends Component {
-  state={
+  state = {
     productId: this.props.productDetails._id,
     qty: 0
   }
@@ -13,34 +13,34 @@ class IndividualProductDetails extends Component {
     return (
       <div>
         <div className="Heading_about">
-                    <p>PRODUCT DETAILS</p>
-                    <hr />
-                </div>
+          <p>PRODUCT DETAILS</p>
+          <hr />
+        </div>
         <div className="individualproduct_detail_outer_box">
-            {this.props.productDetails.additionalImages.length > 0 ?
-          <div className="similar_product_images">
-            <IoIosArrowUp id="upIconNew" />
-            <div className="similar_image_three_image_box">
-            {this.props.productDetails.additionalImages.map((image,key)=>{
-              return <img
-              key={key}
-              className="similar_particular_image"
-              src={"https://api.lokostop.in/"+image.image}
-              alt="RELOAD"
-            />
-            })}
-          </div>
-            
-            <IoIosArrowDown
-            id="upIconNew"
-            style={{ marginTop: "1.684vw" }}
-            ></IoIosArrowDown>
-          </div>
+          {this.props.productDetails.additionalImages.length > 0 ?
+            <div className="similar_product_images">
+              <IoIosArrowUp id="upIconNew" />
+              <div className="similar_image_three_image_box">
+                {this.props.productDetails.additionalImages.map((image, key) => {
+                  return <img
+                    key={key}
+                    className="similar_particular_image"
+                    src={"https://api.lokostop.in/" + image.image}
+                    alt="RELOAD"
+                  />
+                })}
+              </div>
+
+              <IoIosArrowDown
+                id="upIconNew"
+                style={{ marginTop: "1.684vw" }}
+              ></IoIosArrowDown>
+            </div>
             : ""}
           <div className="product_big_image_cart_compare">
             <img
               className="big_image"
-              src={"https://api.lokostop.in/"+this.props.productDetails.baseImage.image}
+              src={"https://api.lokostop.in/" + this.props.productDetails.baseImage.image}
               alt="Loading"
             />
             <div
@@ -48,7 +48,9 @@ class IndividualProductDetails extends Component {
               style={{ marginTop: "1.025vw", marginLeft: "1.171vw" }}
             >
               <button className="cart_button">
-                ADD TO CART{" "}
+                <span className="large_screen_text">ADD TO CART</span>
+                <span className="small_screen_text">ADD</span>
+                {" "}
                 <BiCart
                   style={{
                     // color: 'white',
@@ -65,15 +67,16 @@ class IndividualProductDetails extends Component {
             <p className="name_of_the_particular_product">
               {this.props.productDetails.name}
             </p>
-            {this.props.productDetails.categories.map((category,key)=>{
+            <div className="category_of_that_particular_product_box">
+              {this.props.productDetails.categories.map((category, key) => {
                 return (
-                    <p className="category_of_that_particular_product" key={key}>
+                  <p className="category_of_that_particular_product" key={key}>
                     {category.name}
                   </p>
                 )
-            })}
-           
-            <div className="rating_product">
+              })}
+            </div>
+            <div className="rating_product individual_rating_product">
               <div className="star">
                 <FaRegStar id="star_feature" />
                 <FaRegStar id="star_feature" />
@@ -81,71 +84,71 @@ class IndividualProductDetails extends Component {
                 <FaRegStar id="star_feature" />
                 <FaRegStar id="star_feature" />
               </div>
-              <p className="text_rating">3.0 (4 Ratings)</p>
+              <p className="text_rating individual_text_rating">3.0 (4 Ratings)</p>
             </div>
             <hr className="product_individual_detail_line" />
             <div className="details_box_margin">
-              {this.props.productDetails.specialPrice? <React.Fragment>
-                <div className="rating_product">
-                <p className="mrp_text">MRP:</p>
-                <p className="price_of_the_product">{this.props.productDetails.price}</p>
-              </div>
-              <div className="price_box_discount">
-                <p className="our_price_text">Our Price:</p>
-                <p className="price_of_the_product_after_discount">Rs. {this.props.productDetails.specialPrice?(this.props.productDetails.specialPriceType == "Fixed"?this.props.productDetails.specialPrice:((this.props.productDetails.price).toString()-((this.props.productDetails.specialPrice).toString()/100)*(this.props.productDetails.price).toString())):this.props.productDetails.price}</p>
-              </div>
+              {this.props.productDetails.specialPrice ? <React.Fragment>
+                <div className="rating_product individual_rating_product">
+                  <p className="mrp_text individual_mrp_text">MRP:</p>
+                  <p className="price_of_the_product individual_price_of_the_product">{this.props.productDetails.price}</p>
+                </div>
+                <div className="price_box_discount individual_price_box_discount">
+                  <p className="our_price_text individual_our_price_text">Our Price:</p>
+                  <p className="price_of_the_product_after_discount individual_price_of_the_product_after_discount">Rs. {this.props.productDetails.specialPrice ? (this.props.productDetails.specialPriceType == "Fixed" ? this.props.productDetails.specialPrice : ((this.props.productDetails.price).toString() - ((this.props.productDetails.specialPrice).toString() / 100) * (this.props.productDetails.price).toString())) : this.props.productDetails.price}</p>
+                </div>
               </React.Fragment> : <div className="rating_product">
                 <p className="mrp_text">MRP:</p>
                 <p className="price_of_the_product">{this.props.productDetails.price}</p>
               </div>}
-              {this.props.productDetails.specialPrice? 
-              <React.Fragment>
-              <div className="discount_box_in_compare">
-                <p className="discount_text_product"> Discount:</p>
-                <p className="how_much_discount">{this.props.productDetails.specialPriceType == "Fixed"?Math.trunc(
-                  ((this.props.productDetails.price -
-                    this.props.productDetails.specialPrice) /
-                    this.props.productDetails.price) *
-                    100
-                ) : this.props.productDetails.specialPrice}% OFF</p>
-              </div>
-              <div className="save_box">
-              <p className="save_text">You save:</p>
-              <p className="discount_amount">Rs {this.props.productDetails.price-this.props.productDetails.specialPrice}</p>
-            </div>
-            </React.Fragment>
-              : ""}
-              
+              {this.props.productDetails.specialPrice ?
+                <React.Fragment>
+                  <div className="discount_box_in_compare individual_discount_box_in_compare">
+                    <p className="discount_text_product individual_discount_text_product"> Discount:</p>
+                    <p className="how_much_discount individual_how_much_discount">{this.props.productDetails.specialPriceType == "Fixed" ? Math.trunc(
+                      ((this.props.productDetails.price -
+                        this.props.productDetails.specialPrice) /
+                        this.props.productDetails.price) *
+                      100
+                    ) : this.props.productDetails.specialPrice}% OFF</p>
+                  </div>
+                  <div className="save_box individual_save_box">
+                    <p className="save_text individual_save_text">You save:</p>
+                    <p className="discount_amount individual_discount_amount">Rs {this.props.productDetails.price - this.props.productDetails.specialPrice}</p>
+                  </div>
+                </React.Fragment>
+                : ""}
+
               {/* <div className="save_box">
                 <p className="delivery_text">Delivery in:</p>
                 <p className="time_delivery">10 days after ordering</p>
               </div> */}
-              <div className="save_box">
-                <p className="color_text"> Color:</p>
-                <select className="dropdown_colors">
+              <div className="save_box individual_save_box">
+                <p className="color_text individual_color_text"> Color:</p>
+                <select className="dropdown_colors individual_dropdown_colors">
                   <option value="WH">White</option>
                   <option value="BL">Black</option>
                 </select>
               </div>
-              <div className="save_box">
-                <p className="color_text"> Qty:</p>
-                <input className="product-qty" type="number" placeholder="0" value={this.state.qty} onChange={(e)=>{this.setState({qty: e.target.value})}}/>
+              <div className="save_box individual_save_box">
+                <p className="color_text individual_color_text"> Qty:</p>
+                <input className="product-qty individual_product-qty" type="number" placeholder="0" value={this.state.qty} onChange={(e) => { this.setState({ qty: e.target.value }) }} />
               </div>
             </div>
-            {this.props.productDetails.SKU != ""? 
-            <div className="save_box">
-              <p
-                className="delivery_text"
-                style={{ width: "auto", marginLeft: "0" }}
-              >
-                Product Code:
-              </p>
-              <p className="time_delivery">{this.props.productDetails.SKU}</p>
-            </div>
-            :""}
+            {this.props.productDetails.SKU != "" ?
+              <div className="save_box">
+                <p
+                  className="delivery_text"
+                  style={{ width: "auto", marginLeft: "0" }}
+                >
+                  Product Code:
+                </p>
+                <p className="time_delivery">{this.props.productDetails.SKU}</p>
+              </div>
+              : ""}
             <div className="pay_via">
               <p
-                className="save_text"
+                className="save_text individual_save_text"
                 style={{ marginLeft: "-0.952vw", marginTop: "1.025vw" }}
               >
                 Pay via:
@@ -181,9 +184,9 @@ class IndividualProductDetails extends Component {
             </div>
 
             <div
-              className="Free_box"
+              className="Free_box Individual_free_box"
               style={{
-                width: "46.633vw",
+                width: "60.633vw",
                 // height: "auto",
                 margin: "0",
                 // display: "flex",

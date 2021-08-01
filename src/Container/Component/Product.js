@@ -87,18 +87,22 @@ class Product extends Component {
           </div>
         </div>
         <div className="product_details">
+        <div className="category_name_product_box">
           {this.props.category
             ? this.state.product.categories.map((category, key) => {
                 return (
+                  
                   <Link
                     key={key}
                     to={"/categories/" + category.url + "/" + category._id}
                   >
                     <p className="category_name_product">{category.name}</p>{" "}
                   </Link>
+                  
                 );
               })
             : ""}
+            </div>
 
           <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}>
             <p className="name_details_each_product">

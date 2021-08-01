@@ -12,6 +12,7 @@ export class ShowReview extends Component {
                 <div className="personName">Person 1</div>
                 <div className="reviewNo">4</div>
                 <AiFillStar
+                    className="show_review_star"
                     style={{
                         height: "1.245vw",
                         width: "1.245vw",

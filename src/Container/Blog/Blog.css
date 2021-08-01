@@ -114,20 +114,25 @@
     margin-left: 6.343vw;
   }
   .load_more_blogs{
+    width: 30vw;
+    height: 5vw;
     margin-top: 4.196vw;
+    font: normal normal normal 2vw/1.464vw poppins;
+    margin-left: 25vw !important;
   }
   
 }
 @media (max-width:425px){
   .load_more_blogs{
-    width: 12.615vw;
-    height: 4.928vw;
+    width: 87.5vw;
+    height: 9.5vw;
     background: #08e5a9;
     border: #08e5a9;
-    margin-left: 44.656vw;
+    margin-left: -1vw !important;
     outline: none;
     cursor: pointer;
-    font: normal normal normal 1.3vw/1.464vw poppins;
+    font: normal normal normal 4vw/1.464vw poppins;
+    margin-top: 3vw;
   }
   .name_time p {
     font: normal normal normal 1vw/1.171vw Poppins;

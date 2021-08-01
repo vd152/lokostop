@@ -47,13 +47,13 @@ class IndividualProduct extends Component {
                 <div className="review_main_with_specification">
                     <ul className="nav nav-tabs " id="myTab" role="tablist">
                         <li className="nav-item" role="presentation">
-                            <button style={{ color: ' #9d9d9d', font: ' normal normal normal 1vw/2.14vw Poppins' }} className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Description</button>
+                            <button style={{ color: ' #9d9d9d', font: ' normal normal normal 1vw/2vw Poppins' }} className="nav-link active individual_product_nav_item" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Description</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button style={{ color: ' #9d9d9d', font: ' normal normal normal 1vw/2vw Poppins' }} className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Specifications</button>
+                            <button style={{ color: ' #9d9d9d', font: ' normal normal normal 1vw/2vw Poppins' }} className="nav-link individual_product_nav_item" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Specifications</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button style={{ color: ' #9d9d9d', font: ' normal normal normal 1vw/2.3vw Poppins' }} className="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Reviews</button>
+                            <button style={{ color: ' #9d9d9d', font: ' normal normal normal 1vw/2.3vw Poppins' }} className="nav-link individual_product_nav_item" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Reviews</button>
                         </li>
                     </ul>
                     <div className="tab-content" id="myTabContent">
