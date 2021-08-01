@@ -10,13 +10,13 @@ import PopularBox from '../Component/Boxes/PopularBox';
 import { FaRegStar } from "react-icons/fa";
 import ShowReview from './ShowReview'
 import { IoIosArrowBack, IoIosArrowForward, IoIosAttach } from "react-icons/io";
-import {connect} from 'react-redux'
-import { getProductDetails} from '../../Redux/Actions/ProductActions'
+import { connect } from 'react-redux'
+import { getProductDetails } from '../../Redux/Actions/ProductActions'
 import Loader from '../Loader/Loader';
 import api from '../../Apis/api'
 
 class IndividualProduct extends Component {
-    state ={
+    state = {
         productDetails: {
             name: "--",
             price: "--",
@@ -30,26 +30,26 @@ class IndividualProduct extends Component {
                     _d: "--"
                 }
             ],
-            attributes:[]
+            attributes: []
         },
         review: {
 
         },
         productReviews: [],
     }
-     componentDidMount(){
-         this.props.getProductDetails(this.props.match.params.id)
-        this.setState({productDetails: this.props.productDetails?this.props.productDetails:this.state.productDetails})
-        let url = '/review/get/product/'+this.props.match.params.id
-        api.get(url).then(res=>{
+    componentDidMount() {
+        this.props.getProductDetails(this.props.match.params.id)
+        this.setState({ productDetails: this.props.productDetails ? this.props.productDetails : this.state.productDetails })
+        let url = '/review/get/product/' + this.props.match.params.id
+        api.get(url).then(res => {
             console.log(res.data.data)
-            this.setState({productReviews: res.data.data})
-        }).catch(err=>{
+            this.setState({ productReviews: res.data.data })
+        }).catch(err => {
             console.log(err)
         })
     }
     render() {
-        if(this.props.productLoading){
+        if (this.props.productLoading) {
             return <Loader />
         }
         return (
@@ -71,17 +71,17 @@ class IndividualProduct extends Component {
                     </ul>
                     <div className="tab-content" id="myTabContent">
                         <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div className="desciptionbox" dangerouslySetInnerHTML={{__html: this.state.productDetails.description}}>
-                                
+                            <div className="desciptionbox" dangerouslySetInnerHTML={{ __html: this.state.productDetails.description }}>
+
                             </div>
                         </div>
                         <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <div className="specification_outer_box">
-                                {this.state.productDetails.attributes.map((attribute,key)=>{
+                                {this.state.productDetails.attributes.map((attribute, key) => {
                                     return <div className='particularSpecification' key={key}>
-                                    <h6>{attribute.attribute.name}</h6>
-                                    <p>{attribute.value.join(", ")} </p>
-                                </div>
+                                        <h6>{attribute.attribute.name}</h6>
+                                        <p>{attribute.value.join(", ")} </p>
+                                    </div>
                                 })}
                             </div>
                         </div>
@@ -109,10 +109,10 @@ class IndividualProduct extends Component {
                                     </div>
                                     <button className="review_button">Post Review</button>
                                 </div>
-                                {this.state.productReviews.map((review, key)=>{
-                                    return <ShowReview key={key} review={review}/>
+                                {this.state.productReviews.map((review, key) => {
+                                    return <ShowReview key={key} review={review} />
                                 })}
-                                
+
                             </div></div>
                     </div>
 
@@ -139,11 +139,11 @@ class IndividualProduct extends Component {
         )
     }
 }
-const mapStateToProps = state =>{
+const mapStateToProps = state => {
     return {
         productDetails: state.getProductDetails.product,
         productLoading: state.getProductDetails.loading
     }
 }
-export default connect(mapStateToProps, {getProductDetails})(IndividualProduct)
+export default connect(mapStateToProps, { getProductDetails })(IndividualProduct)
 

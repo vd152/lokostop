@@ -715,4 +715,27 @@ cursor: pointer;
     height: 4vw;
     margin-top: -1vw;
   }
+
+  .individual_buttons_compare{
+    width: 50vw;
+    height: 8vw;
+    margin-top: 2vw !important;
+  }
+
+  .individual_cart_button{
+    width: 25vw;
+    height: 8vw;
+    font-size: 3.5vw;
+    margin-left: -2vw;
+  }
+
+  .individual_compare_button{
+    width: 25vw;
+    height: 8vw;
+    font-size: 3.5vw;
+  }
+
+  .individual_bicart{
+    font-size: 3.5vw !important;
+  }
 }

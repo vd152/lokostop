@@ -44,14 +44,15 @@ class IndividualProductDetails extends Component {
               alt="Loading"
             />
             <div
-              className="buttons_compare"
+              className="buttons_compare individual_buttons_compare"
               style={{ marginTop: "1.025vw", marginLeft: "1.171vw" }}
             >
-              <button className="cart_button">
+              <button className="cart_button individual_cart_button">
                 <span className="large_screen_text">ADD TO CART</span>
-                <span className="small_screen_text">ADD</span>
+                <span className="small_screen_text individual_">ADD</span>
                 {" "}
                 <BiCart
+                  className="individual_bicart"
                   style={{
                     // color: 'white',
                     marginLeft: "0.952vw",
@@ -60,7 +61,7 @@ class IndividualProductDetails extends Component {
                   }}
                 />
               </button>
-              <button className="compare_button">COMPARE</button>
+              <button className="compare_button individual_compare_button">COMPARE</button>
             </div>
           </div>
           <div className="details_of_individual_product_with_rating">
