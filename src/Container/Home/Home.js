@@ -10,7 +10,7 @@ import Search from '../Component/Header/Search'
 import ProductRowBox from "../Component/Boxes/ProductRowBox";
 import SixImageSlider from "../Component/Slider/SixImageSlider";
 import ClientImage from "../Component/Slider/ClientImage";
-import VideoContainer from "../Component/Slider/VideoContainer";
+import Slider from "../Component/Slider/Slider";
 import CategoryBox from "../Component/Boxes/CategoryBox";
 import MostViewedBox from "../Component/Boxes/MostViewedBox";
 import TopClients from "../Component/Boxes/TopClients";
@@ -52,7 +52,9 @@ class Home extends Component {
           <Header01 />
           <Header />
           <Search home={true}/>
-          <VideoContainer />
+          {this.props.store.Slider._id && 
+          <Slider slides={this.props.store.Slider.Slides} settings={this.props.store.Slider.Settings}/>
+  }
           {this.props.allFeatures.Features &&
           this.props.allFeatures.Features.SectionStatus ? (
             <div className="Free_box">
