@@ -30,10 +30,14 @@ class IndividualProduct extends Component {
         },
       ],
       attributes: [],
-      options:[]
+      options: [],
     },
     review: {
       rating: 0,
+      reviewerName:
+        this.props.user["First Name"] + " " + this.props.user["Last Name"],
+      comment: "",
+      status: false,
     },
     productReviews: [],
   };
@@ -171,7 +175,12 @@ class IndividualProduct extends Component {
                         ? "fas fa-star"
                         : "far fa-star"
                     }
-                    style={{ color: "yellow" }}
+                    style={{ color: "yellow", cursor: "pointer" }}
+                    onClick={(e) => {
+                      const { review } = this.state;
+                      review.rating = 1;
+                      this.setState({ review });
+                    }}
                   ></i>
                   <i
                     className={
@@ -179,7 +188,12 @@ class IndividualProduct extends Component {
                         ? "fas fa-star"
                         : "far fa-star"
                     }
-                    style={{ color: "yellow" }}
+                    style={{ color: "yellow", cursor: "pointer" }}
+                    onClick={(e) => {
+                      const { review } = this.state;
+                      review.rating = 2;
+                      this.setState({ review });
+                    }}
                   ></i>
                   <i
                     className={
@@ -187,7 +201,12 @@ class IndividualProduct extends Component {
                         ? "fas fa-star"
                         : "far fa-star"
                     }
-                    style={{ color: "yellow" }}
+                    style={{ color: "yellow", cursor: "pointer" }}
+                    onClick={(e) => {
+                      const { review } = this.state;
+                      review.rating = 3;
+                      this.setState({ review });
+                    }}
                   ></i>
                   <i
                     className={
@@ -195,7 +214,12 @@ class IndividualProduct extends Component {
                         ? "fas fa-star"
                         : "far fa-star"
                     }
-                    style={{ color: "yellow" }}
+                    style={{ color: "yellow", cursor: "pointer" }}
+                    onClick={(e) => {
+                      const { review } = this.state;
+                      review.rating = 4;
+                      this.setState({ review });
+                    }}
                   ></i>
                   <i
                     className={
@@ -203,7 +227,12 @@ class IndividualProduct extends Component {
                         ? "fas fa-star"
                         : "far fa-star"
                     }
-                    style={{ color: "yellow" }}
+                    style={{ color: "yellow", cursor: "pointer" }}
+                    onClick={(e) => {
+                      const { review } = this.state;
+                      review.rating = 5;
+                      this.setState({ review });
+                    }}
                   ></i>
                 </div>
                 <div className="write_review">
@@ -259,6 +288,7 @@ const mapStateToProps = (state) => {
   return {
     productDetails: state.getProductDetails.product,
     productLoading: state.getProductDetails.loading,
+    user: state.getUser.user,
   };
 };
 export default connect(mapStateToProps, { getProductDetails })(
