@@ -495,6 +495,16 @@ cursor: pointer;
     margin-top: 0;
     margin-left: 8vw;
   }
+
+  .similar_image_three_image_box{
+    height: 20vw;
+    width: 20vw;
+  }
+
+  .similar_particular_image{
+    width: 15vw;
+    height: 15vw;
+  }
   .pay_via{
     margin-bottom: 2vw;
     width: 75vw;
@@ -526,7 +536,7 @@ cursor: pointer;
   .similar_product_images{
     flex-direction: row;
     width: 100%;
-    height: 10vw;
+    height: 20vw;
   }
 
   .product_big_image_cart_compare {
@@ -780,10 +790,10 @@ cursor: pointer;
   }
 
   .individual_save_box{
-    width: 50vw;
+    width: 60vw;
     height: 4vw !important;
-    text-align: center;
-    margin-left: 20vw;
+    text-align: left;
+    margin-left: 5vw;
     margin-top: 2vw;
   }
 
@@ -802,8 +812,8 @@ cursor: pointer;
   }
 
   .individual_product-qty{
-    width: 15vw;
-    height: 4vw;
+    width: 30vw;
+    height: 5vw;
     margin-top: -1vw;
   }
 

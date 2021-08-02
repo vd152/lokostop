@@ -232,12 +232,16 @@
     justify-content: space-between;
   }
 
+  .headParticular{
+    justify-content: left;
+  }
+  
   .headParticular p{
     font-size: 3.5vw;
   }
 
   .headParticular hr{
-    width: 55%;
+    width: 45%;
   }
 
   .dropSort{

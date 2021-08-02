@@ -242,6 +242,11 @@
   margin-left: 25vw;
 }
 @media (max-width:768px){
+  .No_of_product {
+    margin-left: 4.685vw;
+    margin-top: 1.5vw;
+    font: normal normal normal 2.2vw/2.5vw Poppins;
+  }
 .product_Name {
   width: auto;
 }
@@ -303,7 +308,7 @@
     height: auto;
     margin-left: 4.685vw;
     margin-top: 2.512vw;
-    font: normal normal normal 1.4vw/1.684vw Poppins;
+    font: normal normal normal 3.7vw/4vw Poppins;
     color: #3d3d3d;
   }
 

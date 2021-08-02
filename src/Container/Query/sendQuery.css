@@ -59,40 +59,77 @@
     margin-left: 3.5%;
   }
   .sendinput {
-    width: 40.425vw;
-    margin-bottom: 1.5%;
+    height: 7vw;
+    width: 60vw;
+    padding-left: 2vw;
+    font: normal normal normal 2vw/3vw Poppins;
+    margin-bottom: 2vw;
   }
   .textarea {
-    margin-bottom: 1%;
+    font:normal normal normal 2vw/3vw Poppins;
+    width:60vw;
+    padding-left: 2vw;
+    padding-top: 1.5vw;
+    margin-bottom: 2vw;
   }
-}
-@media (max-width: 425px) {
-  .sendtext {
-    font: normal normal normal 1.4vw/2.684vw Poppins;
-    width: auto;
-    height: auto;
-    margin-bottom: 3%;
-  }
-  .sendtext1{
-    font: normal normal normal 1.4vw/1.684vw Poppins;
-    width: auto;
-    height: auto;
-  }
-  .sendinput{
-    height: 3.782vw;
-    font: normal normal normal 1.2vw/1.318vw Poppins;
-  }
-  .textarea{
-    font:normal normal normal 1.2vw/1.318vw Poppins
-  }
+
   .sendquery{
-    width: 12.615vw;
-    height: 3.928vw;
+    width: 50vw;
+    height: 6vw;
     background: #08e5a9;
     border: #08e5a9;
     outline: none;
     cursor: pointer;
-    font: normal normal normal 1.3vw/1.464vw Poppins;
+    font: normal normal normal 3vw/5vw Poppins;
+    color: #1d1d1d;
+    margin-top: 2vw;
+  }
+
+  .sendtext{
+    font: normal normal normal 2.5vw/3.5vw Poppins;
+    margin-bottom: 5%;
+  }
+
+  .sendtext1{
+    font: normal normal normal 2.75vw/3.5vw Poppins;
+    width: auto;
+    height: auto;
+  }
+}
+@media (max-width: 425px) {
+  .sendtext {
+    font: normal normal normal 3vw/4vw Poppins;
+    width: auto;
+    height: auto;
+    margin-bottom: 6%;
+  }
+  .sendtext1{
+    font: normal normal normal 3.75vw/4.5vw Poppins;
+    width: auto;
+    height: auto;
+  }
+  .sendinput{
+    height: 10vw;
+    width: 80vw;
+    padding-left: 2vw;
+    font: normal normal normal 2.75vw/3.5vw Poppins;
+    margin-bottom: 3vw;
+  }
+  .textarea{
+    font:normal normal normal 2.75vw/3.5vw Poppins;
+    width:80vw;
+    padding-left: 2vw;
+    padding-top: 1.5vw;
+    margin-bottom: 2vw;
+  }
+  .sendquery{
+    width: 80vw;
+    height: 10vw;
+    background: #08e5a9;
+    border: #08e5a9;
+    outline: none;
+    cursor: pointer;
+    font: normal normal normal 4vw/5vw Poppins;
     color: #1d1d1d;
     margin-top: 2vw;
   }
