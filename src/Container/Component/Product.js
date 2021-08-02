@@ -67,7 +67,7 @@ class Product extends Component {
           <div id="div_first" className="add_to_cart_inner_box">
             <BiGitCompare className="Compare_Icon" />
             <div className="add_to_cart_text_icon" onClick={(e)=>{
-                this.props.addToCart(this.state.product._id);
+                this.props.addToCart(this.state.product._id, 1);
 
             }}>
               <p style={{ marginTop: "0.439vw" }}>

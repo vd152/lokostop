@@ -3,7 +3,6 @@ import { IoIosArrowDown, IoIosArrowForward, IoIosHeart } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import {getBrands} from '../../../Redux/Actions/StorefrontActions'
 class FindByCategory extends React.Component {
   state = {
     categories: [],
@@ -89,7 +88,6 @@ class FindByCategory extends React.Component {
       categories.push(tempData);
     });
     this.setState({ categories });
-    this.props.getBrands();
   }
   render() {
     return (
@@ -192,4 +190,4 @@ const mapStateToProps = (state) => {
     brandLoading: state.getBrands.loading
   };
 };
-export default connect(mapStateToProps, {getBrands})(FindByCategory);
+export default connect(mapStateToProps)(FindByCategory);

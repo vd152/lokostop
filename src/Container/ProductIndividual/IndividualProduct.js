@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import { getProductDetails } from "../../Redux/Actions/ProductActions";
 import Loader from "../Loader/Loader";
 import api from "../../Apis/api";
+import {Helmet} from "react-helmet";
 
 class IndividualProduct extends Component {
   state = {
@@ -31,6 +32,8 @@ class IndividualProduct extends Component {
       ],
       attributes: [],
       options: [],
+      metaTitle: "Product",
+      metaDescription: "Product"
     },
     review: {
       rating: 0,
@@ -77,9 +80,14 @@ class IndividualProduct extends Component {
       return <Loader />;
     }
     return (
-      <div>
-        <Header01></Header01>
+      <React.Fragment>
+         <Helmet>
+                    <title>{this.state.productDetails.metaTitle}</title>
+                    <meta name="description" content={this.state.productDetails.metaDescription}/>
+                </Helmet>
+        <Header01 />
         <Header />
+       
         <IndividualProductDetails
           productDetails={this.state.productDetails}
           reviews={this.state.productReviews}
@@ -306,7 +314,7 @@ class IndividualProduct extends Component {
         <FindByCategory />
         <PopularBox />
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }

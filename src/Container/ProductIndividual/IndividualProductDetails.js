@@ -3,11 +3,11 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getFeatures } from "../../Redux/Actions/StorefrontActions";
-
+import { addToCart } from "../../Redux/Actions/CartActions";
 class IndividualProductDetails extends Component {
   state = {
     productId: this.props.productDetails._id,
-    qty: 0,
+    qty: 1,
     footerDetails: {
       Footer: {
         AcceptedPaymentMethodsImage: "",
@@ -104,7 +104,9 @@ class IndividualProductDetails extends Component {
               className="buttons_compare individual_buttons_compare"
               style={{ marginTop: "1.025vw", marginLeft: "1.171vw" }}
             >
-              <button className="cart_button individual_cart_button">
+              <button className="cart_button individual_cart_button" onClick={(e)=>{
+                this.props.addToCart(this.props.productDetails._id, this.state.qty)
+              }}>
                 <span className="large_screen_text">ADD TO CART</span>
                 <span className="small_screen_text individual_">ADD</span>
                 {" "}
@@ -143,7 +145,7 @@ class IndividualProductDetails extends Component {
               <i className={this.props.productDetails.rating>4?"fas fa-star": "far fa-star"} style={{color: 'yellow'}}></i>
 
               </div>
-              <p className="text_rating individual_text_rating">{this.props.productDetails.rating.toFixed(1)}({this.props.reviews.length} Ratings)</p>
+              <p className="text_rating individual_text_rating">{this.props.productDetails.rating?this.props.productDetails.rating.toFixed(1):0}({this.props.reviews.length} Ratings)</p>
             </div>
             <hr className="product_individual_detail_line" />
             <div className="details_box_margin">
@@ -188,7 +190,7 @@ class IndividualProductDetails extends Component {
              
               <div className="save_box individual_save_box">
                 <p className="color_text individual_color_text"> Qty:</p>
-                <input className="product-qty individual_product-qty" type="number" placeholder="0" value={this.state.qty} onChange={(e) => { this.setState({ qty: e.target.value }) }} />
+                <input className="product-qty individual_product-qty" type="number" step="1" placeholder="1" min="1" value={this.state.qty} onChange={(e) => { this.setState({ qty: e.target.value }) }} />
               </div>
             </div>
             {this.props.productDetails.SKU != "" ?
@@ -257,4 +259,4 @@ const mapStateToProps = (state) => {
     allFeatures: state.getFeatures.features,
   };
 };
-export default connect(mapStateToProps, { getFeatures })(IndividualProductDetails);
+export default connect(mapStateToProps, { getFeatures, addToCart })(IndividualProductDetails);

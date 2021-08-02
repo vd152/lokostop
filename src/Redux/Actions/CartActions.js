@@ -19,10 +19,10 @@ export const getCart = () => async(dispatch) => {
     }
 }
 
-export const addToCart = (productId) => async(dispatch) => {
+export const addToCart = (productId,qty) => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.ADD_CART_REQUEST})
-        const {data} = await api.put('/customer/cart', {productId})
+        const {data} = await api.put('/customer/cart', {productId, qty})
         dispatch({
             type: actionTypes.ADD_CART_SUCCESS,
             payload: data.data.Cart

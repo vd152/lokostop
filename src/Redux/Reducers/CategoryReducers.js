@@ -22,7 +22,7 @@ export const getAllCategoriesReducer = (state = { categories: []}, action) => {
     }
 }
 
-export const getCategoryProductsReducer = (state = { categoryProducts: []}, action) => {
+export const getSectionProductsReducer = (state = { categoryProducts: []}, action) => {
     switch(action.type){
         case actionTypes.GET_CATEGORY_PRODUCTS_REQUEST:
             return{
