@@ -22,6 +22,50 @@ class IndividualProductDetails extends Component {
         : this.state.footerDetails,
     });
   }
+  getOption = (type, label, required, values, unique) =>{
+    if(type == "Field"){
+      return (
+        <div className="save_box individual_save_box" key={unique}>
+                <p className="color_text individual_color_text"> {label}: {required && "*"}</p>
+                <input className="product-qty individual_product-qty" type="text" />
+              </div>
+      )
+    }else if(type == "Textarea"){
+     return (
+<div className="save_box individual_save_box" key={unique}>
+      <p className="color_text individual_color_text"> {label}: {required && "*"}</p>
+      <textarea className="product-qty individual_product-qty" type="text" row="3"></textarea>
+    </div>
+     ) 
+    }else if(type == "Dropdown"){
+      return (
+        <div className="save_box individual_save_box" key={unique}>
+                <p className="color_text individual_color_text"> {label}: {required && "*"}</p>
+                <select className="dropdown_colors individual_dropdown_colors">
+                  {values.map((value,key)=>{
+                    return <option value={value.label} key={key}>{value.label}</option>
+                  })}
+                </select>
+              </div>
+      )
+    }else if(type == "Checkbox"){
+
+    }else if(type == "Custom Checkbox"){
+      
+    }else if(type == "Radio Button"){
+
+    }else if(type == "Custom Radio Button"){
+
+    }else if(type == "Multiple Select"){
+
+    }else if(type == "Date"){
+
+    }else if(type == "Date Time"){
+
+    }else if(type == "Time"){
+
+    }
+  }
   render() {
     return (
       <div>
@@ -138,13 +182,10 @@ class IndividualProductDetails extends Component {
                 <p className="delivery_text">Delivery in:</p>
                 <p className="time_delivery">10 days after ordering</p>
               </div> */}
-              <div className="save_box individual_save_box">
-                <p className="color_text individual_color_text"> Color:</p>
-                <select className="dropdown_colors individual_dropdown_colors">
-                  <option value="WH">White</option>
-                  <option value="BL">Black</option>
-                </select>
-              </div>
+              {this.props.productDetails.options.map((option, key)=>{
+                return this.getOption(option.type, option.name, option.required, option.value, key)
+              })}
+             
               <div className="save_box individual_save_box">
                 <p className="color_text individual_color_text"> Qty:</p>
                 <input className="product-qty individual_product-qty" type="number" placeholder="0" value={this.state.qty} onChange={(e) => { this.setState({ qty: e.target.value }) }} />
