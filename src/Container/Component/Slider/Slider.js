@@ -15,7 +15,7 @@ class Slider extends Component {
                               src="https://images.unsplash.com/photo-1556740772-1a741367b93e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZWxlY3Ryb25pY3MlMjBzaG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&autohttps://images.unsplash.com/photo-1556740772-1a741367b93e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZWxlY3Ryb25pY3MlMjBzaG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                               alt="First slide"
                           />
-                          <Carousel.Caption>
+                          <Carousel.Caption className="slider_caption">
                               <h3>{slide.General.Caption1}</h3>
                               <p>{slide.General.Caption2}</p>
                           </Carousel.Caption>

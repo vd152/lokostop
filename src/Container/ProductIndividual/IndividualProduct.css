@@ -406,6 +406,88 @@ cursor: pointer;
   font: normal normal normal 1.098vw/1.684vw Poppins;
   color: #8d8d8d;
 }
+
+@media(max-width:768px){
+  .name_of_the_particular_product{
+    font-size: 3vw;
+    height: 3vw;
+  }
+
+  .individual_price_box_discount{
+    height: 3vw;
+  }
+  .individual_discount_box_in_compare{
+    height: 2vw;
+  }
+
+  .category_of_that_particular_product{
+    font-size: 1.5vw;
+    height: 2vw;
+  }
+
+  .individual_rating_product{
+    height: 2vw;
+    margin-top: 1vw;
+    margin-bottom: 0vw;
+  }
+
+  .individual_save_box{
+    height: 3vw;
+  }
+
+  .particularSpecification{
+    height: 2.75vw;
+  }
+  .particularSpecification h6{
+    font-size: 2.25vw;
+  }
+
+  .particularSpecification p{
+    font-size: 2vw;
+  }
+
+  .read_review{
+    font-size: 2.25vw;
+  }
+
+  .review_button{
+    width: 18vw;
+    height: 7vw;
+    margin-left: 2vw;
+    font: normal normal normal 2.3vw/2.5vw Poppins;
+  }
+
+  .commentBox{
+    font-size: 1.75vw;
+  }
+
+  .attach{
+    font-size: 3vw;
+    margin-left: 0vw;
+  }
+
+  .no_count{
+    font-size: 1.5vw;
+    margin-left: -2vw;
+  }
+
+  .personName{
+    font-size: 2vw;
+    margin-left: 2vw;
+    margin-top: 0.5vw;
+  }
+  
+  .reviewShow{
+    font-size: 2vw;
+    margin-bottom: 2vw;
+  }
+
+  .individual_buttons_compare{
+    margin-left: 0vw !important;
+    width: 27vw;
+  }
+}
+
 @media(max-width:425px){
   .product_individual_detail_line{
     width: 60vw;
@@ -550,8 +632,8 @@ cursor: pointer;
   }
 
   .reviewShow{
-    margin-top: 2vw;
-    font:normal normal normal 2.75vw/3vw Poppins;
+    margin-top: 4vw;
+    font:normal normal normal 3.5vw/3.7vw Poppins;
     margin-bottom: 3vw;
   }
 
@@ -624,12 +706,15 @@ cursor: pointer;
     padding-left: 2vw;
   }
 
+  .particularSpecification{
+    height: 6vw;
+  }
   .particularSpecification h6{
-    font-size: 3.2vw;
+    font-size: 4vw;
   }
 
   .particularSpecification p{
-    font-size: 2.9vw;
+    font-size: 3.5vw;
   }
 
   .details_of_individual_product_with_rating {
