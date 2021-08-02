@@ -1014,6 +1014,13 @@
   font-size: 1.3vw;
 }
 @media (max-width: 768px) {
+  .slider_caption{
+    font-size: 3.5vw;
+  }
+
+  .slider_caption h3{
+    font-size: 4vw;
+  }
   .Free_box i{
     font-size: 25px
   }
