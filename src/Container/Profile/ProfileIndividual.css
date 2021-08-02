@@ -749,6 +749,10 @@
         width: 20vw;
         font-size: 2.75vw;
     }
+
+    .profile_account_link{
+        font-size: 8vw;
+    }
   }
   @media (max-width:375px){
     .image_user1 {
