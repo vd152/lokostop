@@ -1,11 +1,12 @@
 import * as actionTypes from '../Constants/ProductConstants'
 
 
-export const getProductDetailsReducer = (state = {product: {}}, action) => {
+export const getProductDetailsReducer = (state = {product: {attributes:[], categories:[], options:[], additionalImages:[], tags:[], upSells:[], crossSells:[], options:[]}}, action) => {
     switch(action.type){
         case actionTypes.GET_PRODUCT_DETAILS_REQUEST:
             return{
-                loading: true
+                loading: true,
+                product: {attributes:[], categories:[], options:[], additionalImages:[], tags:[], upSells:[], crossSells:[], options:[]}
             }
         case actionTypes.GET_PRODUCT_DETAILS_SUCCESS:
             return {

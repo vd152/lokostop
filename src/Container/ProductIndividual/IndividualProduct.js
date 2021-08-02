@@ -30,6 +30,7 @@ class IndividualProduct extends Component {
         },
       ],
       attributes: [],
+      options:[]
     },
     review: {
       rating: 0,
