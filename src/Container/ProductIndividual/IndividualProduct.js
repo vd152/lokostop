@@ -34,8 +34,8 @@ class IndividualProduct extends Component {
     },
     review: {
       rating: 0,
-      reviewerName:
-        this.props.user["First Name"] + " " + this.props.user["Last Name"],
+      reviewerName:this.props.user._id?
+        this.props.user["First Name"] + " " + this.props.user["Last Name"]:"",
       comment: "",
       status: false,
     },
@@ -48,6 +48,9 @@ class IndividualProduct extends Component {
         ? this.props.productDetails
         : this.state.productDetails,
     });
+    this.getReviews()
+  }
+  getReviews = () =>{
     let url = "/review/get/product/" + this.props.match.params.id;
     api
       .get(url)
@@ -57,7 +60,18 @@ class IndividualProduct extends Component {
       .catch((err) => {
         console.log(err);
       });
-  }
+  } 
+  postReview = (review, productId) =>{
+    
+        api.post('/review', {data:review, productId, requiredPermission: "Create Review"}).then(res=>{
+          console.log(res.data.data);
+          alert("review submitted for approval")
+        }).catch(err=>{
+          console.log(err);
+        })
+    
+
+}
   render() {
     if (this.props.productLoading) {
       return <Loader />;
@@ -168,6 +182,8 @@ class IndividualProduct extends Component {
                 <p className="read_review" style={{ marginTop: "1.171vw" }}>
                   Read reviews here
                 </p>
+                {this.props.user._id && 
+                <React.Fragment>
                 <div className="review_star">
                   <i
                     className={
@@ -241,17 +257,27 @@ class IndividualProduct extends Component {
                       className="commentBox"
                       maxLength="200"
                       placeholder="Choose a rating and start writing a review..."
+                      value={this.state.review.comment}
+                      onChange={(e) => {
+                        const { review } = this.state;
+                        review.comment = e.target.value.substring(0,200);
+                        this.setState({ review });
+                      }}
                     ></textarea>
                     <div className="count_attach">
                       <IoIosAttach className="attach" />
-                      <p className="no_count">0/200</p>
+                      <p className="no_count">{this.state.review.comment.length}/200</p>
                     </div>
                   </div>
-                  <button className="review_button">Post Review</button>
+                  <button className="review_button" type="submit" onClick={(e)=>{
+                    e.preventDefault();
+                    this.postReview(this.state.review,this.props.match.params.id)
+                  }}>Post Review</button>
                 </div>
-                {this.state.productReviews.length > 0 ? (
+                </React.Fragment> }
+               {this.state.productReviews.length > 0 ? (
                   this.state.productReviews.map((review, key) => {
-                    return <ShowReview key={key} review={review} />;
+                    return review.status && <ShowReview key={key} review={review} />;
                   })
                 ) : (
                   <div className="text-center">

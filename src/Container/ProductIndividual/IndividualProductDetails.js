@@ -143,7 +143,7 @@ class IndividualProductDetails extends Component {
               <i className={this.props.productDetails.rating>4?"fas fa-star": "far fa-star"} style={{color: 'yellow'}}></i>
 
               </div>
-              <p className="text_rating individual_text_rating">{this.props.productDetails.rating}({this.props.reviews.length} Ratings)</p>
+              <p className="text_rating individual_text_rating">{this.props.productDetails.rating.toFixed(1)}({this.props.reviews.length} Ratings)</p>
             </div>
             <hr className="product_individual_detail_line" />
             <div className="details_box_margin">
