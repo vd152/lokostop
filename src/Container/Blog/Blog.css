@@ -105,9 +105,13 @@
   font: normal normal normal 0.978vw/1.318vw Poppins;
 }
 @media (max-width: 768px){
-  .add_blog
-  {width: 90.315vw;
-  margin-left: 5.343vw;}
+  .add_blog{
+  width: 90.315vw;
+  height: 6vw;
+  margin-left: 5vw;
+  font-size: 2vw;
+  }
+
   .blog_main{
     width: 88.388vw;
     justify-content: space-between;
@@ -119,6 +123,45 @@
     margin-top: 4.196vw;
     font: normal normal normal 2vw/1.464vw poppins;
     margin-left: 25vw !important;
+  }
+
+  .blogcard{
+    width: auto;
+    margin-top: 3.782vw;
+    height: auto;
+  }
+
+  .imagebox{
+    width: 25vw;
+    cursor: pointer;
+    position: relative;
+    height: 25vw;
+  }
+
+  .blogHeading{
+    width: 23vw;
+    margin-top: 1vw;
+    margin-left: 1vw;
+    height: auto;
+    margin-right: 1vw;
+    text-align: left;
+    font: italic normal bold 1.5vw/2.2vw Poppins;
+    color: #3d3d3d;
+  }
+  
+  .name_time{
+    width: auto;
+    margin-right: 1vw;
+    height: 3vw;
+  }
+
+  .name_time p {
+    font: normal normal normal 1.3vw/2.2vw Poppins;
+  }
+
+  .blog_load_more_blogs{
+    margin-top: 5vw;
+    margin-left: 35vw !important;
   }
   
 }
@@ -135,41 +178,48 @@
     margin-top: 3vw;
   }
   .name_time p {
-    font: normal normal normal 1vw/1.171vw Poppins;
-    
+    font: normal normal normal 2.5vw/2.5vw Poppins;
   }
+
   .name_time{
     width: auto;
     margin-right: 1vw;
+    height: 5vw;
   }
   .blogHeading{
-    width: auto;
-    margin-top: 0.732vw;
-    margin-left: 0.732vw;
+    width: 38vw;
+    margin-top: 2vw;
+    margin-left: 2vw;
     height: auto;
     margin-right: 1vw;
     text-align: left;
-    font: italic normal bold 1.1vw/1.684vw Poppins;
+    font: italic normal bold 2.5vw/3.5vw Poppins;
     color: #3d3d3d;
   }
   .blog_main {
-    width: 65.388vw;
+    width: 90vw;
     justify-content: space-between;
-    margin-left: 19.343vw;
+    margin-left: 5vw;
 }
 .add_blog{
-  font:normal normal normal 1.3vw/1.318vw Poppins
+  font:normal normal normal 3vw/3.5vw Poppins;
+  height: 10vw;
 }
 .imagebox{
-  width: 26.205vw;
-    cursor: pointer;
-    position: relative;
-    height: 19.227vw;
+  width: 40vw;
+  cursor: pointer;
+  position: relative;
+  height: 40vw;
 }
 .blogcard{
-  width: 26.205vw;
-    margin-top: 3.782vw;
-    height: auto;
+  width: auto;
+  margin-top: 3.782vw;
+  height: auto;
+}
+
+.blog_load_more_blogs{
+  margin-top: 5vw;
+  margin-left: 6vw !important;
 }
 
 }

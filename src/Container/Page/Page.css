@@ -107,6 +107,22 @@
     }
   }
   @media(max-width:425px){
+    .image_about {
+      height: auto;
+      width: 90vw;
+      display: flex;
+      flex-direction: column;
+      margin-left: 2.5vw;
+    }
+
+    .two-col-banner .two-banner {
+      height: 75vw;
+    }
+
+    .image_about .big_banner{
+      width: 90vw;
+      height: 75vw;
+    }
     .categories_black_about ul {
       width: 72.704vw;
       margin-left: 12vw;
