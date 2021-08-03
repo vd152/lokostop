@@ -30,7 +30,7 @@ class IndividualProductDetails extends Component {
       )
     }else if(type == "Textarea"){
      return (
-<div className="save_box individual_save_box" key={unique}>
+<div className="save_box individual_save_box individual_save_column" key={unique}>
       <p className="color_text individual_color_text"> {label}: {required && "*"}</p>
       <textarea className="product-qty individual_product-qty" type="text" row="3"></textarea>
     </div>
@@ -186,7 +186,7 @@ class IndividualProductDetails extends Component {
                 return this.getOption(option.type, option.name, option.required, option.value, key)
               })}
              
-              <div className="save_box individual_save_box">
+              <div className="save_box individual_save_box individual_save_column">
                 <p className="color_text individual_color_text"> Qty:</p>
                 <input className="product-qty individual_product-qty" type="number" step="1" placeholder="1" min="1" value={this.state.qty} onChange={(e) => { this.setState({ qty: e.target.value }) }} />
               </div>
@@ -204,7 +204,7 @@ class IndividualProductDetails extends Component {
               : ""}
             <div className="pay_via">
               <p
-                className="save_text individual_save_text"
+                className="save_text individual_save_text individual_pay_text"
                 style={{ marginLeft: "-0.952vw", marginTop: "1.025vw" }}
               >
                 Pay via:

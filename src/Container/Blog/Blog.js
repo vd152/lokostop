@@ -32,7 +32,7 @@ export class Blog extends Component {
                     
 
                 </div>
-                <button className="load_more_blogs">Load more</button>
+                <button className="load_more_blogs blog_load_more_blogs">Load more</button>
                 <Footer />
             </div>
         )

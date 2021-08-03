@@ -249,7 +249,80 @@
   }
 .product_Name {
   width: auto;
+  padding-right: 8vw;
 }
+
+.product_avail{
+  padding-top: 0.5vw;
+}
+
+.product_price {
+  width: 16.249vw;
+  padding-top: 0.5vw;
+}
+
+.product_quantity {
+  width: 10vw;
+  padding-top: 0.5vw;
+  padding-right: 1vw;
+}
+
+.product_subtotal {
+  width: 15.249vw;
+  padding-top: 0.5vw;
+}
+.product_para_1{
+  font-size: 1.5vw;
+  padding-bottom: 0.5vw;
+}
+
+.product_para_2{
+  font-size: 1.2vw;
+  padding-bottom: 0.5vw;
+}
+
+.product_para_3{
+  font-size: 1.2vw;
+}
+
+.product_avail1{
+  font-size: 1.5vw;
+}
+
+.product_price1{
+  font-size: 1.6vw;
+  margin-left: 3.5vw;
+}
+.product_quantity1{
+  margin-left: 2vw;
+}
+#minus_icon{
+  font-size: 1.8vw;
+  margin-top: -0.5vw;
+}
+
+.product_quant_para{
+  font-size: 1.5vw;
+}
+#add_icon{
+  font-size: 2vw;
+  margin-top: -0.5vw;
+}
+
+.product_subtotal1{
+  margin-left: 3vw;
+}
+
+.product__sub_para{
+  font-size: 1.5vw;
+  margin-top: -0.5vw;
+}
+
+#closeIcon{
+  font-size: 1.5vw;
+  margin-top: -0.2vw;
+}
+
 #continue_shopping {
   width: 20vw;
   height: 4vw;
@@ -271,6 +344,10 @@
 .button_box_1{
   height: auto;
 }
+
+  .table_heading{
+    font-size: 2vw;
+  }
 }
 @media (max-width:425px){
   .table_heading1{
