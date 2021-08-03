@@ -7,25 +7,20 @@ import "./Header03.css";
 import { connect } from "react-redux";
 import Login from "./Login/Login";
 import Search from "./Search";
+import Dropdown from "react-multilevel-dropdown";
 
 class Header01 extends Component {
   state = {
     categories: [],
-
   };
   componentDidMount() {
     const { categories, categories2 } = this.state;
     const setCategories = (root) => {
       if (root.childrenCategory.length == 0) {
         return (
+          <Dropdown.Item key={root._id}>
           <Link
-            style={{
-              background: "transparent",
-              color: "#1D1D1D",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-            className={"dropdown-item"}
+           style={{ background: "transparent", color: "#1D1D1D" }}
             to={"/categories/" + root.name+"/"+ root.url + "/" + root._id}
           >
             {root.name}
@@ -36,35 +31,37 @@ class Header01 extends Component {
               ""
             )}
           </Link>
+          </Dropdown.Item>
         );
       } else
+      {
+
         return (
-          <React.Fragment>
-            <Link
-              style={{
-                background: "transparent",
-                color: "#1D1D1D",
-                display: "flex",
-                justifyContent: "space-between",
-              }}
+          <div className="d-flex" key={root._id}>
+             <Link
+              style={{ width: '80%'}}
               className={"dropdown-item"}
               to={"/categories/" + root.name+"/" + root.url + "/" + root._id}
             >
               {root.name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <IoIosArrowForward className="ForwardArrow" />
             </Link>
+          <Dropdown.Item  >
+          <IoIosArrowForward className="ForwardArrow" />
+
             {root.childrenCategory.length > 0 ? (
-              <ul className="dropdown-menu dropdown-submenu">
+              <Dropdown.Submenu position={"right"}>
                 {root.childrenCategory.map((child, key) => {
-                  return <li key={key}>{setCategories(child)}</li>;
+                  return setCategories(child)
                 })}
-              </ul>
+             </Dropdown.Submenu>
             ) : (
               ""
             )}
-          </React.Fragment>
+          </Dropdown.Item>
+          </div>
         );
+            }
     };
 
     this.props.categories.forEach((category) => {
@@ -80,7 +77,8 @@ class Header01 extends Component {
     return (
       <div className="Header_one">
         <div className="Header_one_left">
-          <div className="browseCat">
+          <Dropdown className=" category-dropdownbutton browseCat" position="right" title="Browse Categories &#8595;">
+            {/* browse
             <button
               className="btn  dropdown-toggle"
               type="button"
@@ -88,16 +86,15 @@ class Header01 extends Component {
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              {/* <FiMenu id="MenuIcon" /> */}
               &nbsp;&nbsp; <span className="large_screen_text">Browse categories</span>
               <span className="small_screen_text">Browse</span>
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            </button> */}
+            {/* <Dropdown.Item > */}
               {this.state.categories.map((category, key) => {
-                return <li key={key}>{category.content}</li>;
+                return category.content
               })}
-            </ul>
-          </div>
+            {/* </Dropdown.Item> */}
+          </Dropdown>
         </div>
 
               <Search />

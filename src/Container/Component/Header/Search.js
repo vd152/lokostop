@@ -5,6 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import "./Header03.css";
 import { connect } from "react-redux";
+import Dropdown from "react-multilevel-dropdown";
 
 class Search extends Component {
   state = {
@@ -23,12 +24,14 @@ class Search extends Component {
     const setCategories2 = (root) => {
       if (root.childrenCategory.length == 0) {
         return (
+          <Dropdown.Item key={root._id}>
           <div
             style={{
               background: "transparent",
               color: "#1D1D1D",
               display: "flex",
               justifyContent: "space-between",
+              width: "80%",
             }}
             className={"dropdown-item"}
             onClick={(e) => {
@@ -41,22 +44,22 @@ class Search extends Component {
           >
             {root.name}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {root.childrenCategory.length > 0 ? (
-              <IoIosArrowForward className="ForwardArrow" />
-            ) : (
-              ""
-            )}
+         
           </div>
+          </Dropdown.Item>
         );
       } else
+      {
+
         return (
-          <React.Fragment>
-            <div
+          <div className="d-flex" key={root._id}>
+             <div
               style={{
                 background: "transparent",
                 color: "#1D1D1D",
                 display: "flex",
                 justifyContent: "space-between",
+                width: "80%"
               }}
               className={"dropdown-item"}
               onClick={(e) => {
@@ -69,19 +72,23 @@ class Search extends Component {
             >
               {root.name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <IoIosArrowForward className="ForwardArrow" />
             </div>
+          <Dropdown.Item  >
+          <IoIosArrowForward className="ForwardArrow" />
+
             {root.childrenCategory.length > 0 ? (
-              <ul className="dropdown-menu dropdown-submenu">
+              <Dropdown.Submenu position={"right"}>
                 {root.childrenCategory.map((child, key) => {
-                  return <li key={key}>{setCategories2(child)}</li>;
+                  return setCategories2(child)
                 })}
-              </ul>
+             </Dropdown.Submenu>
             ) : (
               ""
             )}
-          </React.Fragment>
+          </Dropdown.Item>
+          </div>
         );
+            }
     };
     this.props.categories.forEach((category) => {
       let tempData2 = {};
@@ -101,30 +108,14 @@ class Search extends Component {
     return (
         <div className={this.props.home? "Header_one_centre search-sm": "Header_one_centre search-xl"}>
           <div className="centre_first_part">
-            <div className="dropdown">
-              <button
-                style={{ marginTop: "1.5%" }}
-                className="btn  dropdown-toggle catdropdown"
-                type="button"
-                id="dropdownMenuButton1"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                {this.state.selectedCategory.name == ""
-                  ? <span className="center_first_part_text"><span className="large_screen_text">All Categories</span>
-                    <span className="small_screen_text">All</span>
-                  </span>
-                  : this.state.selectedCategory.name}
-              </button>
-              <ul
-                className="dropdown-menu"
-                aria-labelledby="dropdownMenuButton1"
-              >
-                {this.state.categories2.map((category, key) => {
-                  return <li key={key}>{category.content}</li>;
-                })}
-              </ul>
-            </div>
+   
+               <Dropdown className=" search-dropdownbutton "  position="right" title={this.state.selectedCategory.name == ""?"Categories":this.state.selectedCategory.name}>
+        
+              {this.state.categories2.map((category, key) => {
+                return category.content
+              })}
+            {/* </Dropdown.Item> */}
+          </Dropdown>
           </div>
           <div className="centre_second_part">
             <div className="inputstyle">
