@@ -10,7 +10,6 @@ import PopularBox from "../Component/Boxes/PopularBox";
 import ShowReview from "./ShowReview";
 import { IoIosArrowBack, IoIosArrowForward, IoIosAttach } from "react-icons/io";
 import { connect } from "react-redux";
-import { getProductDetails } from "../../Redux/Actions/ProductActions";
 import Loader from "../Loader/Loader";
 import api from "../../Apis/api";
 import {Helmet} from "react-helmet";
@@ -45,12 +44,13 @@ class IndividualProduct extends Component {
     productReviews: [],
   };
   componentDidMount() {
-    this.props.getProductDetails(this.props.match.params.id);
-    this.setState({
-      productDetails: this.props.productDetails
-        ? this.props.productDetails
-        : this.state.productDetails,
-    });
+
+    let url = '/product/get/'+this.props.match.params.id
+    api.get(url).then(res=>{
+      this.setState({productDetails: res.data.data});
+    }).catch(err=>{
+      console.log(err)
+    })
     this.getReviews()
   }
   getReviews = () =>{
@@ -320,11 +320,9 @@ class IndividualProduct extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    productDetails: state.getProductDetails.product,
-    productLoading: state.getProductDetails.loading,
     user: state.getUser.user,
   };
 };
-export default connect(mapStateToProps, { getProductDetails })(
+export default connect(mapStateToProps)(
   IndividualProduct
 );

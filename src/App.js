@@ -22,7 +22,7 @@ import ProfileIndividual from './Container/Profile/ProfileIndividual';
 import sendQuery from './Container/Query/sendQuery';
 import Loader from './Container/Loader/Loader';
 import {getAllCategories} from './Redux/Actions/CategoryActions'
-import {getFooterDetails, getLogos, getGeneral, getBrands} from './Redux/Actions/StorefrontActions'
+import {getFooterDetails, getLogos, getGeneral, getBrands, getProductTabs, getFeatures} from './Redux/Actions/StorefrontActions'
 import {getMenus} from './Redux/Actions/MenuActions'
 import {getUser} from './Redux/Actions/UserActions'
 import {getWishlist} from './Redux/Actions/WishlistActions'
@@ -33,21 +33,24 @@ import { NotFound } from './Utils/NotFound';
 import Page from './Container/Page/Page';
 class App extends React.Component {
   componentDidMount(){
+    this.props.getGeneral()
+    this.props.getLogos()
+    this.props.getAllCategories()
+    this.props.getMenus()
     if(getUserId()){
       this.props.getUser(getUserId())
       this.props.getWishlist()
       this.props.getCart()
     }
-    this.props.getGeneral()
+    this.props.getFeatures();
     this.props.getFooterDetails()
-    this.props.getLogos()
-    this.props.getAllCategories()
-    this.props.getMenus()
+    this.props.getProductTabs()
     this.props.getBrands();
     this.props.getTags()
+
   }
   render(){
-    if(this.props.footerLoading || this.props.categoriesloading || this.props.menuLoading || this.props.logoLoading || this.props.userLoading || this.props.storeLoading){
+    if( this.props.categoriesloading || this.props.menuLoading || this.props.logoLoading || this.props.userLoading || this.props.storeLoading){
       return <Loader />
   }
     return (
@@ -86,5 +89,5 @@ const mapStateToProps = state =>{
       storeLoading: state.getStore.loading
   }
 }
-export default connect(mapStateToProps, {getUser,getGeneral, getFooterDetails, getAllCategories, getMenus, getLogos, getWishlist,getCart, getTags, getBrands})(App)
+export default connect(mapStateToProps, {getUser,getGeneral, getFooterDetails, getAllCategories, getMenus, getLogos, getWishlist,getCart, getTags, getBrands, getProductTabs, getFeatures})(App)
 

@@ -1,6 +1,6 @@
 import "./Header01.css";
 import { IoIosArrowForward, IoIosHeart } from "react-icons/io";
-import { FiMenu, FiSearch, FiShoppingCart } from "react-icons/fi";
+import {  FiShoppingCart } from "react-icons/fi";
 import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import "./Header03.css";

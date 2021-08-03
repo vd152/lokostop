@@ -21,6 +21,9 @@ export class Footer extends Component {
     });
   }
   render() {
+    if(this.props.footerLoading){
+      return <div></div>
+    }
     return (
       <footer className="footer">
         <div className="area_1">

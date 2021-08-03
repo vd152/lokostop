@@ -31,7 +31,6 @@ export const cartReducer = (state = { cart: []}, action) => {
             case actionTypes.ADD_CART_FAIL:
                 return {
                     loading: false,
-                    cart: [],
                     error: action.payload
                 }
                 case actionTypes.DELETE_CART_REQUEST:

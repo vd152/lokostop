@@ -2,7 +2,6 @@ import { BiCart } from "react-icons/bi";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getFeatures } from "../../Redux/Actions/StorefrontActions";
 import { addToCart } from "../../Redux/Actions/CartActions";
 class IndividualProductDetails extends Component {
   state = {
@@ -15,7 +14,6 @@ class IndividualProductDetails extends Component {
     }
   }
   componentDidMount() {
-    this.props.getFeatures();
     this.setState({
       footerDetails: this.props.footerData.Footer
         ? this.props.footerData
@@ -211,10 +209,12 @@ class IndividualProductDetails extends Component {
               >
                 Pay via:
               </p>
+              {!this.props.footerLoading && 
               <div className="logo2pay">
               <img src={"https://api.lokostop.in/"+this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image} />
 
              </div>
+  }
             </div>
             {!this.props.featuresLoading && this.props.allFeatures.Features &&
               this.props.allFeatures.Features.SectionStatus ? (
@@ -259,4 +259,4 @@ const mapStateToProps = (state) => {
     allFeatures: state.getFeatures.features,
   };
 };
-export default connect(mapStateToProps, { getFeatures, addToCart })(IndividualProductDetails);
+export default connect(mapStateToProps, {  addToCart })(IndividualProductDetails);
