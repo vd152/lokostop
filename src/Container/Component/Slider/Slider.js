@@ -12,7 +12,7 @@ class Slider extends Component {
                           return <Carousel.Item interval={3000} key={key}>
                           <img
                               className="d-block w-100 video_container"
-                              src="https://images.unsplash.com/photo-1556740772-1a741367b93e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZWxlY3Ryb25pY3MlMjBzaG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&autohttps://images.unsplash.com/photo-1556740772-1a741367b93e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8ZWxlY3Ryb25pY3MlMjBzaG9wfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                              src={slide.Image.image? "https://api.lokostop.in/"+slide.Image.image: "https://via.placeholder.com/150"} 
                               alt="First slide"
                           />
                           <Carousel.Caption className="slider_caption">

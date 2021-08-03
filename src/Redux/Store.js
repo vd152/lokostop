@@ -1,7 +1,7 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import { getProductDetailsReducer, getTagsReducer} from './Reducers/ProductReducers'
+import { getTagsReducer} from './Reducers/ProductReducers'
 import {getGeneralReducer, getFooterReducer, getProductTabsReducer, getFeaturesReducer, getLogosReducer, getBannersReducer, getBrandsReducer, getTopBrandsReducer} from './Reducers/StorefrontReducer'
 import {getAllCategoriesReducer, getSectionProductsReducer} from './Reducers/CategoryReducers'
 import {getPageReducer} from './Reducers/PageReducers'
@@ -14,7 +14,6 @@ import { saveOrderReducer} from './Reducers/OrderReducers'
 
 const reducers = combineReducers({
     getStore: getGeneralReducer,
-    getProductDetails: getProductDetailsReducer,
     getFooter: getFooterReducer,
     getLogos: getLogosReducer,  
     getProductTabs: getProductTabsReducer,

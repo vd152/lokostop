@@ -18,7 +18,6 @@ import Loader from "../Loader/Loader";
 import { connect } from "react-redux";
 import {
   getFeatures,
-  getProductTabs,
   getBanners
 } from "../../Redux/Actions/StorefrontActions";
 import TwoColBanner from "../Component/Slider/TwoColBanner";
@@ -27,19 +26,12 @@ import OneColBanner from "../Component/Slider/OneColBanner";
 import {Helmet} from "react-helmet";
 
 class Home extends Component {  
-  state = {
-    products: [],
-  };
+
   componentDidMount() {
-    this.props.getFeatures();
-    this.props.getProductTabs();
     this.props.getBanners()
-    this.setState({ products: this.props.products });
   }
   render() {
     if (
-      this.props.allProductRowsLoading ||
-      this.props.featuresLoading ||
       this.props.bannersLoading 
     ) {
       return <Loader />;
@@ -52,10 +44,10 @@ class Home extends Component {
           <Header01 />
           <Header />
           <Search home={true}/>
-          {this.props.store.Slider._id && 
+          {this.props.store.Slider && 
           <Slider slides={this.props.store.Slider.Slides} settings={this.props.store.Slider.Settings}/>
   }
-          {this.props.allFeatures.Features &&
+          {!this.props.featuresLoading && this.props.allFeatures.Features &&
           this.props.allFeatures.Features.SectionStatus ? (
             <div className="Free_box">
               {this.props.allFeatures.Features.Features.filter((feature) => {
@@ -83,18 +75,26 @@ class Home extends Component {
           )}
 
           {/* <NewArrival products={[]}/> */}
+          {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[0]} />
+  }
           <ThreeColBanner />
           <MostViewedBox />
           <FindByCategory />
+          {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[1]} />
+  }
           <TwoColBanner />
           {/* <CategoryBox /> */}
           <TopClients />
+          {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[2]} />
+  }
           <OneColBanner />
           <ClientImage />
+          {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[3]} />
+  }
           <SixImageSlider />
           <Footer />
         </div>
@@ -104,7 +104,6 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    productDetails: state.getProductDetails.product,
     allProductRows: state.getProductTabs.allTabs,
     allProductRowsLoading: state.getProductTabs.loading,
     featuresLoading: state.getFeatures.loading,
@@ -113,4 +112,4 @@ const mapStateToProps = (state) => {
     store: state.getStore.store
   };
 };
-export default connect(mapStateToProps, { getFeatures, getProductTabs, getBanners })(Home);
+export default connect(mapStateToProps, { getFeatures, getBanners })(Home);
