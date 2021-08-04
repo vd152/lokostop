@@ -4,8 +4,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import {saveOrderDetails} from '../../Redux/Actions/OrderActions'
+import api from '../../Apis/api'
 class Billinginfo extends Component {
   state = {
+    shippingcost: 0,
+    transportationcost: 0,
     data: {
       Address: [
         {
@@ -18,6 +21,22 @@ class Billinginfo extends Component {
         },
       ],
     },
+    sendData: {
+      Phone: "",
+      Email: "",
+      Receiver: "",
+      Status: "Pending Payment",
+      Address: {
+        BillingAddress: {
+
+        },
+        ShippingAddress: {
+
+        }
+      },
+      ShippingPrice: 0,
+      Discount: 0,
+    },
     selected: -1,
     selectedAddress: {
       AddressLine1: "",
@@ -27,24 +46,47 @@ class Billinginfo extends Component {
       City: "",
       Pin: "",
     },
-    Receiver: {
-      FullName: "",
-      Phone: "",
-      Email: "",
-    },
+    coupon: ""
   };
   componentDidMount() {
     let address = this.props.user.Address ? this.props.user.Address : [];
     if (address.length == 0) {
       address = this.state.data.Address;
     }
-    this.setState({ data: { ...this.props.user, Address: address } });
+   
+    
+    this.setState({ data: { ...this.props.user, Address: address }});
+  }
+  getSubtotal = () =>{
+    let sum = 0;
+    this.props.cart.forEach(item=>{
+      sum+= item.totalPrice
+    })
+    // this.setState({subtotal: sum })
+    return sum;
   }
   setAddress = (key, value) => {
     const { selectedAddress } = this.state;
     selectedAddress[key] = value;
     this.setState({ selectedAddress, selected: -2 });
   };
+  setData = (key, value)=>{
+    const {sendData} = this.state
+    sendData[key] = value
+    this.setState({sendData})
+  }
+  checkCouponSingle = (code, productId) =>{
+    api.post("/coupon/valid", {code,productId}).then(res=>{
+      console.log(res.data.data)
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
+  checkCouponAll = () =>{
+    this.props.cart.forEach((item)=>{
+      this.checkCouponSingle(this.state.coupon, item.product._id)
+    })
+  }
   render() {
     return (
       <React.Fragment>
@@ -61,16 +103,31 @@ class Billinginfo extends Component {
                   className="input_box"
                   type="text"
                   placeholder="Full Name"
+                  name="Receiver"
+                  value={this.state.sendData.Receiver}
+                  onChange={(e) => {
+                    this.setData(e.target.name, e.target.value)
+                  }}
                 />
                 <input
                   className="input_box"
                   type="text"
                   placeholder="Phone Number"
+                  name="Phone"
+                  value={this.state.sendData.Phone}
+                  onChange={(e) => {
+                    this.setData(e.target.name, e.target.value)
+                  }}
                 />
                 <input
                   className="input_box"
                   type="text"
                   placeholder="Email Address"
+                  name="Email"
+                  value={this.state.sendData.Email}
+                  onChange={(e) => {
+                    this.setData(e.target.name, e.target.value)
+                  }}
                 />
                 <p className="check_box">
                   <label className="containerCheck">
@@ -223,15 +280,15 @@ class Billinginfo extends Component {
                   <div className="billing_third">
                     <div className="inside_box_third">
                       <p className="para1_insidethird">Subtotal</p>
-                      <p className="para2_insidethird">Rs. 44,989.00</p>
+                      <p className="para2_insidethird">Rs. {this.getSubtotal()}</p>
                     </div>
                     <div className="inside_box_third">
                       <p className="para1_insidethird">Shipping Cost</p>
-                      <p className="para2_insidethird">Rs. 200.00</p>
+                      <p className="para2_insidethird">Rs. {this.state.shippingcost}</p>
                     </div>
                     <div className="inside_box_third">
                       <p className="para1_insidethird">Transportation Cost</p>
-                      <p className="para2_insidethird">Rs. 100.00</p>
+                      <p className="para2_insidethird">Rs. {this.state.transportationcost}</p>
                     </div>
                     <div className="inside_box_third">
                       <p className="para1_insidethird">Your Savings</p>
@@ -249,8 +306,14 @@ class Billinginfo extends Component {
                         type="text"
                         className="discountcode"
                         placeholder="Discount Code"
+                        value={this.state.coupon}
+                        onChange={(e) => {
+                          this.setState({coupon: e.target.value})
+                        }}
                       />
-                      <p className="applycode">Apply</p>
+                      <p className="applycode" onClick={(e) =>{
+                        this.checkCouponAll()
+                      }}>Apply</p>
                     </div>
                     <div className="inside_box_third">
                       <p className="para1_insidethird">Discount</p>
@@ -292,7 +355,8 @@ const mapStateToProps = (state) => {
   return {
     user: state.getUser.user,
     userLoading: state.getUser.loading,
-    savedOrder: state.saveOrder.orderDetails
+    savedOrder: state.saveOrder.orderDetails,
+    cart: state.userCart.cart,
   };
 };
 export default connect(mapStateToProps, { saveOrderDetails })(Billinginfo);

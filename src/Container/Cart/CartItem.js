@@ -25,8 +25,9 @@ class CartItem extends Component {
                 <td className="product_price">UNIT PRICE</td>
                 <td className="product_quantity">QUANTITY</td>
                 <td className="product_subtotal">SUBTOTAL</td>
+                <td className="product_subtotal">Remove</td>
               </tr>
-              {this.props.cart.map(({ product, qty }, key) => {
+              {this.props.cart.map(({ product, qty, couponDiscount, totalPrice }, key) => {
                 return (
                   <tr className="table_heading1" key={key}>
                     <td className="product_image1">
@@ -84,16 +85,12 @@ class CartItem extends Component {
                     <td className="product_subtotal1">
                       <p className="product__sub_para">
                         Rs.{" "}
-                        {product.specialPrice
-                          ? product.specialPriceType == "Fixed"
-                            ? product.specialPrice * qty
-                            : (product.price.toString() -
-                              (product.specialPrice.toString() / 100) *
-                              product.price) *
-                            qty.toString()
-                          : product.price * qty}
+                        {totalPrice}
+                           {couponDiscount != 0 && <span className="coupon-applied">applied</span>}
                       </p>
-                      <IoCloseCircleSharp
+                    </td>
+                    <td className="product_subtotal1">
+                    <IoCloseCircleSharp
                         id="closeIcon"
                         onClick={(e) => {
                           this.props.deleteFromCart(product._id);
