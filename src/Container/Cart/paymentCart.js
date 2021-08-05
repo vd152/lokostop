@@ -13,6 +13,7 @@ import Wallet from "./Wallet";
 import Loader from "../Loader/Loader";
 import { connect } from "react-redux";
 import { getFeatures } from "../../Redux/Actions/StorefrontActions";
+import { saveOrderDetails } from "../../Redux/Actions/OrderActions";
 
 class paymentCart extends Component {
   state = {
@@ -232,6 +233,7 @@ const mapStateToProps = (state) => {
     allFeatures: state.getFeatures.features,
     settings: state.getSettings.settings,
     settingsLoading: state.getSettings.loading,
+    savedOrder: state.saveOrder.orderDetails,
   };
 };
-export default connect(mapStateToProps, { getFeatures })(paymentCart);
+export default connect(mapStateToProps, { getFeatures, saveOrderDetails })(paymentCart);

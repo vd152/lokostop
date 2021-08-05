@@ -7,8 +7,6 @@ import { saveOrderDetails } from "../../Redux/Actions/OrderActions";
 import api from "../../Apis/api";
 class Billinginfo extends Component {
   state = {
-    shippingcost: 0,
-    transportationcost: 0,
     data: {
       Address: [
         {
@@ -43,7 +41,11 @@ class Billinginfo extends Component {
       Pin: "",
     },
     coupon: "",
-    shippingMethods: {},
+    shippingMethods: {
+      FreeShipping:{},
+      LocalPickup:{},
+      FlatRate:{}
+    },
     redirect: false
   };
   componentDidMount() {
@@ -51,8 +53,13 @@ class Billinginfo extends Component {
     if (address.length == 0) {
       address = this.state.data.Address;
     }
+    if(this.props.savedOrder.data){
+      this.setState({sendData: this.props.savedOrder.data, selectedAddress: this.props.savedOrder.data.Address.ShippingAddress})
+    }
+    this.setState({ data: { ...this.props.user, Address: address }, shippingMethods: this.props.settings.ShippingMethods },()=>{
 
-    this.setState({ data: { ...this.props.user, Address: address }, shippingMethods: this.props.settings.ShippingMethods });
+      this.getShipping()
+    });
   }
   getSubtotal = () => {
     let sum = 0;
@@ -62,15 +69,22 @@ class Billinginfo extends Component {
     // this.setState({subtotal: sum })
     return sum;
   };
+  getSavings = () =>{
+    let total = 0;
+    this.props.cart.forEach((item)=>{
+      total+=item.product.price*item.qty
+    })
+    return total
+  }
   getShipping = () =>{
-    if(this.state.shippingMethods.FreeShipping.Status && this.getSubtotal() > this.state.shippingMethods.FreeShipping.MinimumAmount){
+    if(this.state.shippingMethods.FreeShipping.Status && (this.getSubtotal() > this.state.shippingMethods.FreeShipping.MinimumAmount)){
       this.setData("ShippingPrice", 0)
     } 
     if(this.state.shippingMethods.LocalPickup.Status){
-
+      this.setData("ShippingPrice", this.state.shippingMethods.LocalPickup.Cost)
     }
     if(this.state.shippingMethods.FlatRate.Status){
-
+      this.setData("ShippingPrice", this.state.shippingMethods.FlatRate.Cost)
     }
   }
   setAddress = (key, value) => {
@@ -87,15 +101,21 @@ class Billinginfo extends Component {
     api
       .post("/coupon/valid", { code, productId })
       .then((res) => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
+        return res.data.data
       })
       .catch((err) => {
         console.log(err);
+        return "invalid"
       });
   };
   checkCouponAll = () => {
     this.props.cart.forEach((item) => {
-      this.checkCouponSingle(this.state.coupon, item.product._id);
+      let coupon =  this.checkCouponSingle(this.state.coupon, item.product._id);
+      console.log(coupon);
+      if(coupon != "invalid"){
+        console.log("valid!")
+      }
     });
   };
   temporaryOrderSave = () => {
@@ -280,7 +300,7 @@ class Billinginfo extends Component {
                   );
                 })}
                 <div className="finaladdress mt-3">
-                  {this.state.selected == -1 ? (
+                  {this.state.selected == -1 && !this.props.savedOrder.data? (
                     <p>Your address will be shown here..</p>
                   ) : (
                     <React.Fragment>
@@ -316,22 +336,22 @@ class Billinginfo extends Component {
                     <div className="inside_box_third">
                       <p className="para1_insidethird">Shipping Cost</p>
                       <p className="para2_insidethird">
-                        Rs. {this.state.shippingcost}
+                        Rs. {this.state.sendData.ShippingPrice}
                       </p>
                     </div>
-                    <div className="inside_box_third">
+                    {/* <div className="inside_box_third">
                       <p className="para1_insidethird">Transportation Cost</p>
                       <p className="para2_insidethird">
-                        Rs. {this.state.transportationcost}
+                        Rs. {this.state.sendData}
                       </p>
-                    </div>
+                    </div> */}
                     <div className="inside_box_third">
                       <p className="para1_insidethird">Your Savings</p>
                       <p
                         className="para2_insidethird"
                         style={{ color: "#08E5A9" }}
                       >
-                        Rs. MRP-Our price
+                        Rs. {this.getSavings()-this.getSubtotal()}
                       </p>
                     </div>
                   </div>
