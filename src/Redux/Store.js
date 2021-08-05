@@ -10,7 +10,7 @@ import {getMenuReducer} from './Reducers/MenuReducers'
 import {wishlistReducer} from './Reducers/WishlistReducers'
 import {cartReducer} from './Reducers/CartReducers'
 import { saveOrderReducer} from './Reducers/OrderReducers'
-
+import {getSettingsReducer} from './Reducers/SettingsReducer'
 
 const reducers = combineReducers({
     getStore: getGeneralReducer,
@@ -31,7 +31,8 @@ const reducers = combineReducers({
     getBanners: getBannersReducer,
     getBrands: getBrandsReducer,
     getTopBrands: getTopBrandsReducer,
-    saveOrder: saveOrderReducer
+    saveOrder: saveOrderReducer,
+    getSettings: getSettingsReducer,
 })
 
 const middleware = [thunk]

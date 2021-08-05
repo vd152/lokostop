@@ -4,7 +4,6 @@ import Header from "../Component/Header/Header";
 import Header01 from "../Component/Header/Header01";
 import "./paymentCart.css";
 import "./PaymentNet.css";
-import { FaShippingFast, FaRegClock } from "react-icons/fa";
 import { IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-router-dom";
 import CreditCard from "./CreditCard";
@@ -16,11 +15,17 @@ import { connect } from "react-redux";
 import { getFeatures } from "../../Redux/Actions/StorefrontActions";
 
 class paymentCart extends Component {
+  state = {
+    paymentMethods:{
+      CashonDelivery:{}
+    }
+  }
   componentDidMount() {
     this.props.getFeatures();
+    this.setState({paymentMethods: this.props.settings.PaymentMethods})
   }
   render() {
-    if (this.props.featuresLoading) {
+    if (this.props.featuresLoading || this.props.settingsLoading) {
       return <Loader />;
     } else
       return (
@@ -102,6 +107,7 @@ class paymentCart extends Component {
                     >
                       WALLET/UPI
                     </button>
+                    {this.state.paymentMethods.CashonDelivery.Status && 
                     <button
                       className="nav-link payment_css"
                       id="v-pills-cash-tab"
@@ -112,8 +118,9 @@ class paymentCart extends Component {
                       aria-controls="v-pills-cash"
                       aria-selected="false"
                     >
-                      CASH ON DELIVERY
+                      {this.state.paymentMethods.CashonDelivery.Label}
                     </button>
+  }
                   </div>
                   <div className="tab-content" id="v-pills-tabContent">
                     <div
@@ -150,6 +157,7 @@ class paymentCart extends Component {
                     >
                       <Wallet />
                     </div>
+                    {this.state.paymentMethods.CashonDelivery.Status && 
                     <div
                       style={{ width: "34vw" }}
                       className="tab-pane fade"
@@ -159,11 +167,12 @@ class paymentCart extends Component {
                     >
                       <div className="boxdetail">
                         <div className="netboxmain">
-                          <p className="netbanking">Currently Unavailable</p>
+                          <p className="netbanking text-center py-2">{this.state.paymentMethods.CashonDelivery.Description}</p>
                         </div>
-                        <button className="paynow">PAY NOW</button>
+                        <button className="paynow">BUY NOW</button>
                       </div>
                     </div>
+  }
                   </div>
                 </div>
               </div>
@@ -221,6 +230,8 @@ const mapStateToProps = (state) => {
   return {
     featuresLoading: state.getFeatures.loading,
     allFeatures: state.getFeatures.features,
+    settings: state.getSettings.settings,
+    settingsLoading: state.getSettings.loading,
   };
 };
 export default connect(mapStateToProps, { getFeatures })(paymentCart);

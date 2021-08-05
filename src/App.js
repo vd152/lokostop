@@ -28,6 +28,7 @@ import {getUser} from './Redux/Actions/UserActions'
 import {getWishlist} from './Redux/Actions/WishlistActions'
 import {getCart} from './Redux/Actions/CartActions'
 import {getTags} from './Redux/Actions/ProductActions'
+import {getSettings} from './Redux/Actions/SettingsActions'
 import {getUser as getUserId } from './Utils/Local'
 import { NotFound } from './Utils/NotFound';
 import Page from './Container/Page/Page';
@@ -47,10 +48,10 @@ class App extends React.Component {
     this.props.getProductTabs()
     this.props.getBrands();
     this.props.getTags()
-
+    this.props.getSettings()
   }
   render(){
-    if( this.props.categoriesloading || this.props.menuLoading || this.props.logoLoading || this.props.userLoading || this.props.storeLoading){
+    if( this.props.categoriesloading || this.props.menuLoading || this.props.logoLoading || this.props.userLoading || this.props.storeLoading || this.props.settingsLoading){
       return <Loader />
   }
     return (
@@ -86,8 +87,9 @@ const mapStateToProps = state =>{
       menuLoading: state.getMenus.loading,
       logoLoading: state.getLogos.loading,
       userLoading: state.getUser.loading,
-      storeLoading: state.getStore.loading
+      storeLoading: state.getStore.loading,
+      settingsLoading: state.getSettings.loading,
   }
 }
-export default connect(mapStateToProps, {getUser,getGeneral, getFooterDetails, getAllCategories, getMenus, getLogos, getWishlist,getCart, getTags, getBrands, getProductTabs, getFeatures})(App)
+export default connect(mapStateToProps, {getUser,getGeneral, getFooterDetails, getAllCategories, getMenus, getLogos, getWishlist,getCart, getTags, getBrands, getProductTabs, getFeatures, getSettings})(App)
 
