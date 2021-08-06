@@ -87,19 +87,84 @@ class Section extends Component {
             <p className="parafilter">
               Filter your preference and dig deep to buy what you want
             </p>
-            <div className="filterCategories">
+            {/* <div className="filterCategories">
               {this.props.tags.length > 0
                 ? this.props.tags.map((tag, key) => {
                     return <p key={key}>{tag.name}</p>;
                   })
                 : ""}
-            </div>
+            </div> */}
             <div className="filter">
               <div className="accordion" id="accordionExample">
+              <div className="accordion-item">
+                  <h2 className="accordion-header" id="headingzero">
+                    <button
+                      className="accordion-button "
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapsezero"
+                      aria-expanded="false"
+                      aria-controls="collapsezero"
+                    >
+                      Filter by Tags
+                    </button>
+                  </h2>
+                  <div
+                    id="collapsezero"
+                    className="accordion-collapse collapse show"
+                    aria-labelledby="headingzero"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div className="accordion-body">
+                      <div className="suboptions">
+                        {this.props.tags.length > 0
+                          ? this.props.tags.map((tag, key) => {
+                              return (
+                                <div className="form-check" key={key}>
+                                  <input
+                                    className="form-check-input colorcheck"
+                                    type="checkbox"
+                                    value={tag._id}
+                                    id={tag.name+key}
+                                    onChange={(e)=>{
+                                      const {filterArr} = this.state
+                                      let ind = filterArr.findIndex(x => x.name == "tags")
+                                      if(ind != -1){
+                                        if(filterArr[ind].value.includes(e.target.value)){
+                                          filterArr[ind].value.splice(filterArr[ind].value.indexOf(e.target.value, 1))
+                                          if(filterArr[ind].value.length == 0){
+                                            filterArr.splice(ind,1)
+                                          }
+                                        }else
+                                          filterArr[ind].value.push(e.target.value)
+                                      }else{
+                                        
+                                        filterArr.push({
+                                          name: "tags",
+                                          value: [e.target.value]
+                                        })
+                                      }
+                                      this.setState({ filterArr, skip: 0,submitting:true, categoryProducts: []},()=>{this.getProducts()})
+                                    }}
+                                  />
+                                  <label
+                                    className="form-check-label checkfont"
+                                    htmlFor={tag.name+key}
+                                  >
+                                    {tag.name}
+                                  </label>
+                                </div>
+                              );
+                            })
+                          : ""}
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="accordion-item">
                   <h2 className="accordion-header" id="headingOne">
                     <button
-                      className="accordion-button"
+                      className="accordion-button collapsed"
                       type="button"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapseOne"
@@ -111,7 +176,7 @@ class Section extends Component {
                   </h2>
                   <div
                     id="collapseOne"
-                    className="accordion-collapse collapse show"
+                    className="accordion-collapse collapse"
                     aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample"
                   >
@@ -248,36 +313,12 @@ class Section extends Component {
                     data-bs-parent="#accordionExample"
                   >
                     <div className="accordion-body">
-                      <div className="suboptions">
-                        <div className="form-check">
-                          <input
-                            className="form-check-input colorcheck"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            className="form-check-label checkfont"
-                            htmlFor="flexCheckDefault"
-                          >
-                            Default checkbox
-                          </label>
-                        </div>
-                        <div className="form-check">
-                          <input
-                            className="form-check-input colorcheck"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            className="form-check-label checkfont"
-                            htmlFor="flexCheckDefault"
-                          >
-                            Default checkbox
-                          </label>
-                        </div>
+                      <div className="d-flex justify-content-between">
+                        <p className="checkfont">0</p>
+                        <p className="checkfont">10,000+</p>
                       </div>
+                    <input type="range" min="1" max="100" className="price-slider"  id="myRange"/>
+
                     </div>
                   </div>
                 </div>

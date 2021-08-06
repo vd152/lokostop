@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { getTopBrands } from "../../../Redux/Actions/StorefrontActions";
 import { connect } from "react-redux";
-
+import { Link } from "react-router-dom";
 class TopClients extends Component {
 
   componentDidMount() {
@@ -35,10 +35,12 @@ class TopClients extends Component {
             We provide our clients with bulk buying for their desired amount.
             See what our biggest clients have to say about us below.
           </p>
+          <Link to="/shop">
           <button className="start_buying">
             Start bulk buying
             <IoIosArrowForward id="Arrow_buying" />
           </button>
+          </Link>
         </div>
       );
   }
