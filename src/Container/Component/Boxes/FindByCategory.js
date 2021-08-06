@@ -153,7 +153,7 @@ class FindByCategory extends React.Component {
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownButton2">
                 {!this.props.brandLoading && this.props.brands.map((brand, key)=>{
-                    return <li key={key} onClick={(e)=>{
+                    return <li className="dropdown-item" key={key} onClick={(e)=>{
                       const {selectedBrand} = this.state
                       selectedBrand.id = brand._id
                       selectedBrand.name = brand.name
