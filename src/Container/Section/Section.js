@@ -11,6 +11,7 @@ import Loader from "../Loader/Loader";
 class Section extends Component {
   state = {
     categoryProducts: [],
+    submitting: false,
     filter: "-createdAt",
     skip: 0,
     limit: 2,
@@ -19,6 +20,7 @@ class Section extends Component {
       name: "",
       value: [],
     },
+    allCategories: []
   };
   componentDidMount() {
     const { filterArr } = this.state;
@@ -29,13 +31,32 @@ class Section extends Component {
       };
       filterArr.push(tmp);
     }
-    this.setState({ filterArr }, () => {
+    this.getAllCategories()
+    this.setState({ filterArr, submitting: true }, () => {
+      this.getProducts();
     });
-    this.getProducts();
 
   }
-  getProducts = () => {
-    this.props.getSectionProducts(
+  getCategoryHelper = (cat, allCategories)=>{
+    allCategories.push(cat)
+    if(cat.childrenCategory.length == 0){
+      return;
+    }else{
+      cat.childrenCategory.forEach(child=>{
+        this.getCategoryHelper(child,allCategories)
+      })
+    }
+  }
+  getAllCategories = () =>{
+    const {allCategories} = this.state
+
+    this.props.categories.forEach((category)=>{
+      this.getCategoryHelper(category,allCategories)
+    })
+    this.setState({allCategories})
+  }
+  getProducts = async () => {
+    await this.props.getSectionProducts(
       this.state.filter,
       this.state.skip,
       this.state.limit,
@@ -46,16 +67,16 @@ class Section extends Component {
     this.props.categoryProducts.forEach((product) => {
       categoryProducts.push(product);
     });
-    // let temp = categoryProducts.map(JSON.stringify)
-    // let unique = new Set(temp)
-    // let newArr = Array.from(unique).map(JSON.parse)
+    let temp = categoryProducts.map(JSON.stringify)
+    let unique = new Set(temp)
+    let newArr = Array.from(unique).map(JSON.parse)
     this.setState({
-      categoryProducts,
+      categoryProducts: newArr,
       skip: this.state.skip + this.state.limit,
+      submitting: false
     });
   };
   render() {
-    
     return (
       <div>
         <Header01 />
@@ -103,12 +124,32 @@ class Section extends Component {
                                   <input
                                     className="form-check-input colorcheck"
                                     type="checkbox"
-                                    value=""
-                                    id="flexCheckDefault"
+                                    value={brand._id}
+                                    id={brand.name+key}
+                                    onChange={(e)=>{
+                                      const {filterArr} = this.state
+                                      let ind = filterArr.findIndex(x => x.name == "brand")
+                                      if(ind != -1){
+                                        if(filterArr[ind].value.includes(e.target.value)){
+                                          filterArr[ind].value.splice(filterArr[ind].value.indexOf(e.target.value, 1))
+                                          if(filterArr[ind].value.length == 0){
+                                            filterArr.splice(ind,1)
+                                          }
+                                        }else
+                                          filterArr[ind].value.push(e.target.value)
+                                      }else{
+                                        
+                                        filterArr.push({
+                                          name: "brand",
+                                          value: [e.target.value]
+                                        })
+                                      }
+                                      this.setState({ filterArr, skip: 0,submitting:true, categoryProducts: []},()=>{this.getProducts()})
+                                    }}
                                   />
                                   <label
                                     className="form-check-label checkfont"
-                                    htmlFor="flexCheckDefault"
+                                    htmlFor={brand.name+key}
                                   >
                                     {brand.name}
                                   </label>
@@ -141,34 +182,48 @@ class Section extends Component {
                   >
                     <div className="accordion-body">
                       <div className="suboptions">
-                        <div className="form-check">
-                          <input
-                            className="form-check-input colorcheck"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            className="form-check-label checkfont "
-                            htmlFor="flexCheckDefault"
-                          >
-                            Default checkbox
-                          </label>
-                        </div>
-                        <div className="form-check">
-                          <input
-                            className="form-check-input colorcheck"
-                            type="checkbox"
-                            value=""
-                            id="flexCheckDefault"
-                          />
-                          <label
-                            className="form-check-label checkfont"
-                            htmlFor="flexCheckDefault"
-                          >
-                            Default checkbox
-                          </label>
-                        </div>
+                        {this.state.allCategories.map((category,key)=>{
+                          if(category._id != this.props.match.params.id)
+                          return (
+                            <div className="form-check" key={key}>
+                            <input
+                              className="form-check-input colorcheck"
+                              type="checkbox"
+                              value={category._id}
+                              id={category.name+key}
+                              onChange={(e)=>{
+                                const {filterArr} = this.state
+                                let ind = filterArr.findIndex(x => x.name == "categories")
+                                if(ind != -1){
+                                  if(filterArr[ind].value.includes(e.target.value)){
+                                    filterArr[ind].value.splice(filterArr[ind].value.indexOf(e.target.value, 1))
+                                    if(filterArr[ind].value.length == 0){
+                                      filterArr.splice(ind,1)
+                                    }
+                                  }else
+                                    filterArr[ind].value.push(e.target.value)
+                                }else{
+                                  
+                                  filterArr.push({
+                                    name: "categories",
+                                    value: [e.target.value]
+                                  })
+                                }
+                                console.log(filterArr)
+                                this.setState({ filterArr, skip: 0, submitting: true, categoryProducts: []},()=>{this.getProducts()})
+                              }}
+                            />
+                            <label
+                              className="form-check-label checkfont "
+                              htmlFor={category.name+key}
+                            >
+                              {category.name}
+                            </label>
+                          </div>
+                          )
+                        })}
+                       
+                  
                       </div>
                     </div>
                   </div>
@@ -242,9 +297,10 @@ class Section extends Component {
               <p>Sort by :</p>
               <select
                 className="sortIndividual"
+                value={this.state.filter}
                 onChange={(e) => {
                   this.setState(
-                    { filter: e.target.value, skip: 0, categoryProducts: [] },
+                    { filter: e.target.value, submitting: true, skip: 0, categoryProducts: [] },
                     () => {
                       this.getProducts();
                     }
@@ -258,6 +314,7 @@ class Section extends Component {
                 <option value="rating">Customer Rating</option>
               </select>
             </div>
+            {this.state.submitting? <div>loading</div>:
             <div className="individualcategorybox">
               {!this.props.loading &&
               this.state.categoryProducts.length == 0 ? (
@@ -270,12 +327,14 @@ class Section extends Component {
                 })
               )}
             </div>
+  }
             {this.state.categoryProducts.length != 0 ? (
               <button
                 className="load_more_blogs"
                 style={{ marginLeft: "30.015vw" }}
                 id="load-more"
                 onClick={(e) => {
+                  this.setState({submitting: true})
                   this.getProducts();
                 }}
               >
@@ -294,6 +353,7 @@ class Section extends Component {
 const mapStateToProps = (state) => {
   return {
     categoryProducts: state.getSectionProducts.categoryProducts,
+    categories: state.getCategories.categories,
     loading: state.getSectionProducts.loading,
     tags: state.getTags.tags,
     brands: state.getBrands.brands,
