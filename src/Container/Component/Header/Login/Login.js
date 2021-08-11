@@ -39,6 +39,7 @@ class Login extends Component {
   }
   render() {
     return (
+      <React.Fragment>
       <div>
         <div
           className="imagevl mt-0"
@@ -48,7 +49,8 @@ class Login extends Component {
           <span className="large_screen_text"><CgProfile id="profile_icon" style={{fontSize: "2.5em"}}/></span>
           <span className="small_screen_text"><CgProfile id="profile_icon" /></span>
         </div>
-        <div
+      </div>
+          <div
           className="modal fade"
           id="staticBackdrop"
           data-bs-keyboard="false"
@@ -114,7 +116,7 @@ class Login extends Component {
                     role="tabpanel"
                     aria-labelledby="pills-home-tab"
                   >
-                    <div className="modal_signin_input">
+                    <div className="modal_signin_input text-center">
                       <input
                         className="signinput"
                         name="Email"
@@ -241,7 +243,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
-      </div>
+        </React.Fragment>
     );
   }
 }

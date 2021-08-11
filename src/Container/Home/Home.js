@@ -37,7 +37,7 @@ class Home extends Component {
       return <Loader />;
     } else
       return (
-        <div>
+        <React.Fragment>
           <Helmet>
                     <title>{this.props.store.WelcomeText}</title>
                 </Helmet>
@@ -97,7 +97,7 @@ class Home extends Component {
   }
           <SixImageSlider />
           <Footer />
-        </div>
+        </React.Fragment>
       );
   }
 }

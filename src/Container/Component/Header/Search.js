@@ -119,7 +119,7 @@ class Search extends Component {
           </div>
           <div className="centre_second_part">
             <div className="inputstyle">
-              <input type="text" placeholder="Enter your search key..." value={this.state.searchWord} onChange={(e)=>this.setState({searchWord: e.target.value})} />
+              <input type="text" placeholder="Search..." value={this.state.searchWord} onChange={(e)=>this.setState({searchWord: e.target.value})} />
             </div>
           </div>
           <div className="centre_third_part" onClick={(e)=>{
