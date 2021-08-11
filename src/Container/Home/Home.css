@@ -953,6 +953,7 @@
   height: 50vw;
   margin-top: 4.246vw;
   display: flex;
+  position: relative;
   flex-direction: column;
 }
 .slider_box_one {
