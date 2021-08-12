@@ -111,3 +111,13 @@
     margin: 0 !important;
     color: black;
 }
+@media (max-width: 768px) {
+    .header2 .nav-item .nav-link{
+        font-size: 1.3em;
+        margin-top: 0.5em;
+        margin-bottom:0.5em;
+    }
+    .header2 .dropdown .nav-link{
+        width: 40%;
+    }
+}

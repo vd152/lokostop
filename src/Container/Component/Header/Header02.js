@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Loader from "../../Loader/Loader";
+import Dropdown from "react-multilevel-dropdown";
+import { IoIosArrowForward } from "react-icons/io";
+
 
 class Header02 extends Component {
   state = {
@@ -30,7 +33,7 @@ class Header02 extends Component {
     const setCategories = (root, key) => {
       if (root.childrenMenu.length == 0) {
         return (
-          <li key={key} className="dropstart ">
+          <Dropdown.Item key={root._id}>
             <Link
               style={{
                 background: "transparent",
@@ -43,11 +46,11 @@ class Header02 extends Component {
             >
               {root.name}
             </Link>
-          </li>
+          </Dropdown.Item>
         );
       } else
         return (
-          <li key={key} className="dropdown ">
+          <div key={root._id} className="d-flex ">
             <Link
               style={{
                 background: "transparent",
@@ -62,22 +65,22 @@ class Header02 extends Component {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </Link>
 
-            <a
-              className=" dropdown-toggle toggler"
-              href="#"
-              data-bs-toggle="dropdown"
-              data-bs-auto-close="outside"
-            ></a>
+
+            <Dropdown.Item  >
+          <IoIosArrowForward className="ForwardArrow" />
+
             {root.childrenMenu.length > 0 ? (
-              <ul className="dropdown-menu ">
-                {root.childrenMenu.map((child, key2) => {
-                  return setCategories(child, key2);
+              <Dropdown.Submenu position={"right"}>
+                {root.childrenMenu.map((child, key) => {
+                  return setCategories(child)
                 })}
-              </ul>
+             </Dropdown.Submenu>
             ) : (
               ""
             )}
-          </li>
+          </Dropdown.Item>
+
+          </div>
         );
     };
     this.props.menus.PrimaryMenu.menuItems.forEach((menu, key) => {
@@ -90,19 +93,22 @@ class Header02 extends Component {
                 background: "transparent",
                 color: "#1D1D1D",
               }}
-              className="nav-link active"
+              className="nav-link "
               to={this.setMenuLink(menu)}
             >
               {menu.name}
             </Link>
-            <a
+            
+
+            {/* <a
               className=" dropdown-toggle toggler"
               href="#"
               data-bs-toggle="dropdown"
               data-bs-auto-close="outside"
-            ></a>
+            ></a> */}
           </React.Fragment>
         );
+        
         menu.childrenMenu.forEach((menuItem, key) => {
           tempData.content.push(setCategories(menuItem, key));
         });
@@ -164,7 +170,7 @@ class Header02 extends Component {
               </div>
             </button>
             <div className="collapse navbar-collapse " id="navbar-content">
-              <ul className="navbar-nav mr-auto mb-2 mb-lg-0 m-auto">
+              <ul className="navbar-nav mr-auto mb-2 mb-lg-0 m-auto header2">
                 <li className="nav-item">
                   <Link to="/" className="nav-link active">
                     Home
@@ -174,7 +180,10 @@ class Header02 extends Component {
                   return (
                       <li className="nav-item dropdown d-flex align-items-center" key={key}>
                         {menu.title}
-                        <ul className="dropdown-menu ">{menu.content}</ul>
+                        {menu.content && 
+                        <Dropdown className=" category-dropdownbutton browseCat" position="right" title="&#8595;" >
+                          {menu.content}
+                        </Dropdown>}
                       </li>
                   );
                 })}

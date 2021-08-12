@@ -77,23 +77,11 @@ class Header01 extends Component {
     return (
       <div className="Header_one">
         <div className="Header_one_left">
-          <Dropdown className=" category-dropdownbutton browseCat" position="right" title="Browse Categories &#8595;">
-            {/* browse
-            <button
-              className="btn  dropdown-toggle"
-              type="button"
-              id="dropdownMenuButton1"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              &nbsp;&nbsp; <span className="large_screen_text">Browse categories</span>
-              <span className="small_screen_text">Browse</span>
-            </button> */}
-            {/* <Dropdown.Item > */}
+          <Dropdown className=" category-dropdownbutton browseCat" position="right" title="Browse Categories &#8595;" >
+          
               {this.state.categories.map((category, key) => {
                 return category.content
               })}
-            {/* </Dropdown.Item> */}
           </Dropdown>
         </div>
 
