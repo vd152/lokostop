@@ -33,7 +33,8 @@ import {getUser as getUserId } from './Utils/Local'
 import { NotFound } from './Utils/NotFound';
 import Page from './Container/Page/Page';
 class App extends React.Component {
-  componentDidMount(){
+
+  requests = async() =>{
     this.props.getGeneral()
     this.props.getLogos()
     this.props.getAllCategories()
@@ -50,8 +51,11 @@ class App extends React.Component {
     this.props.getTags()
     this.props.getSettings()
   }
+  componentDidMount(){
+    this.requests()
+  }
   render(){
-    if( this.props.categoriesloading || this.props.menuLoading || this.props.logoLoading || this.props.userLoading || this.props.storeLoading || this.props.settingsLoading){
+    if( this.props.categoriesloading || this.props.userLoading || this.props.storeLoading || this.props.settingsLoading){
       return <Loader />
   }
     return (
@@ -62,7 +66,7 @@ class App extends React.Component {
             <Route path="/" exact component={Home} />
             <Route path="/blogs" component={Blog} />
             <Route path="/compare" component={Compare} />
-            <Route path="/blogIndividual" component={BlogMain} />
+            <Route path="/blog/:url/:id" component={BlogMain} />
             <Route path="/product/:url/:id" component={IndividualProduct} />
             <Route path='/about' component={AboutUs} />
             <Route path='/ComingSoon' component={ComingSoon} />

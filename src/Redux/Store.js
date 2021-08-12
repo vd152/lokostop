@@ -11,6 +11,7 @@ import {wishlistReducer} from './Reducers/WishlistReducers'
 import {cartReducer} from './Reducers/CartReducers'
 import { saveOrderReducer} from './Reducers/OrderReducers'
 import {getSettingsReducer} from './Reducers/SettingsReducer'
+import {getBlogsReducer} from './Reducers/BlogReducers'
 
 const reducers = combineReducers({
     getStore: getGeneralReducer,
@@ -33,13 +34,13 @@ const reducers = combineReducers({
     getTopBrands: getTopBrandsReducer,
     saveOrder: saveOrderReducer,
     getSettings: getSettingsReducer,
+    getBlogs: getBlogsReducer,
 })
 
-const middleware = [thunk]
 
 const Store = createStore(
     reducers,
-    composeWithDevTools(applyMiddleware(...middleware)),
+    composeWithDevTools(applyMiddleware(thunk)),
 )
 
 export default Store;

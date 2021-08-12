@@ -311,17 +311,21 @@
   }
   .search-sm .centre_second_part{
     width: 60%;
-    height: 25px
+    height: 35px;
+    padding: 0.5em;
   }
   .search-sm .centre_second_part input{
     height:100%
   }
   .search-sm .centre_second_part input::-webkit-input-placeholder{
-    font-size: 2em;  
+    font-size: 1em;  
+  }
+  .search-sm .centre_second_part input{
+    font-size: 1em;
   }
   .search-sm .centre_third_part{
     width: 15%;
-    height: 25px
+    height: 35px
   }
   .search-sm .centre_third_part #search{
     font-size: 1em;
@@ -421,7 +425,7 @@
   }
   .search-sm{
     display: flex;
-    height: 25px
+    height: 35px
   }
 
 

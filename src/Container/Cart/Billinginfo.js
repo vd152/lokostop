@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { saveOrderDetails } from "../../Redux/Actions/OrderActions";
 import api from "../../Apis/api";
+import Loader from "../Loader/Loader";
 class Billinginfo extends Component {
   state = {
     data: {

@@ -83,7 +83,7 @@ class Header02 extends Component {
           </div>
         );
     };
-    this.props.menus.PrimaryMenu.menuItems.forEach((menu, key) => {
+    !this.props.menuLoading && this.props.menus.PrimaryMenu.menuItems.forEach((menu, key) => {
       let tempData = { content: [] };
       if (menu.childrenMenu.length > 0) {
         tempData.title = (
@@ -135,9 +135,9 @@ class Header02 extends Component {
     this.setState({ menus });
   }
   render() {
-    if (this.props.menuLoading) {
-      return <Loader />;
-    } else
+    if(this.props.menuLoading){
+      return <div></div>
+    }
       return (
         <nav className="navbar navbar-expand-lg navbar-light  ">
           <div className="container-fluid">
@@ -145,7 +145,7 @@ class Header02 extends Component {
               <div className="logo">
                 <img
                   src={
-                    this.props.logos && this.props.logos.Logo
+                    !this.props.logoLoading && this.props.logos && this.props.logos.Logo
                       ? "https://api.lokostop.in/" +
                         this.props.logos.Logo.HeaderLogo.image
                       : ""
@@ -206,11 +206,11 @@ class Header02 extends Component {
 
               <div className="">
                 <div className="mobile_part d-flex flex-row-reverse">
-                  <p>+91-9898989898</p>
+                  <p className="mb-1">+91-9898989898</p>
                   <MdLocalPhone id="phone" />
                 </div>
                 <div className="email_part d-flex flex-row-reverse">
-                  <p>sidhuelectronics1@gmail.com</p>
+                  <p className="mb-1">sidhuelectronics1@gmail.com</p>
                   <MdEmail id="mail" />
                 </div>
               </div>
@@ -225,6 +225,7 @@ const mapStateToProps = (state) => {
     menus: state.getMenus.menus,
     menuLoading: state.getMenus.loading,
     logos: state.getLogos.logos,
+    logoLoading: state.getLogos.loading
   };
 };
 export default connect(mapStateToProps)(Header02);

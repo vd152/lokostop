@@ -67,6 +67,7 @@ export const getUser = (id) => async(dispatch) => {
         dispatch({ type: actionTypes.GET_USER_DETAILS_REQUEST})
         let url = "/users/get/"+id
         const {data} = await api.get(url)
+
         dispatch({
             type: actionTypes.GET_USER_DETAILS_SUCCESS,
             payload: data.data
