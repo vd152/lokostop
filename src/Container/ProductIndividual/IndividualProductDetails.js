@@ -16,14 +16,14 @@ class IndividualProductDetails extends Component {
     },
     stock: [],
     selectedStockArray:[],
-    stockId: "611953f69d7025279f875a72"
+    stockId: null
   };
   componentDidMount() {
     api.post('/product/stock/byproduct/get', {productId: this.props.productDetails._id}).then(res=>{
       console.log(res.data.data)
       const {stock } = this.state
       res.data.data.forEach(stk=>{
-        stock[stk.name] = [stk.qty,stk.price,stk._id]
+        stock[stk.name] = [stk.qty,stk.price,stk._id] 
       })
       console.log(stock)
       this.setState({stock})
@@ -39,7 +39,7 @@ class IndividualProductDetails extends Component {
   getOption = (type, label, required, values, unique) => {
     if (type == "Field") {
       return (
-        <div className="save_box individual_save_box" key={unique}>
+        <div className="save_box individual_save_box" key={unique} >
           <p className="color_text individual_color_text">
             {" "}
             {label}: {required && "*"}
@@ -50,7 +50,7 @@ class IndividualProductDetails extends Component {
     } else if (type == "Textarea") {
       return (
         <div
-          className="save_box individual_save_box individual_save_column"
+          className="save_box individual_save_box individual_save_column "
           key={unique}
         >
           <p className="color_text individual_color_text">
@@ -72,7 +72,10 @@ class IndividualProductDetails extends Component {
             {label}{required && "*"}
           </p>
           <select className="dropdown_colors individual_dropdown_colors" onChange={(e)=>{
-            
+            const {selectedStockArray} = this.state
+            selectedStockArray[unique] = e.target.value
+            console.log(selectedStockArray)
+            this.setState({selectedStockArray})
           }}>
             {values.map((value, key) => {
               return (
@@ -94,7 +97,18 @@ class IndividualProductDetails extends Component {
             {values.map((value, key) => {
               return (
                 <div className="d-flex p-1"key={key}>
-                <input type="checkbox" >
+                <input type="checkbox" onChange={(e)=>{
+                  const {selectedStockArray} = this.state
+                  if(selectedStockArray[unique] == undefined ){
+                    selectedStockArray[unique] = []
+                  }
+                  if(selectedStockArray[unique][key] == value.label){
+                    selectedStockArray[unique].splice(key,1)
+                  }else
+                    selectedStockArray[unique][key] = value.label
+                  console.log(selectedStockArray)
+                  this.setState({selectedStockArray})
+                }}>
                 </input>
                 <label>{value.label}</label>
                 </div>
@@ -163,11 +177,24 @@ class IndividualProductDetails extends Component {
               <button
                 className="cart_button individual_cart_button w-100 m-0"
                 onClick={(e) => {
-                  this.props.addToCart(
-                    this.props.productDetails._id,
-                    this.state.qty,
-                    this.state.stockId
-                  );
+                  // var arr = this.state.selectedStockArray
+                  // for(var i = 0; i < arr.length; i++) {
+                  //   if(Array.isArray(arr[i])){
+                  //     if(arr[i].length ==1){
+                  //       arr[i] = arr[i][0]
+                  //     }else
+                  //       arr[i] = arr[i].join("-")
+                  //   }
+                  // }
+                  // console.log(this.state.selectedStockArray)
+                  // for(var key of Object.keys(this.state.stock)){
+
+                  // }
+                  // this.props.addToCart(
+                  //   this.props.productDetails._id,
+                  //   this.state.qty,
+                  //   this.state.stockId
+                  // );
                 }}
               >
                 <span className="large_screen_text ">ADD TO CART</span>
