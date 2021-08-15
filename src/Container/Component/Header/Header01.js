@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import Login from "./Login/Login";
 import Search from "./Search";
 import Dropdown from "react-multilevel-dropdown";
+import { MdPerson } from "react-icons/md";
 
 class Header01 extends Component {
   state = {
@@ -106,13 +107,20 @@ class Header01 extends Component {
          
           {this.props.user._id ? (
             <Link to="/profile">
-              <div className="image_user">
+              {/* <div className="image_user">
                 <img
                   alt="Reload"
                   className="image_userimage"
                   src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                 ></img>
-              </div>
+              </div> */}
+        <div
+          className="imagevl mt-0"
+        >
+          <span className="large_screen_text"><MdPerson id="profile_icon" style={{fontSize: "2.5em"}}/></span>
+          <span className="small_screen_text"><MdPerson id="profile_icon" /></span>
+        </div>
+      
             </Link>
           ) : (
             <Login />

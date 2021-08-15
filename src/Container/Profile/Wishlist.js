@@ -3,6 +3,7 @@ import {Link} from "react-router-dom"
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { connect } from "react-redux";
 import {deleteFromWishlist} from "../../Redux/Actions/WishlistActions"
+import { siteUrl} from '../../Utils/util'
 
 class Wishlist extends Component {
   render() {
@@ -42,7 +43,7 @@ class Wishlist extends Component {
                 <td className="product_image1">
                   <img
                     alt="reload"
-                    src={product.baseImage && product.baseImage.image?"https://api.lokostop.in/"+product.baseImage.image: "https://via.placeholder.com/150"}
+                    src={product.baseImage && product.baseImage.image?siteUrl+product.baseImage.image: "https://via.placeholder.com/150"}
                   ></img>
                 </td>
                 <td className="product_Name1">

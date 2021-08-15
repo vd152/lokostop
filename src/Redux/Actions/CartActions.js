@@ -31,10 +31,10 @@ export const getCart = () => async(dispatch) => {
     }
 }
 
-export const addToCart = (productId,qty) => async(dispatch) => {
+export const addToCart = (productId,qty,stockId) => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.ADD_CART_REQUEST})
-        const {data} = await api.put('/customer/cart', {productId, qty})
+        const {data} = await api.put('/customer/cart', {productId, qty,stockId})
         data.data.Cart.forEach(item=>{
             item.couponDiscount = 0;
             item.totalPrice = item.product.specialPrice

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Carousel from 'react-bootstrap/Carousel'
+import { siteUrl} from '../../../Utils/util'
 
 class Slider extends Component {
     render() {
@@ -12,7 +13,7 @@ class Slider extends Component {
                           return <Carousel.Item interval={3000} key={key}>
                           <img
                               className="d-block w-100 video_container"
-                              src={slide.Image.image? "https://api.lokostop.in/"+slide.Image.image: "https://via.placeholder.com/150"} 
+                              src={slide.Image.image? siteUrl+slide.Image.image: "https://via.placeholder.com/150"} 
                               alt="First slide"
                           />
                           <Carousel.Caption className="slider_caption">

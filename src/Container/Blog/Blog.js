@@ -13,7 +13,7 @@ class Blog extends Component {
   state = {
     blogs: [],
     skip: 0,
-    limit: 1,
+    limit: 10,
     loading: false
   };
   componentDidMount(){
@@ -40,7 +40,9 @@ class Blog extends Component {
           <p>BLOGS</p>
           <hr />
         </div>
-        <AddBlog></AddBlog>
+        {this.props.user._id && 
+        <AddBlog />
+  }
         <div className="blog_main">
             {this.state.loading? <div>Loading..</div>:
             this.state.blogs.map((blog,key)=>{
@@ -65,6 +67,7 @@ const mapStateToProps = (state) => {
   return {
     loading: state.getBlogs.loading,
     blogs: state.getBlogs.blogs,
+    user: state.getUser.user
   };
 };
 export default connect(mapStateToProps, { getBlogs })(Blog);

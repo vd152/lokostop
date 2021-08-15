@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { addToWishlist } from "../../Redux/Actions/WishlistActions";
 import {addToCart} from '../../Redux/Actions/CartActions'
 import { connect } from "react-redux";
+import { siteUrl} from '../../Utils/util'
 
 class Product extends Component {
   state = {
@@ -12,6 +13,7 @@ class Product extends Component {
       price: 1000,
       specialPrice: 900,
       categories: [],
+      options: [],
       name: "Product ABC",
       shortDescription: "This is a nice product",
     },
@@ -30,7 +32,7 @@ class Product extends Component {
             {this.state.product.baseImage ? (
               <img
                 src={
-                  "https://api.lokostop.in/" +
+                  siteUrl +
                   this.state.product.baseImage.image
                 }
                 alt="RELOAD"
@@ -66,16 +68,24 @@ class Product extends Component {
         <div className="add_to_cart_box">
           <div id="div_first" className="add_to_cart_inner_box">
             <BiGitCompare className="Compare_Icon" />
+            { this.state.product.options.length>0 ?  <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}><div className="add_to_cart_text_icon" >
+              <p >
+              <span className="large_screen_text">VIEW OPTIONS</span>
+              <span className="small_screen_text">VIEW</span>
+              </p>
+              <BiCart className="Bicartnew" />
+            </div></Link>:
             <div className="add_to_cart_text_icon" onClick={(e)=>{
-                this.props.addToCart(this.state.product._id, 1);
+                this.props.addToCart(this.state.product._id, 1, null);
 
             }}>
-              <p style={{ marginTop: "0.439vw" }}>
+              <p >
               <span className="large_screen_text">ADD TO CART</span>
               <span className="small_screen_text">ADD</span>
               </p>
               <BiCart className="Bicartnew" />
             </div>
+  }
             <FaRegHeart
               className="Fav_icon"
               style={{ color: "#9d9d9d" }}

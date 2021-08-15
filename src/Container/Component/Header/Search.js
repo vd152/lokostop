@@ -122,11 +122,11 @@ class Search extends Component {
               <input type="text" placeholder="Search..." value={this.state.searchWord} onChange={(e)=>this.setState({searchWord: e.target.value})} />
             </div>
           </div>
-          <div className="centre_third_part" onClick={(e)=>{
+          <div className="centre_third_part align-items-center justify-content-center" onClick={(e)=>{
             this.setState({searchRedirect: true})
           }}>
-            <p style={{ marginTop: "0.878vw" }}><span className="large_screen_text">Search</span></p>
-            <FiSearch id="search" />
+            <p className="m-0"><span className="large_screen_text">Search</span></p>
+            <FiSearch id="search" className="m-0"/>
           </div>
         </div>
 

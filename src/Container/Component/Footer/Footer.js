@@ -2,6 +2,7 @@ import "./Footer.css";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { siteUrl} from '../../../Utils/util'
 
 export class Footer extends Component {
   state = {
@@ -115,7 +116,7 @@ export class Footer extends Component {
           <div className="paymentmethod">
             <p>PAYMENT METHODS</p>
             <div className="logo2">
-                    <img src={"https://api.lokostop.in/"+this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image} />
+                    <img src={siteUrl+this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image} />
             </div>
           </div>
   }

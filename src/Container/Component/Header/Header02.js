@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import Loader from "../../Loader/Loader";
 import Dropdown from "react-multilevel-dropdown";
 import { IoIosArrowForward } from "react-icons/io";
-
+import { siteUrl} from '../../../Utils/util'
 
 class Header02 extends Component {
   state = {
@@ -91,7 +91,6 @@ class Header02 extends Component {
             <Link
               style={{
                 background: "transparent",
-                color: "#1D1D1D",
               }}
               className="nav-link "
               to={this.setMenuLink(menu)}
@@ -146,7 +145,7 @@ class Header02 extends Component {
                 <img
                   src={
                     !this.props.logoLoading && this.props.logos && this.props.logos.Logo
-                      ? "https://api.lokostop.in/" +
+                      ? siteUrl +
                         this.props.logos.Logo.HeaderLogo.image
                       : ""
                   }
@@ -172,7 +171,7 @@ class Header02 extends Component {
             <div className="collapse navbar-collapse " id="navbar-content">
               <ul className="navbar-nav mr-auto mb-2 mb-lg-0 m-auto header2">
                 <li className="nav-item">
-                  <Link to="/" className="nav-link active">
+                  <Link to="/" className="nav-link ">
                     Home
                   </Link>
                 </li>

@@ -188,7 +188,7 @@
 }
 .add_to_cart_box {
   height: 2.343vw;
-  width: 20.205vw;
+  width: 100%;
   margin-top: 0.732vw;
   display: none;
 }
@@ -208,9 +208,10 @@
 }
 .add_to_cart_inner_box {
   height: 2.343vw;
-  width: 20.205vw;
+  width: 100%;
   cursor: pointer;
   display: flex;
+  justify-content: space-between;
 }
 .Compare_Icon {
   height: 2.343vw;
@@ -221,24 +222,25 @@
   color: #9d9d9d;
 }
 .add_to_cart_text_icon {
-  width: 11.347vw;
+  width: 100%;
   height: 2.343vw;
-  margin-left: 1.574vw;
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #021fb2;
+  margin: 0 0.5em;
+
 }
 .add_to_cart_text_icon p {
-  width: 6.808vw;
   height: 1.464vw;
   text-align: center;
   font: normal normal normal 1.098vw/1.464vw Segoe UI;
   color: #ffffff;
-  margin-left: 1.318vw;
+  margin: 0;
 }
 .Fav_icon {
   width: 2.269vw;
   height: 1.977vw;
-  margin-left: 1.464vw;
   cursor: pointer;
   margin-top: 0.22vw;
 }
@@ -504,7 +506,6 @@
 }
 .save_box {
   width: 26.867vw;
-  height: 4%;
   display: flex;
 }
 .save_text {
@@ -1010,9 +1011,7 @@
 }
 .Bicartnew {
   color: white;
-  margin-left: 0.952vw;
-  margin-top: 0.512vw;
-  font-size: 1.3vw;
+  font-size: 1.5em;
 }
 @media (max-width: 768px) {
   .slider_caption{
@@ -1511,7 +1510,7 @@
   }
   .Bicartnew {
     margin-top: 0.812vw;
-    font-size: 3vw;
+    font-size: 1.5em;
   }
   .most_viewd_text {
     width: auto;
@@ -2005,8 +2004,7 @@
   }
 
   .Bicartnew {
-    margin-left: 0.2vw;
-    font-size: 3.5vw;
+    font-size: 1.5em;
   }
 
   .Fav_icon {

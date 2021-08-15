@@ -8,6 +8,8 @@ import Header01 from "../Component/Header/Header01";
 import React, { Component } from "react";
 import SingleBlog from "./SingleBlog";
 import api from "../../Apis/api";
+import { siteUrl} from '../../Utils/util'
+
 
 class BlogMain extends Component {
   state = {
@@ -52,14 +54,14 @@ class BlogMain extends Component {
               <p>by Mohit Gopal</p>
               <p>5 mins</p>
             </div>
-            <div className="first_blog_second_component_views">
+            {/* <div className="first_blog_second_component_views">
               <IoIosEye id="eye" />
               <p className="views_on_blog">320</p>
-            </div>
+            </div> */}
             {this.state.blog.img && (
               <img
                 className="image_blog_individual"
-                src={"https://api.lokostop.in/" + this.state.blog.img.image}
+                src={siteUrl + this.state.blog.img.image}
                 alt="Reload"
               />
             )}

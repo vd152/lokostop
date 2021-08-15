@@ -79,7 +79,7 @@ class Home extends Component {
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[0]} />
   }
           <ThreeColBanner />
-          <MostViewedBox />
+          {/* <MostViewedBox /> */}
           <FindByCategory />
           {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[1]} />

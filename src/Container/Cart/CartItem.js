@@ -4,6 +4,7 @@ import { IoAddCircleOutline, IoCloseCircleSharp } from "react-icons/io5";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { deleteFromCart, updateCartQty } from "../../Redux/Actions/CartActions";
+import { siteUrl} from '../../Utils/util'
 
 class CartItem extends Component {
   render() {
@@ -34,7 +35,7 @@ class CartItem extends Component {
                       <img
                         src={
                           product.baseImage && product.baseImage.image
-                            ? "https://api.lokostop.in/" + product.baseImage.image
+                            ? siteUrl + product.baseImage.image
                             : "https://via.placeholder.com/150"
                         }
                         alt="Reload"
@@ -72,13 +73,13 @@ class CartItem extends Component {
                     </td>
                     <td className="product_quantity1">
                       <FiMinusCircle id="minus_icon" onClick={(e) => {
-                        this.props.updateCartQty(product._id, qty - 1);
+                        this.props.updateCartQty(product._id, qty - 1,null);
                       }} />
                       <p className="product_quant_para">{qty}</p>
                       <IoAddCircleOutline
                         id="add_icon"
                         onClick={(e) => {
-                          this.props.updateCartQty(product._id, qty + 1);
+                          this.props.updateCartQty(product._id, qty + 1, null);
                         }}
                       />
                     </td>

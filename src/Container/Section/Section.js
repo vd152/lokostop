@@ -14,7 +14,7 @@ class Section extends Component {
     submitting: false,
     filter: "-createdAt",
     skip: 0,
-    limit: 2,
+    limit: 10,
     filterArr: [],
     brand: {
       name: "",

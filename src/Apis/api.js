@@ -1,5 +1,6 @@
 import axios from "axios";
 import {getAuthToken} from '../Utils/Local'
+import { siteUrl} from '../Utils/util'
 
 axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
@@ -9,7 +10,7 @@ if (getAuthToken()) {
   delete axios.defaults.headers.common["token"];
 }
 export default axios.create({
-  baseURL: "https://big-cms.herokuapp.com/",
+  baseURL: siteUrl,
   headers: {
     Accept: "applications/json",    
   },

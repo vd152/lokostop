@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom'
-
+import { siteUrl} from '../../../Utils/util'
 
 class OneColBanner extends Component {
     render() {
@@ -10,7 +10,7 @@ class OneColBanner extends Component {
                 {!this.props.bannersLoading && this.props.banners.Banners? 
                 this.props.banners.Banners[2].SectionStatus?this.props.banners.Banners[4].Banners.map((banner,key)=>{
                     return  <Link className="one-banner" to={banner.CalltoActionURL} key={key} target={banner.OpenInNewWindow?"_blank":"_self"}>
-                     <img  src={banner.Image.image?"https://api.lokostop.in/"+banner.Image.image: "https://via.placeholder.com/150"} alt="Reload" />
+                     <img  src={banner.Image.image?siteUrl+banner.Image.image: "https://via.placeholder.com/150"} alt="Reload" />
                      </Link>
                 }) :""
                 :""}

@@ -3,6 +3,8 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { getTopBrands } from "../../../Redux/Actions/StorefrontActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { siteUrl} from '../../../Utils/util'
+
 class TopClients extends Component {
 
   componentDidMount() {
@@ -25,7 +27,7 @@ class TopClients extends Component {
                 <img
                   key={key}
                   className="client_icon"
-                  src={brand.logo && brand.logo.image?"https://api.lokostop.in/"+brand.logo.image: "https://via.placeholder.com/100"}
+                  src={brand.logo && brand.logo.image?siteUrl+brand.logo.image: "https://via.placeholder.com/100"}
                   alt="RELOAD"
                 ></img>
               );

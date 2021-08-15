@@ -4,8 +4,7 @@ import { Redirect } from "react-router-dom"
 import Header from '../Component/Header/Header'
 import Header01 from '../Component/Header/Header01';
 import './ProfileIndividual.css'
-import { FaBox } from "react-icons/fa";
-import { MdAccountCircle } from "react-icons/md";
+import { MdAccountCircle,MdShoppingBasket } from "react-icons/md";
 import { BiLogOut } from "react-icons/bi";
 import PopularBox from '../Component/Boxes/PopularBox';
 import Footer from '../Component/Footer/Footer'
@@ -47,10 +46,10 @@ class ProfileIndividual extends Component {
                                 <p className="nameperson">ABCDEF</p>
                             </div>
                         </div>
-                        <div className='orderboxsummary'>
-                            <FaBox className='boxIcon'></FaBox>
+                        <div className='orderboxsummary align-items-center'>
+                            <MdShoppingBasket className='accountIcon'></MdShoppingBasket>
                             <p className="nav nav-pills m-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                <button className="nav-link pillval my-0" id="v-pills-orders-tab" data-bs-toggle="pill" data-bs-target="#v-pills-orders" type="button" role="tab" aria-controls="v-pills-orders" aria-selected="false">MY ORDERS</button>
+                                <button className="nav-link pillval my-0" id="v-pills-orders-tab" data-bs-toggle="pill" data-bs-target="#v-pills-orders" type="button" role="tab" aria-controls="v-pills-orders" aria-selected="false">ORDERS</button>
                             </p>
                         </div>
                         
@@ -84,12 +83,14 @@ class ProfileIndividual extends Component {
                             </div>
                         </div>
                         <div className="Order_Section" >
-                            <FaBox ></FaBox>
-                            <p>MY ORDERS</p>
+                            <MdShoppingBasket ></MdShoppingBasket>
+                            <p className="nav nav-pills m-0 p-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <button className="nav-link pillval my-0" id="v-pills-orders-tab" data-bs-toggle="pill" data-bs-target="#v-pills-orders" type="button" role="tab" aria-controls="v-pills-orders" aria-selected="false">ORDERS</button>
+                            </p>
                         </div>
                         <div className="Account_Section dropdown" >
                             <MdAccountCircle className="mdAccountCircle"></MdAccountCircle>
-                            <p className="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">ACCOUNT SETTINGS</p>
+                            <p className="dropdown-toggle p-0" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">ACCOUNT SETTINGS</p>
 
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <div className="nav flex-row nav-pills me-3 navcolor" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -99,9 +100,17 @@ class ProfileIndividual extends Component {
                                 <button className="nav-link pillval" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">My Complaints</button>
                             </div>
                         </div>
+                        
                         </div>
-                       
+                        <div className="Order_Section" >
+                        <BiLogOut className='accountIcon'></BiLogOut>
+                            <p onClick={()=>{
+                                this.props.logoutUser()
+                                this.setState({redirect: true})
+                                }}>LOGOUT</p>
+                        </div>
                     </div>
+                    
                     {/* Responsiveness */}
 
                     <div className="secondBoxprofile">

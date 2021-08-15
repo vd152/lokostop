@@ -55,7 +55,7 @@ class App extends React.Component {
     this.requests()
   }
   render(){
-    if( this.props.categoriesloading || this.props.userLoading || this.props.storeLoading || this.props.settingsLoading){
+    if( this.props.categoriesloading || this.props.userLoading || this.props.storeLoading || this.props.settingsLoading || this.props.menuLoading){
       return <Loader />
   }
     return (

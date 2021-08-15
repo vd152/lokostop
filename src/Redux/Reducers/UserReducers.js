@@ -48,6 +48,7 @@ export const getUserDetailsReducer = (state = { user: {}}, action) => {
         case actionTypes.GET_USER_DETAILS_FAIL:
             return {
                 loading: false,
+                user: {},
                 error: action.payload
             }
         case actionTypes.REMOVE_USER_DETAILS_SUCCESS:{

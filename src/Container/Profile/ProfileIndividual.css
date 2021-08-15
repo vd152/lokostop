@@ -344,6 +344,17 @@
     display: none;
 }
 @media(max-width: 768px){
+    .small_screen_text .dropdown-menu .nav .nav-link{
+        width: 100%;
+        padding: 0.5em;
+        font-size: 1em;
+        line-height: 1.2
+    }
+   
+    .small_screen_text .Order_Section .nav button{
+        font-size:13px;
+        margin: 0 !important;
+    }
     .profileOuterMainBOx {
         width: 91vw;
         height: auto;
@@ -502,9 +513,13 @@
         font-size: 0.8em;
         padding: 9px 0px 0px 10px;
     }
-    .Order_Section svg, .Account_Section svg{
+    .Order_Section svg{
         font-size: 2em;
         margin: 5px;
+    }
+    .Account_Section svg{
+        margin: 5px;
+        font-size: 1.3em;
     }
     .Order_Section p{
         display: inline;
@@ -541,6 +556,9 @@
   }
   @media(max-width:425px){
     .large_screen_text_425{
+        display: none;
+    }
+    .small_screen_text .name_individual_Hi{
         display: none;
     }
 
@@ -790,5 +808,12 @@
   @media (max-width:375px){
     .image_user1 {
         margin-top: -2.2vw;
+    }
+    .small_screen_text .Order_Section, .small_screen_text .Account_Section{
+        font-size: 12px
+    }
+    .small_screen_text .Order_Section svg, .small_screen_text .Account_Section svg{
+        font-size: 1em;
+        margin: 2px;
     }
   }

@@ -29,9 +29,12 @@ class Login extends Component {
     user[key] = val;
     this.setState({ user });
   };
-  signIn = () => {
-    this.props.loginUser(this.state.data.Email, this.state.data.Password);
-    document.querySelector("#staticBackdrop").click();
+  signIn = async() => {
+    await this.props.loginUser(this.state.data.Email, this.state.data.Password);
+    if(this.props.error){
+      alert("Wrong id or password")
+    }else
+      document.querySelector("#staticBackdrop").click();
   };
   signUp = () => {
     this.props.registerUser(this.state.user);
@@ -250,6 +253,7 @@ class Login extends Component {
 const mapStateToProps = (state) => {
   return {
     user: state.loginUser.user,
+    error: state.loginUser.error
   };
 };
 export default connect(mapStateToProps, { loginUser, registerUser })(Login);
