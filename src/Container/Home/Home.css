@@ -558,6 +558,7 @@
   height: 2.928vw;
   display: flex;
   margin-top: 0;
+  justify-content: center;
 }
 .cart_button {
   width: 11.347vw;

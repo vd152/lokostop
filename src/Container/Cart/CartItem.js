@@ -104,10 +104,12 @@ class CartItem extends Component {
             </tbody>
           </table>
         </div>
-        <div className="button_box_1">
+        <Link to='/shop'>
+        <div className="button_box_1new">
           <button id="continue_shopping"> Continue Shopping</button>
-          {/* <button id="cartUpdate">Update Cart</button> */}
         </div>
+        </Link>
+        
       </div>
     );
   }

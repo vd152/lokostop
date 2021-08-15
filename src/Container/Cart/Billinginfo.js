@@ -414,6 +414,7 @@ class Billinginfo extends Component {
                   let tmp = {}
                   tmp.ProductID = item.product._id
                   tmp.Quantity = item.qty
+                  tmp.stockId = item.stockId?item.stockId:null
                   items.push(tmp)
                 })
                 this.props.saveOrderDetails({ ...this.props.savedOrder, ItemsOrdered: items });

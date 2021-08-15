@@ -15,21 +15,28 @@ class IndividualProductDetails extends Component {
       },
     },
     stock: [],
+    selectedStockArray:[],
+    stockId: "611953f69d7025279f875a72"
   };
   componentDidMount() {
+    api.post('/product/stock/byproduct/get', {productId: this.props.productDetails._id}).then(res=>{
+      console.log(res.data.data)
+      const {stock } = this.state
+      res.data.data.forEach(stk=>{
+        stock[stk.name] = [stk.qty,stk.price,stk._id]
+      })
+      console.log(stock)
+      this.setState({stock})
+    }).catch(err=>{
+      console.log(err)
+    })
     this.setState({
       footerDetails: this.props.footerData.Footer
         ? this.props.footerData
         : this.state.footerDetails,
     });
-    api.post('/product/stock/byproduct/get', {productId: this.state.productId}).then(res=>{
-      console.log(res.data.data)
-    }).catch(err=>{
-      console.log(err)
-    })
   }
   getOption = (type, label, required, values, unique) => {
-    console.log(type)
     if (type == "Field") {
       return (
         <div className="save_box individual_save_box" key={unique}>
@@ -64,7 +71,9 @@ class IndividualProductDetails extends Component {
             {" "}
             {label}{required && "*"}
           </p>
-          <select className="dropdown_colors individual_dropdown_colors">
+          <select className="dropdown_colors individual_dropdown_colors" onChange={(e)=>{
+            
+          }}>
             {values.map((value, key) => {
               return (
                 <option value={value.label} key={key}>
@@ -84,8 +93,8 @@ class IndividualProductDetails extends Component {
           <div className="d-flex flex-column  " style={{height: '100%', marginLeft: '0.9vw'}}>
             {values.map((value, key) => {
               return (
-                <div className="d-flex p-1">
-                <input type="checkbox" key={key}>
+                <div className="d-flex p-1"key={key}>
+                <input type="checkbox" >
                 </input>
                 <label>{value.label}</label>
                 </div>
@@ -148,19 +157,20 @@ class IndividualProductDetails extends Component {
               alt="Loading"
             />
             <div
-              className="buttons_compare individual_buttons_compare"
-              style={{ marginTop: "1.025vw", marginLeft: "1.171vw" }}
+              className="buttons_compare individual_buttons_compare "
+              style={{ marginTop: "1.025vw"}}
             >
               <button
-                className="cart_button individual_cart_button"
+                className="cart_button individual_cart_button w-100 m-0"
                 onClick={(e) => {
                   this.props.addToCart(
                     this.props.productDetails._id,
-                    this.state.qty
+                    this.state.qty,
+                    this.state.stockId
                   );
                 }}
               >
-                <span className="large_screen_text">ADD TO CART</span>
+                <span className="large_screen_text ">ADD TO CART</span>
                 <span className="small_screen_text individual_">ADD</span>{" "}
                 <BiCart
                   className="individual_bicart"

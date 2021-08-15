@@ -68,9 +68,11 @@ class Orders extends Component {
           </tbody>
         </table>
         </div>
+        <Link to='/shop'>
         <div className="button_box_1new">
           <button id="continue_shopping"> Continue Shopping</button>
         </div>
+        </Link>
       </div>
     );
   }
