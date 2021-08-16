@@ -12,7 +12,7 @@ import { IoIosArrowBack, IoIosArrowForward, IoIosAttach } from "react-icons/io";
 import { connect } from "react-redux";
 import Loader from "../Loader/Loader";
 import api from "../../Apis/api";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 class IndividualProduct extends Component {
   state = {
@@ -32,28 +32,33 @@ class IndividualProduct extends Component {
       attributes: [],
       options: [],
       metaTitle: "Product",
-      metaDescription: "Product"
+      metaDescription: "Product",
+      upSells: [],
+      crossSells: [],
     },
     review: {
       rating: 0,
-      reviewerName:this.props.user._id?
-        this.props.user["First Name"] + " " + this.props.user["Last Name"]:"",
+      reviewerName: this.props.user._id
+        ? this.props.user["First Name"] + " " + this.props.user["Last Name"]
+        : "",
       comment: "",
       status: false,
     },
     productReviews: [],
   };
   componentDidMount() {
-
-    let url = '/product/get/'+this.props.match.params.id
-    api.get(url).then(res=>{
-      this.setState({productDetails: res.data.data});
-    }).catch(err=>{
-      console.log(err)
-    })
-    this.getReviews()
+    let url = "/product/get/" + this.props.match.params.id;
+    api
+      .get(url)
+      .then((res) => {
+        this.setState({ productDetails: res.data.data });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    this.getReviews();
   }
-  getReviews = () =>{
+  getReviews = () => {
     let url = "/review/get/product/" + this.props.match.params.id;
     api
       .get(url)
@@ -63,31 +68,37 @@ class IndividualProduct extends Component {
       .catch((err) => {
         console.log(err);
       });
-  } 
-  postReview = (review, productId) =>{
-    
-        api.post('/review', {data:review, productId, requiredPermission: "Create Review"}).then(res=>{
-          console.log(res.data.data);
-          alert("review submitted for approval")
-        }).catch(err=>{
-          console.log(err);
-        })
-    
-
-}
+  };
+  postReview = (review, productId) => {
+    api
+      .post("/review", {
+        data: review,
+        productId,
+        requiredPermission: "Create Review",
+      })
+      .then((res) => {
+        alert("review submitted for approval");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   render() {
     if (this.props.productLoading) {
       return <Loader />;
     }
     return (
       <React.Fragment>
-         <Helmet>
-                    <title>{this.state.productDetails.metaTitle}</title>
-                    <meta name="description" content={this.state.productDetails.metaDescription}/>
-                </Helmet>
+        <Helmet>
+          <title>{this.state.productDetails.metaTitle}</title>
+          <meta
+            name="description"
+            content={this.state.productDetails.metaDescription}
+          />
+        </Helmet>
         <Header01 />
         <Header />
-       
+
         <IndividualProductDetails
           productDetails={this.state.productDetails}
           reviews={this.state.productReviews}
@@ -99,6 +110,7 @@ class IndividualProduct extends Component {
                 style={{
                   color: " #9d9d9d",
                   font: " normal normal normal 1vw/2vw Poppins",
+                  padding: "1em",
                 }}
                 className="nav-link active individual_product_nav_item"
                 id="home-tab"
@@ -117,6 +129,7 @@ class IndividualProduct extends Component {
                 style={{
                   color: " #9d9d9d",
                   font: " normal normal normal 1vw/2vw Poppins",
+                  padding: "1em",
                 }}
                 className="nav-link individual_product_nav_item"
                 id="profile-tab"
@@ -135,6 +148,7 @@ class IndividualProduct extends Component {
                 style={{
                   color: " #9d9d9d",
                   font: " normal normal normal 1vw/2.3vw Poppins",
+                  padding: "1em",
                 }}
                 className="nav-link individual_product_nav_item"
                 id="contact-tab"
@@ -190,102 +204,116 @@ class IndividualProduct extends Component {
                 <p className="read_review" style={{ marginTop: "1.171vw" }}>
                   Read reviews here
                 </p>
-                {this.props.user._id && 
-                <React.Fragment>
-                <div className="review_star">
-                  <i
-                    className={
-                      this.state.review.rating > 0
-                        ? "fas fa-star"
-                        : "far fa-star"
-                    }
-                    style={{ color: "yellow", cursor: "pointer" }}
-                    onClick={(e) => {
-                      const { review } = this.state;
-                      review.rating = 1;
-                      this.setState({ review });
-                    }}
-                  ></i>
-                  <i
-                    className={
-                      this.state.review.rating > 1
-                        ? "fas fa-star"
-                        : "far fa-star"
-                    }
-                    style={{ color: "yellow", cursor: "pointer" }}
-                    onClick={(e) => {
-                      const { review } = this.state;
-                      review.rating = 2;
-                      this.setState({ review });
-                    }}
-                  ></i>
-                  <i
-                    className={
-                      this.state.review.rating > 2
-                        ? "fas fa-star"
-                        : "far fa-star"
-                    }
-                    style={{ color: "yellow", cursor: "pointer" }}
-                    onClick={(e) => {
-                      const { review } = this.state;
-                      review.rating = 3;
-                      this.setState({ review });
-                    }}
-                  ></i>
-                  <i
-                    className={
-                      this.state.review.rating > 3
-                        ? "fas fa-star"
-                        : "far fa-star"
-                    }
-                    style={{ color: "yellow", cursor: "pointer" }}
-                    onClick={(e) => {
-                      const { review } = this.state;
-                      review.rating = 4;
-                      this.setState({ review });
-                    }}
-                  ></i>
-                  <i
-                    className={
-                      this.state.review.rating > 4
-                        ? "fas fa-star"
-                        : "far fa-star"
-                    }
-                    style={{ color: "yellow", cursor: "pointer" }}
-                    onClick={(e) => {
-                      const { review } = this.state;
-                      review.rating = 5;
-                      this.setState({ review });
-                    }}
-                  ></i>
-                </div>
-                <div className="write_review">
-                  <div className="customer_review">
-                    <textarea
-                      className="commentBox"
-                      maxLength="200"
-                      placeholder="Choose a rating and start writing a review..."
-                      value={this.state.review.comment}
-                      onChange={(e) => {
-                        const { review } = this.state;
-                        review.comment = e.target.value.substring(0,200);
-                        this.setState({ review });
-                      }}
-                    ></textarea>
-                    <div className="count_attach">
-                      <IoIosAttach className="attach" />
-                      <p className="no_count">{this.state.review.comment.length}/200</p>
+                {this.props.user._id && (
+                  <React.Fragment>
+                    <div className="review_star">
+                      <i
+                        className={
+                          this.state.review.rating > 0
+                            ? "fas fa-star"
+                            : "far fa-star"
+                        }
+                        style={{ color: "yellow", cursor: "pointer" }}
+                        onClick={(e) => {
+                          const { review } = this.state;
+                          review.rating = 1;
+                          this.setState({ review });
+                        }}
+                      ></i>
+                      <i
+                        className={
+                          this.state.review.rating > 1
+                            ? "fas fa-star"
+                            : "far fa-star"
+                        }
+                        style={{ color: "yellow", cursor: "pointer" }}
+                        onClick={(e) => {
+                          const { review } = this.state;
+                          review.rating = 2;
+                          this.setState({ review });
+                        }}
+                      ></i>
+                      <i
+                        className={
+                          this.state.review.rating > 2
+                            ? "fas fa-star"
+                            : "far fa-star"
+                        }
+                        style={{ color: "yellow", cursor: "pointer" }}
+                        onClick={(e) => {
+                          const { review } = this.state;
+                          review.rating = 3;
+                          this.setState({ review });
+                        }}
+                      ></i>
+                      <i
+                        className={
+                          this.state.review.rating > 3
+                            ? "fas fa-star"
+                            : "far fa-star"
+                        }
+                        style={{ color: "yellow", cursor: "pointer" }}
+                        onClick={(e) => {
+                          const { review } = this.state;
+                          review.rating = 4;
+                          this.setState({ review });
+                        }}
+                      ></i>
+                      <i
+                        className={
+                          this.state.review.rating > 4
+                            ? "fas fa-star"
+                            : "far fa-star"
+                        }
+                        style={{ color: "yellow", cursor: "pointer" }}
+                        onClick={(e) => {
+                          const { review } = this.state;
+                          review.rating = 5;
+                          this.setState({ review });
+                        }}
+                      ></i>
                     </div>
-                  </div>
-                  <button className="review_button" type="submit" onClick={(e)=>{
-                    e.preventDefault();
-                    this.postReview(this.state.review,this.props.match.params.id)
-                  }}>Post Review</button>
-                </div>
-                </React.Fragment> }
-               {this.state.productReviews.length > 0 ? (
+                    <div className="write_review">
+                      <div className="customer_review">
+                        <textarea
+                          className="commentBox"
+                          maxLength="200"
+                          placeholder="Choose a rating and start writing a review..."
+                          value={this.state.review.comment}
+                          onChange={(e) => {
+                            const { review } = this.state;
+                            review.comment = e.target.value.substring(0, 200);
+                            this.setState({ review });
+                          }}
+                        ></textarea>
+                        <div className="count_attach">
+                          <IoIosAttach className="attach" />
+                          <p className="no_count">
+                            {this.state.review.comment.length}/200
+                          </p>
+                        </div>
+                      </div>
+                      <button
+                        className="review_button"
+                        type="submit"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          this.postReview(
+                            this.state.review,
+                            this.props.match.params.id
+                          );
+                        }}
+                      >
+                        Post Review
+                      </button>
+                    </div>
+                  </React.Fragment>
+                )}
+                {this.state.productReviews.length > 0 ? (
                   this.state.productReviews.map((review, key) => {
-                    return review.status && <ShowReview key={key} review={review} />;
+                    return (
+                      review.status && <ShowReview key={key} review={review} />
+                    );
                   })
                 ) : (
                   <div className="text-center">
@@ -296,21 +324,35 @@ class IndividualProduct extends Component {
             </div>
           </div>
         </div>
-        <div className="most_view_box">
-          <p className="most_viewd_text">PEOPLE ALSO BUY</p>
-          <hr id="line_view"></hr>
-          <div id="arrow_box">
-            <IoIosArrowBack id="Arrow_forward" />
-            <IoIosArrowForward id="Arrow_backward" />
-          </div>
-        </div>
+        {this.state.productDetails.upSells.length > 0 && (
+          <React.Fragment>
+            <div className="most_view_box">
+              <p className="most_viewd_text">YOU MIGHT ALSO LIKE</p>
+              <hr id="line_view"></hr>
+            </div>
 
-        <div className="new_arrival_box">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-        </div>
+            <div className="new_arrival_box">
+              {this.state.productDetails.upSells.map((product,key)=>{
+                return <Product  key={key} product={product} category={false}/>
+              })}
+            </div>
+          </React.Fragment>
+        )}
+        {this.state.productDetails.crossSells.length > 0 && (
+          <React.Fragment>
+            <div className="most_view_box">
+              <p className="most_viewd_text">PEOPLE ALSO BUY</p>
+              <hr id="line_view"></hr>
+            </div>
+
+            <div className="new_arrival_box">
+            {this.state.productDetails.crossSells.map((product,key)=>{
+                return <Product  key={key} product={product} category={false}/>
+              })}
+            </div>
+          </React.Fragment>
+        )}
+
         <FindByCategory />
         <PopularBox />
         <Footer />
@@ -323,6 +365,4 @@ const mapStateToProps = (state) => {
     user: state.getUser.user,
   };
 };
-export default connect(mapStateToProps)(
-  IndividualProduct
-);
+export default connect(mapStateToProps)(IndividualProduct);

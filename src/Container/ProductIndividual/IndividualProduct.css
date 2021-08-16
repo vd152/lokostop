@@ -33,13 +33,13 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 5.417vw;
-  margin-top: 1.171vw;
+  margin: 0.3em;
   height: 24.085vw;
-  justify-content: space-between;
 }
 .similar_particular_image {
   width: 5.417vw;
   height: 6.442vw;
+  margin: 0.3em;
 }
 .product_big_image_cart_compare {
   height: 33.382vw;
@@ -339,6 +339,9 @@ cursor: pointer;
   margin-left: 0.732vw;
   border: none;
 }
+.individual_text_rating{
+  width: 100%;
+}
 .showReview {
   width: 52.709vw;
   height: auto;
@@ -406,13 +409,29 @@ cursor: pointer;
   font: normal normal normal 1.098vw/1.684vw Poppins;
   color: #8d8d8d;
 }
-
+.product-input{
+  width: 150px;
+  height:25px;
+}
+.checkbox-flex{
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+.individual_save_box{
+  margin: 0.5em;
+}
 @media(max-width:768px){
   .name_of_the_particular_product{
     font-size: 3vw;
     height: 3vw;
   }
-
+  .checkbox-flex{
+    flex-direction: row;
+  }
+  .checkbox-flex label{
+    font-size:15px;
+  }
   .individual_price_box_discount{
     height: 3vw;
   }
@@ -433,12 +452,13 @@ cursor: pointer;
 
   .individual_save_box{
     height: 3vw;
+    margin: 0.5em;
   }
 
   .individual_save_column{
     display: flex;
-    flex-direction: column;
     margin-bottom: 3vw;
+    
   }
 
   .individual_save_column .color_text{
@@ -519,6 +539,7 @@ cursor: pointer;
   .similar_particular_image{
     width: 15vw;
     height: 15vw;
+    margin: 0.2em
   }
   .pay_via{
     margin-bottom: 2vw;
@@ -772,10 +793,10 @@ cursor: pointer;
 
   .individual_price_box_discount{
     width: 50vw;
-    height: 4vw;
+    height: 100%;
     text-align: center;
-    margin-left: 12vw;
-    margin-top: 0vw;
+    /* margin-left: 12vw; */
+    margin: 2vw 0;
   }
 
   .individual_our_price_text{
@@ -786,14 +807,15 @@ cursor: pointer;
 
   .individual_price_of_the_product_after_discount{
     font-size: 3.5vw;
+    margin-left: 1em;
   }
 
   .individual_discount_box_in_compare{
     width: 50vw;
-    height: 4vw;
+    height: 100%;
     text-align: center;
-    margin-left: 13vw;
-    margin-top: 1vw;
+    /* margin-left: 13vw; */
+    margin-top: 2vw;
     margin-bottom: 5vw;
   }
 

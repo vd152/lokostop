@@ -20,7 +20,6 @@ class IndividualProductDetails extends Component {
   };
   componentDidMount() {
     api.post('/product/stock/byproduct/get', {productId: this.props.productDetails._id}).then(res=>{
-      console.log(res.data.data)
       const {stock } = this.state
       res.data.data.forEach(stk=>{
         stock[stk.name] = [stk.qty,stk.price,stk._id] 
@@ -40,11 +39,11 @@ class IndividualProductDetails extends Component {
     if (type == "Field") {
       return (
         <div className="save_box individual_save_box" key={unique} >
-          <p className="color_text individual_color_text">
+          <p className="save_text individual_save_text">
             {" "}
             {label}: {required && "*"}
           </p>
-          <input className="product-qty individual_product-qty" type="text" />
+          <input className="product-qty individual_product-qty  product-input" type="text" />
         </div>
       );
     } else if (type == "Textarea") {
@@ -53,12 +52,12 @@ class IndividualProductDetails extends Component {
           className="save_box individual_save_box individual_save_column "
           key={unique}
         >
-          <p className="color_text individual_color_text">
+          <p className="save_text individual_save_text">
             {" "}
             {label}: {required && "*"}
           </p>
           <textarea
-            className="product-qty individual_product-qty"
+            className="product-qty individual_product-qty  product-input"
             type="text"
             row="3"
           ></textarea>
@@ -67,16 +66,17 @@ class IndividualProductDetails extends Component {
     } else if (type == "Dropdown") {
       return (
         <div className="save_box individual_save_box" key={unique}>
-          <p className="color_text individual_color_text">
+          <p className="save_text individual_save_text">
             {" "}
             {label}{required && "*"}
           </p>
-          <select className="dropdown_colors individual_dropdown_colors" onChange={(e)=>{
+          <select className="dropdown_colors individual_dropdown_colors product-input" onChange={(e)=>{
             const {selectedStockArray} = this.state
             selectedStockArray[unique] = e.target.value
             console.log(selectedStockArray)
             this.setState({selectedStockArray})
           }}>
+            <option value="">Please select</option>
             {values.map((value, key) => {
               return (
                 <option value={value.label} key={key}>
@@ -89,14 +89,14 @@ class IndividualProductDetails extends Component {
       );
     } else if (type == "Checkbox") {
       return <div className="save_box individual_save_box" key={unique}>
-          <p className="color_text individual_color_text">
+          <p className="save_text individual_save_text">
             {" "}
             {label}: {required && "*"}
           </p>
-          <div className="d-flex flex-column  " style={{height: '100%', marginLeft: '0.9vw'}}>
+          <div className="d-flex checkbox-flex" style={{height: '100%', marginLeft: '0.9vw'}}>
             {values.map((value, key) => {
               return (
-                <div className="d-flex p-1"key={key}>
+                <div className="d-flex p-1 justify-content-center align-items-center" key={key}>
                 <input type="checkbox" onChange={(e)=>{
                   const {selectedStockArray} = this.state
                   if(selectedStockArray[unique] == undefined ){
@@ -177,19 +177,20 @@ class IndividualProductDetails extends Component {
               <button
                 className="cart_button individual_cart_button w-100 m-0"
                 onClick={(e) => {
-                  // var arr = this.state.selectedStockArray
-                  // for(var i = 0; i < arr.length; i++) {
-                  //   if(Array.isArray(arr[i])){
-                  //     if(arr[i].length ==1){
-                  //       arr[i] = arr[i][0]
-                  //     }else
-                  //       arr[i] = arr[i].join("-")
-                  //   }
-                  // }
-                  // console.log(this.state.selectedStockArray)
-                  // for(var key of Object.keys(this.state.stock)){
-
-                  // }
+                  var arr = Array.from(this.state.selectedStockArray)
+                  for(var i = 0; i < arr.length; i++) {
+                    if(Array.isArray(arr[i])){
+                      if(arr[i].length ==1){
+                        arr[i] = arr[i][0]
+                      }else
+                        arr[i] = arr[i].join("-")
+                    }
+                  }
+                  arr = arr.join("-").split("-").sort().filter(ele=>ele != "")
+                  console.log(arr)
+                  for(var key of Object.keys(this.state.stock)){
+                    console.log(key)
+                  }
                   // this.props.addToCart(
                   //   this.props.productDetails._id,
                   //   this.state.qty,
@@ -280,14 +281,14 @@ class IndividualProductDetails extends Component {
             <div className="details_box_margin">
               {this.props.productDetails.specialPrice ? (
                 <React.Fragment>
-                  <div className="rating_product individual_rating_product">
-                    <p className="mrp_text individual_mrp_text">MRP:</p>
+                  <div className="save_box individual_save_box">
+                    <p className="save_text individual_save_text">MRP:</p>
                     <p className="price_of_the_product individual_price_of_the_product">
                       {this.props.productDetails.price}
                     </p>
                   </div>
-                  <div className="price_box_discount individual_price_box_discount">
-                    <p className="our_price_text individual_our_price_text">
+                  <div className="save_box individual_save_box">
+                    <p className="save_text individual_save_text">
                       Our Price:
                     </p>
                     <p className="price_of_the_product_after_discount individual_price_of_the_product_after_discount">
@@ -313,8 +314,8 @@ class IndividualProductDetails extends Component {
               )}
               {this.props.productDetails.specialPrice ? (
                 <React.Fragment>
-                  <div className="discount_box_in_compare individual_discount_box_in_compare">
-                    <p className="discount_text_product individual_discount_text_product">
+                  <div className="save_box individual_save_box">
+                    <p className="save_text individual_save_text">
                       {" "}
                       Discount:
                     </p>
@@ -360,7 +361,7 @@ class IndividualProductDetails extends Component {
               <div className="save_box individual_save_box individual_save_column">
                 <p className="color_text individual_color_text"> Qty:</p>
                 <input
-                  className="product-qty individual_product-qty"
+                  className="product-qty individual_product-qty  product-input"
                   type="number"
                   step="1"
                   placeholder="1"

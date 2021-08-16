@@ -453,7 +453,7 @@
 }
 .our_price_text {
   margin-bottom: 0;
-  margin-left: 1.245vw;
+  /* margin-left: 1.245vw; */
   width: 4.612vw;
   height: 1.391vw;
   text-align: right;
