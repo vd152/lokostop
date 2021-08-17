@@ -16,7 +16,8 @@ class Search extends Component {
       name: "",
     },
     searchWord: "",
-    searchRedirect: false
+    searchRedirect: false,
+    shop: false
   };
   componentDidMount() {
     const {  categories2 } = this.state;
@@ -32,6 +33,7 @@ class Search extends Component {
               display: "flex",
               justifyContent: "space-between",
               width: "80%",
+              padding: "0"
             }}
             className={"dropdown-item"}
             onClick={(e) => {
@@ -105,12 +107,37 @@ class Search extends Component {
         searchWord: this.state.searchWord
       }}/>
     }
+    if(this.state.shop){
+      return <Redirect to={{ 
+        pathname: "/shop",
+        searchWord: this.state.searchWord
+      }} />
+    }
     return (
         <div className={this.props.home? "Header_one_centre search-sm": "Header_one_centre search-xl"}>
           <div className="centre_first_part">
    
                <Dropdown className=" search-dropdownbutton "  position="right" title={this.state.selectedCategory.name == ""?"Categories":this.state.selectedCategory.name}>
-        
+               <div
+              style={{
+                background: "transparent",
+                color: "#1D1D1D",
+                display: "flex",
+                justifyContent: "space-between",
+                width: "80%"
+              }}
+              className={"dropdown-item"}
+              onClick={(e) => {
+                const { selectedCategory } = this.state;
+                selectedCategory.id = "";
+                selectedCategory.name = "";
+                selectedCategory.url = "";
+                this.setState({ selectedCategory });
+              }}
+            >
+              All Categories
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
               {this.state.categories2.map((category, key) => {
                 return category.content
               })}
@@ -123,7 +150,10 @@ class Search extends Component {
             </div>
           </div>
           <div className="centre_third_part align-items-center justify-content-center" onClick={(e)=>{
-            this.setState({searchRedirect: true})
+            if(this.state.selectedCategory.name == ""){
+              this.setState({shop: true})
+            }else
+              this.setState({searchRedirect: true})
           }}>
             <p className="m-0"><span className="large_screen_text">Search</span></p>
             <FiSearch id="search" className="m-0"/>

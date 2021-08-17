@@ -28,7 +28,7 @@ class CartItem extends Component {
                 <td className="product_subtotal">SUBTOTAL</td>
                 <td className="product_subtotal">Remove</td>
               </tr>
-              {this.props.cart.map(({ product, qty, couponDiscount, totalPrice }, key) => {
+              {this.props.cart.map(({ product, qty, couponDiscount, totalPrice,stock }, key) => {
                 return (
                   <tr className="table_heading1" key={key}>
                     <td className="product_image1">
@@ -54,6 +54,14 @@ class CartItem extends Component {
                       ) : (
                         ""
                       )}
+                      {stock && stock.name ? (
+                        <p className="product_para_2">
+                          
+                          {"Options: " + stock.name.split("-")}
+                        </p>
+                      ) : (
+                        ""
+                      )}
                       <Link to={"/product/" + product.url + "/" + product._id}>
                         <p className="product_para_3">View Detail</p>
                       </Link>
@@ -73,13 +81,13 @@ class CartItem extends Component {
                     </td>
                     <td className="product_quantity1">
                       <FiMinusCircle id="minus_icon" onClick={(e) => {
-                        this.props.updateCartQty(product._id, qty - 1,null);
+                        this.props.updateCartQty(product._id, qty - 1,stock && stock._id?stock._id:null);
                       }} />
                       <p className="product_quant_para">{qty}</p>
                       <IoAddCircleOutline
                         id="add_icon"
                         onClick={(e) => {
-                          this.props.updateCartQty(product._id, qty + 1, null);
+                          this.props.updateCartQty(product._id, qty + 1, stock && stock._id?stock._id:null);
                         }}
                       />
                     </td>
@@ -87,14 +95,14 @@ class CartItem extends Component {
                       <p className="product__sub_para">
                         Rs.{" "}
                         {totalPrice}
-                           {couponDiscount != 0 && <span className="coupon-applied">applied</span>}
+                           {couponDiscount && couponDiscount != 0 && <span className="coupon-applied">applied</span>}
                       </p>
                     </td>
                     <td className="product_subtotal1">
                     <IoCloseCircleSharp
                         id="closeIcon"
                         onClick={(e) => {
-                          this.props.deleteFromCart(product._id);
+                          this.props.deleteFromCart(product._id, stock._id);
                         }}
                       />
                     </td>
@@ -104,11 +112,11 @@ class CartItem extends Component {
             </tbody>
           </table>
         </div>
-        <Link to='/shop'>
         <div className="button_box_1new">
+        <Link to='/shop'>
           <button id="continue_shopping"> Continue Shopping</button>
-        </div>
         </Link>
+        </div>
         
       </div>
     );

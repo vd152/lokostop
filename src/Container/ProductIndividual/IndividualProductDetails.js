@@ -117,12 +117,67 @@ class IndividualProductDetails extends Component {
           </div>
         </div>
     } else if (type == "Custom Checkbox") {
+      return <div className="save_box individual_save_box" key={unique}>
+          <p className="save_text individual_save_text">
+            {" "}
+            {label}: {required && "*"}
+          </p>
+          <div className="d-flex checkbox-flex" style={{height: '100%', marginLeft: '0.9vw'}}>
+            {values.map((value, key) => {
+              return (
+                <div className="d-flex p-1 justify-content-center align-items-center" key={key}>
+                <input type="checkbox" onChange={(e)=>{
+                  const {selectedStockArray} = this.state
+                  if(selectedStockArray[unique] == undefined ){
+                    selectedStockArray[unique] = []
+                  }
+                  if(selectedStockArray[unique][key] == value.label){
+                    selectedStockArray[unique].splice(key,1)
+                  }else
+                    selectedStockArray[unique][key] = value.label
+                  console.log(selectedStockArray)
+                  this.setState({selectedStockArray})
+                }}>
+                </input>
+                <label>{value.label}</label>
+                </div>
+              );
+            })}
+          </div>
+        </div>
     } else if (type == "Radio Button") {
     } else if (type == "Custom Radio Button") {
     } else if (type == "Multiple Select") {
     } else if (type == "Date") {
+      return (
+        <div className="save_box individual_save_box" key={unique} >
+          <p className="save_text individual_save_text">
+            {" "}
+            {label}: {required && "*"}
+          </p>
+          <input className="product-qty individual_product-qty  product-input" type="date" />
+        </div>
+      );
     } else if (type == "Date Time") {
+      return (
+        <div className="save_box individual_save_box" key={unique} >
+          <p className="save_text individual_save_text">
+            {" "}
+            {label}: {required && "*"}
+          </p>
+          <input className="product-qty individual_product-qty  product-input" type="datetime-local" />
+        </div>
+      );
     } else if (type == "Time") {
+      return (
+        <div className="save_box individual_save_box" key={unique} >
+          <p className="save_text individual_save_text">
+            {" "}
+            {label}: {required && "*"}
+          </p>
+          <input className="product-qty individual_product-qty  product-input" type="time" />
+        </div>
+      );
     }
   };
    arrayEquals = (a, b) =>{
