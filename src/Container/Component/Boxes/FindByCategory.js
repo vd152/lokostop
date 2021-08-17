@@ -130,7 +130,7 @@ class FindByCategory extends React.Component {
                   <span className="large_screen_text">All Categories</span>
                   <span className="small_screen_text">All</span>
                   </span>
-                  : this.state.selectedCategory.name}
+                  : this.state.selectedCategory.name.substring(0,6)}
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               {this.state.categories.map((category, key) => {
@@ -149,7 +149,7 @@ class FindByCategory extends React.Component {
                  data-bs-toggle="dropdown"
                  aria-expanded="false"
                 >
-                  {this.state.selectedBrand.name == ""? "Brands": this.state.selectedBrand.name}
+                  {this.state.selectedBrand.name == ""? "Brands": this.state.selectedBrand.name.substring(0,6)}
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="dropdownButton2">
                 {!this.props.brandLoading && this.props.brands.map((brand, key)=>{

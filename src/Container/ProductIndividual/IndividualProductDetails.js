@@ -125,6 +125,12 @@ class IndividualProductDetails extends Component {
     } else if (type == "Time") {
     }
   };
+   arrayEquals = (a, b) =>{
+    return Array.isArray(a) &&
+      Array.isArray(b) &&
+      a.length === b.length &&
+      a.every((val, index) => val === b[index]);
+  }
   render() {
     return (
       <div>
@@ -177,25 +183,44 @@ class IndividualProductDetails extends Component {
               <button
                 className="cart_button individual_cart_button w-100 m-0"
                 onClick={(e) => {
+                  let id = ""
                   var arr = Array.from(this.state.selectedStockArray)
                   for(var i = 0; i < arr.length; i++) {
                     if(Array.isArray(arr[i])){
-                      if(arr[i].length ==1){
+                      if(arr.length == 0){
+                        
+                      }
+                      else if(arr[i].length ==1){
                         arr[i] = arr[i][0]
                       }else
                         arr[i] = arr[i].join("-")
                     }
                   }
                   arr = arr.join("-").split("-").sort().filter(ele=>ele != "")
-                  console.log(arr)
+                  //console.log(arr)
                   for(var key of Object.keys(this.state.stock)){
-                    console.log(key)
+                    let temparr = key.split("-").sort()
+                    if(arr.length < temparr.length){
+                      temparr = temparr.slice(0, arr.length)
+                      if(this.arrayEquals(arr, temparr)){
+                        id = this.state.stock[key][2]
+                      }
+                    }else if(arr.length == temparr.length && this.arrayEquals(arr, temparr)){
+                        id = this.state.stock[key][2]
+                    }else{
+                      arr = arr.slice(0, temparr.length)
+                      if(this.arrayEquals(arr, temparr)){
+                        id = this.state.stock[key][2]
+                      }
+                    }
+                    
                   }
-                  // this.props.addToCart(
-                  //   this.props.productDetails._id,
-                  //   this.state.qty,
-                  //   this.state.stockId
-                  // );
+                  this.setState({stockId: id})
+                  this.props.addToCart(
+                    this.props.productDetails._id,
+                    this.state.qty,
+                    id
+                  );
                 }}
               >
                 <span className="large_screen_text ">ADD TO CART</span>

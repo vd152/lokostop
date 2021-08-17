@@ -582,7 +582,7 @@ cursor: pointer;
   .product_big_image_cart_compare {
     height: 60vw;
     width: 60vw;
-    margin-left: 15vw;
+    margin: auto;
     display: flex;
     flex-direction: column;
 }

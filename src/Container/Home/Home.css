@@ -605,7 +605,7 @@
   margin-left: 1.537vw;
   height: 0;
   margin-top: 1.098vw;
-  width: 78.258vw;
+  width: 100%;
   border: 0.073vw solid grey;
 }
 .offers {
@@ -1646,10 +1646,8 @@
   }
   .category_Search {
     height: auto;
-    width: 85vw;
     margin-left: 3vw;
     display: flex;
-    flex-wrap: wrap;
   }
   .particular_category_choice p {
     font: normal normal normal 2.5vw/2.196vw Poppins;    
@@ -2120,12 +2118,11 @@
   .category_Search {
     height: 7vw;
     width: auto;
-    margin-left: 9.622vw;
+    margin: 0;
   }
 
   .centre_first_part1 {
     height: 7vw;
-    width: 12vw;
   }
 
   .centre_first_part1 .dropdown-toggle{
