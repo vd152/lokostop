@@ -270,12 +270,12 @@ class IndividualProductDetails extends Component {
                     }
                     
                   }
-                  this.setState({stockId: id})
                   this.props.addToCart(
                     this.props.productDetails._id,
                     this.state.qty,
                     id
                   );
+                  this.setState({stockId: id})
                 }}
               >
                 <span className="large_screen_text ">ADD TO CART</span>

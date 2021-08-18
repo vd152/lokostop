@@ -110,3 +110,9 @@ export const deleteFromCart = (productId, stockId) => async(dispatch) => {
     }
 }
 
+export const emptyCart = () => async(dispatch) => {
+    dispatch({
+        type: actionTypes.EMPTY_CART_SUCCESS,
+        payload: ""
+    })
+}

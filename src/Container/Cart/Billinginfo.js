@@ -35,6 +35,7 @@ class Billinginfo extends Component {
     },
     selected: -1,
     selectedAddress: {
+      Name: "",
       AddressLine1: "",
       AddressLine2: "",
       Country: "",
@@ -126,7 +127,10 @@ class Billinginfo extends Component {
   temporaryOrderSave = () => {
     const { sendData } = this.state;
     sendData.Address.BillingAddress = this.state.selectedAddress;
+    sendData.Address.BillingAddress.Name = this.state.sendData.Receiver
     sendData.Address.ShippingAddress = this.state.selectedAddress;
+    sendData.Address.ShippingAddress.Name = this.state.sendData.Receiver
+
     this.setState({ sendData }, () => {
       this.props.saveOrderDetails({ ...this.props.savedOrder, data: sendData });
     });

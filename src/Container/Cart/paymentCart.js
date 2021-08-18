@@ -14,6 +14,7 @@ import Loader from "../Loader/Loader";
 import { connect } from "react-redux";
 import { getFeatures } from "../../Redux/Actions/StorefrontActions";
 import { saveOrderDetails } from "../../Redux/Actions/OrderActions";
+import {emptyCart} from '../../Redux/Actions/CartActions'
 import Razorpay from "../../Utils/Razorpay";
 import api from "../../Apis/api";
 
@@ -133,6 +134,7 @@ class paymentCart extends Component {
       })
       .then((res) => {
         console.log(res.data.data);
+        this.props.emptyCart()
       })
       .catch((err) => {
         console.log(err);
@@ -307,7 +309,7 @@ class paymentCart extends Component {
             <div className="secondpaybox">
               <div className="secondpay_1box">
                 <p className="para1_pay">
-                  Order for: {this.state.order.data.Receiver}
+                  Order for: {this.state.order.data? this.state.order.data.Receiver:""}
                 </p>
                 <span className="small_screen_text payline">|</span>
                 <hr id="payline large_screen_text" />
@@ -364,6 +366,6 @@ const mapStateToProps = (state) => {
     savedOrder: state.saveOrder.orderDetails,
   };
 };
-export default connect(mapStateToProps, { getFeatures, saveOrderDetails })(
+export default connect(mapStateToProps, { getFeatures, saveOrderDetails, emptyCart })(
   paymentCart
 );

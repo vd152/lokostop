@@ -50,6 +50,12 @@ export const cartReducer = (state = { cart: []}, action) => {
                         cart: [],
                         error: action.payload
                     }
+                    case actionTypes.EMPTY_CART_SUCCESS:
+                        return {
+                            loading: false,
+                            cart: []
+                        }
+                    
         default:
             return state;
     }

@@ -111,12 +111,12 @@ export class Footer extends Component {
           ></p>
         </div>
         <div className="area_3">
-        {this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image && 
+        {this.state.footerDetails.Footer.AcceptedPaymentMethodsImage && this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image && 
 
           <div className="paymentmethod">
             <p>PAYMENT METHODS</p>
             <div className="logo2">
-                    <img src={siteUrl+this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image} />
+                    <img src={this.state.footerDetails.Footer.AcceptedPaymentMethodsImage?siteUrl+this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image:""} />
             </div>
           </div>
   }
