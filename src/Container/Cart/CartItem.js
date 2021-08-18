@@ -95,14 +95,14 @@ class CartItem extends Component {
                       <p className="product__sub_para">
                         Rs.{" "}
                         {totalPrice}
-                           {couponDiscount && couponDiscount != 0 && <span className="coupon-applied">applied</span>}
+                           {couponDiscount && couponDiscount != 0 ? <span className="coupon-applied">applied</span>:""}
                       </p>
                     </td>
                     <td className="product_subtotal1">
                     <IoCloseCircleSharp
                         id="closeIcon"
                         onClick={(e) => {
-                          this.props.deleteFromCart(product._id, stock._id);
+                          this.props.deleteFromCart(product._id, stock && stock._id?stock._id:null);
                         }}
                       />
                     </td>

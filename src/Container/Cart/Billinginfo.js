@@ -29,6 +29,7 @@ class Billinginfo extends Component {
         BillingAddress: {},
         ShippingAddress: {},
       },
+      ShippingMethod: "",
       ShippingPrice: 0,
       Discount: 0,
     },
@@ -80,12 +81,15 @@ class Billinginfo extends Component {
   getShipping = () =>{
     if(this.state.shippingMethods.FreeShipping.Status && (this.getSubtotal() > this.state.shippingMethods.FreeShipping.MinimumAmount)){
       this.setData("ShippingPrice", 0)
+      this.setData("ShippingMethod", "Free Shipping")
     } 
-    if(this.state.shippingMethods.LocalPickup.Status){
+    else if(this.state.shippingMethods.LocalPickup.Status){
       this.setData("ShippingPrice", this.state.shippingMethods.LocalPickup.Cost)
+      this.setData("ShippingMethod", "Local Pickup")
     }
-    if(this.state.shippingMethods.FlatRate.Status){
+    else if(this.state.shippingMethods.FlatRate.Status){
       this.setData("ShippingPrice", this.state.shippingMethods.FlatRate.Cost)
+      this.setData("ShippingMethod", "Flat Rate")
     }
   }
   setAddress = (key, value) => {
@@ -179,13 +183,13 @@ class Billinginfo extends Component {
                     <span className="checkMark"></span>
                   </label>
                 </p>
-                <p className="check_box">
+                {/* <p className="check_box">
                   <label className="containerCheck">
                     Save this information for future
                     <input type="checkbox"></input>
                     <span className="checkMark"></span>
                   </label>
-                </p>
+                </p> */}
               </div>
               <div className="second_bill_box">
                 <p className="head_bill_reciever">Receiver address</p>
@@ -394,7 +398,7 @@ class Billinginfo extends Component {
                     className="para2_insidethird"
                     style={{ fontWeight: "bold" }}
                   >
-                    Rs. 45,289.00
+                    Rs. {this.getSubtotal()+ this.state.sendData.ShippingPrice-this.state.sendData.Discount}
                   </p>
                 </div>
               </div>
@@ -412,12 +416,12 @@ class Billinginfo extends Component {
                 let items = []
                 this.props.cart.forEach(item=>{
                   let tmp = {}
-                  tmp.ProductID = item.product._id
+                  tmp.ProductId = item.product._id
                   tmp.Quantity = item.qty
-                  tmp.stockId = item.stockId?item.stockId:null
+                  tmp.StockId = item.stock && item.stock._id?item.stock._id:null
                   items.push(tmp)
                 })
-                this.props.saveOrderDetails({ ...this.props.savedOrder, ItemsOrdered: items });
+                this.props.saveOrderDetails({ ...this.props.savedOrder, ItemsOrdered: items,totalOrderAmount: this.getSubtotal()+ this.state.sendData.ShippingPrice-this.state.sendData.Discount });
                 this.setState({redirect: true})
               }}
             >
