@@ -26,6 +26,9 @@
   font-size: 1.5vw;
   color: #08e5a9;
 }
+#profile_icon{
+  color: #08E5A9;
+}
 .modal-header {
   border-bottom: none;
 }
@@ -197,6 +200,8 @@
   #profile_icon{
     font-size: 3.4vw;
     margin-left: 0.975vw;
+    color: #08E5A9;
+
   }
 }
 
@@ -211,6 +216,7 @@
   #profile_icon{
     font-size: 5.1vw;
     margin-left: 1vw;
+    color: #08E5A9;
   }
 }
 @media (max-width: 425px) {
@@ -313,6 +319,7 @@
   #profile_icon{
     font-size: 6.1vw;
     margin-left: 1.45vw;
+    color: #08E5A9;
   }
 
   .filterbox{
@@ -327,6 +334,8 @@
 
   #profile_icon{
     font-size: 6.5vw;
+    color: #08E5A9;
+
   }
 }
 

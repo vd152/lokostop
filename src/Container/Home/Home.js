@@ -84,14 +84,17 @@ class Home extends Component {
           {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[1]} />
   }
+          <TopClients />
+          <ClientImage />
+          {this.props.store.Slider && 
+          <Slider slides={this.props.store.Slider.Slides} settings={this.props.store.Slider.Settings}/>
+  }
           <TwoColBanner />
           {/* <CategoryBox /> */}
-          <TopClients />
           {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[2]} />
   }
           <OneColBanner />
-          <ClientImage />
           {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[3]} />
   }

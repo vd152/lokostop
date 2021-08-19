@@ -23,6 +23,8 @@ class ProfileIndividual extends Component {
     componentDidMount() {
         if (this.props.location.wishlistActive) {
             document.querySelector("#v-pills-messages-tab").click()
+        } if(this.props.location.ordersActive){
+            document.querySelector("#v-pills-orders-tab").click()
         }
     }
     render() {

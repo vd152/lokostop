@@ -7,18 +7,35 @@
 }
 
 .area_1 {
-  height: 33.821vw;
+  height: auto;
   width: 15.666vw;
   margin-left: 2.343vw;
   margin-top: 2.489vw;
 }
 
 .area_1 img {
-  width: 25.842vw;
+  width: 15.842vw;
   object-fit: cover;
   margin-top: 0.146vw;
   cursor: pointer;
-  height: 30.893vw;
+  height: 10.893vw;
+}
+.area_1 .logo{
+  text-align: left;
+}
+.area_1 .logo p{
+  font-weight: 600;
+letter-spacing: 0px;
+padding: 1em 0em;
+color: #5D5D5D;
+}
+.area_1 p{
+  color: #3D3D3D;
+  padding: 1em 0em;
+}
+.area_1 .logo img{
+  height: 100%;
+  width: 100%;
 }
 .area_1 a {
   text-decoration: none;
@@ -57,6 +74,7 @@
   cursor: pointer;
   padding-bottom: 1.171vw;
   text-align: left;
+  transition: all 0.3s ease;
   font: normal normal normal 0.878vw/1.464vw Poppins;
   color: #9d9d9d;
 }
@@ -89,6 +107,7 @@
   width: auto;
   cursor: pointer;
   animation-timing-function: linear;
+  transition: all 0.3s ease;
   height: 1.537vw;
   font: normal normal normal 0.878vw/1.464vw Poppins;
   padding-top: 1.464vw;
@@ -96,7 +115,7 @@
   cursor: pointer;
 }
 .second_box_profile ul li:hover {
-  padding-top: 0.732vw;
+  margin-top: -0.3em;
   color: #3d3d3d;
 }
 .copyright {
@@ -176,11 +195,22 @@
   height: 100%;
 }
 @media (max-width: 768px) {
+  .area_1 .logo img{
+    height: 70%;
+    width: 70%;
+  }
+  .area_1 p{
+    font-size: 0.7em ;
+  }
+  .area_1 .logo{
+    text-align: center;
+  }
   .box_one_area_2 ul li {
     font: normal normal normal 1.278vw/1.464vw Poppins;
   }
   .box_one_area_2 p {
-    font: normal normal normal 1.35vw/1.464vw Poppins;
+    font: normal normal normal 1.65vw/1.464vw Poppins;
+    line-height: 1.2;
     font-weight: bold;
   }
   .second_box_profile p {
@@ -232,7 +262,8 @@
     flex-direction: column;
   }
   .area_1 {
-    height: 39.821vw;
+    height: auto;
+    text-align: center;
     width: 91.666vw;
     margin: 3vw;
     margin-left: 2.4vw;
@@ -285,7 +316,7 @@
   }
 
   .box_one_area_2 p {
-    font: normal normal normal 2.35vw/1.464vw Poppins;
+    font: normal normal normal 2.5vw/1.464vw Poppins;
     font-weight: bold;
     width: auto;
   }
@@ -386,7 +417,7 @@
 
 @media(max-width:375px){
   .area_1 {
-    height: 45vw;
+    height: auto;
     width: 91.666vw;
     margin-left: 4.3vw;
     margin-top: 2.489vw;
@@ -411,7 +442,7 @@
   .box_one_area_2 p {
     width: 22.053vw;
     height: 2.25vw;
-    font: normal normal normal 2.8vw/1.964vw Poppins;
+    font: normal normal normal 3vw/1.964vw Poppins;
     font-weight: 600;
   }
 

@@ -28,6 +28,19 @@ export class Footer extends Component {
     return (
       <footer className="footer">
         <div className="area_1">
+        <div className="logo">
+                <img
+                  src={
+                    !this.props.logoLoading && this.props.logos && this.props.logos.Logo
+                      ? siteUrl +
+                        this.props.logos.Logo.HeaderLogo.image
+                      : ""
+                  }
+                  height="40"
+                  alt="Reload"
+                />
+                <p>We promise products from best brands with assurance.</p>
+              </div>
           {/* <div className="logo1">SIDHU electronics</div>
                 <p className="area_1_para">We promise products from best brands with assurance.</p> */}
           <a
@@ -39,6 +52,7 @@ export class Footer extends Component {
               alt="RELOAD"
             />
           </a>
+            <p>Shop No. 4669/1 Shingar Cinema Rd, Near Shingar Cinema, New Shivaji Nagar, Samrala Chowk, Ludhiana, Punjab 141008</p>
           {/* <p className="second_para_area_1">Shop No. 4669/1 Shingar Cinema Rd, Near Shingar Cinema, New Shivaji Nagar, Samrala Chowk, Ludhiana, Punjab 141008</p></a> */}
         </div>
         <div className="area_2">
@@ -99,7 +113,7 @@ export class Footer extends Component {
             <p>PROFILE</p>
             <ul>
               <li><Link to="/profile">My Profile</Link></li>
-              <li>My orders</li>
+              <li><Link to={{ pathname: "/profile", ordersActive: true }}>My Orders</Link></li>
               <li><Link to={{ pathname: "/profile", wishlistActive: true }}>My Favorites</Link></li>
             </ul>
           </div>
@@ -187,6 +201,8 @@ const mapStateToProps = (state) => {
     footerData: state.getFooter.footerData,
     footerLoading: state.getFooter.loading,
     store: state.getStore.store,
+    logos: state.getLogos.logos,
+    logoLoading: state.getLogos.loading
   };
 };
 export default connect(mapStateToProps)(Footer);

@@ -166,7 +166,7 @@ class Search extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    categories: state.getCategories.categories,
+    categories: state.getCategories.categories.filter(category=>category.status&&category.searchable),
   };
 };
 export default connect(mapStateToProps)(Search);

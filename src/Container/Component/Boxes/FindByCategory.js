@@ -140,7 +140,7 @@ class FindByCategory extends React.Component {
           <p className="or">OR</p>
           <div className="category_Search">
             <div className="centre_first_part1">
-            <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedCategory.name == ""?"Categories":this.state.selectedCategory.name}>
+            <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedCategory.name == ""?"Categories":this.state.selectedCategory.name.substr(0,7)}>
                <div
               style={{
                 background: "transparent",
@@ -170,8 +170,8 @@ class FindByCategory extends React.Component {
            </div>
             <div className="centre_first_part1">
               
-              <div className="dropdown" style={{width:'auto'}}>
-                <button
+              {/* <div className="dropdown" style={{width:'auto'}}> */}
+                {/* <button
                  className="btn  dropdown-toggle"
                  type="button"
                  id="dropdownButton2"
@@ -179,20 +179,22 @@ class FindByCategory extends React.Component {
                  aria-expanded="false"
                 >
                   {this.state.selectedBrand.name == ""? "Brands": this.state.selectedBrand.name.substring(0,6)}
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownButton2">
+                </button> */}
+                {/* <ul className="dropdown-menu" aria-labelledby="dropdownButton2"> */}
+                <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedBrand.name == ""?"Brands":this.state.selectedBrand.name.substr(0,5)}>
+
                 {!this.props.brandLoading && this.props.brands.map((brand, key)=>{
-                    return <li className="dropdown-item" key={key} onClick={(e)=>{
+                    return <Dropdown.Item><div className="dropdown-item" key={key} onClick={(e)=>{
                       const {selectedBrand} = this.state
                       selectedBrand.id = brand._id
                       selectedBrand.name = brand.name
                       selectedBrand.url = brand.url
                       this.setState({selectedBrand})
-                    }}>{brand.name}</li>
+                    }}>{brand.name}</div></Dropdown.Item>
                   })} 
-                </ul>
-
-              </div>
+                {/* </ul> */}
+</Dropdown>
+              {/* </div> */}
               
             </div>
             <div className="centre_second_part2">

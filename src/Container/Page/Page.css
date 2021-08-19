@@ -42,9 +42,19 @@
   }
   .mission_about {
     height: auto;
-    width: 59.444vw;
-    margin-left: 20.278vw;
-    margin-top: 2.196vw;
+    /* width: 59.444vw; */
+    /* margin-left: 20.278vw;
+    margin-top: 2.196vw; */
+  }
+  .mission_about table{
+    margin: auto;
+  }
+  .menu-link{
+    transition: all 0.5s ease;
+  }
+  .menu-link:hover{
+    border-bottom: 2px solid #08E5A9;
+    padding: 0.5em
   }
   .bold_about {
     height: 2.05vw;

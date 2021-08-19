@@ -8,7 +8,7 @@ class OneColBanner extends Component {
         return (
             <div className="image_about d-flex two-col-banner ">
                 {!this.props.bannersLoading && this.props.banners.Banners? 
-                this.props.banners.Banners[2].SectionStatus?this.props.banners.Banners[4].Banners.map((banner,key)=>{
+                this.props.banners.Banners[4].SectionStatus?this.props.banners.Banners[4].Banners.map((banner,key)=>{
                     return  <Link className="one-banner" to={banner.CalltoActionURL} key={key} target={banner.OpenInNewWindow?"_blank":"_self"}>
                      <img  src={banner.Image.image?siteUrl+banner.Image.image: "https://via.placeholder.com/150"} alt="Reload" />
                      </Link>

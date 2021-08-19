@@ -1,6 +1,7 @@
 .video_container {
   width: 100vw;
-  height: 31.7vw;
+  height: 65vh;
+  object-fit: cover;
 }
 .video_container img {
   width: 100%;
@@ -8,11 +9,12 @@
   object-fit: cover;
 }
 .Free_box {
-  width: 79.649vw;
+  width: 90%;
   height: auto;
   border: 0.073vw solid #dddddd;
-  margin-top: 1.171vw;
-  margin-left: 10.176vw;
+  /* margin-top: 1.171vw;
+  margin-left: 10.176vw; */
+  margin: 2em auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -963,7 +965,7 @@
   width: 100%;
   height: 23.353vw;
   overflow: hidden;
-  transition-duration: 2s;
+  transition-duration: 0.5s;
   position: absolute;
   display: flex;
   cursor: pointer;
@@ -983,7 +985,7 @@
   position: absolute;
   display: flex;
   cursor: pointer;
-  transition-duration: 2s;
+  transition-duration: 0.5s;
 }
 /* .slider_box_two:hover{
   left: -3vw;
@@ -1016,13 +1018,27 @@
   font-size: 1.5em;
 }
 .carousel-caption h3{
-  font-size: 3em !important;
+  font-size: 2.5em !important;
+  margin-bottom: 2em;
 }
 .carousel-caption p{
-  font-size: 2em !important;
+  font-size: 1.7em !important;
+  opacity: 0.8;
 }
 .carousel-caption{
-  bottom: 8rem;
+  bottom: 10rem;
+}
+@media (max-width: 1200px) {
+  .carousel-caption{
+    bottom: 9rem;
+  }
+  .carousel-caption h3{
+    font-size: 2em !important;
+  }
+  .carousel-caption p{
+    font-size: 1.3em !important;
+    opacity: 0.8;
+  }
 }
 @media (max-width: 768px) {
   .slider_caption{
@@ -1032,10 +1048,11 @@
     bottom: 2rem;
   }
   .carousel-caption h3{
-    font-size: 2em !important;
+    font-size: 1.2em !important;
+    margin-bottom: 1.2em;
   }
   .carousel-caption p{
-    font-size: 1em !important;
+    font-size: 0.8em !important;
   }
   .slider_caption h3{
     font-size: 4vw;
@@ -1689,7 +1706,7 @@
   .centre_first_part1 .dropdown-toggle{
     padding-top: 2.7vw;
     padding-left: 2.5vw;
-    font:normal normal normal 4vw/1.318vw Poppins
+    font:normal normal normal 2vw/1.318vw Poppins
   }
 
   .centre_first_part1 .dropbtn1{

@@ -7,6 +7,7 @@ import Loader from "../../Loader/Loader";
 import Dropdown from "react-multilevel-dropdown";
 import { IoIosArrowForward } from "react-icons/io";
 import { siteUrl} from '../../../Utils/util'
+import {Helmet} from "react-helmet";
 
 class Header02 extends Component {
   state = {
@@ -84,27 +85,23 @@ class Header02 extends Component {
         );
     };
     !this.props.menuLoading && this.props.menus.PrimaryMenu.menuItems.forEach((menu, key) => {
-      let tempData = { content: [] };
+      let tempData = { };
       if (menu.childrenMenu.length > 0) {
+        tempData.content = []
         tempData.title = (
           <React.Fragment>
             <Link
               style={{
                 background: "transparent",
+                margin: "0.5em",
+                color: "#1D1D1D",
               }}
-              className="nav-link "
+              className="nav-link menu-link"
               to={this.setMenuLink(menu)}
             >
               {menu.name}
             </Link>
-            
 
-            {/* <a
-              className=" dropdown-toggle toggler"
-              href="#"
-              data-bs-toggle="dropdown"
-              data-bs-auto-close="outside"
-            ></a> */}
           </React.Fragment>
         );
         
@@ -119,12 +116,12 @@ class Header02 extends Component {
               color: "#1D1D1D",
               display: "flex",
               justifyContent: "space-between",
+              margin: "0.5em"
             }}
-            className="nav-link "
+            className="nav-link menu-link"
             to={this.setMenuLink(menu)}
           >
             {menu.name}
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           </Link>
         );
       }
@@ -139,8 +136,18 @@ class Header02 extends Component {
     }
       return (
         <nav className="navbar navbar-expand-lg navbar-light  ">
+           <Helmet>
+           <link rel="icon" href={!this.props.logoLoading && this.props.logos && this.props.logos.Logo
+                      ? siteUrl +
+                        this.props.logos.Logo.Favicon.image :""} />
+                            <link rel="apple-touch-icon" href={!this.props.logoLoading && this.props.logos && this.props.logos.Logo
+                      ? siteUrl +
+                        this.props.logos.Logo.Favicon.image :""}  />
+
+
+                </Helmet>
           <div className="container-fluid">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand mx-3" href="/">
               <div className="logo">
                 <img
                   src={
@@ -170,11 +177,11 @@ class Header02 extends Component {
             </button>
             <div className="collapse navbar-collapse " id="navbar-content">
               <ul className="navbar-nav mr-auto mb-2 mb-lg-0 m-auto header2">
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/" className="nav-link ">
                     Home
                   </Link>
-                </li>
+                </li> */}
                 {this.state.menus.map((menu, key) => {
                   return (
                       <li className="nav-item dropdown d-flex align-items-center" key={key}>
@@ -186,7 +193,7 @@ class Header02 extends Component {
                       </li>
                   );
                 })}
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/sendquery" className="nav-link">
                     Send query
                   </Link>
@@ -200,10 +207,10 @@ class Header02 extends Component {
                   <Link to="/blogs" className="nav-link">
                     Blogs
                   </Link>
-                </li>
+                </li> */}
               </ul>
 
-              <div className="">
+              <div className="mx-3">
                 <div className="mobile_part d-flex flex-row-reverse">
                   <p className="mb-1">+91-9898989898</p>
                   <MdLocalPhone id="phone" />

@@ -10,6 +10,7 @@
   z-index: 1040;
   background-color: #ffffff;
 }
+
 .dropdown-toggle {
   font: normal normal normal 0.878vw/1.318vw Poppins;
 }
@@ -247,7 +248,6 @@
   width: auto;
   font-size: 0.9em;
   color: "#1D1D1D";
-  margin-top: 5px;
   border: none;
   -webkit-appearance: none !important;
 }
@@ -413,6 +413,9 @@
 }
 
 @media (max-width: 550px) {
+  .category-dropdownbutton{
+    margin-top:0;
+  }
   .Header_one{
     height: 9vw;
   }
@@ -499,6 +502,9 @@
 }
 
 @media (max-width: 425px) {
+  .category-dropdownbutton{
+    margin-top:0 !important;
+  }
   .browseCat {
     width: auto;
     height: auto;
