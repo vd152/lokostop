@@ -20,7 +20,9 @@ class Section extends Component {
       name: "",
       value: [],
     },
-    allCategories: []
+    allCategories: [],
+    priceH: this.props.location.priceH && this.props.location.priceH != "" ? this.props.location.priceH : null,
+    priceL: 0
   };
   componentDidMount() {
     const { filterArr } = this.state;
@@ -32,6 +34,13 @@ class Section extends Component {
       filterArr.push(tmp);
     }
     this.getAllCategories()
+    if(this.props.location.brand){
+      let tmp = {
+        name: "brand",
+        value: [this.props.brand]
+      }
+      filterArr.push(tmp);
+    }
     this.setState({ filterArr, submitting: true }, () => {
       this.getProducts();
     });
@@ -61,7 +70,9 @@ class Section extends Component {
       this.state.skip,
       this.state.limit,
       this.state.filterArr,
-      this.props.location.searchWord ? this.props.location.searchWord : ""
+      this.props.location.searchWord ? this.props.location.searchWord : "",
+      this.state.priceL,
+      parseInt(this.state.priceH)
     );
     const { categoryProducts } = this.state;
     this.props.categoryProducts.forEach((product) => {
@@ -99,7 +110,7 @@ class Section extends Component {
               <div className="accordion-item">
                   <h2 className="accordion-header" id="headingzero">
                     <button
-                      className="accordion-button "
+                      className="accordion-button collapsed"
                       type="button"
                       data-bs-toggle="collapse"
                       data-bs-target="#collapsezero"
@@ -111,7 +122,7 @@ class Section extends Component {
                   </h2>
                   <div
                     id="collapsezero"
-                    className="accordion-collapse collapse show"
+                    className="accordion-collapse collapse "
                     aria-labelledby="headingzero"
                     data-bs-parent="#accordionExample"
                   >
@@ -315,9 +326,11 @@ class Section extends Component {
                     <div className="accordion-body">
                       <div className="d-flex justify-content-between">
                         <p className="checkfont">0</p>
-                        <p className="checkfont">10,000+</p>
+                        <p className="checkfont">{this.state.priceH != null && this.state.priceH < 10000? this.state.priceH : "10,000+"}</p>
                       </div>
-                    <input type="range" min="1" max="100" className="price-slider"  id="myRange"/>
+                    <input type="range" min="0" max="10001" className="price-slider"  id="myRange" name="myRange" value={this.state.priceH} onChange={(e)=>{
+                      this.setState({priceH:e.target.value})
+                    }}/>
 
                     </div>
                   </div>

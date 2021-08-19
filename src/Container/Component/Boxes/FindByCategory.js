@@ -1,11 +1,13 @@
 import React from "react";
-import { IoIosArrowDown, IoIosArrowForward, IoIosHeart } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 import { FiSearch } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
+import Dropdown from "react-multilevel-dropdown";
 class FindByCategory extends React.Component {
   state = {
-    categories: [],
+    categories2: [],
+    redirect: false,
     selectedCategory: {
         url: "",
         id: "",
@@ -15,81 +17,103 @@ class FindByCategory extends React.Component {
       url: "",
       id: "",
       name: ""
-    }
+    },
+    priceH: ""
   };
   componentDidMount() {
-    const { categories } = this.state;
-    const setCategories = (root) => {
+    const {  categories2 } = this.state;
+
+    const setCategories2 = (root) => {
       if (root.childrenCategory.length == 0) {
         return (
+          <Dropdown.Item key={root._id}>
           <div
             style={{
               background: "transparent",
               color: "#1D1D1D",
               display: "flex",
               justifyContent: "space-between",
+              width: "80%",
+              padding: "0"
             }}
             className={"dropdown-item"}
-            onClick={(e)=>{
-                const {selectedCategory} = this.state
-                selectedCategory.id = root._id
-                selectedCategory.name = root.name
-                selectedCategory.url = root.url
-                this.setState({selectedCategory})
+            onClick={(e) => {
+              const { selectedCategory } = this.state;
+              selectedCategory.id = root._id;
+              selectedCategory.name = root.name;
+              selectedCategory.url = root.url;
+              this.setState({ selectedCategory });
             }}
           >
             {root.name}
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            {root.childrenCategory.length > 0 ? (
-              <IoIosArrowForward className="ForwardArrow" />
-            ) : (
-              ""
-            )}
+         
           </div>
+          </Dropdown.Item>
         );
       } else
+      {
+
         return (
-          <React.Fragment>
-            <div
+          <div className="d-flex" key={root._id}>
+             <div
               style={{
                 background: "transparent",
                 color: "#1D1D1D",
                 display: "flex",
                 justifyContent: "space-between",
+                width: "80%"
               }}
               className={"dropdown-item"}
-              onClick={(e)=>{
-                const {selectedCategory} = this.state
-                selectedCategory.id = root._id
-                selectedCategory.name = root.name
-                selectedCategory.url = root.url
-                this.setState({selectedCategory})
-            }}
+              onClick={(e) => {
+                const { selectedCategory } = this.state;
+                selectedCategory.id = root._id;
+                selectedCategory.name = root.name;
+                selectedCategory.url = root.url;
+                this.setState({ selectedCategory });
+              }}
             >
               {root.name}
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <IoIosArrowForward className="ForwardArrow" />
             </div>
+          <Dropdown.Item  >
+          <IoIosArrowForward className="ForwardArrow" />
+
             {root.childrenCategory.length > 0 ? (
-              <ul className="dropdown-menu dropdown-submenu">
+              <Dropdown.Submenu position={"right"}>
                 {root.childrenCategory.map((child, key) => {
-                  return <li key={key}>{setCategories(child)}</li>;
+                  return setCategories2(child)
                 })}
-              </ul>
+             </Dropdown.Submenu>
             ) : (
               ""
             )}
-          </React.Fragment>
+          </Dropdown.Item>
+          </div>
         );
+            }
     };
     this.props.categories.forEach((category) => {
-      let tempData = {};
-      tempData.content = setCategories(category);
-      categories.push(tempData);
+      let tempData2 = {};
+      tempData2.content = setCategories2(category);
+      categories2.push(tempData2);
     });
-    this.setState({ categories });
+    this.setState({  categories2 });
   }
   render() {
+    if(this.state.selectedCategory.id == "" && this.state.redirect){
+      return <Redirect to={{
+        pathname: "/shop",
+        brand: this.state.selectedBrand.id != ""?this.state.selectedBrand.id:undefined,
+        priceH: this.state.priceH
+      }} />
+    } else if(this.state.selectedCategory.id != "" && this.state.redirect){
+      return <Redirect to={{ 
+        pathname: "/categories/"+this.state.selectedCategory.name + "/"+ this.state.selectedCategory.url+"/"+this.state.selectedCategory.id,
+        brand: this.state.selectedBrand.id != ""?this.state.selectedBrand.id:undefined,
+        priceH: this.state.priceH
+      }}/>
+    }
     return (
       <div>
         <div className="find_by_category_box">
@@ -116,29 +140,34 @@ class FindByCategory extends React.Component {
           <p className="or">OR</p>
           <div className="category_Search">
             <div className="centre_first_part1">
-              <div className="dropdown" style={{width:'auto'}}>
-                <button
-                  style={{ marginTop: "1.5%" ,width:'auto' }}
-                  className="btn  dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {this.state.selectedCategory.name == ""? 
-                  <span>
-                  <span className="large_screen_text">All Categories</span>
-                  <span className="small_screen_text">All</span>
-                  </span>
-                  : this.state.selectedCategory.name.substring(0,6)}
-                </button>
-                <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {this.state.categories.map((category, key) => {
-                return <li key={key}>{category.content}</li>;
-              })}
-            </ul>
-             </div>
+            <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedCategory.name == ""?"Categories":this.state.selectedCategory.name}>
+               <div
+              style={{
+                background: "transparent",
+                color: "#1D1D1D",
+                display: "flex",
+                justifyContent: "space-between",
+                width: "80%"
+              }}
+              className={"dropdown-item"}
+              onClick={(e) => {
+                const { selectedCategory } = this.state;
+                selectedCategory.id = "";
+                selectedCategory.name = "";
+                selectedCategory.url = "";
+                this.setState({ selectedCategory });
+              }}
+            >
+              All Categories
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
+              {this.state.categories2.map((category, key) => {
+                return category.content
+              })}
+            {/* </Dropdown.Item> */}
+          </Dropdown>
+         
+           </div>
             <div className="centre_first_part1">
               
               <div className="dropdown" style={{width:'auto'}}>
@@ -168,13 +197,13 @@ class FindByCategory extends React.Component {
             </div>
             <div className="centre_second_part2">
               <div className="budgetbox">
-              <input type="text" placeholder="Budget (approximate)" />
+              <input type="number" placeholder="Budget (approximate)" value={this.state.priceH} onChange={(e)=>this.setState({priceH: e.target.value})}/>
               </div>
              
             </div>
-            <div className="find_icon">
-              <p style={{ marginTop: "0.805vw" }} className="large_screen_text">Find</p>
-              <FiSearch id="search" />
+            <div className="find_icon" onClick={(e)=>{this.setState({redirect: true})}}>
+              <p className="large_screen_text m-0">Find</p>
+              <FiSearch id="search" className="my-0" />
             </div>
           </div>
         </div>

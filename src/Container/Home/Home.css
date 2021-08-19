@@ -659,8 +659,7 @@
   height: 2.782vw;
   width: fit-content;
   border: 0.007vw solid #08e5a9;
-  margin-top: 1.245vw;
-  margin-left: 25.622vw;
+  margin: auto;
   display: flex;
 }
 .Selected_brand {
@@ -672,11 +671,13 @@
   width: 4.978vw;
   height: 2.782vw;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
   background: #08e5a9 0% 0% no-repeat padding-box;
 }
 .find_icon p {
   font: normal normal normal 0.878vw/1.318vw Poppins;
-  margin-left: 1vw;
   color: #1d1d1d;
 }
 .advert_image {
@@ -1230,7 +1231,7 @@
   .category_Search {
     height: 5vw;
     width: 80vw;
-    margin-left: 5vw;
+    margin: auto;
   }
 
   .centre_first_part1 {
@@ -1265,14 +1266,14 @@
 
   .find_icon #search{
     font-size: 2.5vw;
-    margin-left: 1.2vw;
-    margin-top: 0.5vw;
+    /* margin-left: 1.2vw;
+    margin-top: 0.5vw; */
   }
 
   .find_icon {
     height: 5vw;
     width: 7vw;
-    padding: 0.8vw;
+    padding: 0.9vw;
   }
 
   .Free_box {
@@ -1663,7 +1664,6 @@
   }
   .category_Search {
     height: auto;
-    margin-left: 3vw;
     display: flex;
   }
   .particular_category_choice p {
@@ -2135,7 +2135,6 @@
   .category_Search {
     height: 7vw;
     width: auto;
-    margin: 0;
   }
 
   .centre_first_part1 {

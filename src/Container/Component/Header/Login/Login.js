@@ -159,7 +159,7 @@ class Login extends Component {
                     role="tabpanel"
                     aria-labelledby="pills-profile-tab"
                   >
-                    <div>
+                    <div style={{textAlign: "center"}}>
                       <div className="signup_signinput_box">
                         <input
                           className="signinput signup_signinput"
