@@ -26,7 +26,7 @@ class Product extends Component {
 
   render() {
     return (
-      <div className="product_details_list">
+      <div className={this.props.hidetop? "product_details2":"product_details_list"}>
            <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}>
           <div className="image_box">
             {this.state.product.baseImage ? (
@@ -66,6 +66,7 @@ class Product extends Component {
           </div>
         </Link>
         <div className="add_to_cart_box">
+          {this.props.hidetop? "":
           <div id="div_first" className="add_to_cart_inner_box">
             <BiGitCompare className="Compare_Icon" />
             { this.state.product.options.length>0 ?  <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}><div className="add_to_cart_text_icon" >
@@ -94,7 +95,7 @@ class Product extends Component {
 
               }}
             />
-          </div>
+          </div>}
         </div>
         <div className="product_details">
         <div className="category_name_product_box">
