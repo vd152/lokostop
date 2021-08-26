@@ -270,11 +270,20 @@ class IndividualProductDetails extends Component {
                     }
                     
                   }
-                  this.props.addToCart(
-                    this.props.productDetails._id,
-                    this.state.qty,
-                    id
-                  );
+                  if(this.props.productDetails.options.length > 0){
+                    this.props.addToCart(
+                      this.props.productDetails._id,
+                      this.state.qty,
+                      id
+                    );
+                  }else{
+                    this.props.addToCart(
+                      this.props.productDetails._id,
+                      this.state.qty,
+                       null
+                    );
+                  }
+                    
                   this.setState({stockId: id})
                 }}
               >
