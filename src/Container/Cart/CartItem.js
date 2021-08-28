@@ -81,13 +81,13 @@ class CartItem extends Component {
                     </td>
                     <td className="product_quantity1">
                       <FiMinusCircle id="minus_icon" onClick={(e) => {
-                        this.props.updateCartQty(product._id, qty - 1,stock && stock._id?stock._id:null);
+                        this.props.updateCartQty(product._id, qty - 1,stock && stock._id?stock._id:null, this.props.cart);
                       }} />
                       <p className="product_quant_para">{qty}</p>
                       <IoAddCircleOutline
                         id="add_icon"
                         onClick={(e) => {
-                          this.props.updateCartQty(product._id, qty + 1, stock && stock._id?stock._id:null);
+                          this.props.updateCartQty(product._id, qty + 1, stock && stock._id?stock._id:null, this.props.cart);
                         }}
                       />
                     </td>
@@ -102,7 +102,7 @@ class CartItem extends Component {
                     <IoCloseCircleSharp
                         id="closeIcon"
                         onClick={(e) => {
-                          this.props.deleteFromCart(product._id, stock && stock._id?stock._id:null);
+                          this.props.deleteFromCart(product._id, stock && stock._id?stock._id:null, this.props.cart);
                         }}
                       />
                     </td>

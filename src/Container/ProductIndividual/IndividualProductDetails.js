@@ -274,13 +274,15 @@ class IndividualProductDetails extends Component {
                     this.props.addToCart(
                       this.props.productDetails._id,
                       this.state.qty,
-                      id
+                      id,
+                      this.props.cart
                     );
                   }else{
                     this.props.addToCart(
                       this.props.productDetails._id,
                       this.state.qty,
-                       null
+                       null,
+                       this.props.cart
                     );
                   }
                     
@@ -534,6 +536,7 @@ const mapStateToProps = (state) => {
     footerLoading: state.getFooter.loading,
     featuresLoading: state.getFeatures.loading,
     allFeatures: state.getFeatures.features,
+    cart: state.userCart.cart,
   };
 };
 export default connect(mapStateToProps, { addToCart })(

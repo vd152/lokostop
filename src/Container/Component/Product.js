@@ -77,7 +77,7 @@ class Product extends Component {
               <BiCart className="Bicartnew" />
             </div></Link>:
             <div className="add_to_cart_text_icon" onClick={(e)=>{
-                this.props.addToCart(this.state.product._id, 1, null);
+                this.props.addToCart(this.state.product._id, 1, null, this.props.cart);
 
             }}>
               <p >
@@ -100,7 +100,7 @@ class Product extends Component {
         <div className="product_details">
         <div className="category_name_product_box">
           {this.props.category
-            ? this.state.product.categories.map((category, key) => {
+            ? this.state.product.categories.slice(0,2).map((category, key) => {
                 return (
                   
                   <Link
@@ -143,6 +143,7 @@ class Product extends Component {
 const mapStateToProps = (state) => {
   return {
     wishlist: state.userWishlist.wishlist,
+    cart: state.userCart.cart,
   };
 };
 export default connect(mapStateToProps, { addToWishlist,addToCart })(Product);

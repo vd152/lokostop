@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { siteUrl} from '../../Utils/util'
+import { format } from "timeago.js";
 
  class SingleBlog extends Component {
     state={blog: {}}
@@ -15,8 +16,7 @@ import { siteUrl} from '../../Utils/util'
                 </div>
                 <p className="blogHeading">{this.state.blog.heading}</p>
                 <div className="name_time">
-                    <p>by Mohit Gopal</p>
-                    <p>5 mins</p>
+                    <p>{format(this.state.blog.createdAt)}</p>
                 </div>
             </div>
         )

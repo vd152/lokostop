@@ -5,7 +5,7 @@ import { getTagsReducer} from './Reducers/ProductReducers'
 import {getGeneralReducer, getFooterReducer, getProductTabsReducer, getFeaturesReducer, getLogosReducer, getBannersReducer, getBrandsReducer, getTopBrandsReducer} from './Reducers/StorefrontReducer'
 import {getAllCategoriesReducer, getSectionProductsReducer} from './Reducers/CategoryReducers'
 import {getPageReducer} from './Reducers/PageReducers'
-import {loginUser, getUserDetailsReducer, editUserDetailsReducer} from './Reducers/UserReducers'
+import {loginUser, getUserDetailsReducer, editUserDetailsReducer, userOrdersReducers} from './Reducers/UserReducers'
 import {getMenuReducer} from './Reducers/MenuReducers'
 import {wishlistReducer} from './Reducers/WishlistReducers'
 import {cartReducer} from './Reducers/CartReducers'
@@ -35,6 +35,7 @@ const reducers = combineReducers({
     saveOrder: saveOrderReducer,
     getSettings: getSettingsReducer,
     getBlogs: getBlogsReducer,
+    userOrders: userOrdersReducers
 })
 
 

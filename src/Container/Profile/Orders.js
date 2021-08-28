@@ -1,77 +1,78 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { siteUrl} from '../../Utils/util'
+import { siteUrl } from "../../Utils/util";
 
 class Orders extends Component {
+  getdate = (time) => {
+    var date = new Date(time);
+    return (
+      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
+    );
+  };
   render() {
     return (
       <div className="tble_box1">
-        <div className="scroll_x_box">
-        <table className="col_names1">
-          <tbody>
-            <tr className="table_headingnew">
-              <td className="product_image">
-              <span className="large_screen_text">PRODUCT IMAGE</span>
-              <span className="small_screen_text">IMAGE</span>
-              </td>
-              <td className="product_Name">
-              <span className="large_screen_text">PRODUCT NAME</span>
-              <span className="small_screen_text">NAME</span>
-              </td>
-              <td className="product_availnew">
-              <span className="large_screen_text">AVAILABILITY</span>
-              <span className="small_screen_text">AVAILABILITY</span>
-              </td>
-              <td className="product_codenew">
-              <span className="large_screen_text">PRODUCT CODE</span>
-              <span className="small_screen_text">CODE</span>
-              </td>
-              <td className="product_pricenew">
-              <span className="large_screen_text">UNIT PRICE</span>
-              <span className="small_screen_text">UNIT PRICE</span>
-              </td>
-              <td className="product_pricenew">
-              <span className="large_screen_text">Remove</span>
-              <span className="small_screen_text">Remove</span>
-              </td>
-            </tr>
-            {/* {this.props.wishlist.map((product, key) => {
-              return <tr className="table_heading1" key={key}>
-                <td className="product_image1">
-                  <img
-                    alt="reload"
-                    src={product.baseImage && product.baseImage.image?"https://api.lokostop.in/"+product.baseImage.image: "https://via.placeholder.com/150"}
-                  ></img>
-                </td>
-                <td className="product_Name1">
-                  <p className="product_para_1">
-                    {product.name}
-                  </p>
-                  {product.tags && product.tags.length > 0?
-                  <p className="product_para_2"> {"Tags:" + product.tags.map((tag)=>{
-                    return " "+tag.name
-                  })} </p>
-                  :""}
-                  <Link to={"/product/"+product.url+"/"+product._id}><p className="product_para_3">View Detail</p></Link>
-                </td>
-                <td className="product_avail1new">{product.stockAvailability?"Available":"Out of Stock"}</td>
-                <td className="product_code1">{product.SKU != ""? product.SKU: "--"}</td>
-                <td className="product_price1new">Rs.{product.specialPrice?(product.specialPriceType == "Fixed"?product.specialPrice:((product.price).toString()-((product.specialPrice).toString()/100)*(product.price).toString())):product.price}</td>
-                <td className="product_price1new">
-                                    <IoCloseCircleSharp id="closeIcon" onClick={(e)=>{
-                                      this.props.deleteFromWishlist(product._id)
-                                    }}/>
-                  </td>
-              </tr>;
-            })} */}
-          </tbody>
-        </table>
+        <div className="scroll_x_box table-responsive">
+          <table className="table table-borderless col_names1">
+            <thead>
+              <tr className="table_headingnew2">
+                <th className="">
+                  <span className="large_screen_text">PRODUCTS</span>
+                  <span className="small_screen_text">PRODUCTS</span>
+                </th>
+                <th className="">
+                  <span className="large_screen_text">ORDERED ON</span>
+                  <span className="small_screen_text">ORDERED ON</span>
+                </th>
+                <th className="">
+                  <span className="large_screen_text">STATUS</span>
+                  <span className="small_screen_text">STATUS</span>
+                </th>
+                <th className="">
+                  <span className="large_screen_text">PAYMENT METHOD</span>
+                  <span className="small_screen_text">PAYMENT</span>
+                </th>
+                <th className="">
+                  <span className="large_screen_text">TOTAL</span>
+                  <span className="small_screen_text">TOTAL</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.orders.map((order, key) => {
+                return (
+                  <tr className="" key={key}>
+                    <td className="product_price1new">
+                      <table>
+                        <tbody>
+                          {order.ItemsOrdered.map((item,key)=>{
+                            return <tr key={key}>
+                              <td>
+                                {item.Product.name}
+                              </td>
+                            </tr>
+                          })}
+                       
+                        </tbody>
+                      </table>
+                    </td>
+                    <td className="product_price1new">
+                      {this.getdate(order.createdAt)}
+                    </td>
+                    <td className="product_price1new">{order.Status}</td>
+                    <td className="product_price1new">{order.PaymentMethod}</td>
+                    <td className="product_price1new">{order.Total}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
-        <Link to='/shop'>
-        <div className="button_box_1new">
-          <button id="continue_shopping"> Continue Shopping</button>
-        </div>
+        <Link to="/shop">
+          <div className="button_box_1new">
+            <button id="continue_shopping"> Continue Shopping</button>
+          </div>
         </Link>
       </div>
     );
@@ -79,7 +80,7 @@ class Orders extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    wishlist: state.userWishlist.wishlist,
+    orders: state.userOrders.orders,
   };
 };
 export default connect(mapStateToProps)(Orders);

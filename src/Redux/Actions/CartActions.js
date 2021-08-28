@@ -1,6 +1,7 @@
 import * as actionTypes from '../Constants/ShopConstants'
 import api from '../../Apis/api'
 import {getUser} from '../../Utils/Local'
+import { toast } from "react-toastify";
 
 export const getCart = () => async(dispatch) => {
     try{
@@ -23,7 +24,21 @@ export const getCart = () => async(dispatch) => {
             type: actionTypes.GET_CART_SUCCESS,
             payload: data.data.Cart
         })
-    }catch(error){
+    }catch(err){
+        toast.error(
+            `${
+              err.response?.data?.message
+                ? err.response.data.message
+                : "Could not fetch cart."
+            }`,
+            {
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            }
+          );
         dispatch({
             type: actionTypes.GET_CART_FAIL,
             payload: "something went wrong"
@@ -31,7 +46,7 @@ export const getCart = () => async(dispatch) => {
     }
 }
 
-export const addToCart = (productId,qty,stockId) => async(dispatch) => {
+export const addToCart = (productId,qty,stockId, oldCart) => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.ADD_CART_REQUEST})
         const {data} = await api.put('/customer/cart', {productId, qty,stockId})
@@ -50,14 +65,36 @@ export const addToCart = (productId,qty,stockId) => async(dispatch) => {
             type: actionTypes.ADD_CART_SUCCESS,
             payload: data.data.Cart
         })
-    }catch(error){
+        toast.success(`Product added to cart.`, {
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+    }catch(err){
+        toast.error(
+            `${
+              err.response?.data?.message
+                ? err.response.data.message
+                : "Something went wrong."
+            }`,
+            {
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            }
+          );
         dispatch({
             type: actionTypes.ADD_CART_FAIL,
+            oldCart,
             payload: "something went wrong"
         })
     }
 }
-export const updateCartQty = (productId, qty, stockId) => async(dispatch) => {
+export const updateCartQty = (productId, qty, stockId, oldCart) => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.ADD_CART_REQUEST})
         const {data} = await api.put('/customer/cart/increase', {productId, qty, stockId})
@@ -76,14 +113,35 @@ export const updateCartQty = (productId, qty, stockId) => async(dispatch) => {
             type: actionTypes.ADD_CART_SUCCESS,
             payload: data.data.Cart
         })
-    }catch(error){
+        toast.success(`Cart updated.`, {
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+    }catch(err){
+        toast.error(
+            `${
+              err.response?.data?.message
+                ? err.response.data.message
+                : "Something went wrong."
+            }`,
+            {
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            }
+          );
         dispatch({
             type: actionTypes.ADD_CART_FAIL,
             payload: "something went wrong"
         })
     }
 }
-export const deleteFromCart = (productId, stockId) => async(dispatch) => {
+export const deleteFromCart = (productId, stockId, oldCart) => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.DELETE_CART_REQUEST})
         const {data} = await api.delete('/customer/cart', {data:{productId,stockId}})
@@ -102,7 +160,28 @@ export const deleteFromCart = (productId, stockId) => async(dispatch) => {
             type: actionTypes.DELETE_CART_SUCCESS,
             payload: data.data.Cart
         })
-    }catch(error){
+        toast.success(`Removed from cart.`, {
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+    }catch(err){
+        toast.error(
+            `${
+              err.response?.data?.message
+                ? err.response.data.message
+                : "Something went wrong."
+            }`,
+            {
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            }
+          );
         dispatch({
             type: actionTypes.DELETE_CART_FAIL,
             payload: "something went wrong"

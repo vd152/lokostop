@@ -114,7 +114,7 @@ class Search extends Component {
       }} />
     }
     return (
-        <div className={this.props.home? "Header_one_centre search-sm": "Header_one_centre search-xl"}>
+        <form className={this.props.home? "Header_one_centre search-sm": "Header_one_centre search-xl"}>
           <div className="centre_first_part">
    
                <Dropdown className=" search-dropdownbutton "  position="right" title={this.state.selectedCategory.name == ""?"Categories":this.state.selectedCategory.name}>
@@ -149,7 +149,8 @@ class Search extends Component {
               <input type="text" placeholder="Search..." value={this.state.searchWord} onChange={(e)=>this.setState({searchWord: e.target.value})} />
             </div>
           </div>
-          <div className="centre_third_part align-items-center justify-content-center" onClick={(e)=>{
+          <button className="centre_third_part align-items-center justify-content-center" type="submit" onClick={(e)=>{
+            e.preventDefault()
             if(this.state.selectedCategory.name == ""){
               this.setState({shop: true})
             }else
@@ -157,8 +158,8 @@ class Search extends Component {
           }}>
             <p className="m-0"><span className="large_screen_text">Search</span></p>
             <FiSearch id="search" className="m-0"/>
-          </div>
-        </div>
+          </button>
+        </form>
 
         
     );

@@ -71,7 +71,7 @@ class Wishlist extends Component {
         </table>
         </div>
         <div className="button_box_1new">
-          <button id="continue_shopping"> Continue Shopping</button>
+          <button id="continue_shopping"> <Link to="/shop" style={{color: "white"}}>Continue Shopping</Link></button>
         </div>
       </div>
     );

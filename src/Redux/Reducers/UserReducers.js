@@ -86,3 +86,26 @@ export const editUserDetailsReducer = (state = { }, action) => {
             return state;
     }
 }
+
+export const userOrdersReducers = (state = { orders: []}, action) => {
+    switch(action.type){
+        case actionTypes.GET_USER_ORDERS_REQUEST:
+            return{
+                loading: true,
+                orders: []
+            }
+        case actionTypes.GET_USER_ORDERS_SUCCESS:
+            return {
+                loading: false,
+                orders: action.payload
+            }
+        case actionTypes.GET_USER_ORDERS_FAIL:
+            return {
+                loading: false,
+                orders: [],
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}

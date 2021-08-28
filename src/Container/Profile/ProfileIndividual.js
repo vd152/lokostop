@@ -45,7 +45,7 @@ class ProfileIndividual extends Component {
                             <div className="image_user1" ><img   alt='reload' style={{ cursor: 'pointer' }} src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></img></div>
                             <div className="name_hi">
                                 <p className="himessage">Hi,</p>
-                                <p className="nameperson">ABCDEF</p>
+                                <p className="nameperson">{this.props.user["First Name"]}</p> 
                             </div>
                         </div>
                         <div className='orderboxsummary align-items-center'>
@@ -81,7 +81,7 @@ class ProfileIndividual extends Component {
                             <div className="image_user1" ><img   alt='reload' style={{ cursor: 'pointer' }} src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8M3x8cGVyc29ufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></img></div>
                             <div className="name_hi mt-2">
                                 <p className="himessage">Hi,</p>
-                                <p className="himessage">ABCDEF</p>
+                                <p className="himessage">{this.props.user["First Name"]}</p>
                             </div>
                         </div>
                         <div className="Order_Section" >
@@ -143,7 +143,8 @@ class ProfileIndividual extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        userLoading: state.getUser.loading
+        userLoading: state.getUser.loading,
+        user: state.getUser.user
     }
 }
 export default connect(mapStateToProps, { logoutUser })(ProfileIndividual)

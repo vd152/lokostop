@@ -4,12 +4,24 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux'
 import Store from './Redux/Store'
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
   <Provider store={Store}>
   <React.StrictMode>
     <App />
   </React.StrictMode>
+  <ToastContainer
+          position="bottom-center"
+          autoClose={3000}
+          hideProgressBar={true}
+          newestOnTop={false}
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
   </Provider>,
   document.getElementById('root')
 );

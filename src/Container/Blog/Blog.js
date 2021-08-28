@@ -26,10 +26,8 @@ class Blog extends Component {
     this.props.blogs.forEach((blog) => {
       blogs.push(blog);
     });
-    let temp = blogs.map(JSON.stringify);
-    let unique = new Set(temp);
-    let newArr = Array.from(unique).map(JSON.parse);
-    this.setState({ blogs: newArr, skip: this.state.skip + this.state.limit, loading: false });
+
+    this.setState({ blogs, skip: this.state.skip + this.state.limit, loading: false });
   };
   render() {
     return (

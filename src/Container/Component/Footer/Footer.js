@@ -12,7 +12,25 @@ export class Footer extends Component {
           'Copyright © <a href="https://lokostop.in">Lokostop</a> 2021. All rights reserved.',
         AcceptedPaymentMethodsImage: "",
       },
+      Menus: {
+      }
     },
+  };
+  setMenuLink = (item) => {
+    if (item.type == "URL") {
+      return item.url;
+    } else if (item.type == "Page") {
+      return "/page/" + item.page.url;
+    } else if (item.type == "Category") {
+      let url =
+        "/categories/" +
+        item.category.name +
+        "/" +
+        item.category.url +
+        "/" +
+        item.category._id;
+      return url;
+    }
   };
   componentDidMount() {
     this.setState({
@@ -41,8 +59,6 @@ export class Footer extends Component {
                 />
                 <p>We promise products from best brands with assurance.</p>
               </div>
-          {/* <div className="logo1">SIDHU electronics</div>
-                <p className="area_1_para">We promise products from best brands with assurance.</p> */}
           <a
             href="https://www.google.com/maps/place/Shop+No.+4669,+1,+Shingar+Cinema+Rd,+Baba+Than+Singh+Chowk,+Opposite+Kalra+Hospital,+Fatehganj,+Ludhiana,+Punjab+141008/@30.9141817,75.8644781,17z/data=!3m1!4b1!4m5!3m4!1s0x391a8312c81bf2c7:0x3d7ec9369a0e025b!8m2!3d30.9141817!4d75.8666668"
             target="#"
@@ -53,7 +69,6 @@ export class Footer extends Component {
             />
           </a>
             <p>Shop No. 4669/1 Shingar Cinema Rd, Near Shingar Cinema, New Shivaji Nagar, Samrala Chowk, Ludhiana, Punjab 141008</p>
-          {/* <p className="second_para_area_1">Shop No. 4669/1 Shingar Cinema Rd, Near Shingar Cinema, New Shivaji Nagar, Samrala Chowk, Ludhiana, Punjab 141008</p></a> */}
         </div>
         <div className="area_2">
           <div className="outer_area_boxes">
@@ -68,16 +83,20 @@ export class Footer extends Component {
                             <li>Stores</li> */}
               </ul>
             </div>
+            {this.state.footerDetails.Menus.FooterMenuOne && 
             <div className="box_one_area_2">
               <p>CUSTOM LINKS</p>
               <ul>
-                <li>New Arrivals</li>
+                {this.state.footerDetails.Menus.FooterMenuOne && this.state.footerDetails.Menus.FooterMenuOne.menuItems.map((item,key)=>{
+                  return <li key={key} ><Link to={this.setMenuLink(item)}>{item.name}</Link></li>
+                })}
+                {/* <li>New Arrivals</li>
                 <li>Popular Categories</li>
                 <li>Featured Products</li>
                 <li>Best Selling</li>
-                {/* <li>Query</li> */}
+                <li>Query</li> */}
               </ul>
-            </div>
+            </div>}
             <div className="box_one_area_2">
               <p>HELP DESK</p>
               <ul>
@@ -103,9 +122,9 @@ export class Footer extends Component {
                     ""
                   )}
                 </li>
-                <li>Payments and Returns</li>
+                {/* <li>Payments and Returns</li>
                 <li>Shipping option</li>
-                <li>Help/FAQ</li>
+                <li>Help/FAQ</li> */}
               </ul>
             </div>
           </div>

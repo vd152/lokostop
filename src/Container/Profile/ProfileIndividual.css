@@ -153,6 +153,7 @@
     font: normal normal normal 0.878vw/1.318vw Poppins;
     font-weight: 500;
     color: #3d3d3d;
+    line-height: 1.2
 }
 .product_pricenew {
     width: 10.249vw;
@@ -183,6 +184,15 @@
 }
 .table_headingnew {
     display: flex;
+    margin: 0;
+    font: normal normal normal 0.878vw/1.318vw Poppins;
+    color: #3d3d3d;
+    width: 90%;
+    padding: 0;
+    padding-bottom: 0.5%;
+    border-bottom: 0.146vw solid #e5d7d7;
+}
+.table_headingnew2{
     margin: 0;
     font: normal normal normal 0.878vw/1.318vw Poppins;
     color: #3d3d3d;
@@ -393,6 +403,10 @@
         width: 100% !important;
         width: fit-content;
         padding-top: 2vw;
+    }
+    .table_headingnew2{
+        font: normal normal normal 2vw/1.318vw Poppins;
+        line-height: 1.2
     }
 
     .product_availnew {

@@ -78,11 +78,11 @@ class Section extends Component {
     this.props.categoryProducts.forEach((product) => {
       categoryProducts.push(product);
     });
-    let temp = categoryProducts.map(JSON.stringify)
-    let unique = new Set(temp)
-    let newArr = Array.from(unique).map(JSON.parse)
+    // let temp = categoryProducts.map(JSON.stringify)
+    // let unique = new Set(temp)
+    // let newArr = Array.from(unique).map(JSON.parse)
     this.setState({
-      categoryProducts: newArr,
+      categoryProducts,
       skip: this.state.skip + this.state.limit,
       submitting: false
     });

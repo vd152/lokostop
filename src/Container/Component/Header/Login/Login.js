@@ -31,9 +31,7 @@ class Login extends Component {
   };
   signIn = async() => {
     await this.props.loginUser(this.state.data.Email, this.state.data.Password);
-    if(this.props.error){
-      alert("Wrong id or password")
-    }else
+    
       document.querySelector("#staticBackdrop").click();
   };
   signUp = () => {
@@ -140,7 +138,7 @@ class Login extends Component {
                           this.setData(e.target.name, e.target.value)
                         }
                       />
-                      <button className="forgotbutton">forgot password?</button>
+                      <button className="forgotbutton" style={{visibility: "hidden"}}>forgot password?</button>
                       <button
                         className="signButton"
                         type="submit"

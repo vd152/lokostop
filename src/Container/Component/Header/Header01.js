@@ -96,7 +96,7 @@ class Header01 extends Component {
                 <IoIosHeart id="Heart" />
                   <span id="count">{this.props.wishlist.length}</span>
                   <p>
-                    <span className="large_screen_text">Cart</span>
+                    <span className="large_screen_text">Wishlist</span>
                   </p>
                 </div>
               </Link>
