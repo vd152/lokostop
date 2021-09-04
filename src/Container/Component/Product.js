@@ -41,16 +41,12 @@ class Product extends Component {
               <img src="https://via.placeholder.com/200" alt="RELOAD" />
             )}
 
-            {this.state.product.specialPrice != null &&
-            this.state.product.specialPrice &&
+            {this.state.product.specialPrice != null && 
             this.state.product.specialPriceType == "Percent" ? (
               <p className="discount">{this.state.product.specialPrice}%off</p>
             ) : (
-              ""
-            )}
-            {this.state.product.specialPrice != null &&
-            this.state.product.specialPrice &&
-            this.state.product.specialPriceType == "Fixed" ? (
+              this.state.product.specialPrice != null &&
+              this.state.product.specialPriceType == "Fixed" ? (
               <p className="discount">
                 {Math.trunc(
                   ((this.state.product.price -
@@ -62,13 +58,15 @@ class Product extends Component {
               </p>
             ) : (
               ""
+            )
             )}
+         
           </div>
         </Link>
         <div className="add_to_cart_box">
           {this.props.hidetop? "":
           <div id="div_first" className="add_to_cart_inner_box">
-            <BiGitCompare className="Compare_Icon" />
+            <BiGitCompare className="Compare_Icon compare-icon" />
             { this.state.product.options.length>0 ?  <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}><div className="add_to_cart_text_icon" >
               <p >
               <span className="large_screen_text">VIEW OPTIONS</span>
@@ -88,7 +86,7 @@ class Product extends Component {
             </div>
   }
             <FaRegHeart
-              className="Fav_icon"
+              className="Fav_icon wishlist-icon"
               style={{ color: "#9d9d9d" }}
               onClick={(e) => {
                 this.props.addToWishlist(this.state.product._id);

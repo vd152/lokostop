@@ -17,6 +17,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.wishlist-icon, .compare-icon{
+  transition: all 0s ease;
+}
+.wishlist-icon:hover{
+  color: red !important;
+}
+.compare-icon:hover{
+  color: rgb(7, 168, 7) !important;
+}
 
 /*======================
     404 page

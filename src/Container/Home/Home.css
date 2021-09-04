@@ -160,7 +160,7 @@
   position: relative;
 }
 .product_details_list:hover {
-  width: 20.205vw;
+  /* width: 20.205vw; */
   height: 31.845vw;
   grid-template-rows: 20.351vw 3.367vw 11.567vw;
 }

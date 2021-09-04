@@ -410,7 +410,7 @@ class Billinginfo extends Component {
           </div>
         </div>
         <div className="buttons_cart_continue">
-          <button className="button_blog_one"> Continue Shopping</button>
+          <button className="button_blog_one"><Link to="/shop" style={{color: "#08e5a9"}}> Continue Shopping</Link></button>
           {/* <Link to="/payment"> */}
             <button
               className="button_blog_two"

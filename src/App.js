@@ -58,6 +58,7 @@ class App extends React.Component {
   componentDidMount() {
     this.requests();
   }
+
   render() {
     if (
       this.props.categoriesloading ||
@@ -68,9 +69,10 @@ class App extends React.Component {
     ) {
       return <Loader />;
     }
+
     return (
       <div className="App">
-        <Router>
+        <Router >
           <ScrollToTop />
           <Switch>
             <Route path="/" exact component={Home} />

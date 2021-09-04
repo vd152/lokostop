@@ -26,6 +26,7 @@ class ProfileIndividual extends Component {
         } if(this.props.location.ordersActive){
             document.querySelector("#v-pills-orders-tab").click()
         }
+
     }
     render() {
         if (this.state.redirect) {

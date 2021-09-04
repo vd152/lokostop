@@ -5,8 +5,10 @@ import { connect } from "react-redux";
 import { addToCart } from "../../Redux/Actions/CartActions";
 import { siteUrl } from "../../Utils/util";
 import api from '../../Apis/api'
+import Loader from "../Loader/Loader";
 class IndividualProductDetails extends Component {
   state = {
+    loading: true,
     productId: this.props.productDetails._id,
     qty: 1,
     footerDetails: {
@@ -16,16 +18,16 @@ class IndividualProductDetails extends Component {
     },
     stock: [],
     selectedStockArray:[],
-    stockId: null
+    stockId: null,
+    stockPrice: -1
   };
-  componentDidMount() {
-    api.post('/product/stock/byproduct/get', {productId: this.props.productDetails._id}).then(res=>{
-      const {stock } = this.state
+  async componentDidMount() {
+    const {stock } = this.state
+    await api.post('/product/stock/byproduct/get', {productId: this.props.productDetails._id}).then(res=>{
       res.data.data.forEach(stk=>{
         stock[stk.name] = [stk.qty,stk.price,stk._id] 
       })
-      console.log(stock)
-      this.setState({stock})
+      //console.log(stock)
     }).catch(err=>{
       console.log(err)
     })
@@ -33,7 +35,48 @@ class IndividualProductDetails extends Component {
       footerDetails: this.props.footerData.Footer
         ? this.props.footerData
         : this.state.footerDetails,
+        stock,
+        loading: false
     });
+  }
+  setStock = () =>{
+    let id = ""
+    let price = -1
+    var arr = Array.from(this.state.selectedStockArray)
+    for(var i = 0; i < arr.length; i++) {
+      if(Array.isArray(arr[i])){
+        if(arr.length == 0){
+          
+        }
+        else if(arr[i].length ==1){
+          arr[i] = arr[i][0]
+        }else
+          arr[i] = arr[i].join("-")
+      }
+    }
+    arr = arr.join("-").split("-").sort().filter(ele=>ele != "")
+    for(var key of Object.keys(this.state.stock)){
+      let temparr = key.split("-").sort()
+      if(arr.length < temparr.length){
+        temparr = temparr.slice(0, arr.length)
+        if(this.arrayEquals(arr, temparr)){
+          id = this.state.stock[key][2]
+          price = this.state.stock[key][1]
+        }
+      }else if(arr.length == temparr.length && this.arrayEquals(arr, temparr)){
+          id = this.state.stock[key][2]
+          price = this.state.stock[key][1]
+
+      }else{
+        arr = arr.slice(0, temparr.length)
+        if(this.arrayEquals(arr, temparr)){
+          id = this.state.stock[key][2]
+          price = this.state.stock[key][1]
+        }
+      }
+      
+    }
+    this.setState({stockId: id, stockPrice: price})
   }
   getOption = (type, label, required, values, unique) => {
     if (type == "Field") {
@@ -73,8 +116,8 @@ class IndividualProductDetails extends Component {
           <select className="dropdown_colors individual_dropdown_colors product-input" onChange={(e)=>{
             const {selectedStockArray} = this.state
             selectedStockArray[unique] = e.target.value
-            console.log(selectedStockArray)
-            this.setState({selectedStockArray})
+            // console.log(selectedStockArray)
+            this.setState({selectedStockArray},()=>this.setStock())
           }}>
             <option value="">Please select</option>
             {values.map((value, key) => {
@@ -106,8 +149,8 @@ class IndividualProductDetails extends Component {
                     selectedStockArray[unique].splice(key,1)
                   }else
                     selectedStockArray[unique][key] = value.label
-                  console.log(selectedStockArray)
-                  this.setState({selectedStockArray})
+                  // console.log(selectedStockArray)
+                  this.setState({selectedStockArray},()=>this.setStock())
                 }}>
                 </input>
                 <label>{value.label}</label>
@@ -187,8 +230,11 @@ class IndividualProductDetails extends Component {
       a.every((val, index) => val === b[index]);
   }
   render() {
+    if(this.state.loading){
+      return <Loader />
+    }else
     return (
-      <div>
+      <React.Fragment>
         <div className="Heading_about">
           <p>PRODUCT DETAILS</p>
           <hr />
@@ -237,44 +283,13 @@ class IndividualProductDetails extends Component {
             >
               <button
                 className="cart_button individual_cart_button w-100 m-0"
-                onClick={(e) => {
-                  let id = ""
-                  var arr = Array.from(this.state.selectedStockArray)
-                  for(var i = 0; i < arr.length; i++) {
-                    if(Array.isArray(arr[i])){
-                      if(arr.length == 0){
-                        
-                      }
-                      else if(arr[i].length ==1){
-                        arr[i] = arr[i][0]
-                      }else
-                        arr[i] = arr[i].join("-")
-                    }
-                  }
-                  arr = arr.join("-").split("-").sort().filter(ele=>ele != "")
-                  //console.log(arr)
-                  for(var key of Object.keys(this.state.stock)){
-                    let temparr = key.split("-").sort()
-                    if(arr.length < temparr.length){
-                      temparr = temparr.slice(0, arr.length)
-                      if(this.arrayEquals(arr, temparr)){
-                        id = this.state.stock[key][2]
-                      }
-                    }else if(arr.length == temparr.length && this.arrayEquals(arr, temparr)){
-                        id = this.state.stock[key][2]
-                    }else{
-                      arr = arr.slice(0, temparr.length)
-                      if(this.arrayEquals(arr, temparr)){
-                        id = this.state.stock[key][2]
-                      }
-                    }
-                    
-                  }
+                onClick={async(e) => {
+                  await this.setStock()
                   if(this.props.productDetails.options.length > 0){
                     this.props.addToCart(
                       this.props.productDetails._id,
                       this.state.qty,
-                      id,
+                      this.state.stockId,
                       this.props.cart
                     );
                   }else{
@@ -286,7 +301,6 @@ class IndividualProductDetails extends Component {
                     );
                   }
                     
-                  this.setState({stockId: id})
                 }}
               >
                 <span className="large_screen_text ">ADD TO CART</span>
@@ -384,14 +398,15 @@ class IndividualProductDetails extends Component {
                     </p>
                     <p className="price_of_the_product_after_discount individual_price_of_the_product_after_discount">
                       Rs.{" "}
-                      {this.props.productDetails.specialPrice
+                      
+                      {this.state.stockPrice == -1?this.props.productDetails.specialPrice
                         ? this.props.productDetails.specialPriceType == "Fixed"
                           ? this.props.productDetails.specialPrice
                           : this.props.productDetails.price.toString() -
                             (this.props.productDetails.specialPrice.toString() /
                               100) *
                               this.props.productDetails.price.toString()
-                        : this.props.productDetails.price}
+                        : this.props.productDetails.price: this.state.stockPrice}
                     </p>
                   </div>
                 </React.Fragment>
@@ -525,7 +540,7 @@ class IndividualProductDetails extends Component {
             )}
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
