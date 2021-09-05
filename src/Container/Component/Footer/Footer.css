@@ -169,7 +169,7 @@ color: #5D5D5D;
   height: auto;
 }
 .paymentmethod .logo2 img{
-  width: -webkit-fill-available;
+  width: 100%;
 }
 .paymentmethod p {
   margin: 0;

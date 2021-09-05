@@ -78,7 +78,7 @@ export class Footer extends Component {
                 {/* <li>Delivery</li> */}
                 <li><Link to="/about">About Us</Link></li>
                 <li>Secure Payment</li>
-                <li>Send Query</li>
+                <li><Link to="/sendquery">Send Query</Link></li>
                 {/* <li>Sitemap</li>
                             <li>Stores</li> */}
               </ul>
@@ -149,7 +149,7 @@ export class Footer extends Component {
           <div className="paymentmethod">
             <p>PAYMENT METHODS</p>
             <div className="logo2">
-                    <img src={this.state.footerDetails.Footer.AcceptedPaymentMethodsImage?siteUrl+this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image:""} />
+                    <img alt="Reload" src={this.state.footerDetails.Footer.AcceptedPaymentMethodsImage?siteUrl+this.state.footerDetails.Footer.AcceptedPaymentMethodsImage.image:""} />
             </div>
           </div>
   }

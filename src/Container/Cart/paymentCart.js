@@ -17,6 +17,8 @@ import { saveOrderDetails } from "../../Redux/Actions/OrderActions";
 import {emptyCart} from '../../Redux/Actions/CartActions'
 import Razorpay from "../../Utils/Razorpay";
 import api from "../../Apis/api";
+import { toast } from "react-toastify";
+import { BiWindows } from "react-icons/bi";
 
 class paymentCart extends Component {
   state = {
@@ -133,11 +135,32 @@ class paymentCart extends Component {
         ItemsOrdered: this.state.order.ItemsOrdered,
       })
       .then((res) => {
-        console.log(res.data.data);
+        //console.log(res.data.data);
+        toast.success(`Order Placed successfully!.`, {
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
         this.props.emptyCart()
+        window.location.href = "/profile"
       })
       .catch((err) => {
-        console.log(err);
+        toast.error(
+          `${
+            err.response?.data?.message
+              ? err.response.data.message
+              : "Something went wrong."
+          }`,
+          {
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          }
+        );
       });
   };
   render() {
@@ -175,19 +198,19 @@ class paymentCart extends Component {
                     role="tablist"
                     aria-orientation="vertical"
                   >
-                    <button
-                      className="nav-link active payment_css"
-                      id="v-pills-home-tab"
-                      data-bs-toggle="pill"
-                      data-bs-target="#v-pills-home"
-                      type="button"
-                      role="tab"
-                      aria-controls="v-pills-home"
-                      aria-selected="true"
-                    >
-                      CREDIT CARD
-                    </button>
-                    <button
+                      {/* <button
+                        className="nav-link active payment_css"
+                        id="v-pills-home-tab"
+                        data-bs-toggle="pill"
+                        data-bs-target="#v-pills-home"
+                        type="button"
+                        role="tab"
+                        aria-controls="v-pills-home"
+                        aria-selected="true"
+                      >
+                        CREDIT CARD
+                      </button> */}
+                    {/* <button
                       className="nav-link payment_css"
                       id="v-pills-profile-tab"
                       data-bs-toggle="pill"
@@ -198,8 +221,8 @@ class paymentCart extends Component {
                       aria-selected="false"
                     >
                       DEBIT CARD
-                    </button>
-                    <button
+                    </button> */}
+                    {/* <button
                       className="nav-link payment_css"
                       id="v-pills-messages-tab"
                       data-bs-toggle="pill"
@@ -210,7 +233,7 @@ class paymentCart extends Component {
                       aria-selected="false"
                     >
                       NET BANKING
-                    </button>
+                    </button> */}
                     <button
                       className="nav-link payment_css"
                       id="v-pills-settings-tab"
@@ -240,7 +263,7 @@ class paymentCart extends Component {
                   </div>
                   <div className="tab-content" id="v-pills-tabContent">
                     <div
-                      className="tab-pane fade show active"
+                      className="tab-pane fade "
                       id="v-pills-home"
                       role="tabpanel"
                       aria-labelledby="v-pills-home-tab"
@@ -266,7 +289,7 @@ class paymentCart extends Component {
                     </div>
                     <div
                       style={{ width: "34vw" }}
-                      className="tab-pane fade"
+                      className="tab-pane fade show active"
                       id="v-pills-settings"
                       role="tabpanel"
                       aria-labelledby="v-pills-settings-tab"

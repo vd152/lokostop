@@ -82,7 +82,7 @@ class App extends React.Component {
             <Route path="/product/:url/:id" component={IndividualProduct} />
             <Route path="/about" component={AboutUs} />
             <Route path="/ComingSoon" component={ComingSoon} />
-            <Route path="/cart" component={Cart} />
+            <PrivateRoute path="/cart" component={Cart} />
             <PrivateRoute path="/payment" component={paymentCart} />
             <PrivateRoute
               path="/profile"

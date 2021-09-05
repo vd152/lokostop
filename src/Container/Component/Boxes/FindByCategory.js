@@ -23,10 +23,10 @@ class FindByCategory extends React.Component {
   componentDidMount() {
     const {  categories2 } = this.state;
 
-    const setCategories2 = (root) => {
+    const setCategories2 = (root, key) => {
       if (root.childrenCategory.length == 0) {
         return (
-          <Dropdown.Item key={root._id}>
+          <Dropdown.Item key={key+root._id}>
           <div
             style={{
               background: "transparent",
@@ -55,7 +55,7 @@ class FindByCategory extends React.Component {
       {
 
         return (
-          <div className="d-flex" key={root._id}>
+          <div className="d-flex" key={key+root._id}>
              <div
               style={{
                 background: "transparent",
@@ -82,7 +82,7 @@ class FindByCategory extends React.Component {
             {root.childrenCategory.length > 0 ? (
               <Dropdown.Submenu position={"right"}>
                 {root.childrenCategory.map((child, key) => {
-                  return setCategories2(child)
+                  return setCategories2(child, key)
                 })}
              </Dropdown.Submenu>
             ) : (
@@ -93,9 +93,9 @@ class FindByCategory extends React.Component {
         );
             }
     };
-    this.props.categories.forEach((category) => {
+    this.props.categories.forEach((category,key) => {
       let tempData2 = {};
-      tempData2.content = setCategories2(category);
+      tempData2.content = setCategories2(category, key);
       categories2.push(tempData2);
     });
     this.setState({  categories2 });
@@ -184,7 +184,7 @@ class FindByCategory extends React.Component {
                 <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedBrand.name == ""?"Brands":this.state.selectedBrand.name.substr(0,5)}>
 
                 {!this.props.brandLoading && this.props.brands.map((brand, key)=>{
-                    return <Dropdown.Item><div className="dropdown-item" key={key} onClick={(e)=>{
+                    return <Dropdown.Item key={key}><div className="dropdown-item" key={key} onClick={(e)=>{
                       const {selectedBrand} = this.state
                       selectedBrand.id = brand._id
                       selectedBrand.name = brand.name

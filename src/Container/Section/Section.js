@@ -328,7 +328,7 @@ class Section extends Component {
                         <p className="checkfont">0</p>
                         <p className="checkfont">{this.state.priceH != null && this.state.priceH < 10000? this.state.priceH : "10,000+"}</p>
                       </div>
-                    <input type="range" min="0" max="10001" className="price-slider"  id="myRange" name="myRange" value={this.state.priceH} onChange={(e)=>{
+                    <input type="range" min="0" max="10001" className="price-slider"  id="myRange" name="myRange" value={this.state.priceH||""} onChange={(e)=>{
                       this.setState({priceH:e.target.value})
                     }}/>
 

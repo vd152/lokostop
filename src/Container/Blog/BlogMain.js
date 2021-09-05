@@ -8,8 +8,9 @@ import Header01 from "../Component/Header/Header01";
 import React, { Component } from "react";
 import SingleBlog from "./SingleBlog";
 import api from "../../Apis/api";
-import { siteUrl} from '../../Utils/util'
-
+import { siteUrl } from "../../Utils/util";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { toast } from "react-toastify";
 
 class BlogMain extends Component {
   state = {
@@ -20,11 +21,11 @@ class BlogMain extends Component {
     api
       .get(url)
       .then((res) => {
-        console.log(res.data.data);
+        //console.log(res.data.data);
         this.setState({ blog: res.data.data });
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
       });
   }
   render() {
@@ -68,8 +69,7 @@ class BlogMain extends Component {
             <p
               className="para_individual_blog"
               dangerouslySetInnerHTML={{ __html: this.state.blog.body }}
-            >
-            </p>
+            ></p>
           </div>
           <div className="inner_box_blogs_two">
             <p className="Recommend_blogs">Recommended blogs</p>
@@ -85,7 +85,22 @@ class BlogMain extends Component {
         </div>
         <div className="buttons_blog">
           <button className="button_blog_one"> Continue Shopping</button>
-          <button className="button_blog_two">Share blog</button>
+          <CopyToClipboard text={window.location.href}>
+            <button
+              className="button_blog_two"
+              onClick={() => {
+                toast.success(`Copied to clipboard.`, {
+                  autoClose: 3000,
+                  hideProgressBar: true,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                });
+              }}
+            >
+              Share blog
+            </button>
+          </CopyToClipboard>
         </div>
         <Footer />
       </div>

@@ -1,4 +1,5 @@
 import { BiCart } from "react-icons/bi";
+import {withRouter} from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -21,25 +22,28 @@ class IndividualProductDetails extends Component {
     stockId: null,
     stockPrice: -1
   };
-  async componentDidMount() {
+
+   componentDidMount() {
     const {stock } = this.state
-    await api.post('/product/stock/byproduct/get', {productId: this.props.productDetails._id}).then(res=>{
+     api.post('/product/stock/byproduct/get', {productId: this.props.match.params.id}).then(res=>{
       res.data.data.forEach(stk=>{
         stock[stk.name] = [stk.qty,stk.price,stk._id] 
       })
       //console.log(stock)
     }).catch(err=>{
       console.log(err)
+      this.setState({loading: false})
     })
     this.setState({
+      stock,
       footerDetails: this.props.footerData.Footer
         ? this.props.footerData
         : this.state.footerDetails,
-        stock,
         loading: false
     });
   }
   setStock = () =>{
+    //console.log(this.state.stock)
     let id = ""
     let price = -1
     var arr = Array.from(this.state.selectedStockArray)
@@ -55,6 +59,7 @@ class IndividualProductDetails extends Component {
       }
     }
     arr = arr.join("-").split("-").sort().filter(ele=>ele != "")
+    //console.log(arr)
     for(var key of Object.keys(this.state.stock)){
       let temparr = key.split("-").sort()
       if(arr.length < temparr.length){
@@ -189,7 +194,52 @@ class IndividualProductDetails extends Component {
           </div>
         </div>
     } else if (type == "Radio Button") {
+      return <div className="save_box individual_save_box" key={unique}>
+      <p className="save_text individual_save_text">
+        {" "}
+        {label}: {required && "*"}
+      </p>
+      <div className="d-flex checkbox-flex" style={{height: '100%', marginLeft: '0.9vw'}}>
+        {values.map((value, key) => {
+          return (
+            <div className="d-flex p-1 justify-content-center align-items-center" key={key}>
+            <input type="radio" name={label} onChange={(e)=>{
+              const {selectedStockArray} = this.state
+              selectedStockArray[unique] = value.label
+              // console.log(selectedStockArray)
+              this.setState({selectedStockArray},()=>this.setStock())
+            }}>
+            </input>
+            <label>{value.label}</label>
+            </div>
+          );
+        })}
+      </div>
+      </div>
+ 
     } else if (type == "Custom Radio Button") {
+      return <div className="save_box individual_save_box" key={unique}>
+      <p className="save_text individual_save_text">
+        {" "}
+        {label}: {required && "*"}
+      </p>
+      <div className="d-flex checkbox-flex" style={{height: '100%', marginLeft: '0.9vw'}}>
+        {values.map((value, key) => {
+          return (
+            <div className="d-flex p-1 justify-content-center align-items-center" key={key}>
+            <input type="radio" name={label} onChange={(e)=>{
+              const {selectedStockArray} = this.state
+              selectedStockArray[unique] = value.label
+              // console.log(selectedStockArray)
+              this.setState({selectedStockArray},()=>this.setStock())
+            }}>
+            </input>
+            <label>{value.label}</label>
+            </div>
+          );
+        })}
+      </div>
+      </div>
     } else if (type == "Multiple Select") {
     } else if (type == "Date") {
       return (
@@ -441,8 +491,8 @@ class IndividualProductDetails extends Component {
                     <p className="save_text individual_save_text">You save:</p>
                     <p className="discount_amount individual_discount_amount">
                       Rs{" "}
-                      {this.props.productDetails.price -
-                        this.props.productDetails.specialPrice}
+                      {this.state.stockPrice == -1?this.props.productDetails.price -
+                        this.props.productDetails.specialPrice: this.props.productDetails.price-this.state.stockPrice}
                     </p>
                   </div>
                 </React.Fragment>
@@ -507,6 +557,7 @@ class IndividualProductDetails extends Component {
                       this.state.footerDetails.Footer
                         .AcceptedPaymentMethodsImage.image
                     }
+                    alt="Reload"
                   />
                 </div>
               )}
@@ -555,5 +606,5 @@ const mapStateToProps = (state) => {
   };
 };
 export default connect(mapStateToProps, { addToCart })(
-  IndividualProductDetails
+  withRouter(IndividualProductDetails)
 );
