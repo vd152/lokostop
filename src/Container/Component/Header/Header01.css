@@ -203,15 +203,15 @@
 #Heart {
   font-size: 1.7vw;
   color: #f80000;
-  position: absolute;
+  /* position: absolute; */
 }
 #count {
   background-color: #08e5a9;
   border-radius: 100%;
-  width: 1.025vw;
-  height: 1.025vw;
+  width: 14px;
+  height: 14px;
   text-align: center;
-  position: relative;
+  position: absolute;
   margin-left: 1vw;
   padding-top: 0;
   font: normal normal normal 0.878vw/1.061vw Poppins;
@@ -226,10 +226,10 @@
 }
 #Cart {
   font-size: 1.5vw;
-  position: absolute;
+  /* position: absolute; */
 }
 .cart p {
-  margin-left: 0.5vw;
+  /* margin-left: 0.5vw; */
   margin-top: 0.3vw;
   font: normal normal normal 0.878vw/1.061vw Poppins;
 }
@@ -267,9 +267,9 @@
   border: none;
   -webkit-appearance: none !important;
 }
-.large_screen_text{
+/* .large_screen_text{
   margin-right: 12px;
-}
+} */
 @media (max-width: 768px) {
   .category-dropdownbutton{
     margin-top: 10px;
@@ -385,20 +385,20 @@
 
   #Heart {
     font-size: 3.8vw;
+    position: absolute;
   }
 
   #Cart {
     font-size: 3.4vw;
+    position: absolute;
   }
 
   #count {
-    width: 1.025vw;
-    height: 1.025vw;
-    position: relative;
+    height: 12px;width: 12px;
     margin-left: 2.8vw;
     margin-top: 0.25vw;
-    font-size: 0.9em;
-    padding: 0.6em 0.2em;
+    font-size: 0.8em;
+    padding: 0.5em 0.2em;
     /* font: normal normal normal 1.1vw/1.061vw Poppins; */
   }
 
@@ -486,9 +486,9 @@
   }
 
   #count {
-    width: 1.525vw;
+    /* width: 1.525vw;
     height: 1.525vw;
-    position: relative;
+    position: relative; */
     margin-left: 4.6vw;
     margin-top: 0.25vw;
     font-size: 0.9em;
@@ -568,9 +568,9 @@
   }
 
   #count {
-    width: 4vw;
+    /* width: 4vw;
     height: 1.825vw;
-    position: relative;
+    position: relative; */
     margin-left: 5.6vw;
     margin-top: 0.5vw;
     font-size: 0.9em;
@@ -651,9 +651,9 @@
   }
 
   #count {
-    width: 4.425vw;
+    /* width: 4.425vw;
     height: 1.525vw;
-    position: relative;
+    position: relative; */
     margin-left: 5.1vw;
     margin-top: 0.45vw;
     font-size: 0.9em;

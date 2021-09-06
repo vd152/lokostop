@@ -6,7 +6,8 @@ import { addToWishlist } from "../../Redux/Actions/WishlistActions";
 import {addToCart} from '../../Redux/Actions/CartActions'
 import { connect } from "react-redux";
 import { siteUrl} from '../../Utils/util'
-
+import { toast } from "react-toastify";
+import {modifyCompare} from '../../Redux/Actions/ProductActions'
 class Product extends Component {
   state = {
     product: {
@@ -66,7 +67,24 @@ class Product extends Component {
         <div className="add_to_cart_box">
           {this.props.hidetop? "":
           <div id="div_first" className="add_to_cart_inner_box">
-            <BiGitCompare className="Compare_Icon compare-icon" />
+            <BiGitCompare className="Compare_Icon compare-icon" onClick={(e)=>{
+              let arr = this.props.compareProducts
+              if(!arr.includes(this.state.product._id)){
+                arr.push(this.state.product._id)
+                this.props.modifyCompare(arr);
+              }else{
+                toast.error(
+                  "Already added for comparing.",
+                  {
+                    autoClose: 3000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                  }
+                );
+              }
+            }}/>
             { this.state.product.options.length>0 ?  <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}><div className="add_to_cart_text_icon" >
               <p >
               <span className="large_screen_text">VIEW OPTIONS</span>
@@ -142,6 +160,7 @@ const mapStateToProps = (state) => {
   return {
     wishlist: state.userWishlist.wishlist,
     cart: state.userCart.cart,
+    compareProducts: state.compareProducts.products
   };
 };
-export default connect(mapStateToProps, { addToWishlist,addToCart })(Product);
+export default connect(mapStateToProps, { addToWishlist,addToCart, modifyCompare })(Product);

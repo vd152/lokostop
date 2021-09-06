@@ -1,5 +1,5 @@
 import "./Header01.css";
-import { IoIosArrowForward, IoIosHeart } from "react-icons/io";
+import { IoIosArrowForward, IoIosHeart, IoMdGitCompare } from "react-icons/io";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link, Redirect } from "react-router-dom";
 import React, { Component } from "react";
@@ -89,14 +89,26 @@ class Header01 extends Component {
 
         <Search />
         <div className="Header_one_right">
+          
           {this.props.user._id && (
             <React.Fragment>
+              {this.props.compareProducts.length > 0 && 
+          <Link to={"/compare/"+this.props.compareProducts.join("%2C")}>
+          <div style={{ color: "#1D1D1D" }} className="cart">
+          <IoMdGitCompare id="Heart" style={{ color: "#000"}} />
+            <span id="count">{this.props.compareProducts.length}</span>
+            <p>
+              <span className="large_screen_text">&nbsp; Compare</span>
+            </p>
+          </div>
+        </Link>
+          }
               <Link to={{ pathname: "/profile", wishlistActive: true }}>
                 <div style={{ color: "#1D1D1D" }} className="cart">
                 <IoIosHeart id="Heart" />
                   <span id="count">{this.props.wishlist.length}</span>
                   <p>
-                    <span className="large_screen_text">Wishlist</span>
+                    <span className="large_screen_text">&nbsp; Wishlist</span>
                   </p>
                 </div>
               </Link>
@@ -105,7 +117,7 @@ class Header01 extends Component {
                   <FiShoppingCart id="Cart" />
                   <span id="count">{this.props.cart.length}</span>
                   <p>
-                    <span className="large_screen_text">Cart</span>
+                    <span className="large_screen_text">&nbsp; Cart</span>
                   </p>
                 </div>
               </Link>
@@ -144,6 +156,7 @@ const mapStateToProps = (state) => {
     user: state.getUser.user,
     wishlist: state.userWishlist.wishlist,
     cart: state.userCart.cart,
+    compareProducts: state.compareProducts.products
   };
 };
 export default connect(mapStateToProps)(Header01);

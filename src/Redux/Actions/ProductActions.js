@@ -25,11 +25,9 @@ export const postReview = (review, productId) =>{
     }
 }
 
-export const addToCompare = (products, id) => async(dispatch) => {
+export const modifyCompare = (products) => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.ADD_TO_COMPARE_REQUEST})
-        let url = "/product/get/" + id;
-        const {data} = await api.post(url)
         
         dispatch({
             type: actionTypes.ADD_TO_COMPARE_SUCCESS,
@@ -44,18 +42,18 @@ export const addToCompare = (products, id) => async(dispatch) => {
 }
 
 
-export const RemoveFromCompare = (products, id) => async(dispatch) => {
-    try{
-        dispatch({ type: actionTypes.REMOVE_FROM_COMPARE_REQUEST})
-        const {data} = await api.post('/tag/get', {sortBy: "name"})
-        dispatch({
-            type: actionTypes.REMOVE_FROM_COMPARE_SUCCESS,
-            payload: data.data
-        })
-    }catch(error){
-        dispatch({
-            type: actionTypes.REMOVE_FROM_COMPARE_FAIL,
-            payload: "something went wrong"
-        })
-    }
-}
+// export const RemoveFromCompare = (products) => async(dispatch) => {
+//     try{
+//         dispatch({ type: actionTypes.REMOVE_FROM_COMPARE_REQUEST})
+//         const {data} = await api.post('/tag/get', {sortBy: "name"})
+//         dispatch({
+//             type: actionTypes.REMOVE_FROM_COMPARE_SUCCESS,
+//             payload: data.data
+//         })
+//     }catch(error){
+//         dispatch({
+//             type: actionTypes.REMOVE_FROM_COMPARE_FAIL,
+//             payload: "something went wrong"
+//         })
+//     }
+// }

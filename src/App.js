@@ -77,7 +77,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/blogs" component={Blog} />
-            <Route path="/compare" component={Compare} />
+            <Route path="/compare/:products" component={(props) => <Compare key={Date.now()} {...props} />} />
             <Route path="/blog/:url/:id" component={BlogMain} />
             <Route path="/product/:url/:id" component={IndividualProduct} />
             <Route path="/about" component={AboutUs} />
