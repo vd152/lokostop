@@ -19,20 +19,23 @@
   overflow-x: auto;
 }
 
-.left_compare{
-  margin: 0 1em;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.left_compare .text{
-  height: 200px;margin: auto;
-}
+
 .compare_box .product{
   margin: 0 0.5em;
 }
+.compare_box .product .text{
+  position: absolute;
+  top: 40%;
+  left: 12%;
+  text-align: center;
+}
+.compare_box .product .text p{
+  font-size:15px;
+  line-height: 1.2
+}
 .product_display_comparing {
   height: auto;
+  position: relative;
   width: 100%;
   display: flex;
 }
@@ -52,14 +55,12 @@
 .product_details_compare_list {
   margin-left: 1.098vw;
   margin-top: 1.464vw;
-  width: 20.205vw;
   height: 29.649vw;
   display: grid;
   grid-template-rows: 20.351vw 9.444vw;
   position: relative;
 }
 .specification_box {
-  width: 92.972vw;
   height: auto;
   margin-left: 2.343vw;
   display: flex;
@@ -70,8 +71,6 @@
   height: auto;
 }
 .specification_box_one p {
-  width: 18.521vw;
-  height: 1.391vw;
   text-align: center;
   font: normal normal bold 0.952vw/1.464vw Poppins;
   margin-top: 0;
@@ -79,7 +78,6 @@
 }
 .specification_box_one ul {
   list-style: none;
-  width: 18.521vw;
   padding: 0;
   margin-top: 2.928vw;
   text-align: center;
@@ -88,7 +86,7 @@
   flex-wrap: wrap;
 }
 .specification_box_one ul li {
-  font: normal normal normal 0.952vw/1.464vw Poppins;
+  font: normal normal normal 18px Poppins;
   color: #7d7d7d;
   margin-bottom: 2.196vw;
 }
@@ -106,35 +104,59 @@
   display: flex;
   flex-direction: column;
   height: 5.564vw;
-  width: 11.347vw;
+  width: 100%;
   margin-top: 3.441vw;
-  margin-left: 4.454vw;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
 .add_to_cart_compare {
-    width: 11.347vw;
-    display: flex;cursor: pointer;
+  height: 100% !important;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+      display: flex;cursor: pointer;
     height: 2.343vw;
     border:0.007vw solid #021fb2;
     background: #021fb2;outline: none;
+}
+.button_box a{
+  width:100%;
+  height: 100%
 }
 .add_to_cart_compare p {
     width: auto;
     margin: 0;
     padding-left: 0.586vw;
-    height: 1.464vw;
+    height: 100%;
     text-align: center;
-    font: normal normal normal 1.098vw/1.464vw Segoe UI;
+    font: normal normal normal 15px Segoe UI;
     padding-top: 0.293vw;
     color: #ffffff;
 }
 #remove_button{
-    width: 11.347vw;
-    height: 2.343vw;
+    width: 100%;
+    height: 25px;
     cursor: pointer;
     margin-top: 1.318vw;
-    font: normal normal normal 1.098vw/1.464vw Segoe UI;
+    font: normal normal normal 12px Segoe UI;
     color: #1D1D1D;
     border: 0.073vw solid #BDBDBD;outline: none;
+}
+@media(max-width: 768px){
+  .add_to_cart_compare p{
+    font-size:12px
+  }
+  .compare_box .product .text{
+    top: 25%;
+    left: 8%;
+  }
+}
+@media(max-width: 560px){
+  .compare_box .product .text{
+    top: 25%;
+    left: 5%;
+  }
 }
 @media(max-width:425px){
   .compare hr{
@@ -144,23 +166,43 @@
     display: flex;
     flex-direction: column;
     height: auto;
-    width: 11.347vw;
+    width: 100%;
     margin-top: 3.441vw;
-    margin-left: 4.454vw;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .button_box a{
+    width: 100%;
+    height: 25px;
   }
   .add_to_cart_compare{
-    height: 3.343vw;
+    height: 25px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+  .add_to_cart_compare svg{
+    font-size: 1.2em;
   }
   .add_to_cart_compare p{
-    font: normal normal normal 0.9vw/1.464vw Segoe UI;
+    font: normal normal normal 12px Segoe UI;
     padding-top: 2px;
   }
   .specification_box_one p{
     font: normal normal bold 1.2vw/1.464vw Poppins;
   }
   .specification_box_one ul li{
-    font: normal normal normal 1.2vw/1.464vw Poppins;
+    font: normal normal normal 10px Poppins;
     height: auto;
+  }
+  .compare_box .product .text{
+    top: 20%;
+    left: 7%
+  }
+  .compare_box .product .text p{
+    font-size:12px;
+    line-height: 1.2
   }
 }
 @media(max-width:375px){

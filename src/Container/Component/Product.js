@@ -27,7 +27,7 @@ class Product extends Component {
 
   render() {
     return (
-      <div className={this.props.hidetop? "product_details2":"product_details_list"}>
+      <div className={this.props.hidetop? "product_details2":"product_details_list"} style={{visibility: this.props.visibility?this.props.visibility:"auto"}}>
            <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}>
           <div className="image_box">
             {this.state.product.baseImage ? (
@@ -135,7 +135,7 @@ class Product extends Component {
             <p className="name_details_each_product">
               {this.state.product.name}
               <br />
-              {this.state.product.shortDescription}
+              {this.state.product.shortDescription? this.state.product.shortDescription: <div style={{visibility: "hidden"}}>space</div>}
             </p>
             <div className="price_of_product">
               {this.state.product.specialPrice != null &&

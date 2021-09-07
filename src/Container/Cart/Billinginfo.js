@@ -180,20 +180,20 @@ class Billinginfo extends Component {
                     this.setData(e.target.name, e.target.value);
                   }}
                 />
-                <p className="check_box">
+                <p className="check_box" style={{visibility: "hidden"}}>
                   <label className="containerCheck">
                     I want to get offers in my mail
                     <input type="checkbox"></input>
                     <span className="checkMark"></span>
                   </label>
                 </p>
-                {/* <p className="check_box">
+                <p className="check_box" style={{visibility: "hidden"}}>
                   <label className="containerCheck">
                     Save this information for future
                     <input type="checkbox"></input>
                     <span className="checkMark"></span>
                   </label>
-                </p> */}
+                </p>
               </div>
               <div className="second_bill_box">
                 <p className="head_bill_reciever">Receiver address</p>

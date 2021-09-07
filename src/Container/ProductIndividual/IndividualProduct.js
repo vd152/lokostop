@@ -354,7 +354,7 @@ class IndividualProduct extends Component {
         )}
 
         <FindByCategory />
-        <PopularBox />
+        {/* <PopularBox /> */}
         <Footer />
       </React.Fragment>
     );

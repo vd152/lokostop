@@ -7,6 +7,8 @@ import { addToCart } from "../../Redux/Actions/CartActions";
 import { siteUrl } from "../../Utils/util";
 import api from '../../Apis/api'
 import Loader from "../Loader/Loader";
+import {modifyCompare} from '../../Redux/Actions/ProductActions'
+import { toast } from "react-toastify";
 class IndividualProductDetails extends Component {
   state = {
     loading: true,
@@ -364,7 +366,24 @@ class IndividualProductDetails extends Component {
                   }}
                 />
               </button>
-              <button className="compare_button individual_compare_button">
+              <button className="compare_button individual_compare_button" onClick={(e)=>{
+                let arr = this.props.compareProducts
+                if(!arr.includes(this.props.productDetails._id)){
+                  arr.push(this.props.productDetails._id);
+                  this.props.modifyCompare(arr);
+                }else{
+                  toast.error(
+                    "Already added for comparing.",
+                    {
+                      autoClose: 3000,
+                      hideProgressBar: true,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                    }
+                  );
+                }
+              }}>
                 COMPARE
               </button>
             </div>
@@ -462,9 +481,9 @@ class IndividualProductDetails extends Component {
                 </React.Fragment>
               ) : (
                 <div className="rating_product">
-                  <p className="mrp_text">MRP:</p>
-                  <p className="price_of_the_product">
-                    {this.props.productDetails.price}
+                  <p className="save_text individual_save_text">MRP:</p>
+                  <p className="price_of_the_product_after_discount individual_price_of_the_product_after_discount">
+                    Rs. {this.props.productDetails.price}
                   </p>
                 </div>
               )}
@@ -603,8 +622,9 @@ const mapStateToProps = (state) => {
     featuresLoading: state.getFeatures.loading,
     allFeatures: state.getFeatures.features,
     cart: state.userCart.cart,
+    compareProducts: state.compareProducts.products
   };
 };
-export default connect(mapStateToProps, { addToCart })(
+export default connect(mapStateToProps, { addToCart, modifyCompare })(
   withRouter(IndividualProductDetails)
 );
