@@ -121,7 +121,7 @@
     font: normal normal normal 1.1vw/1.061vw Poppins;
     margin-top: -0.2vw;
   }
-  .modal-content{
+  .login .modal-content{
     width: 65vw;
     height: 40%;
     margin-left: 2.5vw;    
@@ -210,7 +210,7 @@
     font: normal normal normal 1.25vw/1.061vw Poppins;
   }
 
-  .modal-content{
+  .login .modal-content{
     margin-left: 15vw; 
   }
   #profile_icon{
@@ -224,7 +224,7 @@
     font: normal normal normal 1.2vw/1.061vw Poppins;
     margin-top: 0vw;
   }
-  .modal-content {
+  .login .modal-content {
     width: 95vw;
     margin-left: 1vw;
     height: 80%;
@@ -340,7 +340,7 @@
 }
 
 @media (min-width: 769px) and (max-width:1200px ) {
-  .modal-content{
+  .login .modal-content{
     width: 73%;
     margin-left: 6vw;
   }

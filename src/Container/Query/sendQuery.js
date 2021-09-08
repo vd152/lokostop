@@ -4,24 +4,113 @@ import Header from "../Component/Header/Header";
 import Header01 from "../Component/Header/Header01";
 import "./sendQuery.css";
 import "../../Apis/api";
+import Validate from "../../Utils/Validation";
+import { toast } from "react-toastify";
+import api from "../../Apis/api";
+import { Redirect } from "react-router-dom";
+
 class sendQuery extends Component {
   state = {
     data: {
       Body: "",
       Subject: "",
       Country: "",
-      OrderId: null,
+      Phone: "",
       Email: "",
       FullName: "",
     },
+    errors: [],
+    redirect: false
   };
   setData = (key, val) => {
     const { data } = this.state;
     data[key] = val;
     this.setState({ data });
   };
-  handleSubmit = () => {};
+  handleSubmit = () => {
+    const {data, errors} = this.state
+    let required = ["FullName", "Email", "Country", "Phone", "Subject", "Body"]
+    required.forEach(req=>{
+      if (!errors.includes(req) && !Validate.validateNotEmpty(data[req])) {
+        errors.push(req);
+        this.setState({ errors });
+      } else if (
+        errors.includes(req) &&
+        Validate.validateNotEmpty(data[req])
+      ) {
+        errors.splice(errors.indexOf(req), 1);
+        this.setState({ errors });
+      }
+    })
+    if(!Validate.validateNotEmpty(errors)){
+      if (!Validate.validateEmail(data["Email"])) {
+        toast.error(
+          `Please Eenter a valid email`,
+          {
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          }
+        );
+      } 
+      else if (!Validate.validatePhoneNumber(data["Phone"])) {
+        toast.error(
+          `Please Eenter a valid Phone Number`,
+          {
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          }
+        );
+      }
+      else{
+        api.post("/query", {data}).then(res=>{
+          toast.success(`Your query has been sent.`, {
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+          });
+          this.setState({redirect: true})
+        }).catch(err=>{
+          toast.error(
+            `${
+              err.response?.data?.message
+                ? err.response.data.message
+                : "Something went wrong."
+            }`,
+            {
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+            }
+          );
+        })
+      } 
+    }else{
+      toast.error(
+        `Please fill all the fields.`,
+        {
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }
+      );
+    }
+  };
   render() {
+    if(this.state.redirect){
+      return <Redirect to="/" />
+    }
     return (
       <div>
         <Header01></Header01>
@@ -69,6 +158,16 @@ class sendQuery extends Component {
                 this.setData(e.target.name, e.target.value);
               }}
             ></input>
+             <input
+              type="number"
+              className="sendinput"
+              placeholder="Phone"
+              name="Phone"
+              value={this.state.data.Phone}
+              onChange={(e) => {
+                this.setData(e.target.name, e.target.value);
+              }}
+            ></input>
             <input
               type="text"
               className="sendinput"
@@ -94,6 +193,7 @@ class sendQuery extends Component {
               className="sendquery"
               onClick={(e) => {
                 e.preventDefault();
+                this.handleSubmit()
               }}
             >
               Send

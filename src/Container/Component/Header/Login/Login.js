@@ -58,7 +58,7 @@ class Login extends Component {
           aria-labelledby="staticBackdropLabel"
           aria-hidden="true"
         >
-          <div className="modal-dialog">
+          <div className="modal-dialog login">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title logoval" id="staticBackdropLabel">

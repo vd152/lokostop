@@ -60,6 +60,7 @@
   width: 13.397vw;
   height: 3.294vw;
   margin-left: 1.171vw;
+  margin-top: 3px;
   grid-template-rows: 1.537vw 1.757vw;
 }
 .shipping_text1 {
@@ -67,7 +68,7 @@
   height: 1.537vw;
   font: normal normal 600 1.098vw/1.684vw Poppins;
   color: #5d5d5d;
-  margin-top: 0;
+  margin: 0;
 }
 .shipping_text2 {
   width: 13.397vw;
@@ -77,6 +78,10 @@
   color: #9d9d9d;
   margin-top: 0.512vw;
 }
+.shipping_text1 , .shipping_text2 {
+  line-height: 1.2;
+  height:80% !important;
+  }
 .new_Arrivals {
   width: 93.009vw;
   height: 2.562vw;
