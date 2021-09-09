@@ -131,7 +131,7 @@ class Header02 extends Component {
     this.setState({ menus });
   }
   render() {
-    if(this.props.menuLoading){
+    if(this.props.menuLoading || this.props.settingsLoading){
       return <div></div>
     }
       return (
@@ -211,13 +211,13 @@ class Header02 extends Component {
               </ul>
 
               <div className="mx-3">
-                <div className="mobile_part d-flex flex-row-reverse">
-                  <p className="mb-1">+91-9898989898</p>
-                  <MdLocalPhone id="phone" />
+                <div className="mobile_part d-flex ">
+                  <MdLocalPhone id="phone" className="m-1"/>
+                  <p className="mb-1">{this.props.settings?.Store?.StorePhone}</p>
                 </div>
-                <div className="email_part d-flex flex-row-reverse">
-                  <p className="mb-1">sidhuelectronics1@gmail.com</p>
-                  <MdEmail id="mail" />
+                <div className="email_part d-flex ">
+                  <MdEmail id="mail" className="m-1"/>
+                  <p className="mb-1">{this.props.settings?.Store?.StoreEmail}</p>
                 </div>
               </div>
             </div>
@@ -231,7 +231,9 @@ const mapStateToProps = (state) => {
     menus: state.getMenus.menus,
     menuLoading: state.getMenus.loading,
     logos: state.getLogos.logos,
-    logoLoading: state.getLogos.loading
+    logoLoading: state.getLogos.loading,
+    settings: state.getSettings.settings,
+    settingsLoading: state.getSettings.loading,
   };
 };
 export default connect(mapStateToProps)(Header02);

@@ -17,6 +17,10 @@ class Orders extends Component {
           <table className="table table-borderless col_names1">
             <thead>
               <tr className="table_headingnew2">
+              <th className="">
+                  <span className="large_screen_text">ID</span>
+                  <span className="small_screen_text">ID</span>
+                </th>
                 <th className="">
                   <span className="large_screen_text">PRODUCTS</span>
                   <span className="small_screen_text">PRODUCTS</span>
@@ -43,6 +47,7 @@ class Orders extends Component {
               {this.props.orders.map((order, key) => {
                 return (
                   <tr className="" key={key}>
+                    <td className="product_price1new">{order._id}</td>
                     <td className="product_price1new">
                       <table>
                         <tbody>

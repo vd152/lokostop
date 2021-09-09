@@ -12,6 +12,7 @@ class ComplaintPop extends Component {
       image: [],
     },
   };
+
   setData = (key, val) => {
     const { data } = this.state;
     data[key] = val;
@@ -20,8 +21,11 @@ class ComplaintPop extends Component {
   handleSubmit = () =>{
     const {data} = this.state;
     const formData = new FormData()
-    formData.append("image", data.image);
-    formData.append("Country", data.country)
+    // data.image.forEach(img=>{
+      formData.append("image", data.image);
+    // })
+    
+    formData.append("Country", data.Country)
     formData.append("OrderId", data.OrderId)
     formData.append("Phone", data.Phone)
     formData.append("Subject", data.Subject)
@@ -42,6 +46,7 @@ class ComplaintPop extends Component {
         image: [],
       }})
   }
+  
   render() {
     return (
         <div
