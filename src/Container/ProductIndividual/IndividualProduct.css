@@ -68,8 +68,11 @@
   color: #1d1d1d;
 }
 .category_of_that_particular_product {
-  width: 46.925vw;
+  width: fit-content;
+  padding: 5px;
   height: auto;
+  cursor: pointer;
+  text-decoration: underline;
   margin-top: 0.6vw;
   font: normal normal normal 0.952vw/1.464vw Poppins;
   color: #3d3d3d;

@@ -1,5 +1,5 @@
 import { BiCart } from "react-icons/bi";
-import {withRouter} from 'react-router-dom';
+import {withRouter, Redirect} from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -22,7 +22,10 @@ class IndividualProductDetails extends Component {
     stock: [],
     selectedStockArray:[],
     stockId: null,
-    stockPrice: -1
+    stockPrice: -1,
+    selectedImage: "",
+    redirect: false,
+    category: {}
   };
 
    componentDidMount() {
@@ -282,6 +285,9 @@ class IndividualProductDetails extends Component {
       a.every((val, index) => val === b[index]);
   }
   render() {
+    if(this.state.redirect){
+      return <Redirect to={"/categories/"+this.state.category.name + "/"+ this.state.category.url+"/"+this.state.category.id}/>
+    }
     if(this.state.loading){
       return <Loader />
     }else
@@ -305,6 +311,10 @@ class IndividualProductDetails extends Component {
                         className="similar_particular_image"
                         src={siteUrl + image.image}
                         alt="RELOAD"
+                        style={{cursor: "pointer"}}
+                        onClick={(e) => {
+                          this.setState({selectedImage: image.image})
+                        }}
                       />
                     );
                   }
@@ -324,7 +334,7 @@ class IndividualProductDetails extends Component {
               className="big_image"
               src={
                 this.props.productDetails.baseImage
-                  ? siteUrl + this.props.productDetails.baseImage.image
+                  ? this.state.selectedImage == ""?siteUrl+this.props.productDetails.baseImage.image: siteUrl+this.state.selectedImage
                   : "https://via.placeholder.com/150"
               }
               alt="Loading"
@@ -392,10 +402,12 @@ class IndividualProductDetails extends Component {
             <p className="name_of_the_particular_product">
               {this.props.productDetails.name}
             </p>
-            <div className="category_of_that_particular_product_box">
+            <div className="category_of_that_particular_product_box d-flex mb-3">
               {this.props.productDetails.categories.map((category, key) => {
                 return (
-                  <p className="category_of_that_particular_product" key={key}>
+                  <p className="category_of_that_particular_product" onClick={(e)=>{
+                    this.setState({category : {url: category.url, id: category._id, name: category.name}},()=>{this.setState({redirect: true})})
+                  }} key={key}>
                     {category.name}
                   </p>
                 );

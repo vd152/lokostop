@@ -8,6 +8,8 @@ import { connect } from "react-redux";
 import { siteUrl} from '../../Utils/util'
 import { toast } from "react-toastify";
 import {modifyCompare} from '../../Redux/Actions/ProductActions'
+
+
 class Product extends Component {
   state = {
     product: {
