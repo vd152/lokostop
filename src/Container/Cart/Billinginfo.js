@@ -426,7 +426,10 @@ class Billinginfo extends Component {
                   items.push(tmp)
                 })
                 this.props.saveOrderDetails({ ...this.props.savedOrder, ItemsOrdered: items,totalOrderAmount: this.getSubtotal()+ this.state.sendData.ShippingPrice-this.state.sendData.Discount });
+                if(this.props.cart.length>0)
+                { console.log("here")
                 this.setState({redirect: true})
+                }
               }}
             >
               Proceed to Payment
@@ -435,7 +438,7 @@ class Billinginfo extends Component {
         </div>
       </React.Fragment>
     );
-  }
+  } 
 }
 
 const mapStateToProps = (state) => {

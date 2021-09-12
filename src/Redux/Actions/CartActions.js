@@ -10,12 +10,12 @@ export const getCart = () => async(dispatch) => {
         const {data} = await api.get(url)
         data.data.Cart.forEach(item=>{
             item.couponDiscount = 0;
-            item.totalPrice = item.product.specialPrice
+            item.totalPrice =item.product.options&&item.product.options.length>0?item.stock.price*item.qty: item.product.specialPrice
             ? item.product.specialPriceType == "Fixed"
               ? item.product.specialPrice * item.qty
               : (item.product.price.toString() -
                 (item.product.specialPrice.toString() / 100) *
-                item.product.price) *
+                item.product.price) * 
               item.qty.toString()
             : item.product.price * item.qty;
             
@@ -47,7 +47,7 @@ export const getCart = () => async(dispatch) => {
 }
 
 export const addToCart = (productId,qty,stockId, oldCart) => async(dispatch) => {
-    try{
+    try{ 
         dispatch({ type: actionTypes.ADD_CART_REQUEST})
         const {data} = await api.put('/customer/cart', {productId, qty,stockId})
         data.data.Cart.forEach(item=>{

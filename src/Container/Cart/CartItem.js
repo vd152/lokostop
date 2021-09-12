@@ -8,6 +8,7 @@ import { siteUrl} from '../../Utils/util'
 
 class CartItem extends Component {
   render() {
+    console.log(this.props.cart)
     return (
       <div className="tble_box">
         <div className="scroll_x_box">
@@ -71,7 +72,7 @@ class CartItem extends Component {
                     </td>
                     <td className="product_price1">
                       Rs.
-                      {product.specialPrice
+                      {product.options.length>0?stock.price.toString():product.specialPrice
                         ? product.specialPriceType == "Fixed"
                           ? product.specialPrice
                           : product.price.toString() -
@@ -102,7 +103,7 @@ class CartItem extends Component {
                     <IoCloseCircleSharp
                         id="closeIcon"
                         onClick={(e) => {
-                          this.props.deleteFromCart(product._id, stock && stock._id?stock._id:null, this.props.cart);
+                          this.props.deleteFromCart(product._id, stock && stock._id?stock._id:null, this.props.cart); 
                         }}
                       />
                     </td>

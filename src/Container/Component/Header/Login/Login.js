@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Login.css";
-import { loginUser, registerUser } from "../../../../Redux/Actions/UserActions";
+import { loginUser, registerUser, googleLogin } from "../../../../Redux/Actions/UserActions";
 import { CgProfile } from "react-icons/cg";
 class Login extends Component {
   state = {
@@ -38,6 +38,10 @@ class Login extends Component {
     this.props.registerUser(this.state.user);
     document.querySelector("#staticBackdrop").click();
   }
+  googleLogin = () => {
+    this.props.googleLogin();
+    document.querySelector("#staticBackdrop").click();
+  }
   render() {
     return (
       <React.Fragment>
@@ -46,6 +50,7 @@ class Login extends Component {
           className="imagevl mt-0"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
+          id="pfp"
         >
           <span className="large_screen_text"><CgProfile id="profile_icon" style={{fontSize: "2.5em"}}/></span>
           <span className="small_screen_text"><CgProfile id="profile_icon" /></span>
@@ -223,7 +228,7 @@ class Login extends Component {
               <div className="modal-footer googleface">
                 <p className="orWord">OR</p>
                 <div className="social_signin">
-                <button type="button" className="btn signgoogle">
+                <button type="button" className="btn signgoogle" onClick={(e) => {e.preventDefault(); this.googleLogin();}}>
                 <span className="large_screen_text_425">
                   Sign in with google
                   </span>
@@ -254,4 +259,4 @@ const mapStateToProps = (state) => {
     error: state.loginUser.error
   };
 };
-export default connect(mapStateToProps, { loginUser, registerUser })(Login);
+export default connect(mapStateToProps, { loginUser, registerUser,googleLogin })(Login);

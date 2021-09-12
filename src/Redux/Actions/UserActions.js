@@ -223,3 +223,43 @@ export const getUserOrders = (id) => async (dispatch) => {
     });
   }
 };
+
+export const googleLogin = () => async (dispatch) => {
+  try {
+    dispatch({ type: actionTypes.GET_LOGIN_REQUEST });
+    const { data } = await api.get("/auth/google");
+    setAuthToken(data.data.token);
+    setUser(data.data._id);
+    dispatch({
+      type: actionTypes.GET_LOGIN_SUCCESS,
+      payload: data.data,
+    });
+    toast.success(`logged in successfully.`, {
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+    // window.location.reload();
+  } catch (err) {
+    toast.error(
+      `${
+        err.response?.data?.message
+          ? err.response.data.message
+          : "Something went wrong."
+      }`,
+      {
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      }
+    );
+    dispatch({
+      type: actionTypes.GET_LOGIN_FAIL,
+      payload: "something went wrong",
+    });
+  }
+};

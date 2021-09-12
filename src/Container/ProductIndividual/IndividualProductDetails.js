@@ -347,7 +347,11 @@ class IndividualProductDetails extends Component {
                 className="cart_button individual_cart_button w-100 m-0"
                 onClick={async(e) => {
                   await this.setStock()
-                  if(this.props.productDetails.options.length > 0){
+                  if(!this.props.user.ID)
+                  document.getElementById("pfp").click();
+                else
+                  {if(this.props.productDetails.options.length > 0){
+
                     this.props.addToCart(
                       this.props.productDetails._id,
                       this.state.qty,
@@ -362,7 +366,7 @@ class IndividualProductDetails extends Component {
                        this.props.cart
                     );
                   }
-                    
+                }
                 }}
               >
                 <span className="large_screen_text ">ADD TO CART</span>
@@ -634,7 +638,8 @@ const mapStateToProps = (state) => {
     featuresLoading: state.getFeatures.loading,
     allFeatures: state.getFeatures.features,
     cart: state.userCart.cart,
-    compareProducts: state.compareProducts.products
+    compareProducts: state.compareProducts.products,
+    user: state.getUser.user
   };
 };
 export default connect(mapStateToProps, { addToCart, modifyCompare })(

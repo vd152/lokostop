@@ -95,7 +95,10 @@ class Product extends Component {
               <BiCart className="Bicartnew" />
             </div></Link>:
             <div className="add_to_cart_text_icon" onClick={(e)=>{
+              if(this.props.user.ID)
                 this.props.addToCart(this.state.product._id, 1, null, this.props.cart);
+                else
+                document.getElementById("pfp").click();
 
             }}>
               <p >
@@ -162,7 +165,8 @@ const mapStateToProps = (state) => {
   return {
     wishlist: state.userWishlist.wishlist,
     cart: state.userCart.cart,
-    compareProducts: state.compareProducts.products
+    compareProducts: state.compareProducts.products,
+    user: state.getUser.user
   };
 };
 export default connect(mapStateToProps, { addToWishlist,addToCart, modifyCompare })(Product);
