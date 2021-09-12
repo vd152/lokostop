@@ -85,19 +85,25 @@ export class Footer extends Component {
             </div>
             {this.state.footerDetails.Menus.FooterMenuOne && 
             <div className="box_one_area_2">
-              <p>CUSTOM LINKS</p>
+              <p>{this.state.footerDetails.Menus?.FooterMenuOneTitle}</p>
               <ul>
                 {this.state.footerDetails.Menus.FooterMenuOne && this.state.footerDetails.Menus.FooterMenuOne.menuItems.map((item,key)=>{
                   return <li key={key} ><Link to={this.setMenuLink(item)}>{item.name}</Link></li>
                 })}
-                {/* <li>New Arrivals</li>
-                <li>Popular Categories</li>
-                <li>Featured Products</li>
-                <li>Best Selling</li>
-                <li>Query</li> */}
+              
               </ul>
             </div>}
+            {this.state.footerDetails.Menus.FooterMenuTwo && 
             <div className="box_one_area_2">
+              <p>{this.state.footerDetails.Menus?.FooterMenuTwoTitle}</p>
+              <ul>
+                {this.state.footerDetails.Menus.FooterMenuTwo && this.state.footerDetails.Menus.FooterMenuTwo.menuItems.map((item,key)=>{
+                  return <li key={key} ><Link to={this.setMenuLink(item)}>{item.name}</Link></li>
+                })}
+              
+              </ul>
+            </div>}
+            {/* <div className="box_one_area_2">
               <p>HELP DESK</p>
               <ul>
                 <li>
@@ -122,11 +128,9 @@ export class Footer extends Component {
                     ""
                   )}
                 </li>
-                {/* <li>Payments and Returns</li>
-                <li>Shipping option</li>
-                <li>Help/FAQ</li> */}
+              
               </ul>
-            </div>
+            </div> */}
           </div>
           <div className="second_box_profile">
             <p>PROFILE</p>

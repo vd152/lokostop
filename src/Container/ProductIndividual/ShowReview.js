@@ -26,9 +26,9 @@ import React, { Component } from 'react'
             <p className="reviewShow">
                {this.props.review.comment}
                     </p>
-            <div className="reviewImage">
+            {/* <div className="reviewImage">
                 <img alt='reload' src="https://images.unsplash.com/photo-1607359390930-206a99777fa1?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMnx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"></img>
-            </div>
+            </div> */}
         </div>
         )
     }

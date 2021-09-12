@@ -21,6 +21,7 @@ class IndividualProductDetails extends Component {
     },
     stock: [],
     selectedStockArray:[],
+    start: 0,
     stockId: null,
     stockPrice: -1,
     selectedImage: "",
@@ -30,6 +31,7 @@ class IndividualProductDetails extends Component {
 
    componentDidMount() {
     const {stock } = this.state
+    
      api.post('/product/stock/byproduct/get', {productId: this.props.match.params.id}).then(res=>{
       res.data.data.forEach(stk=>{
         stock[stk.name] = [stk.qty,stk.price,stk._id] 
@@ -39,13 +41,15 @@ class IndividualProductDetails extends Component {
       console.log(err)
       this.setState({loading: false})
     })
+
     this.setState({
       stock,
       footerDetails: this.props.footerData.Footer
         ? this.props.footerData
         : this.state.footerDetails,
-        loading: false
+        loading: false,
     });
+    console.log(this.props.productDetails.additionalImages)
   }
   setStock = () =>{
     //console.log(this.state.stock)
@@ -301,9 +305,13 @@ class IndividualProductDetails extends Component {
           {this.props.productDetails.additionalImages &&
           this.props.productDetails.additionalImages.length > 0 ? (
             <div className="similar_product_images">
-              <IoIosArrowUp id="upIconNew" />
+              {this.state.start > 0 &&
+              <IoIosArrowUp id="upIconNew"  onClick={(e) => {
+                this.setState({start: this.state.start-1})
+              }}/>
+  }
               <div className="similar_image_three_image_box">
-                {this.props.productDetails.additionalImages.map(
+                {this.props.productDetails.additionalImages.slice(this.state.start, 1000).map(
                   (image, key) => {
                     return (
                       <img
@@ -320,11 +328,15 @@ class IndividualProductDetails extends Component {
                   }
                 )}
               </div>
-
+                  {this.state.start + 4 < this.props.productDetails.additionalImages?.length &&
               <IoIosArrowDown
                 id="upIconNew"
                 style={{ marginTop: "1.684vw" }}
+                onClick={(e) => {
+                  this.setState({start: this.state.start+1})
+                }}
               ></IoIosArrowDown>
+  }
             </div>
           ) : (
             ""

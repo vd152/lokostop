@@ -112,8 +112,10 @@ class Product extends Component {
               className="Fav_icon wishlist-icon"
               style={{ color: "#9d9d9d" }}
               onClick={(e) => {
+                if(this.props.user.ID)
                 this.props.addToWishlist(this.state.product._id);
-
+                else
+                document.getElementById("pfp").click();
               }}
             />
           </div>}

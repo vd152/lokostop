@@ -28,7 +28,7 @@ class Page extends Component {
                     <p>{this.props.page.name}</p>
                     <hr />
                 </div>
-                <div className="mission_about" dangerouslySetInnerHTML={{__html: this.props.page.body}}>
+                <div className="mission_about p-5" dangerouslySetInnerHTML={{__html: this.props.page.body}}>
                 </div>
                 <Footer />
             </React.Fragment>
