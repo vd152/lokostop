@@ -35,6 +35,7 @@ class IndividualProduct extends Component {
       metaDescription: "Product",
       upSells: [],
       crossSells: [],
+      relatedProducts: []
     },
     review: {
       rating: 0,
@@ -324,6 +325,20 @@ class IndividualProduct extends Component {
             </div>
           </div>
         </div>
+        {this.state.productDetails.relatedProducts.length > 0 && (
+          <React.Fragment>
+            <div className="most_view_box">
+              <p className="most_viewd_text">RELATED PRODCUTS</p>
+              <hr id="line_view"></hr>
+            </div>
+
+            <div className="new_arrival_box">
+              {this.state.productDetails.relatedProducts.map((product,key)=>{
+                return <Product  key={key} product={product} category={false}/>
+              })}
+            </div>
+          </React.Fragment>
+        )}
         {this.state.productDetails.upSells.length > 0 && (
           <React.Fragment>
             <div className="most_view_box">

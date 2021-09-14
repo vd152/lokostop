@@ -24,6 +24,7 @@ import TwoColBanner from "../Component/Slider/TwoColBanner";
 import ThreeColBanner from "../Component/Slider/ThreeColBanner";
 import OneColBanner from "../Component/Slider/OneColBanner";
 import {Helmet} from "react-helmet";
+import CategoryRowBox from "../Component/Boxes/CategoryRowBox";
 
 class Home extends Component {  
 
@@ -73,8 +74,9 @@ class Home extends Component {
           ) : (
             ""
           )}
-
-          {/* <NewArrival products={[]}/> */}
+          {!this.props.allProductRowsLoading && 
+          <CategoryRowBox products={this.props.allProductRows[1]}/>
+  }
           {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[0]} />
   }
@@ -90,7 +92,7 @@ class Home extends Component {
           <Slider slides={this.props.store.Slider.Slides} settings={this.props.store.Slider.Settings}/>
   }
           <TwoColBanner />
-          {/* <CategoryBox /> */}
+          <CategoryBox />
           {!this.props.allProductRowsLoading && 
           <ProductRowBox tab={this.props.allProductRows[0].Tabs[2]} />
   }

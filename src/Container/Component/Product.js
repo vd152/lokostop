@@ -142,7 +142,7 @@ class Product extends Component {
             <p className="name_details_each_product">
               {this.state.product.name}
               <br />
-              {this.state.product.shortDescription? this.state.product.shortDescription: <div style={{visibility: "hidden"}}>space</div>}
+              {this.state.product.shortDescription? this.state.product.shortDescription: <span style={{visibility: "hidden"}}>space</span>}
             </p>
             <div className="price_of_product">
               {this.state.product.specialPrice != null &&

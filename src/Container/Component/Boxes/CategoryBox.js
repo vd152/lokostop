@@ -6,11 +6,7 @@ export class CategoryBox extends Component {
     render() {
         return (
             <div>
-                <div className="find_by_category_box">
-                    <p className="most_viewd_text">New arrivals</p>
-                    <hr id="line_category"></hr>
-                </div>
-                <div className="advert_image"><img src="https://i.pinimg.com/originals/37/44/42/374442641969a8df7e783978e169d580.jpg" alt=""></img></div>
+                
                 <div className="find_by_category_box">
                     <p className="most_viewd_text">BEST SELLING</p>
                     <hr id="line_category"></hr>

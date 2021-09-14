@@ -85,8 +85,7 @@
 .new_Arrivals {
   width: 93.009vw;
   height: 2.562vw;
-  margin-left: 2.343vw;
-  margin-top: 2.928vw;
+  margin: 2vw auto;
   display: grid;
   grid-template-columns: 9.663vw 52.05vw 25.988vw 5.49vw;
 }
@@ -101,13 +100,12 @@
   margin-left: 1.537vw;
   height: 0;
   margin-top: 1.098vw;
-  width: 50.512vw;
+  width: auto;
   border: 0.073vw solid grey;
 }
 .list_names {
   height: 2.562vw;
-  width: 23.426vw;
-  margin-left: 2.562vw;
+  width: auto;
 }
 .list_names ul {
   list-style-type: none;
@@ -128,21 +126,21 @@
   color: #3d3d3d;
 }
 #arrow_box {
-  width: 3.148vw;
   height: 0.732vw;
   margin-left: 1.83vw;
-  margin-top: 0.366vw;
+  display: flex;
 }
 #Arrow_forward {
   color: #5d5d5d;
   margin-left: 0;
-  font-size: 0.732vw;
+  font-size: 1em;
   cursor: pointer;
+
 }
 #Arrow_backward {
   color: #5d5d5d;
   margin-left: 0.732vw;
-  font-size: 0.732vw;
+  font-size: 1em;
   cursor: pointer;
 }
 .new_arrival_box {
@@ -159,14 +157,14 @@
   margin-left: -0.146vw;
   margin-top: 1.464vw;
   width: 20.205vw;
-  height: 29.649vw;
+  height: 30.845vw;
   display: grid;
   grid-template-rows: 20.351vw 9.444vw;
   position: relative;
 }
 .product_details_list:hover {
   /* width: 20.205vw; */
-  height: 31.845vw;
+  height: 30.845vw;
   grid-template-rows: 20.351vw 3.367vw 11.567vw;
 }
 .image_box {
