@@ -8,7 +8,8 @@ export const getCart = () => async(dispatch) => {
         dispatch({ type: actionTypes.GET_CART_REQUEST})
         let url = "/users/get/"+getUser()
         const {data} = await api.get(url)
-        data.data.Cart.forEach(item=>{
+        data.data.Cart = data.data.Cart.filter(item=>item.product != null)
+         data.data.Cart.forEach(item=>{
             item.couponDiscount = 0;
             item.totalPrice =item.product.options&&item.product.options.length>0?item.stock.price*item.qty: item.product.specialPrice
             ? item.product.specialPriceType == "Fixed"
@@ -20,6 +21,7 @@ export const getCart = () => async(dispatch) => {
             : item.product.price * item.qty;
             
         })
+        // console.log("cart",cart)
         dispatch({
             type: actionTypes.GET_CART_SUCCESS,
             payload: data.data.Cart
@@ -50,6 +52,7 @@ export const addToCart = (productId,qty,stockId, oldCart) => async(dispatch) => 
     try{ 
         dispatch({ type: actionTypes.ADD_CART_REQUEST})
         const {data} = await api.put('/customer/cart', {productId, qty,stockId})
+        data.data.Cart = data.data.Cart.filter(item=>item.product != null)
         data.data.Cart.forEach(item=>{
             item.couponDiscount = 0;
             item.totalPrice = item.product.specialPrice
@@ -73,6 +76,7 @@ export const addToCart = (productId,qty,stockId, oldCart) => async(dispatch) => 
             draggable: true,
           });
     }catch(err){
+      console.log(err)
         toast.error(
             `${
               err.response?.data?.message
@@ -98,6 +102,7 @@ export const updateCartQty = (productId, qty, stockId, oldCart) => async(dispatc
     try{
         dispatch({ type: actionTypes.ADD_CART_REQUEST})
         const {data} = await api.put('/customer/cart/increase', {productId, qty, stockId})
+        data.data.Cart = data.data.Cart.filter(item=>item.product != null)
         data.data.Cart.forEach(item=>{
             item.couponDiscount = 0;
             item.totalPrice = item.product.specialPrice
@@ -137,6 +142,7 @@ export const updateCartQty = (productId, qty, stockId, oldCart) => async(dispatc
           );
         dispatch({
             type: actionTypes.ADD_CART_FAIL,
+            oldCart,
             payload: "something went wrong"
         })
     }
@@ -145,6 +151,7 @@ export const deleteFromCart = (productId, stockId, oldCart) => async(dispatch) =
     try{
         dispatch({ type: actionTypes.DELETE_CART_REQUEST})
         const {data} = await api.delete('/customer/cart', {data:{productId,stockId}})
+        data.data.Cart = data.data.Cart.filter(item=>item.product != null)
         data.data.Cart.forEach(item=>{
             item.couponDiscount = 0;
             item.totalPrice = item.product.specialPrice
@@ -168,6 +175,7 @@ export const deleteFromCart = (productId, stockId, oldCart) => async(dispatch) =
             draggable: true,
           });
     }catch(err){
+      console.log(err)
         toast.error(
             `${
               err.response?.data?.message
@@ -184,6 +192,7 @@ export const deleteFromCart = (productId, stockId, oldCart) => async(dispatch) =
           );
         dispatch({
             type: actionTypes.DELETE_CART_FAIL,
+            oldCart,
             payload: "something went wrong"
         })
     }

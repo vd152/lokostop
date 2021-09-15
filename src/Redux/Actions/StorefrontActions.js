@@ -32,7 +32,21 @@ export const getProductTabs = () => async(dispatch) => {
         })
     }
 }
-
+export const getFeaturedCategoriesTabs = () => async(dispatch) => {
+    try{
+        dispatch({ type: actionTypes.GET_FEATURED_CATEGORIES_REQUEST})
+        const {data: {data}} = await api.post('/storefront/get', {selectArray: ["FeaturedCategories"]})
+        dispatch({
+            type: actionTypes.GET_FEATURED_CATEGORIES_SUCCESS,
+            payload: data[0].FeaturedCategories,
+        })
+    }catch(error){
+        dispatch({
+            type: actionTypes.GET_FEATURED_CATEGORIES_FAIL,
+            payload: "something went wrong"
+        })
+    }
+}
 export const getFeatures = () => async(dispatch) => {
     try{
         dispatch({ type: actionTypes.GET_FEATURES_REQUEST})

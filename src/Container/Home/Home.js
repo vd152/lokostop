@@ -6,7 +6,7 @@ import Footer from "../Component/Footer/Footer";
 import FindByCategory from "../Component/Boxes/FindByCategory";
 import Header01 from "../Component/Header/Header01";
 import React, { Component } from "react";
-import Search from '../Component/Header/Search'
+import Search from "../Component/Header/Search";
 import ProductRowBox from "../Component/Boxes/ProductRowBox";
 import SixImageSlider from "../Component/Slider/SixImageSlider";
 import ClientImage from "../Component/Slider/ClientImage";
@@ -16,39 +16,37 @@ import MostViewedBox from "../Component/Boxes/MostViewedBox";
 import TopClients from "../Component/Boxes/TopClients";
 import Loader from "../Loader/Loader";
 import { connect } from "react-redux";
-import {
-  getFeatures,
-  getBanners
-} from "../../Redux/Actions/StorefrontActions";
+import { getFeatures, getBanners } from "../../Redux/Actions/StorefrontActions";
 import TwoColBanner from "../Component/Slider/TwoColBanner";
 import ThreeColBanner from "../Component/Slider/ThreeColBanner";
 import OneColBanner from "../Component/Slider/OneColBanner";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import CategoryRowBox from "../Component/Boxes/CategoryRowBox";
 
-class Home extends Component {  
-
+class Home extends Component {
   componentDidMount() {
-    this.props.getBanners()
+    this.props.getBanners();
   }
   render() {
-    if (
-      this.props.bannersLoading 
-    ) {
+    if (this.props.bannersLoading) {
       return <Loader />;
     } else
       return (
         <React.Fragment>
           <Helmet>
-                    <title>{this.props.store.WelcomeText}</title>
-                </Helmet>
+            <title>{this.props.store.WelcomeText}</title>
+          </Helmet>
           <Header01 />
           <Header />
-          <Search home={true}/>
-          {this.props.store.Slider && 
-          <Slider slides={this.props.store.Slider.Slides} settings={this.props.store.Slider.Settings}/>
-  }
-          {!this.props.featuresLoading && this.props.allFeatures.Features &&
+          <Search home={true} />
+          {this.props.store.Slider && (
+            <Slider
+              slides={this.props.store.Slider.Slides}
+              settings={this.props.store.Slider.Settings}
+            />
+          )}
+          {!this.props.featuresLoading &&
+          this.props.allFeatures.Features &&
           this.props.allFeatures.Features.SectionStatus ? (
             <div className="Free_box">
               {this.props.allFeatures.Features.Features.filter((feature) => {
@@ -74,32 +72,35 @@ class Home extends Component {
           ) : (
             ""
           )}
-          {!this.props.allProductRowsLoading && 
-          <CategoryRowBox products={this.props.allProductRows[1]}/>
-  }
-          {!this.props.allProductRowsLoading && 
-          <ProductRowBox tab={this.props.allProductRows[0].Tabs[0]} />
-  }
+          {!this.props.allProductRowsLoading && (
+            <CategoryRowBox products={this.props.allProductRows[1]} />
+          )}
+          {!this.props.allProductRowsLoading && (
+            <ProductRowBox tab={this.props.allProductRows[0].Tabs[0]} />
+          )}
           <ThreeColBanner />
           {/* <MostViewedBox /> */}
           <FindByCategory />
-          {!this.props.allProductRowsLoading && 
-          <ProductRowBox tab={this.props.allProductRows[0].Tabs[1]} />
-  }
+          {!this.props.allProductRowsLoading && (
+            <ProductRowBox tab={this.props.allProductRows[0].Tabs[1]} />
+          )}
           <TopClients />
           <ClientImage />
-          {this.props.store.Slider && 
-          <Slider slides={this.props.store.Slider.Slides} settings={this.props.store.Slider.Settings}/>
-  }
+          {this.props.store.Slider && (
+            <Slider
+              slides={this.props.store.Slider.Slides}
+              settings={this.props.store.Slider.Settings}
+            />
+          )}
           <TwoColBanner />
-          <CategoryBox />
-          {!this.props.allProductRowsLoading && 
-          <ProductRowBox tab={this.props.allProductRows[0].Tabs[2]} />
-  }
+          {!this.props.featcatloading && <CategoryBox tab={this.props.featcatrow}/>}
+          {!this.props.allProductRowsLoading && (
+            <ProductRowBox tab={this.props.allProductRows[0].Tabs[2]} />
+          )}
           <OneColBanner />
-          {!this.props.allProductRowsLoading && 
-          <ProductRowBox tab={this.props.allProductRows[0].Tabs[3]} />
-  }
+          {!this.props.allProductRowsLoading && (
+            <ProductRowBox tab={this.props.allProductRows[0].Tabs[3]} />
+          )}
           <SixImageSlider />
           <Footer />
         </React.Fragment>
@@ -111,10 +112,12 @@ const mapStateToProps = (state) => {
   return {
     allProductRows: state.getProductTabs.allTabs,
     allProductRowsLoading: state.getProductTabs.loading,
+    featcatrow: state.getFeaturedCategoriesTabs.featuredCategories,
+    featcatloading: state.getFeaturedCategoriesTabs.loading,
     featuresLoading: state.getFeatures.loading,
     allFeatures: state.getFeatures.features,
     bannersLoading: state.getBanners.loading,
-    store: state.getStore.store
+    store: state.getStore.store,
   };
 };
 export default connect(mapStateToProps, { getFeatures, getBanners })(Home);

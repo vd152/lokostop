@@ -9,7 +9,6 @@ class CategoryRowBox extends Component {
         tabs: []
     }
     componentDidMount(){
-        console.log(this.props.products.Tabs)
         const {select, tabs} = this.state;
         this.props.products?.Tabs?.forEach(tab =>{
             select[tab._id] = tab.Products

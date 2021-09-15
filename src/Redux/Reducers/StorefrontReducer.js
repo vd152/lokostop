@@ -65,7 +65,27 @@ export const getProductTabsReducer = (state = { allTabs: [{SectionStatus: false}
             return state;
     }
 }
-
+export const getFeaturedCategoriesTabsReducer = (state = { featuredCategories: {SectionStatus: false}, loading: true}, action) => {
+    switch(action.type){
+        case actionTypes.GET_FEATURED_CATEGORIES_REQUEST:
+            return{
+                loading: true,
+                featuredCategories: {SectionStatus: false}
+            }
+        case actionTypes.GET_FEATURED_CATEGORIES_SUCCESS:
+            return {
+                loading: false,
+                featuredCategories: action.payload
+            }
+        case actionTypes.GET_FEATURED_CATEGORIES_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}
 export const getFeaturesReducer = (state = { features: {}}, action) => {
     switch(action.type){
         case actionTypes.GET_FEATURES_REQUEST:

@@ -119,10 +119,10 @@
   @media(max-width:425px){
     .image_about {
       height: auto;
-      width: 90vw;
+      /* width: 90vw; */
       display: flex;
       flex-direction: column;
-      margin-left: 2.5vw;
+      /* margin-left: 2.5vw; */
     }
 
     .two-col-banner .two-banner {

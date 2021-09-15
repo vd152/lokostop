@@ -83,11 +83,11 @@
   height:80% !important;
   }
 .new_Arrivals {
-  width: 93.009vw;
+  width: auto;
   height: 2.562vw;
-  margin: 2vw auto;
-  display: grid;
-  grid-template-columns: 9.663vw 52.05vw 25.988vw 5.49vw;
+  margin: 2.343vw;
+  display: flex;
+  /* grid-template-columns: 9.663vw 52.05vw 25.988vw 5.49vw; */
 }
 .new_Arrival_text {
   width: 9.663vw;
@@ -99,6 +99,7 @@
 #line_1 {
   margin-left: 1.537vw;
   height: 0;
+  flex-grow: 1;
   margin-top: 1.098vw;
   width: auto;
   border: 0.073vw solid grey;
@@ -308,7 +309,7 @@
   grid-template-columns: 16.911vw 72.474vw 4.685vw;
 }
 .most_viewd_text {
-  width: 16.911vw;
+  width: auto;
   height: 2.05vw;
   font: italic normal bold 1.464vw/2.196vw Poppins;
   color: #3d3d3d;
@@ -599,18 +600,19 @@
   margin-left: 0.878vw;
 }
 .find_by_category_box {
-  width: 93.009vw;
+  width: auto;
   height: 2.562vw;
-  margin-left: 2.343vw;
   margin-top: 2.928vw;
-  display: grid;
-  grid-template-columns: 12.958vw 79.941vw;
+  margin: 2.343vw;
+  display: flex;
+  /* grid-template-columns: 12.958vw 79.941vw; */
 }
 #line_category {
   margin-left: 1.537vw;
   height: 0;
   margin-top: 1.098vw;
-  width: 100%;
+  width: auto;
+  flex-grow: 1;
   border: 0.073vw solid grey;
 }
 .offers {
@@ -716,7 +718,7 @@
 }
 .particular_category_choice p {
   margin-top: 0;
-  width: 12.006vw;
+  width: auto;
   height: 2.05vw;
   font: normal normal normal 1.464vw/2.196vw Poppins;
   font-weight: 600;
@@ -726,14 +728,14 @@
   margin-left: 0.366vw;
   height: 0;
   margin-top: 1.171vw;
-  width: 5.564vw;
+  flex-grow: 1;
   border: 0.073vw solid gray;
 }
 
 #arrow_box_1 {
-  width: 3.148vw;
-  height: 0.732vw;
-  margin-left: 0.586vw;
+  width: auto;
+  height: 100%;
+  display: flex;
   margin-top: 0.366vw;
 }
 .clients_name {
@@ -1193,7 +1195,7 @@
     display: flex;
     margin-left: 3.343vw;
     margin-top: 3.5vw;
-    width: fit-content;
+    width: auto;
   }
   #line_view {
     width: 52.059vw;
@@ -1557,7 +1559,7 @@
   }
   .find_by_category_box {
     margin-top: 6.5vw;
-    width: fit-content;
+    width: auto;
     justify-content: none;
   }
   .Compare_Icon {

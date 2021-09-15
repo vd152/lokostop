@@ -35,8 +35,8 @@ class CartItem extends Component {
                     <td className="product_image1">
                       <img
                         src={
-                          product.baseImage && product.baseImage.image
-                            ? siteUrl + product.baseImage.image
+                          product?.baseImage && product?.baseImage?.image
+                            ? siteUrl + product?.baseImage.image
                             : "https://via.placeholder.com/150"
                         }
                         alt="Reload"
@@ -82,7 +82,10 @@ class CartItem extends Component {
                     </td>
                     <td className="product_quantity1">
                       <FiMinusCircle id="minus_icon" onClick={(e) => {
-                        this.props.updateCartQty(product._id, qty - 1,stock && stock._id?stock._id:null, this.props.cart);
+                        if(qty-1 == 0){
+                          this.props.deleteFromCart(product._id, stock && stock._id?stock._id:null, this.props.cart); 
+                        }else
+                          this.props.updateCartQty(product._id, qty - 1,stock && stock._id?stock._id:null, this.props.cart);
                       }} />
                       <p className="product_quant_para">{qty}</p>
                       <IoAddCircleOutline

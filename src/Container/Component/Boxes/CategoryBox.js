@@ -2,13 +2,17 @@ import Product from '../Product'
 import React, { Component } from 'react'
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-export class CategoryBox extends Component {
+class CategoryBox extends Component {
+    componentDidMount() {
+        // console.log(this.props.tab)
+    }
     render() {
         return (
-            <div>
+            this.props.tab.SectionStatus == "true"?
+            <React.Fragment>
                 
                 <div className="find_by_category_box">
-                    <p className="most_viewd_text">BEST SELLING</p>
+                    <p className="most_viewd_text">{this.props.tab.SectionTitle}</p>
                     <hr id="line_category"></hr>
                 </div>
                 <div className='category_dash_outer_box'>
@@ -22,6 +26,7 @@ export class CategoryBox extends Component {
                             </div>
                         </div>
                         <Product />
+                        <Product />
                     </div>
                     <div className="category_dash">
                         <div className="particular_category_choice">
@@ -32,6 +37,7 @@ export class CategoryBox extends Component {
                                 <IoIosArrowForward id="Arrow_backward" />
                             </div>
                         </div>
+                        <Product />
                         <Product />
                     </div>
                     <div className="category_dash">
@@ -44,6 +50,7 @@ export class CategoryBox extends Component {
                             </div>
                         </div>
                         <Product />
+                        <Product />
                     </div>
                     <div className="category_dash">
                         <div className="particular_category_choice">
@@ -55,9 +62,10 @@ export class CategoryBox extends Component {
                             </div>
                         </div>
                         <Product />
+                        <Product />
                     </div>
                 </div>
-            </div>
+            </React.Fragment>: <React.Fragment></React.Fragment>
         )
     }
 }
