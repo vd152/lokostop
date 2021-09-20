@@ -7,7 +7,9 @@ class CategoryRowBox extends Component {
         select: {},
         products: [],
         tabs: [],
-        start: 0
+        start: 0,
+        end: 4,
+        loading: false,
     }
     componentDidMount(){
         const {select, tabs} = this.state;
@@ -40,18 +42,20 @@ class CategoryRowBox extends Component {
                     </div>
                     <div id="arrow_box">
                         <IoIosArrowBack id="Arrow_forward"onClick={(e)=>{
-                            this.setState({start: this.state.start-4})
+                            this.setState({load: true})
+                            this.setState({start: this.state.start-4, end: this.state.end -4},()=>this.setState({load: false}))
                         }} />
                         <IoIosArrowForward id="Arrow_backward" onClick={(e)=>{
-                            this.setState({start: this.state.start+4})
+                            this.setState({load: true})
+                            this.setState({start: this.state.start+4, end: this.state.end+4},()=>this.setState({load: false}))
                         }}/>
                     </div>
                 </div>
                 <div className="new_arrival_box">
-                    {this.state.products?.slice(this.state.start, 4).map((product,key)=>{
+                    {!this.state.load && this.state.products?.slice(this.state.start, this.state.end).map((product,key)=>{
                         return <Product key={key} product={product} category={false}/>
                     })}
-                    {this.state.products.length == 0 && <div>No Products Found</div>}
+                    {(this.state.products.length == 0 || this.state.products?.slice(this.state.start, this.state.end).length == 0)  && <div>No Products Found</div>}
                    
                 </div>
                 </React.Fragment>: <React.Fragment></React.Fragment>

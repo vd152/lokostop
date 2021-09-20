@@ -8,7 +8,7 @@ import { siteUrl} from '../../Utils/util'
 
 class CartItem extends Component {
   render() {
-    console.log(this.props.cart)
+    // console.log(this.props.cart)
     return (
       <div className="tble_box">
         <div className="scroll_x_box">

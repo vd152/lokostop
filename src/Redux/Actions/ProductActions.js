@@ -20,7 +20,6 @@ export const getTags = () => async(dispatch) => {
 export const postReview = (review, productId) =>{
     try{
         const {data } = api.post('/review', {data:review, productId, requiredPermission: "Create Review"})
-        console.log(data)
     }catch(err){
         console.log(err)
     }

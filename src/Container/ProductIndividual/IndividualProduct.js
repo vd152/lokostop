@@ -164,7 +164,7 @@ class IndividualProduct extends Component {
               </button>
             </li>
           </ul>
-          <div className="tab-content" id="myTabContent">
+          <div className="tab-content p-3" id="myTabContent">
             <div
               className="tab-pane fade show active"
               id="home"
@@ -288,7 +288,7 @@ class IndividualProduct extends Component {
                           }}
                         ></textarea>
                         <div className="count_attach">
-                          <IoIosAttach className="attach" />
+                          {/* <IoIosAttach className="attach" /> */}
                           <p className="no_count">
                             {this.state.review.comment.length}/200
                           </p>

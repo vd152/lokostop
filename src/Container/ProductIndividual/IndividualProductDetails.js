@@ -49,7 +49,7 @@ class IndividualProductDetails extends Component {
         : this.state.footerDetails,
         loading: false,
     });
-    console.log(this.props.productDetails.additionalImages)
+    // console.log(this.props.productDetails.additionalImages)
   }
   setStock = () =>{
     //console.log(this.state.stock)
@@ -192,7 +192,7 @@ class IndividualProductDetails extends Component {
                     selectedStockArray[unique].splice(key,1)
                   }else
                     selectedStockArray[unique][key] = value.label
-                  console.log(selectedStockArray)
+                  // console.log(selectedStockArray)
                   this.setState({selectedStockArray})
                 }}>
                 </input>

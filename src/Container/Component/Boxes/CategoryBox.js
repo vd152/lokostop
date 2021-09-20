@@ -3,12 +3,15 @@ import React, { Component } from 'react'
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 class CategoryBox extends Component {
-    componentDidMount() {
-        // console.log(this.props.tab)
+    state={
+        start:[0,0,0,0],
+        end:[2,2,2,2],
+        load: false
     }
+
     render() {
         return (
-            this.props.tab.SectionStatus == "true"?
+            this.props.tab.SectionStatus != "true"?
             <React.Fragment>
                 
                 <div className="find_by_category_box">
@@ -16,54 +19,38 @@ class CategoryBox extends Component {
                     <hr id="line_category"></hr>
                 </div>
                 <div className='category_dash_outer_box'>
-                    <div className="category_dash">
-                        <div className="particular_category_choice">
-                            <p>Air conditioner</p>
-                            <hr id="line_for_particular_box_category"></hr>
-                            <div id="arrow_box_1">
-                                <IoIosArrowBack id="Arrow_forward" />
-                                <IoIosArrowForward id="Arrow_backward" />
-                            </div>
+
+                {this.props.tab?.Categories?.map((item,key)=>{
+                    return <div className="category_dash" key={key}>
+                    <div className="particular_category_choice">
+                        <p>{item.Category?.name}</p>
+                        <hr id="line_for_particular_box_category"></hr>
+                        <div id="arrow_box_1">
+                            <IoIosArrowBack id="Arrow_forward" onClick={(e)=>{
+                                this.setState({load: true})
+                                let newstart = this.state.start
+                                let newend = this.state.end
+                                newstart[key] = newstart[key]-2;
+                                newend[key] = newend[key]-2
+                            this.setState({start: newstart, end: newend},()=>this.setState({load: false}));
+                        }}/>
+                            <IoIosArrowForward id="Arrow_backward" onClick={(e)=>{
+                                this.setState({load: true})
+                                let newstart = this.state.start
+                                let newend = this.state.end
+                                newstart[key] = newstart[key]+2;
+                                newend[key] = newend[key]+2
+                            this.setState({start: newstart, end: newend},()=>this.setState({load: false}));
+                        }}/>
                         </div>
-                        <Product />
-                        <Product />
                     </div>
-                    <div className="category_dash">
-                        <div className="particular_category_choice">
-                            <p>LED Television</p>
-                            <hr id="line_for_particular_box_category"></hr>
-                            <div id="arrow_box_1">
-                                <IoIosArrowBack id="Arrow_forward" />
-                                <IoIosArrowForward id="Arrow_backward" />
-                            </div>
-                        </div>
-                        <Product />
-                        <Product />
+                    {!this.state.load && item.Products?.slice(this.state.start[key], this.state.end[key]).map((product,key)=>{
+                        return <Product key={key} category={false} product={product}/>
+                    })}
+                    {item.Products?.slice(this.state.start[key], this.state.end[key]).length == 0 && <div className="text-center p-2">No Products Found</div>}
                     </div>
-                    <div className="category_dash">
-                        <div className="particular_category_choice">
-                            <p>Microwave</p>
-                            <hr id="line_for_particular_box_category"></hr>
-                            <div id="arrow_box_1">
-                                <IoIosArrowBack id="Arrow_forward" />
-                                <IoIosArrowForward id="Arrow_backward" />
-                            </div>
-                        </div>
-                        <Product />
-                        <Product />
-                    </div>
-                    <div className="category_dash">
-                        <div className="particular_category_choice">
-                            <p>Accessories</p>
-                            <hr id="line_for_particular_box_category"></hr>
-                            <div id="arrow_box_1">
-                                <IoIosArrowBack id="Arrow_forward" />
-                                <IoIosArrowForward id="Arrow_backward" />
-                            </div>
-                        </div>
-                        <Product />
-                        <Product />
-                    </div>
+                })}
+                    
                 </div>
             </React.Fragment>: <React.Fragment></React.Fragment>
         )

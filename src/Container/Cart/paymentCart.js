@@ -67,7 +67,7 @@ class paymentCart extends Component {
     }
 
     const { amount, orderId: order_id, currency } = result.data;
-    console.log(order_id);
+    // console.log(order_id);
     const options = {
       key: "rzp_test_6qcb5x2Yt2yOUO", // Enter the Key ID generated from the Dashboard
       amount: amount.toString(),

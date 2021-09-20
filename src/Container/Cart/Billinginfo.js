@@ -275,7 +275,7 @@ class Billinginfo extends Component {
                 <p className="head_bill_reciever">Or choose one from below</p>
                 {this.state.data.Address.map((address, key) => {
                   return (
-                    <div className="form-check" key={key}>
+                    <div className="form-check " style={{paddingLeft: "2.5em"}} key={key}>
                       <input
                         className="form-check-input colorradio"
                         type="radio"
