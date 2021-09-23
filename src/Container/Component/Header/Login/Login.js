@@ -198,7 +198,7 @@ class Login extends Component {
                       <div className="signup_signinput_box">
                         <input
                           className="signinput signup_signinput"
-                          type="text"
+                          type="password"
                           name="Password"
                           placeholder="Enter Password"
                           value={this.state.user.Password}
@@ -208,7 +208,7 @@ class Login extends Component {
                         />
                         <input
                           className="signinput signup_signinput"
-                          type="text"
+                          type="password"
                           name="Confirm"
                           value={this.state.user.Confirm}
                           placeholder="Re-enter password"

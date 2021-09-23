@@ -1,6 +1,4 @@
 import Header from "../Component/Header/Header";
-import { FaShippingFast, FaRegClock } from "react-icons/fa";
-import { MdSettingsBackupRestore, MdPayment } from "react-icons/md";
 import "./Home.css";
 import Footer from "../Component/Footer/Footer";
 import FindByCategory from "../Component/Boxes/FindByCategory";
@@ -22,6 +20,7 @@ import ThreeColBanner from "../Component/Slider/ThreeColBanner";
 import OneColBanner from "../Component/Slider/OneColBanner";
 import { Helmet } from "react-helmet";
 import CategoryRowBox from "../Component/Boxes/CategoryRowBox";
+import PopularBox from "../Component/Boxes/PopularBox";
 
 class Home extends Component {
   componentDidMount() {
@@ -101,6 +100,7 @@ class Home extends Component {
           {!this.props.allProductRowsLoading && (
             <ProductRowBox tab={this.props.allProductRows[0].Tabs[3]} />
           )}
+          <PopularBox />
           <SixImageSlider />
           <Footer />
         </React.Fragment>

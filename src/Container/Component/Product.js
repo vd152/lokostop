@@ -128,7 +128,7 @@ class Product extends Component {
                   
                   <Link
                     key={key}
-                    to={"/categories/" + category.url + "/" + category._id}
+                    to={"/categories/" +category.name + "/" + category.url + "/" + category._id}
                   >
                     <p className="category_name_product">{category.name}</p>{" "}
                   </Link>

@@ -25,7 +25,7 @@ class CategoryRowBox extends Component {
     }
     render() {
         return (
-            this.props.products.SectionStatus == "true"?
+            this.props.products.SectionStatus ?
             <React.Fragment>
                 <div className="new_Arrivals">
                     <p className="new_Arrival_text">New Arrivals</p>

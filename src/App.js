@@ -25,7 +25,8 @@ import {
   getBrands,
   getProductTabs,
   getFeatures,
-  getFeaturedCategoriesTabs
+  getFeaturedCategoriesTabs,
+  getTopCategories
 } from "./Redux/Actions/StorefrontActions";
 import { getMenus } from "./Redux/Actions/MenuActions";
 import { getUser, getUserOrders } from "./Redux/Actions/UserActions";
@@ -54,6 +55,7 @@ class App extends React.Component {
     this.props.getProductTabs();
     this.props.getFeaturedCategoriesTabs()
     this.props.getBrands();
+    this.props.getTopCategories()
     this.props.getTags();
     this.props.getSettings();
   };
@@ -140,5 +142,6 @@ export default connect(mapStateToProps, {
   getFeaturedCategoriesTabs,
   getFeatures,
   getSettings,
-  getUserOrders
+  getUserOrders,
+  getTopCategories
 })(App);

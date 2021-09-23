@@ -72,7 +72,7 @@ class CartItem extends Component {
                     </td>
                     <td className="product_price1">
                       Rs.
-                      {product.options.length>0?stock.price.toString():product.specialPrice
+                      {product?.options?.length>0?stock.price?.toString():product.specialPrice
                         ? product.specialPriceType == "Fixed"
                           ? product.specialPrice
                           : product.price.toString() -

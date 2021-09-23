@@ -2,7 +2,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { getTagsReducer, compareProductsReducer} from './Reducers/ProductReducers'
-import {getGeneralReducer, getFooterReducer, getProductTabsReducer, getFeaturedCategoriesTabsReducer, getFeaturesReducer, getLogosReducer, getBannersReducer, getBrandsReducer, getTopBrandsReducer} from './Reducers/StorefrontReducer'
+import {getGeneralReducer, getFooterReducer, getProductTabsReducer, getFeaturedCategoriesTabsReducer, getFeaturesReducer, getLogosReducer, getBannersReducer, getBrandsReducer, getTopBrandsReducer, getTopCategoriesReducer} from './Reducers/StorefrontReducer'
 import {getAllCategoriesReducer, getSectionProductsReducer} from './Reducers/CategoryReducers'
 import {getPageReducer} from './Reducers/PageReducers'
 import {loginUser, getUserDetailsReducer, editUserDetailsReducer, userOrdersReducers} from './Reducers/UserReducers'
@@ -33,6 +33,7 @@ const reducers = combineReducers({
     getBanners: getBannersReducer,
     getBrands: getBrandsReducer,
     getTopBrands: getTopBrandsReducer,
+    getTopCategories: getTopCategoriesReducer,
     saveOrder: saveOrderReducer,
     getSettings: getSettingsReducer,
     getBlogs: getBlogsReducer,

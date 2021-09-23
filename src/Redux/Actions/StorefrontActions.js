@@ -148,3 +148,20 @@ export const getGeneral = () => async(dispatch) => {
         })
     }
 }
+
+export const getTopCategories = () => async(dispatch) => {
+    try{
+        dispatch({ type: actionTypes.GET_TOP_CATEGORIES_REQUEST})
+        const {data: {data}} = await api.post('/storefront/get', {selectArray: ["TopCategories"]})
+        
+        dispatch({
+            type: actionTypes.GET_TOP_CATEGORIES_SUCCESS,
+            payload: data[0]
+        })
+    }catch(error){
+        dispatch({
+            type: actionTypes.GET_TOP_CATEGORIES_FAIL,
+            payload: "something went wrong"
+        })
+    }
+}

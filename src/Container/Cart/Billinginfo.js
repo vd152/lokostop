@@ -6,6 +6,7 @@ import { Link, Redirect } from "react-router-dom";
 import { saveOrderDetails } from "../../Redux/Actions/OrderActions";
 import api from "../../Apis/api";
 import Loader from "../Loader/Loader";
+import Validate from '../../Utils/Validation'
 class Billinginfo extends Component {
   state = {
     data: {
@@ -49,7 +50,8 @@ class Billinginfo extends Component {
       LocalPickup:{},
       FlatRate:{}
     },
-    redirect: false
+    redirect: false,
+    errors:[]
   };
   componentDidMount() {
     let address = this.props.user.Address ? this.props.user.Address : [];
@@ -312,12 +314,13 @@ class Billinginfo extends Component {
                   {this.state.selected == -1 && !this.props.savedOrder.data? (
                     <p>Your address will be shown here..</p>
                   ) : (
+                    
                     <React.Fragment>
                       <p>{this.state.selectedAddress.AddressLine1}</p>
                       <p>{this.state.selectedAddress.AddressLine2}</p>
                       <p>
-                        {this.state.selectedAddress.City},{" "}
-                        {this.state.selectedAddress.State},{" "}
+                        {this.state.selectedAddress.City}{this.state.selectedAddress.City && ", "}
+                        {this.state.selectedAddress.State}{this.state.selectedAddress.State && ", "}
                         {this.state.selectedAddress.Country}
                       </p>
                       <p>{this.state.selectedAddress.Pin}</p>
@@ -425,17 +428,48 @@ class Billinginfo extends Component {
                   tmp.StockId = item.stock && item.stock._id?item.stock._id:null
                   items.push(tmp)
                 })
-                this.props.saveOrderDetails({ ...this.props.savedOrder, ItemsOrdered: items,totalOrderAmount: this.getSubtotal()+ this.state.sendData.ShippingPrice-this.state.sendData.Discount });
-                if(this.props.cart.length>0)
-                { console.log("here")
-                this.setState({redirect: true})
+                const {errors, sendData} = this.state
+                let required = ["Phone", "Email", "Receiver"]
+                required.forEach(val=>{
+                  if (!errors.includes(val) && !Validate.validateNotEmpty(sendData[val])) {
+                    errors.push(val);
+                    this.setState({ errors });
+                  } else if (
+                    errors.includes(val) &&
+                    Validate.validateNotEmpty(sendData[val])
+                  ) {
+                    errors.splice(errors.indexOf(val), 1);
+                    this.setState({ errors });
+                  }
+                })
+                let addressreq = ["AddressLine1", "AddressLine2", "Country", "State", "City", "Pin"]
+                addressreq.forEach(val=>{
+                  if (!errors.includes(val) && !Validate.validateNotEmpty(sendData.Address.BillingAddress[val])) {
+                    errors.push(val);
+                    this.setState({ errors });
+                  } else if (
+                    errors.includes(val) &&
+                    Validate.validateNotEmpty(sendData.Address.BillingAddress[val])
+                  ) {
+                    errors.splice(errors.indexOf(val), 1);
+                    this.setState({ errors });
+                  }
+                })
+                if(errors.length == 0){
+                  this.props.saveOrderDetails({ ...this.props.savedOrder, ItemsOrdered: items,totalOrderAmount: this.getSubtotal()+ this.state.sendData.ShippingPrice-this.state.sendData.Discount });
+                  if(this.props.cart.length>0)
+                  { 
+                  this.setState({redirect: true})
+                  }
                 }
+                
               }}
             >
               Proceed to Payment
             </button>
           {/* </Link> */}
         </div>
+        {this.state.errors.length > 0 && <div className="alert alert-danger text-center m-3">Please fill the following: {this.state.errors.join(", ")}</div>}
       </React.Fragment>
     );
   } 

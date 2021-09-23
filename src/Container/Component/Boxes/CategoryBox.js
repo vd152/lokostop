@@ -8,10 +8,10 @@ class CategoryBox extends Component {
         end:[2,2,2,2],
         load: false
     }
-
+    
     render() {
         return (
-            this.props.tab.SectionStatus != "true"?
+            this.props.tab.SectionStatus ?
             <React.Fragment>
                 
                 <div className="find_by_category_box">

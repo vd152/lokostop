@@ -197,3 +197,26 @@ export const getTopBrandsReducer = (state = { topBrands: {TopBrands:{TopBrands:[
             return state;
     }
 }
+
+export const getTopCategoriesReducer = (state = { TopCategories: {TopCategories:{TopCategories:[], SectionStatus: false}}}, action) => {
+    switch(action.type){
+        case actionTypes.GET_TOP_CATEGORIES_REQUEST:
+            return{
+                loading: true,
+                TopCategories: {TopCategories:{TopCategories:[]}}
+            }
+        case actionTypes.GET_TOP_CATEGORIES_SUCCESS:
+            return {
+                loading: false,
+                TopCategories: action.payload
+            }
+        case actionTypes.GET_TOP_CATEGORIES_FAIL:
+            return {
+                loading: false,
+                TopCategories:{TopCategories:{TopCategories:[]}},
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}

@@ -9,14 +9,14 @@ class AddressProfile extends Component {
     disabled: true,
     data: {
       Address: [
-        {
-          AddressLine1: "",
-          AddressLine2: "",
-          Country: "",
-          State: "",
-          City: "",
-          Pin: "",
-        },
+        // {
+        //   AddressLine1: "",
+        //   AddressLine2: "",
+        //   Country: "",
+        //   State: "",
+        //   City: "",
+        //   Pin: "",
+        // },
       ],
     },
     selected: 0
@@ -42,6 +42,7 @@ class AddressProfile extends Component {
         City: "",
         Pin: "",
       })
+      document.querySelector("#edit-add").click()
       this.setState({ data},()=>{this.setState({selected: data.Address.length-1})})
   }
   setDefault = () =>{
@@ -62,7 +63,7 @@ class AddressProfile extends Component {
       <div>
         <div className="headingPersonalEdit">
           <p className="headPersonal">My Address</p>
-          <p className="headedit" onClick={this.handleEditClick.bind(this)}>
+          <p className="headedit" id="edit-add" onClick={this.handleEditClick.bind(this)}>
             Edit
           </p>
         </div>
@@ -73,7 +74,7 @@ class AddressProfile extends Component {
               name="AddressLine1"
               id="firstLine"
               placeholder="First Line"
-              value={this.state.data.Address[this.state.selected].AddressLine1}
+              value={this.state.data.Address[this.state.selected]?.AddressLine1}
               className="personalInput address_personalInput_line w-100"
               disabled={this.state.disabled ? "disabled" : ""}
               onChange={(e)=>{
@@ -88,7 +89,7 @@ class AddressProfile extends Component {
               id="SecondLine"
               placeholder="Second Line"
               className="personalInput address_personalInput_line w-100"
-              value={this.state.data.Address[this.state.selected].AddressLine2}
+              value={this.state.data.Address[this.state.selected]?.AddressLine2}
               disabled={this.state.disabled ? "disabled" : ""}
               onChange={(e)=>{
                 this.setData(e.target.name, e.target.value);
@@ -101,7 +102,7 @@ class AddressProfile extends Component {
               name="City"
               id="City"
               placeholder="City"
-              value={this.state.data.Address[this.state.selected].City}
+              value={this.state.data.Address[this.state.selected]?.City}
               className="personalInput address_personalInput"
               disabled={this.state.disabled ? "disabled" : ""}
               onChange={(e)=>{
@@ -113,7 +114,7 @@ class AddressProfile extends Component {
               name="State"
               id="State"
               placeholder="State"
-              value={this.state.data.Address[this.state.selected].State}
+              value={this.state.data.Address[this.state.selected]?.State}
               className="personalInput address_personalInput"
               disabled={this.state.disabled ? "disabled" : ""}
               onChange={(e)=>{
@@ -126,7 +127,7 @@ class AddressProfile extends Component {
               type="text"
               name="Country"
               id="Landmark"
-              value={this.state.data.Address[this.state.selected].Country}
+              value={this.state.data.Address[this.state.selected]?.Country}
               placeholder="Country"
               className="personalInput address_personalInput"
               disabled={this.state.disabled ? "disabled" : ""}
@@ -140,7 +141,7 @@ class AddressProfile extends Component {
               id="PinCode"
               placeholder="Pin Code"
               className="personalInput address_personalInput"
-              value={this.state.data.Address[this.state.selected].Pin}
+              value={this.state.data.Address[this.state.selected]?.Pin}
               disabled={this.state.disabled ? "disabled" : ""}
               onChange={(e)=>{
                 this.setData(e.target.name, e.target.value);

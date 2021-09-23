@@ -143,7 +143,7 @@ class ProfileIndividual extends Component {
                         </div>
                     </div>
                 </div >
-                {/* <PopularBox /> */}
+                <PopularBox />
                 <Footer></Footer>
             </React.Fragment >
         )

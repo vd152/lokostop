@@ -927,6 +927,7 @@
 }
 .image_popular img {
   height: 100%;
+  object-fit: cover;
   width: 100%;
 }
 .name_popular_cat {
