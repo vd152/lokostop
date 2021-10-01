@@ -8,14 +8,14 @@ class SixImageSlider extends Component {
             !this.props.bannersLoading && this.props.banners?.Banners && this.props.banners?.Banners[5]?.SectionStatus ? 
             <div className="slide_box">
                     <div className="slider_box_one">
-                        {this.props.banners?.Banners[5]?.Banners.slice(0,3).map((banner, key)=>{
+                        {this.props.banners?.Banners[5]?.Banners.slice(0,6).map((banner, key)=>{
                             return <Link  to={banner.CalltoActionURL} key={key} target={banner.OpenInNewWindow?"_blank":"_self"}>
                             <img  src={banner.Image.image?siteUrl+banner.Image.image: "https://via.placeholder.com/150"} alt="Reload" />
                             </Link>
                         })}
                     </div>
                     <div className="slider_box_two">
-                    {this.props.banners?.Banners[5]?.Banners.slice(3,6).map((banner, key)=>{
+                    {this.props.banners?.Banners[5]?.Banners.slice(0,6).map((banner, key)=>{
                             return <Link  to={banner.CalltoActionURL} key={key} target={banner.OpenInNewWindow?"_blank":"_self"}>
                             <img  src={banner.Image.image?siteUrl+banner.Image.image: "https://via.placeholder.com/150"} alt="Reload" />
                             </Link>
