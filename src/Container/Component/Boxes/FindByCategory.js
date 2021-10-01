@@ -140,7 +140,7 @@ class FindByCategory extends React.Component {
           <p className="or">OR</p>
           <div className="category_Search">
             <div className="centre_first_part1">
-            <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedCategory.name == ""?"Categories":this.state.selectedCategory.name.substr(0,7)}>
+            <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedCategory.name == ""?"Categories":this.state.selectedCategory.name.substr(0,9)}>
                <div
               style={{
                 background: "transparent",
@@ -181,7 +181,7 @@ class FindByCategory extends React.Component {
                   {this.state.selectedBrand.name == ""? "Brands": this.state.selectedBrand.name.substring(0,6)}
                 </button> */}
                 {/* <ul className="dropdown-menu" aria-labelledby="dropdownButton2"> */}
-                <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedBrand.name == ""?"Brands":this.state.selectedBrand.name.substr(0,5)}>
+                <Dropdown style={{height: "97%"}} className="dropdown-toggle search-dropdownbutton "  position="right" title={this.state.selectedBrand.name == ""?"Brands":this.state.selectedBrand.name.substr(0,7)}>
 
                 {!this.props.brandLoading && this.props.brands.map((brand, key)=>{
                     return <Dropdown.Item key={key}><div className="dropdown-item" key={key} onClick={(e)=>{
@@ -199,7 +199,7 @@ class FindByCategory extends React.Component {
             </div>
             <div className="centre_second_part2">
               <div className="budgetbox">
-              <input type="number" placeholder="Budget (approximate)" value={this.state.priceH} onChange={(e)=>this.setState({priceH: e.target.value})}/>
+              <input type="number" placeholder="Budget (approximate)" value={this.state.priceH} step={1000} onChange={(e)=>this.setState({priceH: e.target.value})}/>
               </div>
              
             </div>

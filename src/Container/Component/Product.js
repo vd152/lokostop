@@ -140,7 +140,7 @@ class Product extends Component {
 
           <Link to={"/product/"+this.state.product.url+"/"+this.state.product._id}>
             <p className="name_details_each_product">
-              {this.state.product.name}
+              {this.state.product.name.length > 40?this.state.product.name.slice(0,40)+ "...":this.state.product.name}
               <br />
               {this.state.product.shortDescription? this.state.product.shortDescription: <span style={{visibility: "hidden"}}>space</span>}
             </p>

@@ -28,7 +28,7 @@ class CategoryRowBox extends Component {
             this.props.products.SectionStatus ?
             <React.Fragment>
                 <div className="new_Arrivals">
-                    <p className="new_Arrival_text">New Arrivals</p>
+                    <p className="most_viewd_text">New Arrivals</p>
                     <hr id="line_1"></hr>
                     <div className="list_names">
                         <ul>

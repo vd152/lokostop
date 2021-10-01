@@ -80,6 +80,10 @@ class Header01 extends Component {
             className=" category-dropdownbutton browseCat"
             position="right"
             title="Browse Categories &#8595;"
+            onMouseOver={()=>{
+              if(window.screen.width > 768 && !document.querySelector('[class*="Dropdown_menu__"]') )
+              document.querySelector(".Dropdown_dropdown__14f0x button").click()}}
+
           >
             {this.state.categories.map((category, key) => {
               return category.content;

@@ -17,7 +17,8 @@ class Login extends Component {
       "Confirm": "",
       Roles: [],
       Permissions: [],
-    }
+    },
+    signin: true
   };
   setData = (key, val) => {
     const { data } = this.state;
@@ -96,6 +97,10 @@ class Login extends Component {
                       role="tab"
                       aria-controls="pills-home"
                       aria-selected="true"
+                      style={{fontWeight: this.state.signin?"600":"400"}}
+                      onClick={(e) => {
+                        this.setState({signin:true})
+                      }}
                     >
                       Sign In
                     </button>
@@ -110,6 +115,10 @@ class Login extends Component {
                       role="tab"
                       aria-controls="pills-profile"
                       aria-selected="false"
+                      style={{fontWeight: this.state.signin?"400":"600"}}
+                      onClick={(e) => {
+                        this.setState({signin:false})
+                      }}
                     >
                       Sign Up
                     </button>
