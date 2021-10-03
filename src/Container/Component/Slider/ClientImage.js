@@ -1,51 +1,151 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { siteUrl } from "../../../Utils/util";
 
-export class ClientImage extends Component {
-    render() {
-        return (
-            <div className="images_box">
-                    <div className="image_1_container">
-                        <div className="image_1_upper">
-                            <p className='image1_para1' style={{ marginTop: '3.880vw' }}>Radisson Hotel</p>
-                            <p className="image1_para2">Punjab</p>
-                            <div className="image_1_client_image">
-                                <img src="https://images.unsplash.com/photo-1611095973763-414019e72400?ixid=MXwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" />
-                            </div>
-                            <p className="image_1_para3">"These are going to be reviews of our clients for our store, and this can be written in the size of 25 and with black font."</p>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aG91c2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="RELOAD" />
-                    </div>
-                    <div className="image_3_outer_box">
-                        <div className="images_3">
-                            <div className="hover_item">
-                                <p className='image1_para1' style={{ marginTop: '0.293vw', color: 'white' }}>Radisson Hotel</p>
-                                <p className="image1_para2" style={{ marginTop: '0', color: 'white' }}>Punjab</p>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="RELOAD" />
-                        </div>
-                        <div className="images_3">
-                            <div className="hover_item">
-                                <p className='image1_para1' style={{ marginTop: '0.293vw', color: 'white' }}>Radisson Hotel</p>
-                                <p className="image1_para2" style={{ marginTop: '0', color: 'white' }}>Punjab</p>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="RELOAD" />
-                        </div>
-                        <div className="images_3">
-                            <div className="hover_item">
-                                <p className='image1_para1' style={{ marginTop: '0.293vw', color: 'white' }}>Radisson Hotel</p>
-                                <p className="image1_para2" style={{ marginTop: '0', color: 'white' }}>Punjab</p>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1576941089067-2de3c901e126?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="RELOAD" />
-                        </div>
+class ClientImage extends Component {
 
-                    </div>
-                    <div className="image_2">
-                        <p className="image_2_1"><img src="https://images.unsplash.com/photo-1512916194211-3f2b7f5f7de3?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="RELOAD" /></p>
-                        <p  className="image_2_1"><img src="https://images.unsplash.com/photo-1596036435403-cdb01867592d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzF8fGhvdXNlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="RELOAD" /></p>
-                    </div>
-                </div>
-        )
-    }
+  render() {
+    return !this.props.clientReviewLoading &&
+      this.props.clientReviews.sectionstatus ? (
+      <div className="images_box">
+        <div className="image_1_container">
+          <div className="image_1_upper">
+            <p className="image1_para1" style={{ marginTop: "3.880vw" }}>
+              {this.props.clientReviews?.banners[0]?.title.split(",")[0]}
+            </p>
+            <p className="image1_para2">
+              {this.props.clientReviews?.banners[0]?.title.split(",")[1]}
+            </p>
+            <div className="image_1_client_image">
+              <img
+                src={this.props.clientReviews?.banners[0].smallimg?siteUrl+this.props.clientReviews?.banners[0].smallimg?.image: "https://via.placeholder.com/100"}
+                alt="RELOAD"
+              />
+            </div>
+            <p className="image_1_para3">
+            <q>{this.props.clientReviews?.banners[0]?.body}</q>
+            </p>
+          </div>
+          <img
+            src={this.props.clientReviews?.banners[0].img?siteUrl+this.props.clientReviews?.banners[0].img?.image: "https://via.placeholder.com/100"}
+            alt="RELOAD"
+          />
+        </div>
+        <div className="image_3_outer_box">
+          <div className="images_3">
+            <div className="hover_item">
+              <p
+                className="image1_para1"
+                style={{ marginTop: "0.293vw", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[1]?.title.split(",")[0]}
+              </p>
+              <p
+                className="image1_para2"
+                style={{ marginTop: "0", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[1]?.title.split(",")[1]}
+              </p>
+            </div>
+            <img
+            src={this.props.clientReviews?.banners[1].img?siteUrl+this.props.clientReviews?.banners[1].img?.image: "https://via.placeholder.com/100"}
+            alt="RELOAD"
+            />
+          </div>
+          <div className="images_3">
+            <div className="hover_item">
+              <p
+                className="image1_para1"
+                style={{ marginTop: "0.293vw", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[2]?.title.split(",")[0]}
+              </p>
+              <p
+                className="image1_para2"
+                style={{ marginTop: "0", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[2]?.title.split(",")[1]}
+              </p>
+            </div>
+            <img
+            src={this.props.clientReviews?.banners[2].img?siteUrl+this.props.clientReviews?.banners[2].img?.image: "https://via.placeholder.com/100"}
+            alt="RELOAD"
+            />
+          </div>
+          <div className="images_3">
+            <div className="hover_item">
+              <p
+                className="image1_para1"
+                style={{ marginTop: "0.293vw", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[3]?.title.split(",")[0]}
+              </p>
+              <p
+                className="image1_para2"
+                style={{ marginTop: "0", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[3]?.title.split(",")[1]}
+              </p>
+            </div>
+            <img
+            src={this.props.clientReviews?.banners[3].img?siteUrl+this.props.clientReviews?.banners[3].img?.image: "https://via.placeholder.com/100"}
+            alt="RELOAD"
+            />
+          </div>
+        </div>
+        <div className="image_2">
+        
+          <div className="image_2_1">
+          <div className="hover_item2">
+              <p
+                className="image1_para1"
+                style={{ marginTop: "0.293vw", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[4]?.title.split(",")[0]}
+              </p>
+              <p
+                className="image1_para2"
+                style={{ marginTop: "0", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[4]?.title.split(",")[1]}
+              </p>
+            </div>
+            <img
+            src={this.props.clientReviews?.banners[4].img?siteUrl+this.props.clientReviews?.banners[4].img?.image: "https://via.placeholder.com/100"}
+            alt="RELOAD"
+            />
+          </div>
+          <div className="image_2_1">
+          <div className="hover_item2">
+              <p
+                className="image1_para1"
+                style={{ marginTop: "0.293vw", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[5]?.title.split(",")[0]}
+              </p>
+              <p
+                className="image1_para2"
+                style={{ marginTop: "0", color: "white" }}
+              >
+              {this.props.clientReviews?.banners[5]?.title.split(",")[1]}
+              </p>
+            </div>
+            <img
+            src={this.props.clientReviews?.banners[5].img?siteUrl+this.props.clientReviews?.banners[5].img?.image: "https://via.placeholder.com/100"}
+            alt="RELOAD"
+            />
+          </div>
+        </div>
+      </div>
+    ) : (
+      <React.Fragment></React.Fragment>
+    );
+  }
 }
-
-export default ClientImage
+const mapStateToProps = (state) => {
+  return {
+    clientReviewLoading: state.getClientReviews.loading,
+    clientReviews: state.getClientReviews.reviews,
+  };
+};
+export default connect(mapStateToProps)(ClientImage);

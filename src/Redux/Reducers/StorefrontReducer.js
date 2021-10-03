@@ -220,3 +220,26 @@ export const getTopCategoriesReducer = (state = { TopCategories: {TopCategories:
             return state;
     }
 }
+
+export const getClientReviewsReducer = (state = { reviews: {sectionstatus: false}}, action) => {
+    switch(action.type){
+        case actionTypes.GET_CLIENT_REVIEW_REQUEST:
+            return{
+                loading: true,
+                reviews: {sectionstatus: false}
+            }
+        case actionTypes.GET_CLIENT_REVIEW_SUCCESS:
+            return {
+                loading: false,
+                reviews: action.payload
+            }
+        case actionTypes.GET_CLIENT_REVIEW_FAIL:
+            return {
+                loading: false,
+                reviews:{sectionstatus: false},
+                error: action.payload
+            }
+        default:
+            return state;
+    }
+}

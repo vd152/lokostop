@@ -165,3 +165,19 @@ export const getTopCategories = () => async(dispatch) => {
         })
     }
 }
+
+export const getClientReviews = () => async(dispatch) => {
+    try{
+        dispatch({ type: actionTypes.GET_CLIENT_REVIEW_REQUEST})
+        const {data: {data}} = await api.post('/banner/get')
+        dispatch({
+            type: actionTypes.GET_CLIENT_REVIEW_SUCCESS,
+            payload: data[0]
+        })
+    }catch(error){
+        dispatch({
+            type: actionTypes.GET_CLIENT_REVIEW_FAIL,
+            payload: "something went wrong"
+        })
+    }
+}
