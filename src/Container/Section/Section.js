@@ -22,7 +22,7 @@ class Section extends Component {
     },
     allCategories: [],
     priceH: this.props.location.priceH && this.props.location.priceH != "" ? this.props.location.priceH : null,
-    priceL: 0
+    priceL: 1
   };
   componentDidMount() {
     const { filterArr } = this.state;

@@ -539,7 +539,12 @@ class IndividualProductDetails extends Component {
                     <p className="discount_amount individual_discount_amount">
                       Rs{" "}
                       {this.state.stockPrice == -1?this.props.productDetails.price -
-                        this.props.productDetails.specialPrice: this.props.productDetails.price-this.state.stockPrice}
+                        (this.props.productDetails.specialPriceType == "Fixed"
+                        ? this.props.productDetails.specialPrice
+                        : this.props.productDetails.price -
+                          (this.props.productDetails.specialPrice /
+                            100) *
+                            this.props.productDetails.price): this.props.productDetails.price-this.state.stockPrice}
                     </p>
                   </div>
                 </React.Fragment>

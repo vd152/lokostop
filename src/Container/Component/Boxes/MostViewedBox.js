@@ -1,89 +1,246 @@
-import React, { Component } from 'react'
-import { FaRegStar } from "react-icons/fa";
+import React, { Component } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BiCart } from "react-icons/bi";
-export class MostViewedBox extends Component {
-    render() {
-        return (
-            <div>
-                <div className="most_view_box">
-                    <p className="most_viewd_text">Most Viewed Products</p>
-                    <hr id="line_view"></hr>
-                    <div id="arrow_box">
-                        <IoIosArrowBack id="Arrow_forward" />
-                        <IoIosArrowForward id="Arrow_backward" />
-                    </div>
-                </div>
-                <div className="most_viewed_compare">
-                    <div className="image_box_second_one">
-                        <img src="https://images.unsplash.com/photo-1583172747862-afcb755ebd13?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="RELOAD" />
-                        {/* <p className='discount_one'>10% off</p> */}
-                    </div>
-                    <div className="comparing_products_details">
-                        <p className="compare_product_details_cat">WASHING MACHINE</p>
-                        <p className="detail_of_product_comparing">LG 6.5kg 5 Star Smart Inverter Fully-Automatioc Top loading Washing Machine(T65SKSF4Z)</p>
-                        <div className="rating_product">
-                            <div className="star">
-                                <FaRegStar id="star_feature" />
-                                <FaRegStar id="star_feature" />
-                                <FaRegStar id="star_feature" />
-                                <FaRegStar id="star_feature" />
-                                <FaRegStar id="star_feature" />
-                            </div>
-                            <p className="text_rating">3.0 (4 Ratings)</p>
-                        </div>
-                        <div className="rating_product">
-                            <p className="mrp_text">MRP:</p>
-                            <p className="price_of_the_product">Rs 25,000</p>
-                        </div>
-                        <div className="price_box_discount">
-                            <p className="our_price_text">Our Price:</p>
-                            <p className="price_of_the_product_after_discount">Rs 22,000</p>
-                        </div>
-                        <div className="discount_box_in_compare">
-                            <p className="discount_text_product"> Discount:</p>
-                            <p className="how_much_discount" style={{ paddingBottom: '1.903vw' }}>10% off</p>
-                        </div>
-                        <div className="save_box">
-                            <p className="save_text">You save:</p>
-                            <p className="discount_amount">Rs 3,000</p>
-                        </div>
-                        <div className="save_box">
-                            <p className="delivery_text">Delivery in:</p>
-                            <p className="time_delivery">10 days after ordering</p>
-                        </div>
-                        <div className="save_box">
-                            <p className="color_text"> Color:</p>
-                            <select className="dropdown_colors" >
-                                <option value="WH">White</option>
-                                <option value="BL">Black</option>
-                            </select>
-                        </div>
-                        <div className="buttons_compare">
-                            <button className="cart_button" >
-                            <span className="large_screen_text">ADD TO CART</span> 
-                            <span className="small_screen_text">ADD</span> 
-                            <BiCart style={{
-                                // color: 'white',
-                                marginLeft: '0.952vw',
-                                marginTop: '-0.5vw',
-                                // fontSize: '1.3vw'
-                            }} 
-                                className="cart_icon_compare"
-                            /></button>
-                            <button className="compare_button">COMPARE</button>
-                        </div>
-                        <p className="view_details">View details</p>
-                    </div>
-                    <div className="image_box_second large_screen_text">
-                        <img src="https://images.unsplash.com/photo-1583172747862-afcb755ebd13?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80" alt="RELOAD" />
-                        {/* <p className='discount_one'>10% off</p> */}
-                    </div>
-
-                </div>
+import { siteUrl } from "../../../Utils/util";
+import { Link } from "react-router-dom";
+import {modifyCompare} from '../../../Redux/Actions/ProductActions'
+import { connect } from "react-redux";
+import { toast } from "react-toastify";
+class MostViewedBox extends Component {
+  state = {
+    idx: 0,
+  };
+  componentDidMount() {
+    console.log(this.props.row.Tabs[0]);
+  }
+  render() {
+    return (
+      <div>
+        <div className="new_Arrivals">
+          <p className="most_viewd_text">{this.props.row.Title}</p>
+          <hr id="line_1"></hr>
+          <div id="arrow_box">
+            <IoIosArrowBack
+              id="Arrow_forward"
+              onClick={() => {
+                this.setState({
+                  idx:
+                    this.state.idx == this.props.row.Tabs[0].Products.length - 1
+                      ? 0
+                      : this.state.idx + 1,
+                });
+              }}
+            />
+            <IoIosArrowForward
+              id="Arrow_backward"
+              onClick={() => {
+                this.setState({
+                  idx:
+                    this.state.idx > 0
+                      ? this.state.idx - 1
+                      : this.props.row.Tabs[0].Products.length - 1,
+                });
+              }}
+            />
+          </div>
+        </div>
+        <div className="most_viewed_compare">
+          <div className="image_box_second_one">
+            <img
+              src={
+                this.props.row.Tabs[0].Products[this.state.idx].baseImage
+                  ? siteUrl +
+                    this.props.row.Tabs[0].Products[this.state.idx].baseImage
+                      .image
+                  : "https://via.placeholder.com/150"
+              }
+              alt="RELOAD"
+            />
+          </div>
+          <div className="comparing_products_details">
+            <Link
+              className="compare_product_details_cat"
+              to={
+                "/categories/" +
+                this.props.row.Tabs[0].Products[this.state.idx].categories[0]
+                  .name +
+                "/" +
+                this.props.row.Tabs[0].Products[this.state.idx].categories[0]
+                  .url +
+                "/" +
+                this.props.row.Tabs[0].Products[this.state.idx].categories[0]
+                  ._id
+              }
+            >
+              {this.props.row.Tabs[0].Products[this.state.idx].categories
+                .length > 0
+                ? this.props.row.Tabs[0].Products[this.state.idx].categories[0]
+                    .name
+                : ""}
+            </Link>
+            <p className="detail_of_product_comparing">
+              {this.props.row.Tabs[0].Products[this.state.idx].name}
+            </p>
+            <div className="rating_product">
+            <div className="star">
+                <i
+                  className={
+                    this.props.row.Tabs[0].Products[this.state.idx].rating > 0
+                      ? "fas fa-star"
+                      : "far fa-star"
+                  }
+                  style={{ color: "yellow" }}
+                ></i>
+                <i
+                  className={
+                    this.props.row.Tabs[0].Products[this.state.idx].rating > 1
+                      ? "fas fa-star"
+                      : "far fa-star"
+                  }
+                  style={{ color: "yellow" }}
+                ></i>
+                <i
+                  className={
+                    this.props.row.Tabs[0].Products[this.state.idx].rating > 2
+                      ? "fas fa-star"
+                      : "far fa-star"
+                  }
+                  style={{ color: "yellow" }}
+                ></i>
+                <i
+                  className={
+                    this.props.row.Tabs[0].Products[this.state.idx].rating > 3
+                      ? "fas fa-star"
+                      : "far fa-star"
+                  }
+                  style={{ color: "yellow" }}
+                ></i>
+                <i
+                  className={
+                    this.props.row.Tabs[0].Products[this.state.idx].rating > 4
+                      ? "fas fa-star"
+                      : "far fa-star"
+                  }
+                  style={{ color: "yellow" }}
+                ></i>
+              </div>
+              <p className="text_rating individual_text_rating">
+                {this.props.row.Tabs[0].Products[this.state.idx].rating
+                  ? this.props.row.Tabs[0].Products[this.state.idx].rating.toFixed(1)
+                  : 0}
+                ({this.props.row.Tabs[0].Products[this.state.idx].reviews} Ratings)
+              </p>
             </div>
-        )
-    }
+            {this.props.row.Tabs[0].Products[this.state.idx].specialPrice? <React.Fragment>
+                <div className="rating_product">
+              <p className="mrp_text">MRP:</p>
+              <p className="price_of_the_product">Rs {this.props.row.Tabs[0].Products[this.state.idx].price}</p>
+            </div>
+            <div className="price_box_discount">
+              <p className="our_price_text">Our Price:</p>
+              <p className="price_of_the_product_after_discount">Rs {this.props.row.Tabs[0].Products[this.state.idx].specialPrice
+                        ? this.props.row.Tabs[0].Products[this.state.idx].specialPriceType == "Fixed"
+                          ? this.props.row.Tabs[0].Products[this.state.idx].specialPrice
+                          : this.props.row.Tabs[0].Products[this.state.idx].price.toString() -
+                            (this.props.row.Tabs[0].Products[this.state.idx].specialPrice.toString() /
+                              100) *
+                              this.props.row.Tabs[0].Products[this.state.idx].price.toString()
+                        : this.props.row.Tabs[0].Products[this.state.idx].price}</p>
+            </div>
+            </React.Fragment>:<div className="price_box_discount">
+              <p className="our_price_text">Our Price:</p>
+              <p className="price_of_the_product_after_discount">Rs {this.props.row.Tabs[0].Products[this.state.idx].price}</p>
+            </div>}
+            {this.props.row.Tabs[0].Products[this.state.idx].specialPrice && <React.Fragment>
+                <div className="discount_box_in_compare">
+              <p className="discount_text_product"> Discount:</p>
+              <p
+                className="how_much_discount"
+                style={{ paddingBottom: "1.903vw" }}
+              >
+                {this.props.row.Tabs[0].Products[this.state.idx].specialPriceType == "Fixed"
+                        ? Math.trunc(
+                            ((this.props.row.Tabs[0].Products[this.state.idx].price -
+                              this.props.row.Tabs[0].Products[this.state.idx].specialPrice) /
+                              this.props.row.Tabs[0].Products[this.state.idx].price) *
+                              100
+                          )
+                        : this.props.row.Tabs[0].Products[this.state.idx].specialPrice}% off
+              </p>
+            </div>
+            <div className="save_box">
+              <p className="save_text">You save:</p>
+              <p className="discount_amount">Rs {this.props.row.Tabs[0].Products[this.state.idx].price - (
+                        this.props.row.Tabs[0].Products[this.state.idx].specialPriceType == "Fixed"
+                        ? this.props.row.Tabs[0].Products[this.state.idx].specialPrice
+                        : this.props.row.Tabs[0].Products[this.state.idx].price -
+                          (this.props.row.Tabs[0].Products[this.state.idx].specialPrice /
+                            100) *
+                            this.props.row.Tabs[0].Products[this.state.idx].price)}</p>
+            </div>
+                </React.Fragment>}
+           
+            <div className="buttons_compare">
+                <Link to={"/product/"+this.props.row.Tabs[0].Products[this.state.idx].url+"/"+this.props.row.Tabs[0].Products[this.state.idx]._id}>
+              <button className="cart_button">
+                <span className="large_screen_text">View Options</span>
+                <span className="small_screen_text">View</span>
+                <BiCart
+                  style={{
+                    // color: 'white',
+                    marginLeft: "0.952vw",
+                    marginTop: "-0.5vw",
+                    // fontSize: '1.3vw'
+                  }}
+                  className="cart_icon_compare"
+                  
+                />
+              </button>
+              </Link>
+              <button className="compare_button" onClick={(e)=>{
+                    let arr = this.props.compareProducts
+                    if(!arr.includes(this.props.row.Tabs[0].Products[this.state.idx]._id)){
+                      arr.push(this.props.row.Tabs[0].Products[this.state.idx]._id)
+                      this.props.modifyCompare(arr);
+                    }else{
+                      toast.error(
+                        "Already added for comparing.",
+                        {
+                          autoClose: 3000,
+                          hideProgressBar: true,
+                          closeOnClick: true,
+                          pauseOnHover: true,
+                          draggable: true,
+                        }
+                      );
+                    }
+                  }}>COMPARE</button>
+            </div>
+            <Link className="view_details" to={"/product/"+this.props.row.Tabs[0].Products[this.state.idx].url+"/"+this.props.row.Tabs[0].Products[this.state.idx]._id}>View details</Link>
+          </div>
+          <div className="image_box_second large_screen_text">
+            <img
+              src={
+                this.props.row.Tabs[0].Products[this.state.idx].additionalImages
+                  .length > 0
+                  ? siteUrl +
+                    this.props.row.Tabs[0].Products[this.state.idx]
+                      .additionalImages[0].image
+                  : "https://via.placeholder.com/150"
+              }
+              alt="RELOAD"
+            />
+            {/* <p className='discount_one'>10% off</p> */}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default MostViewedBox
+const mapStateToProps = (state) => {
+    return {
+      compareProducts: state.compareProducts.products,
+    };
+  };
+  export default connect(mapStateToProps, { modifyCompare })(MostViewedBox);

@@ -150,7 +150,12 @@ class Product extends Component {
                 <React.Fragment>
                   <p className="para_price_one">₹ {this.state.product.price}</p>
                   <p className="para_price_two">
-                    ₹ {this.state.product.specialPrice}
+                    ₹ {this.state.product.specialPriceType == "Fixed"
+                          ? this.state.product.specialPrice
+                          : this.state.product.price.toString() -
+                            (this.state.product.specialPrice.toString() /
+                              100) *
+                              this.state.product.price.toString()}
                   </p>
                 </React.Fragment>
               ) : (
