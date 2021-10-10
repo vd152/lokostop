@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./Login.css";
-import { loginUser, registerUser, googleLogin } from "../../../../Redux/Actions/UserActions";
+import { loginUser, registerUser } from "../../../../Redux/Actions/UserActions";
 import { CgProfile } from "react-icons/cg";
+import {siteUrl} from '../../../../Utils/util'
 class Login extends Component {
   state = {
     data: {
@@ -40,8 +41,7 @@ class Login extends Component {
     document.querySelector("#staticBackdrop").click();
   }
   googleLogin = () => {
-    this.props.googleLogin();
-    document.querySelector("#staticBackdrop").click();
+    window.location.href= siteUrl + "/auth/google"
   }
   render() {
     return (
@@ -245,14 +245,14 @@ class Login extends Component {
                   Google
                   </span>
                 </button>
-                <button type="button" className="btn signface">
+                {/* <button type="button" className="btn signface">
                 <span className="large_screen_text_425">
                   Sign in with Facebook
                   </span>
                   <span className="small_screen_text_425">
                   Facebook
                   </span>
-                </button>
+                </button> */}
                 </div>
               </div>
             </div>
@@ -268,4 +268,4 @@ const mapStateToProps = (state) => {
     error: state.loginUser.error
   };
 };
-export default connect(mapStateToProps, { loginUser, registerUser,googleLogin })(Login);
+export default connect(mapStateToProps, { loginUser, registerUser })(Login);

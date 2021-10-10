@@ -35,22 +35,30 @@ import { getWishlist } from "./Redux/Actions/WishlistActions";
 import { getCart } from "./Redux/Actions/CartActions";
 import { getTags } from "./Redux/Actions/ProductActions";
 import { getSettings } from "./Redux/Actions/SettingsActions";
-import { getUser as getUserId } from "./Utils/Local";
+import { getUser as getUserId, setUser, setAuthToken } from "./Utils/Local";
 import { NotFound } from "./Utils/NotFound";
 import Page from "./Container/Page/Page";
 
 class App extends React.Component {
   requests = async () => {
     this.props.getGeneral();
-    this.props.getLogos();
     this.props.getAllCategories();
+    this.props.getLogos();
     this.props.getMenus();
-    if (getUserId()) {
+    if(window.location.search != ''){
+      let token = window.location.search.split("=").join(",").split("&").join(",").split(",")[1]
+      let id = window.location.search.split("=").join(",").split("&").join(",").split(",")[3]
+      setAuthToken(token)
+      setUser(id)
+      window.location.href = '/'
+    }
+    if (window.location.search == '' && getUserId()) {
       this.props.getUser(getUserId());
       this.props.getWishlist();
       this.props.getCart();
       this.props.getUserOrders(getUserId());
     }
+    this.props.getSettings();
     this.props.getFeatures();
     this.props.getFooterDetails();
     this.props.getProductTabs();
@@ -58,7 +66,6 @@ class App extends React.Component {
     this.props.getBrands();
     this.props.getTopCategories()
     this.props.getTags();
-    this.props.getSettings();
     this.props.getClientReviews()
   };
   componentDidMount() {

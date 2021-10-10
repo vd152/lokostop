@@ -10,9 +10,9 @@ class MostViewedBox extends Component {
   state = {
     idx: 0,
   };
-  componentDidMount() {
-    console.log(this.props.row.Tabs[0]);
-  }
+  // componentDidMount() {
+  //   console.log(this.props.row.Tabs[0]);
+  // }
   render() {
     return (
       <div>
@@ -132,12 +132,12 @@ class MostViewedBox extends Component {
               </p>
             </div>
             {this.props.row.Tabs[0].Products[this.state.idx].specialPrice? <React.Fragment>
-                <div className="rating_product">
+                <div className="mostview_det">
               <p className="mrp_text">MRP:</p>
               <p className="price_of_the_product">Rs {this.props.row.Tabs[0].Products[this.state.idx].price}</p>
             </div>
-            <div className="price_box_discount">
-              <p className="our_price_text">Our Price:</p>
+            <div className="mostview_det">
+              <p className="mrp_text">Our Price:</p>
               <p className="price_of_the_product_after_discount">Rs {this.props.row.Tabs[0].Products[this.state.idx].specialPrice
                         ? this.props.row.Tabs[0].Products[this.state.idx].specialPriceType == "Fixed"
                           ? this.props.row.Tabs[0].Products[this.state.idx].specialPrice
@@ -147,13 +147,13 @@ class MostViewedBox extends Component {
                               this.props.row.Tabs[0].Products[this.state.idx].price.toString()
                         : this.props.row.Tabs[0].Products[this.state.idx].price}</p>
             </div>
-            </React.Fragment>:<div className="price_box_discount">
-              <p className="our_price_text">Our Price:</p>
+            </React.Fragment>:<div className="mostview_det">
+              <p className="mrp_text">Our Price:</p>
               <p className="price_of_the_product_after_discount">Rs {this.props.row.Tabs[0].Products[this.state.idx].price}</p>
             </div>}
             {this.props.row.Tabs[0].Products[this.state.idx].specialPrice && <React.Fragment>
-                <div className="discount_box_in_compare">
-              <p className="discount_text_product"> Discount:</p>
+                <div className="mostview_det">
+              <p className="mrp_text"> Discount:</p>
               <p
                 className="how_much_discount"
                 style={{ paddingBottom: "1.903vw" }}
@@ -168,8 +168,8 @@ class MostViewedBox extends Component {
                         : this.props.row.Tabs[0].Products[this.state.idx].specialPrice}% off
               </p>
             </div>
-            <div className="save_box">
-              <p className="save_text">You save:</p>
+            <div className="mostview_det">
+              <p className="mrp_text">You save:</p>
               <p className="discount_amount">Rs {this.props.row.Tabs[0].Products[this.state.idx].price - (
                         this.props.row.Tabs[0].Products[this.state.idx].specialPriceType == "Fixed"
                         ? this.props.row.Tabs[0].Products[this.state.idx].specialPrice
@@ -182,7 +182,7 @@ class MostViewedBox extends Component {
            
             <div className="buttons_compare">
                 <Link to={"/product/"+this.props.row.Tabs[0].Products[this.state.idx].url+"/"+this.props.row.Tabs[0].Products[this.state.idx]._id}>
-              <button className="cart_button">
+              <button className="cart_button m-0">
                 <span className="large_screen_text">View Options</span>
                 <span className="small_screen_text">View</span>
                 <BiCart
