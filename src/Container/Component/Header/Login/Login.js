@@ -41,7 +41,7 @@ class Login extends Component {
     document.querySelector("#staticBackdrop").click();
   }
   googleLogin = () => {
-    window.location.href= siteUrl + "/auth/google"
+    window.location.href= siteUrl + "auth/google"
   }
   render() {
     return (

@@ -83,7 +83,7 @@ class Header01 extends Component {
             title="Browse Categories &#8595;"
             onMouseOver={()=>{
               if(window.screen.width > 768 && !document.querySelector('[class*="Dropdown_menu__"]') )
-              document.querySelector(".Dropdown_dropdown__14f0x button").click()
+              document.querySelector(".browseCat")?.click()
               }}
 
           >
